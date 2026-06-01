@@ -36,6 +36,29 @@ Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Auth Routes
+Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/logout-api', [AuthController::class, 'logoutApi'])->name('logout.api');
+Route::get('/check-auth', [AuthController::class, 'checkAuth'])->name('check.auth');
+Route::post('/refresh-token', [AuthController::class, 'refresh'])->name('refresh.token');
+
+// Rotas Protegidas
+Route::middleware(['auth.jwt'])->group(function () {
+    Route::get('/painel/cliente', [DashboardController::class, 'cliente'])
+        ->name('painel.cliente');
+    
+    Route::get('/painel/freelancer', [DashboardController::class, 'freelancer'])
+        ->name('painel.freelancer');
+    
+    Route::get('/api/freelancer/dashboard', [DashboardController::class, 'freelancerData'])
+        ->name('api.freelancer.dashboard');
+    
+    Route::get('/api/cliente/dashboard', [DashboardController::class, 'clienteData'])
+        ->name('api.cliente.dashboard');
+});
+
 // Formulários de registro (GET)
 Route::prefix('registar')->group(function () {
     Route::get('/cliente', function () {
@@ -50,15 +73,6 @@ Route::prefix('registar')->group(function () {
 // Processar registro (POST)
 Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
 
-// Para painel do cliente
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/painel/cliente', [ClientDashboardController::class, 'index'])->name('painel.cliente');
-    Route::get('/api/cliente/dados', [ClientDashboardController::class, 'getData'])->name('api.cliente.dados');
-
-    // Para painel do freelancer
-    Route::get('/painel/freelancer', [FreelancerDashboardController::class, 'index'])->name('painel.freelancer');
-    Route::get('/api/freelancer/dados', [FreelancerDashboardController::class, 'getData'])->name('api.freelancer.dados');
-});
 
 // ============================================
 // PERFIS

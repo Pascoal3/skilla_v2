@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <!-- Meta tags para dados de sistema -->
+    
+    <!-- Meta tags para dados de sistema (Adicionado) -->
     <meta name="user-id" content="{{ auth()->id() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
@@ -158,13 +159,12 @@
             <span class="material-symbols-outlined text-[20px]">settings</span>
             <span class="text-label-md font-label-md">Definições</span>
         </a>
-        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
-            <span class="material-symbols-outlined text-[20px]">logout</span>
-            <span class="text-label-md font-label-md">Terminar Sessão</span>
+        <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#" onclick="logout(event)">
+                <span class="material-symbols-outlined text-[20px]">logout</span>
+                <span class="text-label-md font-label-md">Terminar Sessão</span>
         </a>
     </div>
 </aside>
-
 <!-- Main Content Area -->
 <div class="flex-1 md:ml-64 lg:ml-72 flex flex-col min-h-screen">
     <!-- TopNavBar -->
@@ -193,10 +193,8 @@
             </div>
         </div>
     </header>
-
     <!-- Dashboard Canvas -->
     <main class="flex-1 p-6 md:p-8 space-y-6 max-w-container-max mx-auto w-full">
-        
         <!-- Greeting Section -->
         <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-2">
             <div>
@@ -208,7 +206,6 @@
                 Publicar Trabalho
             </button>
         </div>
-
         <!-- Metrics Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Card 1: Trabalhos Publicados -->
@@ -267,7 +264,6 @@
                 </div>
             </div>
         </div>
-
         <!-- Sections 1 & 2 Row -->
         <div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
             <!-- A Minha Carteira (60%) -->
@@ -299,20 +295,9 @@
                 <!-- Container Dinâmico para Alertas -->
                 <div class="space-y-4 flex-1" id="attention-needed-container">
                     <!-- Será preenchido pelo JS -->
-                    <!-- Exemplo de estrutura para JS:
-                    <div class="p-4 border border-border-subtle rounded-lg hover:border-status-warning-text/30 transition-colors cursor-pointer">
-                        <div class="flex justify-between items-start mb-2">
-                            <h4 class="text-label-md font-label-md font-semibold">Título do Job</h4>
-                        </div>
-                        <span class="inline-flex items-center gap-1 bg-status-warning-bg text-status-warning-text px-2.5 py-1 rounded-full text-label-sm font-label-sm">
-                            <span class="material-symbols-outlined text-[14px]">error</span> Ação Necessária
-                        </span>
-                    </div> 
-                    -->
                 </div>
             </div>
         </div>
-
         <!-- Os Meus Jobs Ativos -->
         <div class="bg-white border border-border-subtle rounded-[12px] overflow-hidden">
             <div class="p-6 border-b border-border-subtle flex justify-between items-center bg-white">
@@ -322,18 +307,8 @@
             <!-- Container Dinâmico para Jobs Ativos -->
             <div class="divide-y divide-border-subtle" id="active-jobs-container">
                 <!-- Será preenchido pelo JS -->
-                <!-- Exemplo de estrutura para JS:
-                <div class="p-4 sm:p-6 hover:bg-light-gray transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                    <div>
-                        <h4 class="text-body-md font-body-md font-medium mb-1">Título do Job</h4>
-                        <p class="text-body-sm font-body-sm text-secondary">Info secundária</p>
-                    </div>
-                    <span class="bg-[#1A1A1A] text-[#CCFF00] px-3 py-1 rounded-full text-label-sm font-label-sm">Status</span>
-                </div>
-                -->
             </div>
         </div>
-
         <!-- Two Columns Bottom -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- Últimas Propostas -->
@@ -357,24 +332,6 @@
                     <table class="w-full text-left">
                         <tbody class="divide-y divide-border-subtle" id="recent-transactions-container">
                             <!-- Será preenchido pelo JS -->
-                            <!-- Exemplo de estrutura para JS:
-                            <tr class="hover:bg-light-gray transition-colors">
-                                <td class="p-4 pl-6">
-                                    <div class="flex items-center gap-3">
-                                        <div class="p-2 bg-light-gray border border-border-subtle rounded-lg">
-                                            <span class="material-symbols-outlined text-[18px] text-secondary">lock</span>
-                                        </div>
-                                        <div>
-                                            <p class="text-label-md font-label-md font-medium">Descrição</p>
-                                            <p class="text-body-sm font-body-sm text-secondary">Data</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="p-4 pr-6 text-right">
-                                    <p class="text-label-md font-label-md font-semibold text-secondary">Valor</p>
-                                </td>
-                            </tr>
-                            -->
                         </tbody>
                     </table>
                 </div>
@@ -383,9 +340,32 @@
     </main>
 </div>
 
-
 <!-- Script do Cliente -->
-<script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('js/painel_cliente.js') }}"></script>
+<script>
+async function logout(event) {
+    // Impede o comportamento padrão do link (recarregar a página ou ir para #)
+    event.preventDefault();
+    
+    // Tenta obter o token CSRF do meta tag (padrão do Laravel)
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
+    const response = await fetch('/logout-api', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json' // Recomendado adicionar
+        }
+    });
+    
+    // Se a resposta for ok (status 200-299), redireciona para o login
+    if (response.ok) {
+        window.location.href = '/login';
+    } else {
+        console.error('Erro ao terminar sessão');
+    }
+}
+</script>
 </body>
 </html>
-```

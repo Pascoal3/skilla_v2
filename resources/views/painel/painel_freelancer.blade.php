@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!-- Meta tags para dados de sistema -->
+    
+    <!-- Meta tags para dados de sistema (Adicionado) -->
     <meta name="user-id" content="{{ auth()->id() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
@@ -191,8 +192,8 @@
             <a class="flex items-center gap-2 text-on-primary-container hover:text-secondary text-sm transition-colors" href="#">
                 <span class="material-symbols-outlined text-[18px]">help_outline</span> Ajuda
             </a>
-            <a class="flex items-center gap-2 text-on-primary-container hover:text-secondary text-sm transition-colors" href="#">
-                <span class="material-symbols-outlined text-[18px]">logout</span> Sair
+            <a class="flex items-center gap-2 text-on-primary-container hover:text-secondary text-sm transition-colors" href="#" onclick="logout(event)">
+                <span class="material-symbols-outlined text-[18px]">logout</span> Terminar Sessão
             </a>
         </div>
     </div>
@@ -397,6 +398,26 @@
     </div>
 </main>
 <!-- Overlays -->
-<script src="{{ asset('js/dashboard.js') }}"></script>
+<script src="{{ asset('js/painel_freelancer.js') }}"></script>
+<script>
+    async function logout(event) {
+        event.preventDefault();
+        
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
+        const response = await fetch('/logout-api', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (response.ok) {
+            window.location.href = '/login';
+        }
+    }
+</script>
 </body>
 </html>
