@@ -119,10 +119,13 @@
 </head>
 <body class="bg-[#CCFF00] font-body-md text-on-surface flex min-h-screen">
 <!-- SideNavBar -->
-<aside class="hidden md:flex fixed left-0 top-0 h-full flex-col py-6 bg-[#1A1A1A] border-r border-[#1A1A1A] w-64 md:w-72 z-40">
-    <div class="px-6 mb-8">
-        <h1 class="text-headline-md font-headline-md font-bold text-white">Skilla</h1>
-        <p class="text-body-sm font-body-sm text-gray-300">Plataforma Freelance</p>
+<aside class="hidden md:flex fixed left-0 top-0 h-full flex-col py-6 bg-[#1A1A1A] border-r border-[#1A1A1A] w-64 md:w-72 z-40">  
+    <div style="display: flex; gap: 5px;" class="px-6 mb-8">
+        <nav><span style="display:inline" class="material-symbols-outlined text-secondary-container text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">widgets</span>  </nav>
+        <nav>
+            <h1 class="text-headline-md font-headline-md font-bold text-white">Skilla</h1>
+            <p class="text-body-sm font-body-sm text-gray-300">Plataforma Freelance</p>
+        </nav>
     </div>
     <nav class="flex-1 px-4 space-y-1">
         <a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#CCFF00] text-[#1A1A1A] scale-[0.98] transition-transform duration-150" href="#">
@@ -186,8 +189,8 @@
             <!-- Área do Utilizador (Dinâmica) -->
             <div class="flex items-center gap-2 cursor-pointer">
                 <div class="text-right">
-                    <h2 class="text-headline-lg font-headline-lg text-on-surface mb-0" id="header-user-name">Olá, [Nome]</h2>
-                    <p class="text-body-md font-body-md text-secondary mb-0">Tens <span class="font-semibold text-primary" id="header-new-proposals-count">0</span> propostas novas</p>
+                    <h2 class="text-headline-lg font-headline-lg text-on-surface mb-0" id="header-user-name">[Nome]</h2>
+                    
                 </div>
                 <span class="material-symbols-outlined text-[18px] hidden sm:block text-secondary">expand_more</span>
             </div>
@@ -301,7 +304,7 @@
         <!-- Os Meus Jobs Ativos -->
         <div class="bg-white border border-border-subtle rounded-[12px] overflow-hidden">
             <div class="p-6 border-b border-border-subtle flex justify-between items-center bg-white">
-                <h3 class="text-headline-sm font-headline-sm text-[#1E1E1E]">Os Meus Jobs Ativos</h3>
+                <h3 class="text-headline-sm font-headline-sm text-[#1E1E1E]">Os Meus Trabalhos ativos</h3>
                 <a class="text-[#1A1A1A] text-label-md font-label-md hover:underline" href="#">Ver todos</a>
             </div>
             <!-- Container Dinâmico para Jobs Ativos -->

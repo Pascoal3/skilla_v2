@@ -153,7 +153,7 @@
         </a>
         <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
             <span class="material-symbols-outlined">work</span>
-            <span class="font-label-md text-label-md">Jobs</span>
+            <span class="font-label-md text-label-md">Trabalhos</span>
         </a>
         <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
             <span class="material-symbols-outlined">description</span>
