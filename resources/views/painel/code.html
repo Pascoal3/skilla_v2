@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+
+<html lang="pt-AO"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Skilla - Client Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "status-active-bg": "#D1FAE5",
+                        "secondary-container": "#d5e0f8",
+                        "primary-fixed-dim": "#7bd8b1",
+                        "surface": "#f8f9ff",
+                        "on-secondary-fixed-variant": "#3c475a",
+                        "on-surface-variant": "#3e4943",
+                        "on-secondary-container": "#586377",
+                        "surface-tint": "#006c4e",
+                        "on-primary-container": "#9ffdd3",
+                        "on-tertiary-fixed-variant": "#653e00",
+                        "background-start": "#FAFBFC",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#945d00",
+                        "surface-container-highest": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "secondary": "#545f73",
+                        "tertiary": "#734700",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-surface": "#0b1c30",
+                        "surface-container-low": "#eff4ff",
+                        "background": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "white": "#FFFFFF",
+                        "on-secondary": "#ffffff",
+                        "light-gray": "#F8FAFC",
+                        "surface-variant": "#d3e4fe",
+                        "status-warning-text": "#EF4444",
+                        "status-warning-bg": "#FEE2E2",
+                        "secondary-fixed": "#d8e3fb",
+                        "on-primary-fixed": "#002115",
+                        "outline-variant": "#bdc9c1",
+                        "on-primary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#00513a",
+                        "tertiary-fixed-dim": "#ffb95f",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#bcc7de",
+                        "outline": "#6e7a73",
+                        "primary-fixed": "#97f5cc",
+                        "on-tertiary-fixed": "#2a1700",
+                        "status-pending-bg": "#FEF3C7",
+                        "border-subtle": "#E2E8F0",
+                        "primary": "#005d42",
+                        "inverse-primary": "#7bd8b1",
+                        "on-secondary-fixed": "#111c2d",
+                        "on-tertiary-container": "#ffe6cc",
+                        "background-end": "#F1F5F9",
+                        "tertiary-fixed": "#ffddb8",
+                        "surface-dim": "#cbdbf5",
+                        "primary-container": "#047857",
+                        "on-background": "#0b1c30",
+                        "surface-container-high": "#dce9ff",
+                        "surface-bright": "#f8f9ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1440px",
+                        "margin-desktop": "32px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-xl": ["Inter"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "metric-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "metric-lg": ["32px", {"lineHeight": "40px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-[#CCFF00] font-body-md text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full flex-col py-6 bg-[#1A1A1A] border-r border-[#1A1A1A] w-64 md:w-72 z-40">
+<div class="px-6 mb-8">
+<h1 class="text-headline-md font-headline-md font-bold text-white">Skilla</h1>
+<p class="text-body-sm font-body-sm text-gray-300">Freelance Marketplace</p>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-[#CCFF00] text-[#1A1A1A] scale-[0.98] transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="text-label-md font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">work</span>
+<span class="text-label-md font-label-md">Os Meus Jobs</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">description</span>
+<span class="text-label-md font-label-md">Propostas Recebidas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">mail</span>
+<span class="text-label-md font-label-md">Mensagens</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+<span class="text-label-md font-label-md">A Minha Carteira</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">star</span>
+<span class="text-label-md font-label-md">Avaliações</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">person</span>
+<span class="text-label-md font-label-md">O Meu Perfil</span>
+</a>
+</nav>
+<div class="px-4 mt-auto border-t border-gray-800 pt-4 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-label-md font-label-md">Definições</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-white hover:bg-gray-800 transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px]">logout</span>
+<span class="text-label-md font-label-md">Terminar Sessão</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-64 lg:ml-72 flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-white border-b border-border-subtle flex justify-between items-center w-full px-margin-desktop h-16 sticky top-0 z-50">
+<div class="flex items-center md:hidden">
+<h1 class="text-headline-md font-headline-md font-bold text-primary">Skilla</h1>
+</div>
+<div class="hidden md:flex flex-1 max-w-md ml-4">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-[20px]">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-light-gray border border-border-subtle rounded-lg text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition-shadow" placeholder="Pesquisar..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 ml-auto">
+<button class="text-secondary hover:bg-light-gray p-2 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-status-warning-text rounded-full"></span>
+</button>
+<button class="flex items-center gap-2 hover:bg-light-gray p-1 pr-3 rounded-full transition-colors border border-transparent hover:border-border-subtle">
+<img alt="User avatar" class="w-8 h-8 rounded-full border border-border-subtle" data-alt="A professional headshot of a young male professional smiling warmly. The photo has a clean, bright, and modern aesthetic with soft, natural lighting. The background is slightly blurred to maintain focus on the subject. The image conveys trust and approachability, suitable for a professional SaaS platform avatar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ucMdMU_7Wde743nPaVy6R4_3tNC-9Jzf2suJACtNsJGv8W1aPgTbm4oS_YSgHDypbrahvLDSMmgV5JuvYmD4G-GFpE-fXaUr8Np-kZvbCQLkSDIbbhQSpnQnx4puIRGzQ5ZLQDzYizUu4MitddrdXxO1FXLE4SU71a8l6aelOr-_sryULY2sGbkIgedxX7jGI1lhKhUxaUWc_ZAUlq2h70KUwyOYLEIHzF7UOVKIwhoLnOYWQ3Amc-OBFcKrkSaYjwler6L0ZIc"/>
+<span class="text-label-md font-label-md hidden sm:block">Rafael</span>
+<span class="material-symbols-outlined text-[18px] hidden sm:block text-secondary">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<main class="flex-1 p-6 md:p-8 space-y-6 max-w-container-max mx-auto w-full">
+<!-- Greeting -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-2">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-1">Olá, Rafael 👋</h2>
+<p class="text-body-md font-body-md text-secondary">Tens <span class="font-semibold text-primary">4 propostas novas</span> à espera de revisão.</p>
+</div>
+<button class="bg-[#1A1A1A] text-white text-label-md font-label-md px-4 py-2 rounded-lg hover:bg-black transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    Publicar Job
+                </button>
+</div>
+<!-- Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="bg-white border border-border-subtle rounded-[12px] p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-[#1E1E1E] rounded-lg">
+<span class="material-symbols-outlined text-[#CCFF00]">work</span>
+</div>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-1">Jobs Publicados</h3>
+<p class="text-metric-lg font-metric-lg text-on-surface">3</p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-[12px] p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-[#1E1E1E] rounded-lg">
+<span class="material-symbols-outlined text-[#CCFF00]">description</span>
+</div>
+<span class="bg-[#CCFF00] text-[#1A1A1A] text-label-sm font-label-sm px-2 py-0.5 rounded-full flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span> 4 novas
+                        </span>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-1">Propostas Recebidas</h3>
+<p class="text-metric-lg font-metric-lg text-on-surface">12</p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-[12px] p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-[#1E1E1E] rounded-lg">
+<span class="material-symbols-outlined text-[#CCFF00]">schedule</span>
+</div>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-1">Em Andamento</h3>
+<p class="text-metric-lg font-metric-lg text-on-surface">1</p>
+</div>
+</div>
+<div class="bg-white border border-border-subtle rounded-[12px] p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-[#1E1E1E] rounded-lg">
+<span class="material-symbols-outlined text-[#CCFF00]">check_circle</span>
+</div>
+</div>
+<div>
+<h3 class="text-label-md font-label-md text-secondary uppercase tracking-wider mb-1">Concluídos</h3>
+<p class="text-metric-lg font-metric-lg text-on-surface">8</p>
+</div>
+</div>
+</div>
+<!-- Sections 1 & 2 Row -->
+<div class="grid grid-cols-1 lg:grid-cols-5 gap-6">
+<!-- A Minha Carteira (60%) -->
+<div class="lg:col-span-3 bg-white border border-border-subtle rounded-[12px] p-6 flex flex-col">
+<h3 class="text-headline-sm font-headline-sm mb-6">A Minha Carteira Skilla</h3>
+<div class="flex-1 flex flex-col justify-center">
+<div class="mb-6">
+<p class="text-body-sm font-body-sm text-secondary mb-1">Saldo Disponível</p>
+<p class="text-metric-lg font-metric-lg text-[#1A1A1A]">50.000,00 KZS</p>
+</div>
+<div class="mb-8 bg-[#1A1A1A] p-4 rounded-lg">
+<p class="text-body-sm font-body-sm text-[#CCFF00] mb-1">Em Escrow (Cativos)</p>
+<p class="text-headline-md font-headline-md text-[#CCFF00]">25.000,00 KZS</p>
+</div>
+<div class="mt-auto">
+<button class="w-full sm:w-auto border border-[#1A1A1A] text-[#1A1A1A] hover:bg-gray-100 text-label-md font-label-md px-6 py-2.5 rounded-lg transition-colors">
+                                Recarregar Saldo
+                            </button>
+</div>
+</div>
+</div>
+<!-- Requer a Tua Atenção (40%) -->
+<div class="lg:col-span-2 bg-white border border-border-subtle rounded-[12px] p-6 flex flex-col">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-status-warning-text">warning</span>
+<h3 class="text-headline-sm font-headline-sm">Requer a Tua Atenção</h3>
+</div>
+<div class="space-y-4 flex-1">
+<div class="p-4 border border-border-subtle rounded-lg hover:border-status-warning-text/30 transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-label-md font-label-md font-semibold">Design de Flyer Promocional</h4>
+</div>
+<span class="inline-flex items-center gap-1 bg-status-warning-bg text-status-warning-text px-2.5 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                Ação Necessária
+                            </span>
+</div>
+<div class="p-4 border border-border-subtle rounded-lg hover:border-status-pending-bg transition-colors cursor-pointer">
+<div class="flex justify-between items-start mb-2">
+<h4 class="text-label-md font-label-md font-semibold">Website Corporativo</h4>
+</div>
+<span class="inline-flex items-center gap-1 bg-[#CCFF00] text-[#1A1A1A] px-2.5 py-1 rounded-full text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">payments</span>
+                                Aguarda Pagamento
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Os Meus Jobs Ativos -->
+<div class="bg-white border border-border-subtle rounded-[12px] overflow-hidden">
+<div class="p-6 border-b border-border-subtle flex justify-between items-center bg-white">
+<h3 class="text-headline-sm font-headline-sm text-[#1E1E1E]">Os Meus Jobs Ativos</h3>
+<a class="text-[#1A1A1A] text-label-md font-label-md hover:underline" href="#">Ver todos</a>
+</div>
+<div class="divide-y divide-border-subtle">
+<div class="p-4 sm:p-6 hover:bg-light-gray transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h4 class="text-body-md font-body-md font-medium mb-1">Desenvolvimento de Website Corporativo</h4>
+<p class="text-body-sm font-body-sm text-secondary">Publicado há 2 dias • 5 propostas</p>
+</div>
+<span class="bg-[#1A1A1A] text-[#CCFF00] px-3 py-1 rounded-full text-label-sm font-label-sm">
+                            Aberto
+                        </span>
+</div>
+<div class="p-4 sm:p-6 hover:bg-light-gray transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h4 class="text-body-md font-body-md font-medium mb-1">Criação de Logótipo para Startup</h4>
+<p class="text-body-sm font-body-sm text-secondary">Iniciado há 1 semana • Miguel Fernandes</p>
+</div>
+<span class="bg-[#CCFF00] text-[#1A1A1A] px-3 py-1 rounded-full text-label-sm font-label-sm">
+                            Em Andamento
+                        </span>
+</div>
+<div class="p-4 sm:p-6 hover:bg-light-gray transition-colors flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<div>
+<h4 class="text-body-md font-body-md font-medium mb-1">Design de Flyer Promocional</h4>
+<p class="text-body-sm font-body-sm text-secondary">Entregue hoje • Carla Mendes</p>
+</div>
+<span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-label-sm font-label-sm">
+                            Aguarda Revisão
+                        </span>
+</div>
+</div>
+</div>
+<!-- Two Columns Bottom -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- Últimas Propostas -->
+<div class="bg-white border border-border-subtle rounded-[12px] flex flex-col">
+<div class="p-6 border-b border-border-subtle">
+<h3 class="text-headline-sm font-headline-sm">Últimas Propostas Recebidas</h3>
+</div>
+<div class="p-6 space-y-4">
+<div class="flex items-center gap-4 p-4 border border-border-subtle rounded-lg hover:border-gray-300 transition-colors">
+<img alt="Miguel Fernandes" class="w-12 h-12 rounded-full border border-border-subtle" data-alt="A portrait of a male freelance graphic designer. Bright, modern lighting. The background is simple and unobtrusive. The mood is professional and creative. High-quality corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLkFSjka4Mk6j29pb4Fa0JxERxxeUgjYPre55bYjKxfskKoXAIRE2ju-e1C4EUupBL3WuNVZwihfTOfctIOQB1YUyGOPGzXtVyDlEEvuqNEtW_Jo3iwJdYUeunFHKyw5iaXUOSZyJWLHvVBq7e_OgIcEdZp3xMwqpDAGI06p_jFS2mwrSW1BlRFxpI1prJWk6SD5pzLd7-EEmp5zNzZdOMy14dpRFcQmNxucICJ-CIdVMKNpNqU3t-ItamDlbn2e4l-NlJMMd_BzE"/>
+<div class="flex-1">
+<h4 class="text-label-md font-label-md font-medium">Miguel Fernandes</h4>
+<p class="text-body-sm font-body-sm text-secondary">UI/UX Designer • 4.9 <span class="material-symbols-outlined text-[14px] text-[#F59E0B] align-middle">star</span></p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md font-semibold text-on-surface">75.000 KZS</p>
+<a class="text-[#1A1A1A] text-label-sm font-label-sm hover:underline" href="#">Ver Proposta</a>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 border border-border-subtle rounded-lg hover:border-gray-300 transition-colors">
+<img alt="Carla Mendes" class="w-12 h-12 rounded-full border border-border-subtle" data-alt="A portrait of a female freelance web developer. Soft, bright lighting typical of modern corporate SaaS headshots. Clean background. Professional, approachable, and tech-savvy mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA106bkiw1dyC4OxgzJ4WLSZ4VXV5eTfSIxazG71GIPKBt_LkRDGLL_Y80u6QiMP7Zj4FtOwHinatz9U7qYP0tXRfYZ8HzHns7k1ezBK74eb0bndTEbvJae9zRMlZED0HBjktmeygCUt0RRiW8cVJ_gitCkU1it8PPrdG_LQLD4zksdaHyALG4iPuun4PTCOCf8wsJNv7xyY9Di960zKnLMalB1ofVD0ofZjvKwQ3lA41eM1Z-iYvbLic9YbJ8_ESYfr_gW4TgrbQU"/>
+<div class="flex-1">
+<h4 class="text-label-md font-label-md font-medium">Carla Mendes</h4>
+<p class="text-body-sm font-body-sm text-secondary">Web Developer • 5.0 <span class="material-symbols-outlined text-[14px] text-[#F59E0B] align-middle">star</span></p>
+</div>
+<div class="text-right">
+<p class="text-label-md font-label-md font-semibold text-on-surface">120.000 KZS</p>
+<a class="text-[#1A1A1A] text-label-sm font-label-sm hover:underline" href="#">Ver Proposta</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Últimas Movimentações -->
+<div class="bg-white border border-border-subtle rounded-[12px] flex flex-col">
+<div class="p-6 border-b border-border-subtle flex justify-between items-center">
+<h3 class="text-headline-sm font-headline-sm">Últimas Movimentações</h3>
+<a class="text-[#1A1A1A] text-label-md font-label-md hover:underline" href="#">Histórico</a>
+</div>
+<div class="p-0">
+<table class="w-full text-left">
+<tbody class="divide-y divide-border-subtle">
+<tr class="hover:bg-light-gray transition-colors">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-status-active-bg rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-primary">arrow_downward</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-medium">Carregamento</p>
+<p class="text-body-sm font-body-sm text-secondary">Hoje, 10:45</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<p class="text-label-md font-label-md font-semibold text-primary">+50.000,00 KZS</p>
+</td>
+</tr>
+<tr class="hover:bg-light-gray transition-colors">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-light-gray border border-border-subtle rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-secondary">lock</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-medium">Escrow: Website Corp.</p>
+<p class="text-body-sm font-body-sm text-secondary">Ontem, 14:20</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<p class="text-label-md font-label-md font-semibold text-secondary">-25.000,00 KZS</p>
+</td>
+</tr>
+<tr class="hover:bg-light-gray transition-colors">
+<td class="p-4 pl-6">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-status-warning-bg rounded-lg">
+<span class="material-symbols-outlined text-[18px] text-status-warning-text">arrow_upward</span>
+</div>
+<div>
+<p class="text-label-md font-label-md font-medium">Pagamento: Logo Startup</p>
+<p class="text-body-sm font-body-sm text-secondary">12 Out, 09:15</p>
+</div>
+</div>
+</td>
+<td class="p-4 pr-6 text-right">
+<p class="text-label-md font-label-md font-semibold text-on-surface">-15.000,00 KZS</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
