@@ -221,6 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // --- A CORREÇÃO ESTÁ AQUI: Lê o JSON apenas UMA VEZ ---
         const data = await response.json(); 
 
+        localStorage.setItem('token', result.token);
+
         if (response.ok) {
             // SUCESSO
             toggleLoading(false);
