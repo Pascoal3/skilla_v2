@@ -246,7 +246,7 @@
                     <span class="material-symbols-outlined text-[#CCFF00]">work</span>
                 </div>
                 <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Trabalhos Ativos</span>
+                    <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Trabalhos em andamento</span>
                     <span class="font-display-lg text-headline-md font-bold text-black-pure leading-none truncate" id="metric-active-jobs">0</span>
                 </div>
             </div>
@@ -315,7 +315,7 @@
                     <span class="material-symbols-outlined text-[#CCFF00]">trophy</span>
                 </div>
                 <div class="flex flex-col gap-1">
-                    <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Jobs Concluídos</span>
+                    <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Trabalhos Concluídos</span>
                     <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-completed-jobs" title="0">0</span>
                 </div>
             </div>
