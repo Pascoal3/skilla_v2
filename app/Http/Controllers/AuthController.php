@@ -132,84 +132,73 @@ class AuthController extends Controller
      * Login de usuário existente
      */
     public function login(Request $request)
-    {
-        try {
-            Log::info('Tentativa de login:', ['email' => $request->email]);
+{
+    try {
+        Log::info('Tentativa de login:', ['email' => $request->email]);
 
-            $validated = $request->validate([
-                'email'    => 'required|email',
-                'password' => 'required|string',
-            ]);
+        $validated = $request->validate([
+            'email'    => 'required|email',
+            'password' => 'required|string',
+        ]);
 
-            // Tentar autenticar com JWT
-            if (!$token = JWTAuth::attempt($validated)) {
-                Log::warning('Falha no login - credenciais inválidas', ['email' => $request->email]);
-                
-                return response()->json([
-                    'status'  => 401,
-                    'message' => 'Email ou senha inválidos.',
-                    'errors'  => ['email' => ['Credenciais inválidas']]
-                ], 401);
-            }
-
-            $user = auth()->user();
-
-            // Verificar se usuário está ativo
-            if (!$user->esta_ativo) {
-                JWTAuth::invalidate($token);
-                
-                return response()->json([
-                    'status'  => 403,
-                    'message' => 'Conta desativada. Contacte o suporte.',
-                ], 403);
-            }
-
-            // Preparar resposta
-            $response = response()->json([
-                'status'   => 200,
-                'message'  => 'Login realizado com sucesso!',
-                'role'     => $user->funcao,
-                'redirect' => $user->funcao === 'cliente' ? '/painel/cliente' : '/painel/freelancer',
-                'user'     => [
-                    'id'           => $user->id,
-                    'nome'         => $user->nome_completo,
-                    'email'        => $user->email,
-                    'funcao'       => $user->funcao,
-                    'nome_usuario' => $user->nome_usuario,
-                ]
-            ]);
-
-            // Enviar token em cookie HttpOnly
-            $response->withCookie(cookie(
-                'jwt_token',
-                $token,
-                1440,    // 24 horas
-                '/',
-                null,
-                false,   // Secure (mude para true em produção com HTTPS)
-                true,    // HttpOnly
-                false,
-                'Strict'
-            ));
-
-            Log::info('Login realizado com sucesso:', ['user_id' => $user->id, 'email' => $user->email]);
-
-            return $response;
-
-        } catch (\Illuminate\Validation\ValidationException $e) {
+        // JWT attempt
+        if (!$token = JWTAuth::attempt($validated)) {
             return response()->json([
-                'errors' => $e->errors()
-            ], 422);
-            
-        } catch (\Exception $e) {
-            Log::error('Erro no login: ' . $e->getMessage());
-            
-            return response()->json([
-                'status'  => 500,
-                'message' => 'Erro interno ao fazer login. Tente novamente.',
-            ], 500);
+                'status'  => 401,
+                'message' => 'Email ou senha inválidos.',
+                'errors'  => ['email' => ['Credenciais inválidas']]
+            ], 401);
         }
+
+        $user = auth()->user();
+
+        if (!$user->esta_ativo) {
+            JWTAuth::invalidate($token);
+
+            return response()->json([
+                'status'  => 403,
+                'message' => 'Conta desativada. Contacte o suporte.',
+            ], 403);
+        }
+
+        $response = response()->json([
+            'status'   => 200,
+            'message'  => 'Login realizado com sucesso!',
+            'role'     => $user->funcao,
+            'redirect' => $user->funcao === 'cliente'
+                ? '/painel/cliente'
+                : '/painel/freelancer',
+            'user'     => [
+                'id'           => $user->id,
+                'nome'         => $user->nome_completo,
+                'email'        => $user->email,
+                'funcao'       => $user->funcao,
+                'nome_usuario' => $user->nome_usuario,
+            ],
+        ]);
+
+        // ✅ CORRETO: retornar com cookie diretamente
+        return $response->cookie(
+            'jwt_token',
+            $token,
+            1440, // 24h
+            '/',
+            null,
+            false,
+            true,
+            false,
+            'Strict'
+        );
+
+    } catch (\Exception $e) {
+        Log::error('Erro no login: ' . $e->getMessage());
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Erro interno ao fazer login.',
+        ], 500);
     }
+}
 
     /**
      * Logout de usuário
