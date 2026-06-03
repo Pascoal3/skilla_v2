@@ -91,3 +91,40 @@ Route::get('/painel/freelancer/teste', function() {
 Route::get('/painel/cliente/teste', function() {
     return view('painel.painel_cliente');
 })->name('painel.cliente');
+
+
+use App\Http\Controllers\Freelancer\JobController;
+use App\Http\Controllers\Freelancer\ProposalController;
+
+Route::middleware(['auth.jwt', 'role:freelancer'])
+    ->prefix('freelancer')
+    ->name('freelancer.')
+    ->group(function () {
+
+        // Dashboard (já existente)
+        Route::get('/painel/freelancer', [DashboardController::class, 'index'])
+            ->name('dashboard');
+
+        // ===== JOBS =====
+        Route::prefix('jobs')->name('jobs.')->group(function () {
+            Route::get('/',           [JobController::class, 'index'])   ->name('index');
+            Route::get('/{job}',      [JobController::class, 'show'])    ->name('show');
+            Route::post('/{job}/save',[JobController::class, 'toggleSave'])->name('save');
+        });
+
+        // ===== PROPOSTAS =====
+        Route::prefix('proposals')->name('proposals.')->group(function () {
+            Route::get('/',    [ProposalController::class, 'index']) ->name('index');
+            Route::post('/',   [ProposalController::class, 'store']) ->name('store');
+        });
+
+        // Rotas placeholder para o layout não quebrar
+        Route::get('/mensagens',  fn() => view('freelancer.messages.index'))  ->name('messages.index');
+        Route::get('/carteira',   fn() => view('freelancer.wallet.index'))    ->name('wallet.index');
+        Route::get('/perfil',     fn() => view('freelancer.profile.index'))   ->name('profile.index');
+        Route::get('/definicoes', fn() => view('freelancer.settings.index'))  ->name('settings.index');
+        Route::get('/creditos',   fn() => view('freelancer.credits.index'))   ->name('credits.index');
+
+        Route::get('/perfil/{id}', fn($id) => view('freelancer.profile.show', ['userId' => $id]))
+            ->name('profile.show');
+    });
