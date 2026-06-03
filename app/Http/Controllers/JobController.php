@@ -7,12 +7,9 @@ use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-namespace App\Http\Controllers\Freelancer;
-
 use App\Http\Controllers\Controller;
 use App\Models\SavedJob;
 use App\Models\Proposal;
-use Illuminate\Http\Request;
 
 class JobController extends Controller {
     protected $jobService;
