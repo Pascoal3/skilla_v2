@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('perfil_habilidades', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('perfil_id')->constrained('perfis')->onDelete('cascade');
+            $table->foreignUuid('usuario_id')->constrained('perfis')->onDelete('cascade');
             $table->foreignUuid('habilidade_id')->constrained('habilidades')->onDelete('cascade');
             $table->timestamps();
-            $table->unique(['perfil_id', 'habilidade_id']);
+            $table->unique(['usuario_id', 'habilidade_id']);
         });
     }
 

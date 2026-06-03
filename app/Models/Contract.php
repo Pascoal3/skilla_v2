@@ -23,10 +23,10 @@ class Contract extends Model {
     }
 
     public function client() {
-        return $this->belongsTo(Profile::class, 'cliente_id');
+        return $this->belongsTo(Perfil::class, 'cliente_id');
     }
 
     public function freelancer() {
-        return $this->belongsTo(Profile::class, 'freelancer_id');
+        return $this->belongsTo(Perfil::class, 'freelancer_id');
     }
 }

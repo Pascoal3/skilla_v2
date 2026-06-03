@@ -65,9 +65,8 @@ class AuthController extends Controller
                 ]);
 
                 // Criar Carteira com saldo inicial (opcional, conforme sua regra de negócio)
-                Wallet::create([
-                    'perfil_id' => $perfil->id,
-                    'saldo'     => 10.00, // Saldo de boas-vindas
+                $perfil->carteira()->create([
+                    'saldo' => 10,
                 ]);
 
                 return $perfil;

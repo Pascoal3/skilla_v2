@@ -11,10 +11,10 @@ class Review extends Model {
     protected $fillable = ['contrato_id', 'avaliador_id', 'avaliado_id', 'nota', 'comentario'];
 
     public function reviewer() {
-        return $this->belongsTo(Profile::class, 'avaliador_id');
+        return $this->belongsTo(Perfil::class, 'avaliador_id');
     }
 
     public function reviewed() {
-        return $this->belongsTo(Profile::class, 'avaliado_id');
+        return $this->belongsTo(Perfil::class, 'avaliado_id');
     }
 }

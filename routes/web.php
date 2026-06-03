@@ -32,7 +32,7 @@ Route::get('/registar/freelancer', function() {
 })->name('registar.freelancer');
 
 // Auth Routes
-Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
+Route::post('/registar', [AuthController::class, 'registar']);
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -42,7 +42,7 @@ Route::get('/check-auth', [AuthController::class, 'checkAuth'])->name('check.aut
 Route::post('/refresh-token', [AuthController::class, 'refresh'])->name('refresh.token');
 
 // Rotas Protegidas
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::middleware(['jwt.auth'])->group(function () {
     Route::get('/painel/cliente', [DashboardController::class, 'cliente'])
         ->name('painel.cliente');
     
@@ -67,8 +67,6 @@ Route::prefix('registar')->group(function () {
     })->name('registar.freela');
 });
 
-// 1. Rota GET para MOSTRAR o formulário
-Route::get('/registar', [AuthController::class, 'create'])->name('registar');
 
 
 
@@ -94,7 +92,7 @@ Route::get('/painel/cliente/teste', function() {
 use App\Http\Controllers\Freelancer\JobController;
 use App\Http\Controllers\Freelancer\ProposalController;
 
-Route::middleware(['auth', 'verified', 'role:freelancer'])
+Route::middleware(['jwt.auth', 'role:freelancer'])
     ->prefix('freelancer')
     ->name('freelancer.')
     ->group(function () {

@@ -15,6 +15,6 @@ class Proposal extends Model {
     }
 
     public function freelancer() {
-        return $this->belongsTo(Profile::class, 'freelancer_id');
+        return $this->belongsTo(Perfil::class, 'freelancer_id');
     }
 }

@@ -89,7 +89,7 @@ class Perfil extends Authenticatable implements JWTSubject // ← ADICIONADO imp
 
     public function carteira(): HasOne
     {
-        return $this->hasOne(Wallet::class, 'perfil_id');
+        return $this->hasOne(Wallet::class, 'usuario_id');
     }
 
     public function trabalhosAtivos(): HasMany
@@ -124,7 +124,7 @@ class Perfil extends Authenticatable implements JWTSubject // ← ADICIONADO imp
 
     public function notificacoes(): HasMany
     {
-        return $this->hasMany(Notificacao::class, 'perfil_id');
+        return $this->hasMany(Notificacao::class, 'usuario_id');
     }
 
     // ==========================================

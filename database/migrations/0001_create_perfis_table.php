@@ -11,6 +11,7 @@ return new class extends Migration {
             $table->uuid('id')->primary(); 
             $table->string('primeiro_nome');
             $table->string('sobrenome');
+            $table->string('nome_usuario')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('funcao', ['cliente', 'freelancer']);

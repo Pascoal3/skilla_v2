@@ -47,12 +47,12 @@ Table habilidades {
 
 Table perfil_habilidades {
   id              uuid      [pk]
-  perfil_id       uuid      [not null, ref: > perfis.id]
+  usuario_id       uuid      [not null, ref: > perfis.id]
   habilidade_id   uuid      [not null, ref: > habilidades.id]
   criado_em       timestamp [not null, default: `now()`]
 
   indexes {
-    (perfil_id, habilidade_id) [unique]
+    (usuario_id, habilidade_id) [unique]
   }
 }
 
