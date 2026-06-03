@@ -19,10 +19,6 @@ Route::get('/login', function() {
 })->name('auth.login');
 
 
-Route::get('/login', function() {
-    return view('registar.tela_login');
-})->name('login');
-
 Route::get('/registar/cliente', function() {
     return view('registar.cliente');
 })->name('registar.cliente');
