@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Mostrar loading
       toggleLoading(true);
 
-      try {
+       try {
         const response = await fetch('/registar', {
             method: 'POST',
             body: formData,
@@ -218,58 +218,55 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        const data = await response.json();
+        // --- A CORREÇÃO ESTÁ AQUI: Lê o JSON apenas UMA VEZ ---
+        const data = await response.json(); 
 
         if (response.ok) {
-    // Parse da resposta JSON
-    const data = await response.json();
-          
-    // SUCESSO
-    toggleLoading(false);
+            // SUCESSO
+            toggleLoading(false);
 
-    const successEl = document.getElementById('success-overlay-container');
-    if (successEl) {
-        successEl.classList.remove('hidden');
-    }
-
-    setTimeout(() => {
-        // Usa o redirect do backend se existir, senão usa o fallback
-        window.location.href = data.redirect || 
-            (data.role === 'cliente' ? '/painel/cliente' : '/painel/freelancer');
-    }, 4000);
-
-} else if (response.status === 422) {
-    // ERRO DE VALIDAÇÃO
-    toggleLoading(false);
-    
-    const data = await response.json();
-    
-    if (data.errors) {
-        const errorMap = {
-            'primeiro_nome': 'primeiro_nome',
-            'sobrenome': 'sobrenome',
-            'email': 'email',
-            'password': 'password',
-            'provincia_id': 'provincia'
-        };
-
-        for (const [key, messages] of Object.entries(data.errors)) {
-            const frontendKey = errorMap[key];
-            if (frontendKey) {
-                showFieldError(frontendKey, messages[0]);
+            const successEl = document.getElementById('success-overlay-container');
+            if (successEl) {
+                successEl.classList.remove('hidden');
             }
-        }
-    }
-    
-} else {
+
+            setTimeout(() => {
+                window.location.href = data.redirect || 
+                    (data.role === 'cliente' ? '/painel/cliente' : '/painel/freelancer');
+            }, 4000);
+
+        } else if (response.status === 422) {
+            // ERRO DE VALIDAÇÃO
+            toggleLoading(false);
+            
+            if (data.errors) {
+                const errorMap = {
+                    'primeiro_nome': 'primeiro_nome',
+                    'sobrenome': 'sobrenome',
+                    'email': 'email',
+                    'password': 'password',
+                    'provincia_id': 'provincia'
+                };
+
+                for (const [key, messages] of Object.entries(data.errors)) {
+                    const frontendKey = errorMap[key];
+                    if (frontendKey) {
+                        // Verifique se a função showFieldError existe, 
+                        // no seu código acima você definiu showError(), não showFieldError()
+                        showError(document.querySelector(`input[name="${frontendKey}"]`), document.getElementById(`${frontendKey}-error`), messages[0]);
+                    }
+                }
+            }
+            
+        } else {
             toggleLoading(false);
             alert('Ocorreu um erro inesperado. Tente novamente.');
         }
 
       } catch (error) {
         toggleLoading(false);
-        console.error('Erro:', error);
-        alert('Erro de conexão. Verifique sua internet.');
+        console.error('Erro real:', error); // Isso ajudará você a ver o erro no console (F12)
+        alert('Erro de conexão ou erro interno no processamento. Verifique o console.');
       }
     }); // <--- ADICIONE ISTO (Fecha o addEventListener)
   } // <--- ISTO JÁ EXISTIA (Fecha o if)

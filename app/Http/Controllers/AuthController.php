@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Perfil;
 use App\Models\Provincia;
-use App\Models\Carteira;
+use App\Models\Wallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -65,7 +65,7 @@ class AuthController extends Controller
                 ]);
 
                 // Criar Carteira com saldo inicial (opcional, conforme sua regra de negócio)
-                Carteira::create([
+                Wallet::create([
                     'perfil_id' => $perfil->id,
                     'saldo'     => 10.00, // Saldo de boas-vindas
                 ]);

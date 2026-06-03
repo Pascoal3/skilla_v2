@@ -36,16 +36,13 @@ Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Auth Routes
-Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 Route::post('/logout-api', [AuthController::class, 'logoutApi'])->name('logout.api');
 Route::get('/check-auth', [AuthController::class, 'checkAuth'])->name('check.auth');
 Route::post('/refresh-token', [AuthController::class, 'refresh'])->name('refresh.token');
 
 // Rotas Protegidas
-Route::middleware(['auth.jwt'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/painel/cliente', [DashboardController::class, 'cliente'])
         ->name('painel.cliente');
     
@@ -70,8 +67,9 @@ Route::prefix('registar')->group(function () {
     })->name('registar.freela');
 });
 
-// Processar registro (POST)
-Route::post('/registar', [AuthController::class, 'registar'])->name('registar');
+// 1. Rota GET para MOSTRAR o formulário
+Route::get('/registar', [AuthController::class, 'create'])->name('registar');
+
 
 
 // ============================================
@@ -96,14 +94,14 @@ Route::get('/painel/cliente/teste', function() {
 use App\Http\Controllers\Freelancer\JobController;
 use App\Http\Controllers\Freelancer\ProposalController;
 
-Route::middleware(['auth.jwt', 'role:freelancer'])
+Route::middleware(['auth', 'verified', 'role:freelancer'])
     ->prefix('freelancer')
     ->name('freelancer.')
     ->group(function () {
 
         // Dashboard (já existente)
         Route::get('/painel/freelancer', [DashboardController::class, 'index'])
-            ->name('dashboard');
+            ->name('painel.freelancer');
 
         // ===== JOBS =====
         Route::prefix('jobs')->name('jobs.')->group(function () {
