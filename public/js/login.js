@@ -124,90 +124,73 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Submit do Form
     form?.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        hideGlobalError();
+    e.preventDefault();
+    hideGlobalError();
 
-        // Validação final
-        if (!validateEmail() || !validatePassword()) {
-            updateSubmitButtonState();
-            return;
+    if (!validateEmail() || !validatePassword()) {
+        updateSubmitButtonState();
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append('email', emailInput.value.trim());
+    formData.append('password', passwordInput.value);
+
+    toggleLoading(true);
+
+    try {
+        const response = await fetch('/login', {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
+                'Accept': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
+
+        const contentType = response.headers.get('content-type');
+
+        if (!contentType || !contentType.includes('application/json')) {
+            throw new Error('Resposta inválida do servidor');
         }
 
-        // Preparar dados
-        const formData = new FormData();
-        formData.append('email', emailInput.value.trim());
-        formData.append('password', passwordInput.value);
+        const data = await response.json();
 
-        // Mostrar loading
-        toggleLoading(true);
+        toggleLoading(false);
 
-        try {
-            const response = await fetch('/login', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-                    'Accept': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                }
-            });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                // SUCESSO
-                toggleLoading(false);
-
-                const successEl = document.getElementById('success-overlay');
-                if (successEl) {
-                    successEl.classList.remove('hidden');
-                }
-
-                setTimeout(() => {
-                    // Usa o redirect do backend se existir
-                    window.location.href = data.redirect || 
-                        (data.role === 'cliente' ? '/painel/cliente' : '/painel/freelancer');
-                }, 3000);
-
-            } else if (response.status === 401) {
-                // Credenciais inválidas
-                toggleLoading(false);
-                showGlobalError(data.message || 'Email ou senha inválidos.');
-                
-                // Limpar campo de senha
-                passwordInput.value = '';
-                passwordInput.focus();
-                
-            } else if (response.status === 403) {
-                // Conta desativada
-                toggleLoading(false);
-                showGlobalError(data.message || 'Conta desativada. Contacte o suporte.');
-                
-            } else if (response.status === 422) {
-                // Erro de validação
-                toggleLoading(false);
-                
-                if (data.errors) {
-                    if (data.errors.email) {
-                        showError(emailInput, emailError, data.errors.email[0]);
-                    }
-                    if (data.errors.password) {
-                        showError(passwordInput, passwordError, data.errors.password[0]);
-                    }
-                }
-                
-            } else {
-                // Erro do servidor
-                toggleLoading(false);
-                showGlobalError(data.message || 'Ocorreu um erro inesperado. Tente novamente.');
+        if (response.ok) {
+            // sucesso
+            if (successOverlay) {
+                successOverlay.classList.remove('hidden');
             }
 
-        } catch (error) {
-            toggleLoading(false);
-            console.error('Erro:', error);
-            showGlobalError('Erro de conexão. Verifique sua internet e tente novamente.');
+            setTimeout(() => {
+                window.location.href = data.redirect;
+            }, 1500);
+
+        } else if (response.status === 401 || response.status === 403) {
+            showGlobalError(data.message);
+            passwordInput.value = '';
+            passwordInput.focus();
+
+        } else if (response.status === 422) {
+            if (data.errors?.email) {
+                showError(emailInput, emailError, data.errors.email[0]);
+            }
+            if (data.errors?.password) {
+                showError(passwordInput, passwordError, data.errors.password[0]);
+            }
+        } else {
+            showGlobalError(data.message || 'Erro inesperado.');
         }
-    });
+
+    } catch (error) {
+        toggleLoading(false);
+        console.error(error);
+        showGlobalError('Erro de conexão com o servidor.');
+    }
+});
 
     // Validação inicial ao carregar
     updateSubmitButtonState();
