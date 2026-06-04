@@ -17,9 +17,12 @@ class JwtMiddleware
                 return redirect('/login');
             }
 
-            $request->headers->set('Authorization', 'Bearer ' . $token);
+            JWTAuth::setToken($token);
+            $user = JWTAuth::authenticate();
 
-            $user = JWTAuth::parseToken()->authenticate();
+            if (!$user) {
+                return redirect('/login');
+            }
 
         } catch (\Exception $e) {
             return redirect('/login');
