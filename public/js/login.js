@@ -143,13 +143,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const response = await fetch('/login', {
     method: 'POST',
     body: formData,
-    credentials: 'same-origin',
+    credentials: 'same-origin', // ESSENCIAL
     headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
         'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content
+        'X-Requested-With': 'XMLHttpRequest'
     }
-    });
+});
     toggleLoading(false);
 
     console.log('STATUS:', response.status);
