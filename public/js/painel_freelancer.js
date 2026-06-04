@@ -45,8 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchDashboardData() {
         try {
             const response = await fetch('/api/freelancer/dados', {
+                method: 'GET',
+                credentials: 'include', // 👈 ISTO É O PROBLEMA
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
                     'Accept': 'application/json'
                 }
             });

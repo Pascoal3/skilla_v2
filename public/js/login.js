@@ -160,7 +160,10 @@ if (response.ok) {
         window.location.href = data.redirect;
     }, 1200);
 } else {
-    showGlobalError(data.message);
+    console.log('STATUS:', response.status);
+console.log('HEADERS:', response.headers);
+const text = await response.text();
+console.log('RAW RESPONSE:', text);
 }
     toggleLoading(false);
 

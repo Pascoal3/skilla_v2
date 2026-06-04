@@ -12,8 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     async function fetchDashboardData() {
         try {
             const response = await fetch('/api/cliente/dados', {
+                method: 'GET',
+                credentials: 'include', // 👈 ISTO É O PROBLEMA
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest',
                     'Accept': 'application/json'
                 }
             });
@@ -25,6 +26,29 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }
     }
+    async function logout(event) {
+    // Impede o comportamento padrão do link (recarregar a página ou ir para #)
+    event.preventDefault();
+    
+    // Tenta obter o token CSRF do meta tag (padrão do Laravel)
+    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+
+    const response = await fetch('/logout-api', {
+        method: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken,
+            'Accept': 'application/json',
+            'Content-Type': 'application/json' // Recomendado adicionar
+        }
+    });
+    
+    // Se a resposta for ok (status 200-299), redireciona para o login
+    if (response.ok) {
+        window.location.href = '/login';
+    } else {
+        console.error('Erro ao terminar sessão');
+    }
+}
 
     // --- Lógica Específica do CLIENTE ---
     function fillClientDashboard(data) {
@@ -95,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `).join('');
         }
     }
+    
 
     // Inicializar
     fetchDashboardData().then(data => fillClientDashboard(data));

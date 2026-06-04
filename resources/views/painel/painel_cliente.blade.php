@@ -345,30 +345,5 @@
 
 <!-- Script do Cliente -->
 <script src="{{ asset('js/painel_cliente.js') }}"></script>
-<script>
-async function logout(event) {
-    // Impede o comportamento padrão do link (recarregar a página ou ir para #)
-    event.preventDefault();
-    
-    // Tenta obter o token CSRF do meta tag (padrão do Laravel)
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
-
-    const response = await fetch('/logout-api', {
-        method: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': csrfToken,
-            'Accept': 'application/json',
-            'Content-Type': 'application/json' // Recomendado adicionar
-        }
-    });
-    
-    // Se a resposta for ok (status 200-299), redireciona para o login
-    if (response.ok) {
-        window.location.href = '/login';
-    } else {
-        console.error('Erro ao terminar sessão');
-    }
-}
-</script>
 </body>
 </html>
