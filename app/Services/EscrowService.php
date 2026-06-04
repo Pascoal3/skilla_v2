@@ -2,81 +2,94 @@
 
 namespace App\Services;
 
+use App\Models\Contract;
 use App\Models\EscrowTransaction;
-use App\Models\Wallet;
-use App\Models\WalletTransaction;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
-class EscrowService {
-    protected $walletService;
+class EscrowService
+{
+    public function __construct(private WalletService $walletService) {}
 
-    public function __construct(WalletService $walletService) {
-        $this->walletService = $walletService;
-    }
+    public function reter(Contract $contrato): void
+    {
+        DB::transaction(function () use ($contrato) {
+            $clienteCarteira = $this->walletService->getOrCreateWallet($contrato->cliente);
+            $freelancerCarteira = $this->walletService->getOrCreateWallet($contrato->freelancer);
+            $plataformaCarteira = \App\Models\Carteira::where('tipo', 'plataforma')->firstOrFail();
 
-    // Tira dinheiro do cliente e "congela" no Escrow
-    public function holdFunds($contractId, $clientWalletId, $freelancerWalletId, $amount) {
-        return DB::transaction(function () use ($contractId, $clientWalletId, $freelancerWalletId, $amount) {
-            // 1. Retira o dinheiro da carteira do cliente
-            $this->walletService->withdraw($clientWalletId, $amount, 'debito_escrow', 'Pagamento retido para contrato', $contractId);
+            $valor = $contrato->valor_acordado;
+            $comissaoPercentual = config('skilla.comissao_percentual', 0.10);
+            $valorComissao = round($valor * $comissaoPercentual, 2);
+            $valorLiquido = $valor - $valorComissao;
 
-            // 2. Calcula comissão (10%)
-            $commission = $amount * 0.10;
-            $netAmount = $amount - $commission;
+            $this->walletService->debitar($clienteCarteira, $valor, 'debito_escrow', [
+                'descricao' => 'Retenção para contrato',
+                'id_referencia' => $contrato->id,
+                'tipo_referencia' => 'contrato'
+            ]);
 
-            // 3. Cria o registro no Escrow
-            return EscrowTransaction::create([
-                'contrato_id' => $contractId,
-                'carteira_origem_id' => $clientWalletId,
-                'carteira_destino_id' => $freelancerWalletId,
-                'valor' => $amount,
-                'valor_comissao' => $commission,
-                'valor_liquido_freelancer' => $netAmount,
+            EscrowTransaction::create([
+                'id' => Str::uuid(),
+                'contrato_id' => $contrato->id,
+                'carteira_origem_id' => $clienteCarteira->id,
+                'carteira_destino_id' => $freelancerCarteira->id,
+                'valor' => $valor,
+                'valor_comissao' => $valorComissao,
+                'valor_liquido_freelancer' => $valorLiquido,
                 'status_pagamento' => 'retido',
+                'retido_em' => now(),
+            ]);
+
+            $contrato->update([
+                'status_pagamento' => 'retido',
+                'comissao_plataforma' => $valorComissao,
+                'valor_freelancer' => $valorLiquido,
             ]);
         });
     }
 
-    // Libera o dinheiro do Escrow para o Freelancer e a Comissão para a Plataforma
-    public function releaseFunds($escrowId) {
-        return DB::transaction(function () use ($escrowId) {
-            $escrow = EscrowTransaction::findOrFail($escrowId);
+    public function liberar(Contract $contrato): void
+    {
+        DB::transaction(function () use ($contrato) {
+            $escrow = EscrowTransaction::where('contrato_id', $contrato->id)->where('status_pagamento', 'retido')->firstOrFail();
+            $freelancerCarteira = $this->walletService->getOrCreateWallet($contrato->freelancer);
+            $plataformaCarteira = \App\Models\Carteira::where('tipo', 'plataforma')->firstOrFail();
 
-            if ($escrow->status_pagamento !== 'retido') {
-                throw new \Exception("Este pagamento já foi processado.");
-            }
+            $escrow->update(['status_pagamento' => 'liberado', 'liberado_em' => now()]);
 
-            // 1. Credita o freelancer (Valor Líquido)
-            $freelancerWallet = Wallet::findOrFail($escrow->carteira_destino_id);
-            $freelancerWallet->increment('saldo', $escrow->valor_liquido_freelancer);
-            
-            WalletTransaction::create([
-                'carteira_destino_id' => $freelancerWallet->id,
-                'valor' => $escrow->valor_liquido_freelancer,
-                'tipo' => 'credito_escrow',
-                'descricao' => 'Pagamento recebido do projeto',
-                'id_referencia' => $escrow->id
+            // Creditar freelancer
+            $this->walletService->depositar($freelancerCarteira, $escrow->valor_liquido_freelancer, [
+                'descricao' => 'Pagamento do contrato',
+                'tipo' => 'credito_escrow'
             ]);
 
-            // 2. Credita a plataforma (Comissão)
-            // Nota: Você precisará de uma carteira com tipo 'plataforma' no banco
-            $platformWallet = Wallet::where('tipo', 'plataforma')->first();
-            if ($platformWallet) {
-                $platformWallet->increment('saldo', $escrow->valor_comissao);
-                WalletTransaction::create([
-                    'carteira_destino_id' => $platformWallet->id,
-                    'valor' => $escrow->valor_comissao,
-                    'tipo' => 'comissao',
-                    'descricao' => 'Comissão sobre contrato ' . $escrow->contrato_id
+            // Creditar plataforma
+            if ($escrow->valor_comissao > 0) {
+                $this->walletService->depositar($plataformaCarteira, $escrow->valor_comissao, [
+                    'descricao' => 'Comissão da plataforma',
+                    'tipo' => 'comissao'
                 ]);
             }
 
-            $escrow->update([
-                'status_pagamento' => 'liberado',
-                'liberado_em' => now()
+            $contrato->update(['status_pagamento' => 'liberado', 'status_contrato' => 'concluido', 'aprovado_em' => now()]);
+        });
+    }
+
+    public function reembolsarTotal(Contract $contrato): void
+    {
+        DB::transaction(function () use ($contrato) {
+            $escrow = EscrowTransaction::where('contrato_id', $contrato->id)->where('status_pagamento', 'retido')->firstOrFail();
+            $clienteCarteira = $this->walletService->getOrCreateWallet($contrato->cliente);
+
+            $escrow->update(['status_pagamento' => 'devolvido_cliente']);
+
+            $this->walletService->depositar($clienteCarteira, $escrow->valor, [
+                'descricao' => 'Reembolso total do contrato',
+                'tipo' => 'reembolso_escrow'
             ]);
 
-            return $escrow;
+            $contrato->update(['status_pagamento' => 'devolvido_cliente', 'status_contrato' => 'cancelado']);
         });
     }
 }
