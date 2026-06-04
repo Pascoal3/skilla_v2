@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\Carteira;
+use App\Models\Wallet;
 
 class IbanService
 {

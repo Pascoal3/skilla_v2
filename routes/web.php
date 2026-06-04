@@ -151,3 +151,46 @@ Route::prefix('profiles')->group(function () {
 
     Route::post('/{id}/skills', [ProfileController::class, 'updateSkills']);
 });
+
+Route::prefix('carteira')->group(function () {
+
+    Route::get('/', [CarteiraController::class, 'show'])
+        ->name('carteira.show');
+
+        Route::get('/minha-carteira', fn () =>
+        view('freelancer.wallet.index')
+        )->name('wallet.index');
+
+    Route::get('/extrato', [CarteiraController::class, 'extrato'])
+        ->name('carteira.extrato');
+
+    Route::get('/creditos/extrato', [CarteiraController::class, 'extratoCreditos'])
+        ->name('carteira.creditos.extrato');
+
+    Route::get('/recarga', [RecargaController::class, 'create'])
+        ->name('carteira.recarga');
+
+    Route::post('/recarga', [RecargaController::class, 'store'])
+        ->name('carteira.recarga.store');
+});
+
+Route::prefix('creditos')->group(function () {
+
+    Route::get('/comprar', [CreditosController::class, 'create'])
+        ->name('creditos.comprar');
+
+    Route::post('/comprar', [CreditosController::class, 'store'])
+        ->name('creditos.comprar.store');
+});
+
+Route::prefix('contratos/{contrato}/escrow')->group(function () {
+
+    Route::post('/confirmar', [EscrowController::class, 'confirmar'])
+        ->name('escrow.confirmar');
+
+    Route::post('/liberar', [EscrowController::class, 'liberar'])
+        ->name('escrow.liberar');
+
+    Route::post('/reembolsar', [EscrowController::class, 'reembolsarTotal'])
+        ->name('escrow.reembolsar');
+});
