@@ -16,7 +16,7 @@ Route::get('/escolher-funcao', function () {
 
 Route::get('/login', function() {
     return view('registar.tela_login');
-})->name('auth.login');
+})->name('login');
 
 
 Route::get('/registar/cliente', function() {
@@ -78,11 +78,11 @@ Route::prefix('profiles')->group(function () {
 
 Route::get('/painel/freelancer/teste', function() {
     return view('painel.painel_freelancer');
-})->name('painel.freelancer');
+})->name('painel.freelancer.teste');
 
 Route::get('/painel/cliente/teste', function() {
     return view('painel.painel_cliente');
-})->name('painel.cliente');
+})->name('painel.cliente.teste');
 
 
 use App\Http\Controllers\Freelancer\JobController;

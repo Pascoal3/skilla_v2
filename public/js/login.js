@@ -137,59 +137,27 @@ document.addEventListener('DOMContentLoaded', function() {
     formData.append('password', passwordInput.value);
 
     toggleLoading(true);
+    
 
     try {
-        const response = await fetch('/login', {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
-                'Accept': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest'
-            }
-        });
-
-        const contentType = response.headers.get('content-type');
-
-        if (!contentType || !contentType.includes('application/json')) {
-            throw new Error('Resposta inválida do servidor');
+    const response = await fetch('/login', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest'
         }
+    });
+    toggleLoading(false);
+    
+    console.log('STATUS:', response.status);
 
-        const data = await response.json();
+    const text = await response.text();
+    console.log('RAW RESPONSE:', text);
 
-        toggleLoading(false);
-
-        if (response.ok) {
-            // sucesso
-            if (successOverlay) {
-                successOverlay.classList.remove('hidden');
-            }
-
-            setTimeout(() => {
-                window.location.href = data.redirect;
-            }, 1500);
-
-        } else if (response.status === 401 || response.status === 403) {
-            showGlobalError(data.message);
-            passwordInput.value = '';
-            passwordInput.focus();
-
-        } else if (response.status === 422) {
-            if (data.errors?.email) {
-                showError(emailInput, emailError, data.errors.email[0]);
-            }
-            if (data.errors?.password) {
-                showError(passwordInput, passwordError, data.errors.password[0]);
-            }
-        } else {
-            showGlobalError(data.message || 'Erro inesperado.');
-        }
-
-    } catch (error) {
-        toggleLoading(false);
-        console.error(error);
-        showGlobalError('Erro de conexão com o servidor.');
-    }
+} catch (error) {
+    console.log('FETCH ERROR REAL:', error);
+} 
 });
 
     // Validação inicial ao carregar
