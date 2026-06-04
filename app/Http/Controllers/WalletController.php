@@ -3,26 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Services\WalletService;
-use App\Models\Wallet;
 use Illuminate\Http\Request;
 
-class WalletController extends Controller {
-    protected $walletService;
-
-    public function __construct(WalletService $walletService) {
-        $this->walletService = $walletService;
+class CarteiraController extends Controller
+{
+    public function show(WalletService $walletService)
+    {
+        $perfil = auth()->user()->perfil;
+        $carteira = $walletService->getOrCreateWallet($perfil);
+        return view('carteira.show', compact('carteira', 'perfil'));
     }
 
-    public function balance(Request $request) {
-        $wallet = Wallet::where('usuario_id', $request->header('X-User-Id'))->firstOrFail();
-        return response()->json(['saldo' => $wallet->saldo, 'moeda' => $wallet->moeda]);
+    public function extrato()
+    {
+        $perfil = auth()->user()->perfil;
+        $carteira = $perfil->carteira;
+        $transacoes = $carteira->transacoes()->paginate(15);
+        return view('carteira.extrato', compact('transacoes'));
     }
 
-    public function deposit(Request $request) {
-        $request->validate(['amount' => 'required|numeric|min:1']);
-        $wallet = Wallet::where('usuario_id', $request->header('X-User-Id'))->firstOrFail();
-        
-        $transaction = $this->walletService->deposit($wallet->id, $request->amount);
-        return response()->json(['message' => 'Saldo recarregado com sucesso!', 'transaction' => $transaction]);
+    public function extratoCreditos()
+    {
+        $perfil = auth()->user()->perfil;
+        $transacoes = $perfil->transacoesCreditos()->paginate(15);
+        return view('carteira.creditos-extrato', compact('transacoes'));
     }
 }
