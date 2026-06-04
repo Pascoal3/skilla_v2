@@ -161,7 +161,8 @@ class AuthController extends Controller
             ], 403);
         }
 
-        $response = response()->json([
+        return response()
+        ->json([
             'status'   => 200,
             'message'  => 'Login realizado com sucesso!',
             'role'     => $user->funcao,
@@ -175,20 +176,18 @@ class AuthController extends Controller
                 'funcao'       => $user->funcao,
                 'nome_usuario' => $user->nome_usuario,
             ],
-        ]);
-
-        // ✅ CORRETO: retornar com cookie diretamente
-        return $response->cookie(
-            'jwt_token',
-            $token,
-            1440,
-            '/',
-            null,
-            false,
-            true,
-            false,
-            'Lax'
-        );
+    ])
+    ->cookie(
+        'jwt_token',
+        $token,
+        1440,
+        '/',
+        null,
+        false,
+        true,
+        false,
+        'Strict'
+    );
 
     } catch (\Exception $e) {
         Log::error('Erro no login: ' . $e->getMessage());

@@ -29,7 +29,7 @@ Route::get('/registar/freelancer', function() {
 
 // Auth Routes
 Route::post('/registar', [AuthController::class, 'registar']);
-Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 

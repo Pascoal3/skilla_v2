@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const response = await fetch('/login', {
     method: 'POST',
     body: formData,
-    credentials: 'same-origin', // ESSENCIAL
+    credentials: 'include',
     headers: {
         'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
         'Accept': 'application/json',
