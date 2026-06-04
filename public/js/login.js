@@ -154,12 +154,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('STATUS:', response.status);
 
-    const text = await response.text();
-    console.log('RAW RESPONSE:', text);
+console.log('RESPONSE DATA:', data);
+
+if (response.ok) {
+    const data = await response.json();
+
+    toggleLoading(false);
+
+    setTimeout(() => {
+        window.location.href = data.redirect;
+    }, 500);
+} else {
+    const data = await response.json();
+    toggleLoading(false);
+    showGlobalError(data.message || 'Erro ao fazer login.');
+}
 
 } catch (error) {
+    toggleLoading(false);
     console.log('FETCH ERROR REAL:', error);
-} 
+    showGlobalError('Erro de conexão com o servidor.');
+}
 });
 
     // Validação inicial ao carregar
