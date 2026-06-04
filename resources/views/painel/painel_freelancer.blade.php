@@ -145,33 +145,32 @@
             <h1 class="font-display-lg text-headline-md font-black text-secondary dark:text-secondary m-0 leading-none">SKILLA</h1>
             <p class="font-label-sm text-label-sm text-on-primary-container">Plataforma de Freelance</p>
         </div>
-    </div>
-    <div class="flex-1 space-y-2">
-        <a class="flex items-center gap-3 bg-[#CCFF00] text-black-pure rounded-lg px-4 py-3 font-bold transition-all" href="#">
-            <span class="material-symbols-outlined">home</span>
-            <span class="font-label-md text-label-md">Início</span>
-        </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
-            <span class="material-symbols-outlined">work</span>
-            <span class="font-label-md text-label-md">Trabalhos</span>
-        </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
-            <span class="material-symbols-outlined">description</span>
-            <span class="font-label-md text-label-md">Propostas</span>
-        </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
-            <span class="material-symbols-outlined">chat</span>
-            <span class="font-label-md text-label-md">Mensagens</span>
-        </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
+    </div><div class="flex-1 space-y-2">
+    <a data-page="home" class="nav-link flex items-center gap-3 bg-[#CCFF00] text-black-pure rounded-lg px-4 py-3 font-bold transition-all cursor-pointer">
+        <span class="material-symbols-outlined">home</span>
+        <span class="font-label-md text-label-md">Início</span>
+    </a>
+    <a data-page="jobs" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
+        <span class="material-symbols-outlined">work</span>
+        <span class="font-label-md text-label-md">Trabalhos</span>
+    </a>
+    <a data-page="proposals" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
+        <span class="material-symbols-outlined">description</span>
+        <span class="font-label-md text-label-md">Propostas</span>
+    </a>
+    <a data-page="messages" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
+        <span class="material-symbols-outlined">chat</span>
+        <span class="font-label-md text-label-md">Mensagens</span>
+    </a>
+        <a data-page="wallet" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
             <span class="material-symbols-outlined">account_balance_wallet</span>
             <span class="font-label-md text-label-md">Carteira</span>
         </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
+        <a data-page="profile" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
             <span class="material-symbols-outlined">person</span>
             <span class="font-label-md text-label-md">Perfil</span>
         </a>
-        <a class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors" href="#">
+        <a data-page="settings" class="nav-link flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors cursor-pointer">
             <span class="material-symbols-outlined">settings</span>
             <span class="font-label-md text-label-md">Definições</span>
         </a>

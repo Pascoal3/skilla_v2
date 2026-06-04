@@ -28,6 +28,13 @@ Route::get('/registar/cliente', fn () => view('registar.cliente'))
 Route::get('/registar/freelancer', fn () => view('registar.freela'))
     ->name('registar.freela');
 
+Route::get('/painel/cliente/teste2', fn () =>
+    view('painel.painel_cliente_teste')
+)->name('painel.cliente.teste');
+
+Route::get('/painel/freelancer/teste2', fn () =>
+    view('painel.painel_freela_teste')
+)->name('painel.freelancer.teste');
 /*
 |--------------------------------------------------------------------------
 | AUTH

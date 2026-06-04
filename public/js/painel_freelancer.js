@@ -1,4 +1,77 @@
 document.addEventListener('DOMContentLoaded', function() {
+     const navLinks = document.querySelectorAll('.nav-link');
+    const contentArea = document.getElementById('dynamic-content');
+
+    // 1. Definição dos conteúdos de cada página (Simulando módulos)
+    const pages = {
+        home: `
+            <!-- Copie aqui todo o HTML original do seu dashboard (do Page Header até as recomendações) -->
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <div>
+                    <h2 class="font-headline-md text-headline-md text-black-pure mb-2">Bom dia, [Nome] 👋</h2>
+                    <p class="font-body-lg text-body-lg text-black-pure opacity-80">Aqui está o resumo da sua atividade</p>
+                </div>
+                <button class="bg-black-pure text-white px-6 py-3 rounded-full font-label-md text-label-md font-bold flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
+                    Explorar Trabalhos <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                </button>
+            </div>
+            <!-- ... restante dos KPIs e Jobs ... -->
+        `,
+        jobs: `
+            <div class="flex flex-col gap-6">
+                <h2 class="font-headline-md text-headline-md text-black-pure">Explorar Trabalhos</h2>
+                <p class="text-black-pure">Lista de trabalhos disponíveis será carregada aqui...</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="glass-card p-6 hard-shadow">Job Exemplo 1</div>
+                    <div class="glass-card p-6 hard-shadow">Job Exemplo 2</div>
+                </div>
+            </div>
+        `,
+        proposals: `
+            <div class="flex flex-col gap-6">
+                <h2 class="font-headline-md text-headline-md text-black-pure">Minhas Propostas</h2>
+                <p class="text-black-pure">Aqui você gerencia as propostas enviadas.</p>
+            </div>
+        `,
+        messages: `
+            <div class="flex flex-col gap-6">
+                <h2 class="font-headline-md text-headline-md text-black-pure">Mensagens</h2>
+                <p class="text-black-pure">Sua caixa de entrada de chat.</p>
+            </div>
+        `
+    };
+
+    // 2. Função para mudar de página
+    function navigateTo(pageId) {
+        // Trocar conteúdo
+        if (pages[pageId]) {
+            contentArea.innerHTML = pages[pageId];
+        } else {
+            contentArea.innerHTML = `<h2 class="text-black-pure">Página ${pageId} em construção...</h2>`;
+        }
+
+        // Atualizar Estilo dos Botões
+        navLinks.forEach(link => {
+            if (link.getAttribute('data-page') === pageId) {
+                // Estilo Ativo (Verde)
+                link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'font-bold');
+                link.classList.remove('text-on-primary-container', 'hover:text-secondary');
+            } else {
+                // Estilo Inativo
+                link.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'font-bold');
+                link.classList.add('text-on-primary-container', 'hover:text-secondary');
+            }
+        });
+    }
+
+    // 3. Adicionar eventos de clique
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const pageId = link.getAttribute('data-page');
+            navigateTo(pageId);
+        });
+    });
     // --- Funções Utilitárias Compartilhadas ---
     function formatCurrency(value) {
         return new Intl.NumberFormat('pt-AO', {
