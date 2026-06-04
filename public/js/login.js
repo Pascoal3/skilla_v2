@@ -145,36 +145,36 @@ document.addEventListener('DOMContentLoaded', function() {
     body: formData,
     credentials: 'include',
     headers: {
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content,
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
         'Accept': 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
     }
 });
-    toggleLoading(false);
 
-    console.log('STATUS:', response.status);
-
-    const data = await response.json();
-
-console.log('RESPONSE DATA:', data);
+const data = await response.json();
 
 if (response.ok) {
-
     toggleLoading(false);
 
     setTimeout(() => {
         window.location.href = data.redirect;
-    }, 500);
+    }, 1200);
 } else {
-    const data = await response.json();
-    toggleLoading(false);
-    showGlobalError(data.message || 'Erro ao fazer login.');
+    showGlobalError(data.message);
 }
+    toggleLoading(false);
+
+    console.log('STATUS:', response.status);
+
+console.log('RESPONSE DATA:', data);
+
+
 
 } catch (error) {
     toggleLoading(false);
     console.log('FETCH ERROR REAL:', error);
     showGlobalError('Erro de conexão com o servidor.');
+    
 }
 });
 

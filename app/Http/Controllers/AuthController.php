@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Tymon\JWTAuth\Facades\JWTAuth; // ← ADICIONADO para JWT
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 
 class AuthController extends Controller
 {
@@ -128,75 +129,58 @@ class AuthController extends Controller
         }
     }
 
+    public function checkAuth()
+{
+    return response()->json([
+        'authenticated' => Auth::check(),
+        'user' => Auth::user()
+    ]);
+}
     /**
      * Login de usuário existente
      */
-    public function login(Request $request)
+    
+
+public function login(Request $request)
 {
-    try {
-        Log::info('Tentativa de login:', ['email' => $request->email]);
+    $validated = $request->validate([
+        'email'    => 'required|email',
+        'password' => 'required|string',
+    ]);
 
-        $validated = $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required|string',
-        ]);
+    if (!$token = JWTAuth::attempt($validated)) {
+        return response()->json([
+            'status' => 401,
+            'message' => 'Email ou senha inválidos.',
+        ], 401);
+    }
 
-        // JWT attempt
-        if (!$token = JWTAuth::attempt($validated)) {
-            return response()->json([
-                'status'  => 401,
-                'message' => 'Email ou senha inválidos.',
-                'errors'  => ['email' => ['Credenciais inválidas']]
-            ], 401);
-        }
+    $user = JWTAuth::user();
 
-        $user = auth()->user();
-
-        if (!$user->esta_ativo) {
-            JWTAuth::invalidate($token);
-
-            return response()->json([
-                'status'  => 403,
-                'message' => 'Conta desativada. Contacte o suporte.',
-            ], 403);
-        }
-
-        return response()
+    return response()
         ->json([
             'status'   => 200,
             'message'  => 'Login realizado com sucesso!',
-            'role'     => $user->funcao,
             'redirect' => $user->funcao === 'cliente'
                 ? '/painel/cliente'
                 : '/painel/freelancer',
-            'user'     => [
-                'id'           => $user->id,
-                'nome'         => $user->nome_completo,
-                'email'        => $user->email,
-                'funcao'       => $user->funcao,
-                'nome_usuario' => $user->nome_usuario,
-            ],
-    ])
-    ->cookie(
-        'jwt_token',
-        $token,
-        1440,
-        '/',
-        null,
-        false,
-        true,
-        false,
-        'Strict'
-    );
-
-    } catch (\Exception $e) {
-        Log::error('Erro no login: ' . $e->getMessage());
-
-        return response()->json([
-            'status'  => 500,
-            'message' => 'Erro interno ao fazer login.',
-        ], 500);
-    }
+            'user' => [
+                'id' => $user->id,
+                'email' => $user->email,
+                'funcao' => $user->funcao,
+            ]
+        ])
+        ->cookie(
+            'jwt_token',
+            $token,
+            1440,
+            '/',
+            null,
+            false,
+            true,
+            false,
+            'Lax'
+        );
 }
 
     /**
@@ -229,124 +213,4 @@ class AuthController extends Controller
         }
     }
 
-    /**
-     * Logout via API (para AJAX)
-     */
-    public function logoutApi(Request $request)
-    {
-        try {
-            $token = $request->cookie('jwt_token');
-            
-            if ($token) {
-                JWTAuth::setToken($token)->invalidate();
-            }
-
-            $response = response()->json([
-                'status'  => 200,
-                'message' => 'Logout realizado com sucesso.',
-                'redirect' => '/login'
-            ]);
-
-            $response->withCookie(cookie()->forget('jwt_token'));
-
-            return $response;
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'status'  => 500,
-                'message' => 'Erro ao fazer logout.',
-            ], 500);
-        }
-    }
-
-    /**
-     * Verificar se usuário está autenticado (para AJAX)
-     */
-    public function checkAuth(Request $request)
-    {
-        try {
-            $token = $request->cookie('jwt_token');
-            
-            if (!$token) {
-                return response()->json([
-                    'authenticated' => false,
-                    'message'       => 'Nenhum token encontrado.'
-                ], 401);
-            }
-            
-            $user = JWTAuth::setToken($token)->authenticate();
-            
-            if (!$user) {
-                return response()->json([
-                    'authenticated' => false,
-                    'message'       => 'Token inválido ou expirado.'
-                ], 401);
-            }
-            
-            return response()->json([
-                'authenticated' => true,
-                'user' => [
-                    'id'           => $user->id,
-                    'nome'         => $user->nome_completo,
-                    'email'        => $user->email,
-                    'funcao'       => $user->funcao,
-                    'nome_usuario' => $user->nome_usuario,
-                    'avatar'       => $user->url_avatar,
-                ]
-            ]);
-            
-        } catch (\Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
-            return response()->json([
-                'authenticated' => false,
-                'message'       => 'Token expirado.'
-            ], 401);
-            
-        } catch (\Tymon\JWTAuth\Exceptions\TokenInvalidException $e) {
-            return response()->json([
-                'authenticated' => false,
-                'message'       => 'Token inválido.'
-            ], 401);
-            
-        } catch (\Exception $e) {
-            return response()->json([
-                'authenticated' => false,
-                'message'       => 'Erro ao verificar autenticação.'
-            ], 500);
-        }
-    }
-
-    /**
-     * Refresh de token (estender sessão)
-     */
-    public function refresh()
-    {
-        try {
-            $newToken = JWTAuth::refresh();
-
-            $response = response()->json([
-                'status'  => 200,
-                'message' => 'Token atualizado com sucesso.',
-            ]);
-
-            $response->withCookie(cookie(
-                'jwt_token',
-                $newToken,
-                1440,
-                '/',
-                null,
-                false,
-                true,
-                false,
-                'Strict'
-            ));
-
-            return $response;
-
-        } catch (\Exception $e) {
-            return response()->json([
-                'status'  => 401,
-                'message' => 'Não foi possível atualizar o token.',
-            ], 401);
-        }
-    }
 }

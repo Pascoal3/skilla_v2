@@ -19,7 +19,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Perfil::class, // ← MUDOU (era User::class)
+            'model' => App\Models\Perfil::class,
         ],
     ],
 

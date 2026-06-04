@@ -8,26 +8,23 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class JwtMiddleware
 {
-    public function handle($request, Closure $next)
-{
-    try {
-        $token = $request->cookie('jwt_token');
+    public function handle(Request $request, Closure $next)
+    {
+        try {
 
-        if (!$token) {
+            $token = $request->cookie('jwt_token');
+
+            if (!$token) {
+                return redirect('/login');
+            }
+
+            JWTAuth::setToken($token)->authenticate();
+
+        } catch (\Exception $e) {
+
             return redirect('/login');
         }
 
-        JWTAuth::setToken($token);
-        $user = JWTAuth::authenticate();
-
-        if (!$user) {
-            return redirect('/login');
-        }
-
-    } catch (\Exception $e) {
-        return redirect('/login');
+        return $next($request);
     }
-
-    return $next($request);
-}
 }

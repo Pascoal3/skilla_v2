@@ -66,16 +66,9 @@ class Perfil extends Authenticatable implements JWTSubject // ← ADICIONADO imp
         return $this->getKey();
     }
 
-    /**
-     * Retorna claims personalizados para incluir no token JWT
-     */
     public function getJWTCustomClaims()
     {
-        return [
-            'funcao' => $this->funcao,
-            'nome_usuario' => $this->nome_usuario,
-            'email' => $this->email,
-        ];
+        return [];
     }
 
     // ==========================================

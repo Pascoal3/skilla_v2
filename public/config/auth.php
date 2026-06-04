@@ -14,6 +14,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'defaults' => [
+        'guard' => 'api',
+        'passwords' => 'users',
+        ],
         'api' => [
         'driver' => 'jwt',
         'provider' => 'perfis',
@@ -29,12 +33,6 @@ return [
     ],
     ],
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => Perfil::class, // ← MUDOU (era User::class)
-        ],
-    ],
 
     'passwords' => [
         'users' => [
