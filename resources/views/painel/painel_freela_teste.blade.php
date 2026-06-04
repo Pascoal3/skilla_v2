@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Meta tags para dados de sistema (Adicionado) -->
+    <!-- Meta tags para dados de sistema -->
     <meta name="user-id" content="{{ auth()->id() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -134,7 +134,7 @@
             transition: 1s;
         }
 
-        /* ---- CSS do Feed de Projetos (integrado) ---- */
+        /* ---- CSS do Feed de Projetos ---- */
         .custom-glow { box-shadow: 0px 4px 20px rgba(217, 255, 0, 0.05); }
         .hover-glow:hover { box-shadow: 0px 4px 20px rgba(217, 255, 0, 0.15); border-color: #D4FF00; }
         input[type="checkbox"]:checked { background-color: #D4FF00; border-color: #D4FF00; }
@@ -262,7 +262,6 @@
                 <span class="material-symbols-outlined text-2xl">notifications</span>
                 <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-error rounded-full border-2 border-[#CCFF00]"></span>
             </button>
-            <!-- Avatar do Header (Dinâmico) -->
             <div class="w-10 h-10 rounded-full bg-white border border-outline overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
                 <img alt="User Avatar" class="w-full h-full object-cover" id="header-user-avatar" src="">
             </div>
@@ -275,22 +274,22 @@
         <!-- SPA VIEWPORT -->
         <section id="spa-view" class="bg-[#CCFF00]">
 
-            <!-- VIEW: INÍCIO (conteúdo existente) -->
+            <!-- VIEW: INÍCIO -->
             <div id="view-inicio">
-                <!-- Page Header -->
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+                <!-- Page Header (Gap/Margem adicionada aqui com mb-10) -->
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
                     <div>
                         <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">Bom dia, [Nome] 👋</h2>
                         <p class="font-body-lg text-body-lg text-black-pure opacity-80">Aqui está o resumo da sua atividade</p>
                     </div>
-                    <button class="bg-black-pure text-white px-6 py-3 rounded-full font-label-md text-label-md font-bold flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
+                    <!-- Botão Explorar Trabalhos com ID para JS SPA -->
+                    <button id="btn-explorar-trabalhos" class="bg-black-pure text-white px-6 py-3 rounded-full font-label-md text-label-md font-bold flex items-center gap-2 hover:bg-surface-container-highest transition-colors">
                         Explorar Trabalhos <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
                     </button>
                 </div>
 
                 <!-- KPI Row -->
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                    <!-- Card 1: Trabalhos ativos -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">work</span>
@@ -301,7 +300,6 @@
                         </div>
                     </div>
 
-                    <!-- Card 2: Propostas enviadas -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px] relative">
                         <div class="absolute top-6 right-6 shrink-0 hidden" id="badge-pending-proposals-container">
                             <span class="bg-[#CCFF00] text-black-pure font-label-sm text-[10px] px-2 py-1 rounded-full font-bold" id="badge-pending-proposals-text">0 PENDENTES</span>
@@ -315,29 +313,26 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: Ganhos totais -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">account_balance_wallet</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Total Ganho</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-total-earned" title="KZS 0,00">KZS 0</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-total-earned">KZS 0</span>
                         </div>
                     </div>
 
-                    <!-- Card 4: Créditos totais -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">toll</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Créditos</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-credits" title="0">0</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-credits">0</span>
                         </div>
                     </div>
 
-                    <!-- Card 5: Avaliação Média -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">star</span>
@@ -348,49 +343,44 @@
                         </div>
                     </div>
 
-                    <!-- Card 6: Em Escrow (Cativo) -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">lock</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Em Escrow (Cativo)</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-escrow-amount" title="KZS 0,00">KZS 0</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-escrow-amount">KZS 0</span>
                         </div>
                     </div>
 
-                    <!-- Card 7: Jobs Concluídos -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">trophy</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Trabalhos Concluídos</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-completed-jobs" title="0">0</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-completed-jobs">0</span>
                         </div>
                     </div>
 
-                    <!-- Card 8: Taxa de Sucesso -->
                     <div class="glass-card p-8 hard-shadow flex flex-col gap-4 min-h-[160px]">
                         <div class="w-10 h-10 bg-black-pure rounded-lg flex items-center justify-center shrink-0">
                             <span class="material-symbols-outlined text-[#CCFF00]">trending_up</span>
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Taxa de Sucesso</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-success-rate" title="0%">0%</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-success-rate">0%</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Operational Section -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Left Column (60%) -->
                     <div class="lg:col-span-7 flex flex-col gap-4">
                         <h3 class="font-headline-sm text-headline-sm text-black-pure px-2">Jobs Ativos</h3>
                         <div id="active-job-container"></div>
                     </div>
 
-                    <!-- Right Column (40%) -->
                     <div class="lg:col-span-5 flex flex-col gap-4">
                         <h3 class="font-headline-sm text-headline-sm text-black-pure px-2">Propostas</h3>
                         <div class="glass-card p-6 hard-shadow h-full flex flex-col">
@@ -421,9 +411,7 @@
 <script>
     async function logout(event) {
         event.preventDefault();
-
         const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
-
         const response = await fetch('/logout-api', {
             method: 'POST',
             headers: {
@@ -432,7 +420,6 @@
                 'Content-Type': 'application/json'
             }
         });
-
         if (response.ok) {
             window.location.href = '/login';
         }
@@ -445,26 +432,22 @@
         const spaView = document.getElementById('spa-view');
         if (!spaView || !links.length) return;
 
-        // Template do Início (já existente no HTML)
+        // Templates
         const templates = {
             inicio: document.getElementById('view-inicio')?.outerHTML || ''
         };
 
-        // Template do Feed de Trabalhos (com botões "Ver job" marcados)
+        // Template: Feed de Trabalhos
         templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20">
-                <!-- Header Section -->
                 <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 md:top-0 z-30 bg-[#CCFF00] shadow-sm">
                     <div class="max-w-[1280px] mx-auto">
                         <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6 relative">
-                            <!-- Search Bar -->
                             <div class="relative w-full md:w-2/3 lg:w-1/2">
                                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-black">search</span>
                                 <input class="w-full pl-12 pr-4 py-4 rounded-xl border-none bg-white text-black placeholder-gray-500 focus:ring-2 focus:ring-[#FF5722] shadow-lg"
                                        placeholder="Pesquisar projetos, clientes..." type="text"/>
                             </div>
-
-                            <!-- Right Corner Info -->
                             <div class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-4">
                                 <button class="text-black relative">
                                     <span class="material-symbols-outlined text-[28px]">notifications</span>
@@ -474,17 +457,13 @@
                                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW051IkCVwLFK9Tx3xVu29WDoujSMURXPmh6Hy7uFVJZqYQ6KNnDaijrEEgByYpjxH6JmaDF6td5gbblRtBnKEsWtM_u7myuUdYQKUuguLh3qMwKvmXjIkU-SG-KdhbCa6NElskQOcZtpXWG_99K3W3quDymbulYEvBCv0e_AYkhYwYIPXNkntXs3Jo1u0YvbQx-Am0z37TByPGEL0HHGCtJ-Ss7jeZBho7bX6LSFEdnR2f7f7sBUsiXESe9FmoomzY1ZrqkIkGd8"/>
                             </div>
                         </div>
-
-                        <!-- Category Pills -->
                         <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide no-scrollbar">
                             <button class="px-5 py-2 rounded-full bg-black text-[#D4FF00] font-bold whitespace-nowrap shadow-sm border border-black">Todos</button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Design</button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Desenvolvimento</button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Mobile</button>
-                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Vídeo</button>
                             <button class="px-5 py-2 rounded-full bg-white text-[#FF5722] font-bold border border-[#FF5722] whitespace-nowrap hover:bg-orange-50 transition-colors shadow-sm flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
-                                Urgente
+                                <span class="material-symbols-outlined text-[16px]">local_fire_department</span> Urgente
                             </button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Remoto</button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Luanda</button>
@@ -492,31 +471,21 @@
                     </div>
                 </header>
 
-                <!-- Content Area: Left/Right Split -->
                 <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 flex flex-col lg:flex-row gap-6 mt-4">
-
-                    <!-- Left Column: Advanced Filters (25%) -->
                     <aside class="w-full lg:w-1/4 flex flex-col gap-6">
                         <div class="bg-white rounded-2xl p-6 shadow-xl text-black">
                             <div class="flex items-center justify-between mb-6">
                                 <h2 class="text-[24px] leading-[32px] font-semibold">Filtros</h2>
                                 <button class="text-[12px] leading-[16px] font-medium text-gray-500 hover:text-[#FF5722] underline">Limpar</button>
                             </div>
-
-                            <!-- Section: Orçamento -->
                             <div class="mb-8">
                                 <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Orçamento (Kz)</h3>
                                 <input class="w-full accent-[#D4FF00]" max="500000" min="10000" type="range" value="250000"/>
                                 <div class="flex justify-between mt-2 text-[12px] leading-[16px] text-gray-600">
-                                    <span>10K</span>
-                                    <span class="font-bold text-black">Até 250K</span>
-                                    <span>500K+</span>
+                                    <span>10K</span><span class="font-bold text-black">Até 250K</span><span>500K+</span>
                                 </div>
                             </div>
-
                             <hr class="border-gray-200 mb-6"/>
-
-                            <!-- Section: Prazo -->
                             <div class="mb-8">
                                 <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Prazo</h3>
                                 <div class="flex flex-col gap-3">
@@ -534,10 +503,7 @@
                                     </label>
                                 </div>
                             </div>
-
                             <hr class="border-gray-200 mb-6"/>
-
-                            <!-- Section: Nível -->
                             <div class="mb-8">
                                 <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Nível de Experiência</h3>
                                 <div class="flex flex-col gap-3">
@@ -558,16 +524,13 @@
                                     </label>
                                 </div>
                             </div>
-
                             <button class="w-full py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-md mt-4">
                                 Aplicar Filtros
                             </button>
                         </div>
                     </aside>
 
-                    <!-- Right Column: Results Flow (75%) -->
                     <section class="w-full lg:w-3/4 flex flex-col gap-5">
-                        <!-- Sorting Header -->
                         <div class="flex justify-between items-center bg-white/50 backdrop-blur-sm p-4 rounded-xl border border-white/40">
                             <p class="text-[16px] leading-[24px] font-medium text-black"><span class="font-bold">246</span> projetos encontrados</p>
                             <div class="flex items-center gap-2">
@@ -580,13 +543,11 @@
                             </div>
                         </div>
 
-                        <!-- Featured Job Card -->
+                        <!-- Card Destaque -->
                         <article class="bg-white rounded-2xl p-6 shadow-xl border-l-8 border-l-[#FF5722] relative group transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl text-black">
                             <div class="absolute -top-3 right-6 bg-[#FF5722] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md flex items-center gap-1">
-                                <span class="material-symbols-outlined text-[14px]">star</span>
-                                Destaque
+                                <span class="material-symbols-outlined text-[14px]">star</span> Destaque
                             </div>
-
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
                                 <h3 class="text-[24px] leading-[32px] font-semibold leading-tight group-hover:text-[#FF5722] transition-colors">Design de App Fintech + Dashboard Admin</h3>
                                 <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 shrink-0">
@@ -594,57 +555,43 @@
                                     <span class="text-[12px] leading-[16px] text-gray-500 uppercase tracking-wide">Orçamento Fixo</span>
                                 </div>
                             </div>
-
                             <div class="flex flex-wrap items-center gap-4 text-[12px] leading-[16px] text-gray-600 mb-4">
                                 <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Remoto (Luanda)</div>
                                 <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 1 a 3 meses</div>
                                 <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">work</span> Projeto Longo</div>
                                 <div class="flex items-center gap-1 text-green-600"><span class="material-symbols-outlined text-[16px]">verified</span> Pagamento Verificado</div>
                             </div>
-
                             <p class="text-[16px] leading-[24px] text-gray-700 mb-6 line-clamp-2">
                                 Procuramos um Product Designer (UI/UX) sênior para desenhar de raiz a nossa nova aplicação de mobile banking focada no mercado angolano, bem como o dashboard administrativo web para a equipa interna. Necessário portfólio forte em fintech.
                             </p>
-
                             <div class="flex flex-wrap gap-2 mb-6">
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Figma</span>
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">UI/UX</span>
                                 <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Fintech</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Design Systems</span>
                             </div>
-
                             <hr class="border-gray-100 mb-4"/>
-
                             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                                 <div class="flex items-center gap-3">
-                                    <img alt="Client Avatar" class="w-10 h-10 rounded-full border-2 border-[#FF5722]"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpq57DCqYCN3M32vbZwd5OS-DkMltmiYYIinWzDv7cGBAXTUHrJ8gveTiIZlW4Awi8g9YHeYUg12E8UhBQ9okGHZEFhlbex-F9D6cnwa6FLY2tEi4GnZfzgf-UWZu2BQtrqcaMMjFkIpVnwcpKjO1dTIsiCm5DqDE7LHD3R6Hln-c_ESx8_suqJUhotwqWa7hRAr5QCarDorfPwhL33dy1IYnnnHkCyI8OYwqS5AF8tt_d2SrNEEfKcICMY7yzOMHVfmByMKOEHVs"/>
+                                    <img alt="Client Avatar" class="w-10 h-10 rounded-full border-2 border-[#FF5722]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpq57DCqYCN3M32vbZwd5OS-DkMltmiYYIinWzDv7cGBAXTUHrJ8gveTiIZlW4Awi8g9YHeYUg12E8UhBQ9okGHZEFhlbex-F9D6cnwa6FLY2tEi4GnZfzgf-UWZu2BQtrqcaMMjFkIpVnwcpKjO1dTIsiCm5DqDE7LHD3R6Hln-c_ESx8_suqJUhotwqWa7hRAr5QCarDorfPwhL33dy1IYnnnHkCyI8OYwqS5AF8tt_d2SrNEEfKcICMY7yzOMHVfmByMKOEHVs"/>
                                     <div>
                                         <p class="text-[14px] leading-[20px] font-medium font-bold">Kamba Finance</p>
                                         <div class="flex items-center gap-1 text-[#FF5722]">
                                             <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star_half</span>
                                             <span class="text-[12px] leading-[16px] text-gray-500 ml-1">(12)</span>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="flex items-center gap-4 w-full md:w-auto">
                                     <div class="text-right hidden md:block">
                                         <p class="text-[14px] leading-[20px] font-medium font-bold text-gray-800">14 propostas</p>
                                         <p class="text-[12px] leading-[16px] text-gray-500">Publicado há 2h</p>
                                     </div>
-                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">
-                                        Ver job
-                                    </button>
+                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">Ver job</button>
                                 </div>
                             </div>
                         </article>
 
-                        <!-- Standard Job Card 1 -->
+                        <!-- Card Standard -->
                         <article class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl text-black">
                             <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
                                 <h3 class="text-[24px] leading-[32px] font-semibold leading-tight hover:text-blue-600 transition-colors cursor-pointer">Desenvolvimento de Landing Page (React/Next.js)</h3>
@@ -653,133 +600,33 @@
                                     <span class="text-[12px] leading-[16px] text-gray-500 uppercase tracking-wide">Orçamento Fixo</span>
                                 </div>
                             </div>
-
                             <div class="flex flex-wrap items-center gap-4 text-[12px] leading-[16px] text-gray-600 mb-4">
                                 <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Remoto</div>
                                 <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Menos de 1 semana</div>
-                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">work</span> Projeto Rápido</div>
-                                <div class="flex items-center gap-1 text-gray-400"><span class="material-symbols-outlined text-[16px]">gpp_maybe</span> Pagamento Não Verificado</div>
                             </div>
-
                             <p class="text-[16px] leading-[24px] text-gray-700 mb-6 line-clamp-2">
-                                Preciso de um desenvolvedor front-end para criar uma landing page simples para um evento, baseada num design no Figma que já está pronto. A página precisa ser responsiva e ter um formulário de contacto simples integrado com Mailchimp.
+                                Preciso de um desenvolvedor front-end para criar uma landing page simples para um evento...
                             </p>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">React</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Next.js</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Tailwind CSS</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">HTML/CSS</span>
-                            </div>
-
                             <hr class="border-gray-100 mb-4"/>
-
                             <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                                 <div class="flex items-center gap-3">
-                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-[18px] leading-[28px]">
-                                        M
-                                    </div>
-                                    <div>
-                                        <p class="text-[14px] leading-[20px] font-medium font-bold">Miguel Santos</p>
-                                        <div class="flex items-center gap-1 text-gray-400">
-                                            <span class="text-[12px] leading-[16px]">Cliente Novo</span>
-                                        </div>
-                                    </div>
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-[18px]">M</div>
+                                    <div><p class="text-[14px] leading-[20px] font-medium font-bold">Miguel Santos</p></div>
                                 </div>
-
                                 <div class="flex items-center gap-4 w-full md:w-auto">
                                     <div class="text-right hidden md:block">
                                         <p class="text-[14px] leading-[20px] font-medium font-bold text-gray-800">3 propostas</p>
-                                        <p class="text-[12px] leading-[16px] text-gray-500">Publicado há 5h</p>
                                     </div>
-                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">
-                                        Ver job
-                                    </button>
+                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">Ver job</button>
                                 </div>
                             </div>
                         </article>
-
-                        <!-- Standard Job Card 2 -->
-                        <article class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl text-black">
-                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
-                                <h3 class="text-[24px] leading-[32px] font-semibold leading-tight hover:text-blue-600 transition-colors cursor-pointer">Edição de Vídeo para Campanhas TikTok/Reels</h3>
-                                <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 shrink-0">
-                                    <span class="text-[24px] leading-[32px] font-semibold font-bold block">15.000 Kz / hora</span>
-                                    <span class="text-[12px] leading-[16px] text-gray-500 uppercase tracking-wide">Estimativa: 20h/mês</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-wrap items-center gap-4 text-[12px] leading-[16px] text-gray-600 mb-4">
-                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Remoto</div>
-                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Contínuo</div>
-                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">work</span> Part-time</div>
-                                <div class="flex items-center gap-1 text-green-600"><span class="material-symbols-outlined text-[16px]">verified</span> Pagamento Verificado</div>
-                            </div>
-
-                            <p class="text-[16px] leading-[24px] text-gray-700 mb-6 line-clamp-2">
-                                Agência de marketing procura editor de vídeo dinâmico para produzir criativos de formato curto (Reels/TikTok) para marcas de retalho. O material bruto será fornecido. Procuramos estilo moderno, com legendas animadas e cortes rápidos.
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 mb-6">
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Premiere Pro</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">After Effects</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">TikTok Trends</span>
-                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">CapCut</span>
-                            </div>
-
-                            <hr class="border-gray-100 mb-4"/>
-
-                            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                                <div class="flex items-center gap-3">
-                                    <img alt="Client Avatar" class="w-10 h-10 rounded-full"
-                                         src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjH7LZoaD0QkGMyJYpFdfEZwNiHML3ESznBUAKv9ofh90sAsWn0FHDDq6U2j7R7UlZn8_0Uptik_yoztUyD1bgz8ztVbuCbw_VVqEwGKDYey77Pi0LQ2Q8jTI_De4eBE1dTLy30wl4OWgef4c7ZRLSX2e8YMTkzeX0Cn_CGOm2rBRClj02oF5uaWBIR1P-az4aITheoNsDvBoakWXJdIp9DHaJYOK0zvmEFn5a5f3SrGU-L9aRvKD77yPqR3QsEu-JYPuCvy2KyKs"/>
-                                    <div>
-                                        <p class="text-[14px] leading-[20px] font-medium font-bold">Agência Boost</p>
-                                        <div class="flex items-center gap-1 text-[#FF5722]">
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                                            <span class="text-[12px] leading-[16px] text-gray-500 ml-1">(45)</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="flex items-center gap-4 w-full md:w-auto">
-                                    <div class="text-right hidden md:block">
-                                        <p class="text-[14px] leading-[20px] font-medium font-bold text-gray-800">28 propostas</p>
-                                        <p class="text-[12px] leading-[16px] text-gray-500">Publicado há 1 dia</p>
-                                    </div>
-                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">
-                                        Ver job
-                                    </button>
-                                </div>
-                            </div>
-                        </article>
-
-                        <!-- Pagination -->
-                        <div class="mt-8 flex justify-center pb-12">
-                            <div class="flex items-center gap-2 bg-white rounded-lg p-1 shadow-sm border border-gray-200">
-                                <button class="p-2 text-gray-400 hover:text-black disabled:opacity-50" disabled>
-                                    <span class="material-symbols-outlined">chevron_left</span>
-                                </button>
-                                <button class="w-10 h-10 rounded-md bg-black text-white font-bold">1</button>
-                                <button class="w-10 h-10 rounded-md bg-transparent text-black hover:bg-gray-100 font-bold">2</button>
-                                <button class="w-10 h-10 rounded-md bg-transparent text-black hover:bg-gray-100 font-bold">3</button>
-                                <span class="px-2 text-gray-400">...</span>
-                                <button class="w-10 h-10 rounded-md bg-transparent text-black hover:bg-gray-100 font-bold">12</button>
-                                <button class="p-2 text-black hover:bg-gray-100 rounded-md">
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </button>
-                            </div>
-                        </div>
                     </section>
                 </div>
             </div>
         `;
 
-        // Template do Detalhe + Proposta (fica dentro da aba Trabalhos)
+        // Template: Detalhe do Trabalho (Ajustado o STICKY WRAPPER na coluna da direita)
         templates.trabalho_detalhe = `
           <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
             <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
@@ -796,6 +643,7 @@
               </div>
 
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Coluna Esquerda: Detalhes -->
                 <div class="lg:col-span-8 flex flex-col gap-6">
                   <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
                     <div class="pb-8">
@@ -810,30 +658,16 @@
                           <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
                           <span class="font-body-md text-body-md">Prazo: 15 dias</span>
                         </div>
-                        <div class="flex items-center gap-2">
-                          <span class="material-symbols-outlined text-[20px] opacity-70">bolt</span>
-                          <span class="font-body-md text-body-md font-bold text-green-600">Aberto a propostas</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                          <span class="material-symbols-outlined text-[20px] opacity-70">calendar_today</span>
-                          <span class="font-body-md text-body-md">Publicado há 2 horas</span>
-                        </div>
                       </div>
                     </div>
-
                     <hr class="border-gray-100"/>
-
                     <div class="py-8 flex flex-col gap-4">
                       <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
                       <div class="font-body-md text-gray-700 space-y-4 break-words">
-                        <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística, a "RápidaExpress", focada em entregas last-mile na grande Luanda.</p>
-                        <p>Precisamos de algo moderno, que transmita confiança, velocidade e inovação tecnológica. O design deve ser facilmente aplicável tanto em meios digitais (app, website) como físicos (uniformes, viaturas de entrega, embalagens).</p>
-                        <p>A entrega final deve incluir todos os ficheiros abertos e um manual de normas da marca detalhado.</p>
+                        <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
                       </div>
                     </div>
-
                     <hr class="border-gray-100"/>
-
                     <div class="py-8 flex flex-col gap-4">
                       <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
                       <ul class="flex flex-col gap-4 mt-2">
@@ -841,49 +675,7 @@
                           <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
                           <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
                         </li>
-                        <li class="flex items-start gap-3">
-                          <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                          <span class="font-body-md text-gray-700 break-words">Paleta de cores e tipografia institucional</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                          <span class="font-body-md text-gray-700 break-words">Design para cartões de visita e papel timbrado</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                          <span class="font-body-md text-gray-700 break-words">Mockups de aplicação em viatura (carrinha) e uniforme (t-shirt/boné)</span>
-                        </li>
-                        <li class="flex items-start gap-3">
-                          <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                          <span class="font-body-md text-gray-700 break-words">Manual de Normas da Marca (Brandbook em PDF)</span>
-                        </li>
                       </ul>
-                    </div>
-
-                    <hr class="border-gray-100"/>
-
-                    <div class="py-8 flex flex-col gap-4">
-                      <h2 class="font-headline-sm text-black">Competências necessárias</h2>
-                      <div class="flex flex-wrap gap-3 mt-2">
-                        <span class="px-4 py-2 bg-gray-100 border border-gray-300 rounded-full font-label-md text-black">Adobe Illustrator</span>
-                        <span class="px-4 py-2 bg-gray-100 border border-gray-300 rounded-full font-label-md text-black">Adobe Photoshop</span>
-                        <span class="px-4 py-2 bg-gray-100 border border-gray-300 rounded-full font-label-md text-black">Design de Identidade Visual</span>
-                        <span class="px-4 py-2 bg-gray-100 border border-gray-300 rounded-full font-label-md text-black">Branding</span>
-                        <span class="px-4 py-2 bg-gray-100 border border-gray-300 rounded-full font-label-md text-black">Design Gráfico</span>
-                      </div>
-                    </div>
-
-                    <hr class="border-gray-100"/>
-
-                    <div class="pt-8 flex flex-col gap-4">
-                      <h2 class="font-headline-sm text-black flex items-center gap-2">
-                        <span class="material-symbols-outlined text-orange-500">help</span> Perguntas de triagem
-                      </h2>
-                      <p class="font-body-md text-gray-700 mb-2">Terá de responder a estas perguntas ao enviar a sua proposta:</p>
-                      <div class="flex flex-col gap-5 pl-5 border-l-[3px] border-orange-300">
-                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes na área de transportes/logística?</p>
-                        <p class="font-body-md text-black font-semibold">2. Qual é a sua disponibilidade para eventuais reuniões presenciais em Luanda (Talatona)?</p>
-                      </div>
                     </div>
                   </div>
 
@@ -893,8 +685,8 @@
                         <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
                       </h2>
                     </div>
-
                     <div class="flex flex-col gap-6">
+                      <!-- Exemplo Proposta -->
                       <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
                         <div class="flex justify-between items-start">
                           <div class="flex items-center gap-4">
@@ -904,163 +696,94 @@
                                 <p class="font-label-md font-bold text-black">Mário Costa</p>
                                 <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
                               </div>
-                              <p class="text-xs text-gray-600">+120 trabalhos realizados</p>
-                              <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior &amp; Branding Specialist</p>
+                              <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
                             </div>
                           </div>
                           <div class="text-right">
                             <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
-                            <p class="text-xs text-gray-500">em 5 dias</p>
                           </div>
                         </div>
-
-                        <div class="font-body-sm text-gray-600 line-clamp-3">
-                          Olá! Tenho mais de 5 anos de experiência em criação de marcas para o setor de logística. Já trabalhei com 3 empresas similares em Luanda e entendo perfeitamente o conceito de last-mile delivery que vocês procuram...
-                        </div>
-
+                        <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
                         <div class="flex justify-between items-center pt-2">
-                          <span class="inline-flex items-center gap-1 bg-red-50 text-red-600 text-[10px] font-bold px-2 py-1 rounded-full">
-                            <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> Multicaixa
-                          </span>
-                          <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">
-                            Ver perfil
-                          </button>
+                          <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
                         </div>
                       </div>
-
-                      <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
-                        <div class="flex justify-between items-start">
-                          <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">AN</div>
-                            <div class="flex flex-col">
-                              <div class="flex items-center gap-2">
-                                <p class="font-label-md font-bold text-black">Ana Nvunda</p>
-                                <span class="text-yellow-600 text-sm font-bold">⭐ 5.0</span>
-                              </div>
-                              <p class="text-xs text-gray-600">+45 trabalhos realizados</p>
-                              <p class="font-label-sm text-gray-700 font-bold mt-1">Especialista em Identidade Visual</p>
-                            </div>
-                          </div>
-                          <div class="text-right">
-                            <p class="font-headline-sm text-black font-bold">65.000 Kz</p>
-                            <p class="text-xs text-gray-500">em 7 dias</p>
-                          </div>
-                        </div>
-
-                        <div class="font-body-sm text-gray-600 line-clamp-3">
-                          Bom dia. O vosso projeto é extremamente interessante. Meu foco é criar sistemas visuais que sejam escaláveis e digitais-primeiro. Posso entregar os mockups de fardas e viaturas com alta fidelidade...
-                        </div>
-
-                        <div class="flex justify-between items-center pt-2">
-                          <span class="inline-flex items-center gap-1 bg-red-50 text-red-600 text-[10px] font-bold px-2 py-1 rounded-full">
-                            <span class="w-1.5 h-1.5 bg-red-600 rounded-full"></span> Multicaixa
-                          </span>
-                          <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">
-                            Ver perfil
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="flex justify-center mt-4">
-                      <a class="font-label-md text-black font-bold hover:underline flex items-center gap-2" href="#">
-                        Ver todas as 8 propostas <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
-                      </a>
                     </div>
                   </div>
                 </div>
 
-                <div class="lg:col-span-4 flex flex-col gap-6">
-                  <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6 sticky top-24">
-                    <div class="flex flex-col gap-1">
-                      <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
-                      <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
-                    </div>
-
-                    <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
-                      <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
-                        <span class="font-bold text-[20px]">42</span>
+                <!-- Coluna Direita: Sticky Sidebar Corrigida -->
+                <div class="lg:col-span-4">
+                  <!-- Wrapper Sticky que fixa TODO o conteúdo da direita ao rolar -->
+                  <div class="sticky top-24 flex flex-col gap-6">
+                    
+                    <!-- Card de Acão / Enviar Proposta -->
+                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
+                      <div class="flex flex-col gap-1">
+                        <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
+                        <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
                       </div>
-                      <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Propostas</span>
-                        <span class="font-bold text-[20px]">8</span>
-                      </div>
-                      <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
-                        <span class="font-bold text-[20px]">1</span>
-                      </div>
-                    </div>
 
-                    <div class="flex flex-col gap-4 mt-2">
-                      <button class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center">
-                        Enviar Proposta
-                      </button>
-                      <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
-                        <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
-                      </button>
-                    </div>
-                  </div>
+                      <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
+                        <div class="flex flex-col items-center gap-2">
+                          <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
+                          <span class="font-bold text-[20px]">42</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                          <span class="text-gray-600 text-[12px] text-center">Propostas</span>
+                          <span class="font-bold text-[20px]">8</span>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                          <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
+                          <span class="font-bold text-[20px]">1</span>
+                        </div>
+                      </div>
 
-                  <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                    <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
-                    <div class="flex items-center gap-4 mb-2">
-                      <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
-                      <div>
-                        <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
-                        <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
-                          <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
-                        </p>
+                      <div class="flex flex-col gap-4 mt-2">
+                        <button class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center">
+                          Enviar Proposta
+                        </button>
+                        <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+                          <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
+                        </button>
                       </div>
                     </div>
 
-                    <div class="flex flex-col gap-4 mt-4">
-                      <div class="flex justify-between font-label-sm text-black">
-                        <span class="text-gray-600">Trabalhos publicados</span>
-                        <span class="font-bold">5</span>
+                    <!-- Card Info Cliente -->
+                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                      <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
+                      <div class="flex items-center gap-4 mb-2">
+                        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
+                        <div>
+                          <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
+                          <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
+                            <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
+                          </p>
+                        </div>
                       </div>
-
-                      <div class="flex flex-col gap-2">
+                      <div class="flex flex-col gap-4 mt-4">
                         <div class="flex justify-between font-label-sm text-black">
-                          <span class="text-gray-600">Taxa de contratação</span>
-                          <span class="font-bold">80%</span>
+                          <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
                         </div>
-                        <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
-                          <div class="bg-green-500 h-full w-[80%]"></div>
+                        <div class="flex justify-between font-label-sm text-black mt-2">
+                          <span class="text-gray-600">Avaliação Média</span>
+                          <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
                         </div>
-                      </div>
-
-                      <div class="flex justify-between font-label-sm text-black mt-2">
-                        <span class="text-gray-600">Avaliação Média</span>
-                        <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
-                      </div>
-
-                      <div class="flex justify-between font-label-sm text-black">
-                        <span class="text-gray-600">Membro desde</span>
-                        <span class="font-bold">Mai 2023</span>
                       </div>
                     </div>
-                  </div>
 
-                  <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                    <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
-                    <div class="flex flex-col gap-5">
-                      <a class="group flex flex-col gap-1" href="#">
-                        <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
-                        <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
-                      </a>
-                      <div class="border-t border-gray-200"></div>
-                      <a class="group flex flex-col gap-1" href="#">
-                        <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Logo e cartões de visita para Advogado</p>
-                        <p class="font-label-sm text-gray-500">KZS 25.000,00 • Há 4 dias</p>
-                      </a>
-                      <div class="border-t border-gray-200"></div>
-                      <a class="group flex flex-col gap-1" href="#">
-                        <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Design de Embalagem para Produto Alimentar</p>
-                        <p class="font-label-sm text-gray-500">KZS 50.000,00 • Há 1 semana</p>
-                      </a>
+                    <!-- Trabalhos Semelhantes -->
+                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                      <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
+                      <div class="flex flex-col gap-5">
+                        <a class="group flex flex-col gap-1" href="#">
+                          <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
+                          <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
+                        </a>
+                      </div>
                     </div>
-                  </div>
+
+                  </div> <!-- Fim Wrapper Sticky -->
                 </div>
               </div>
             </div>
@@ -1070,10 +793,8 @@
         function setActiveLink(route) {
             links.forEach(a => {
                 const isActive = a.dataset.route === route;
-
                 a.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
                 a.classList.add('text-on-primary-container');
-
                 if (isActive) {
                     a.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
                     a.classList.remove('text-on-primary-container');
@@ -1083,10 +804,8 @@
 
         function render(route, push = true, opts = {}) {
             if (!templates[route]) route = 'inicio';
-
             spaView.innerHTML = templates[route];
 
-            // mantém destaque na aba Trabalhos mesmo quando estiver no detalhe
             const activeMenuRoute = opts.activeMenuRoute || route;
             setActiveLink(activeMenuRoute);
 
@@ -1103,7 +822,6 @@
                 document.title = 'Skilla - Dashboard do Freelancer';
             }
 
-            // bind: abrir detalhe
             if (route === 'trabalhos') {
                 spaView.querySelectorAll('[data-open-job]').forEach(btn => {
                     btn.addEventListener('click', (e) => {
@@ -1113,7 +831,6 @@
                 });
             }
 
-            // bind: voltar ao feed
             if (route === 'trabalho_detalhe') {
                 const back = spaView.querySelector('[data-back-to-feed]');
                 if (back) {
@@ -1124,6 +841,15 @@
                 }
             }
         }
+
+        // Delegação de eventos globais para o SPA view (para lidar com o botão do Início)
+        spaView.addEventListener('click', (e) => {
+            const btnExplorar = e.target.closest('#btn-explorar-trabalhos');
+            if (btnExplorar) {
+                e.preventDefault();
+                render('trabalhos', true);
+            }
+        });
 
         links.forEach(a => {
             a.addEventListener('click', (e) => {
