@@ -7,11 +7,6 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 
 class DashboardController extends Controller
 {
-    public function __construct()
-    {
-        // Garante que só usuários autenticados acessem
-        $this->middleware('auth.jwt');
-    }
 
     public function freelancer()
     {
