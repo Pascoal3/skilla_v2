@@ -181,7 +181,7 @@ class AuthController extends Controller
         return $response->cookie(
             'jwt_token',
             $token,
-            1440, // 24h
+            1440,
             '/',
             null,
             false,
