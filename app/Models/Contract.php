@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contract extends Model {
     use HasUuid;
-    protected $table = 'contratos';
+    protected $table = 'Contracts';
     protected $fillable = [
         'trabalho_id', 'proposta_id', 'cliente_id', 'freelancer_id', 
-        'status_contrato', 'valor_acordado', 'comissao_plataforma', 
+        'status_Contract', 'valor_acordado', 'comissao_plataforma', 
         'valor_freelancer', 'dias_entrega', 'data_limite', 'status_pagamento'
     ];
 
