@@ -154,10 +154,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('STATUS:', response.status);
 
+    const data = await response.json();
+
 console.log('RESPONSE DATA:', data);
 
 if (response.ok) {
-    const data = await response.json();
 
     toggleLoading(false);
 
