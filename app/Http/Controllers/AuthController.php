@@ -187,7 +187,7 @@ class AuthController extends Controller
             false,
             true,
             false,
-            'Strict'
+            'Lax'
         );
 
     } catch (\Exception $e) {

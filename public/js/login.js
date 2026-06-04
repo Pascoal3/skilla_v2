@@ -141,15 +141,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     try {
     const response = await fetch('/login', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest'
-        }
+    method: 'POST',
+    body: formData,
+    credentials: 'same-origin',
+    headers: {
+        'Accept': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content
+    }
     });
     toggleLoading(false);
-    
+
     console.log('STATUS:', response.status);
 
     const text = await response.text();

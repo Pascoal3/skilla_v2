@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const response = await fetch('/registar', {
             method: 'POST',
             body: formData,
+            credentials: 'same-origin',
             headers: {
               'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
               'Accept': 'application/json',
