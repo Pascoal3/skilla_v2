@@ -25,8 +25,8 @@ Route::get('/login', fn () => view('registar.tela_login'))
 Route::get('/registar/cliente', fn () => view('registar.cliente'))
     ->name('registar.cliente');
 
-Route::get('/registar/freelancer', fn () => view('registar.freelancer'))
-    ->name('registar.freelancer');
+Route::get('/registar/freelancer', fn () => view('registar.freela'))
+    ->name('registar.freela');
 
 /*
 |--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ Route::post('/refresh-token', [AuthController::class, 'refresh'])->name('refresh
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['jwt.auth', 'role:cliente'])->group(function () {
+Route::middleware(['jwt.cookie', 'role:cliente'])->group(function () {
 
     Route::get('/painel/cliente', [DashboardController::class, 'cliente'])
         ->name('painel.cliente');
@@ -68,7 +68,7 @@ Route::middleware(['jwt.auth', 'role:cliente'])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['jwt.auth', 'role:freelancer'])->group(function () {
+Route::middleware(['jwt.cookie', 'role:freelancer'])->group(function () {
 
     Route::get('/painel/freelancer', [DashboardController::class, 'freelancer'])
         ->name('painel.freelancer');

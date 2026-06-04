@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const data = await response.json();
+const data = await response.json().catch(() => ({}));
 
 if (response.ok) {
     toggleLoading(false);
@@ -160,10 +160,9 @@ if (response.ok) {
         window.location.href = data.redirect;
     }, 1200);
 } else {
+    showGlobalError(data.message || 'Erro ao iniciar sessÃ£o.');
     console.log('STATUS:', response.status);
-console.log('HEADERS:', response.headers);
-const text = await response.text();
-console.log('RAW RESPONSE:', text);
+    console.log('RESPONSE DATA:', data);
 }
     toggleLoading(false);
 

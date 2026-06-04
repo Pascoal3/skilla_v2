@@ -208,27 +208,21 @@ document.addEventListener('DOMContentLoaded', function() {
       toggleLoading(true);
 
        try {
-        const response = await fetch('/login', {
-    method: 'POST',
-    body: formData,
-    credentials: 'same-origin',
-    headers: {
-        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
-        'Accept': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-    }
-});
-
-const data = await response.json();
-
-if (response.ok) {
-    window.location.href = data.redirect;
-} else {
-    showGlobalError(data.message);
-}
+        const response = await fetch('/registar', {
+            method: 'POST',
+            body: formData,
+            credentials: 'include',
+            headers: {
+              'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.content || '',
+              'Accept': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+            }
+        });
 
         // --- A CORREÇÃO ESTÁ AQUI: Lê o JSON apenas UMA VEZ ---
         const data = await response.json(); 
+
+        localStorage.setItem('token', data.token);
 
         if (response.ok) {
             // SUCESSO

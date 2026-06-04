@@ -1,58 +1,55 @@
 <?php
 
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
 class DashboardController extends Controller
 {
-    // VIEW (página HTML)
     public function freelancer(Request $request)
     {
-        $user = $request->user();
-        return view('painel.painel_freelancer', compact('user'));
+        return view('painel.painel_freelancer', [
+            'user' => $request->user(),
+        ]);
     }
 
     public function cliente(Request $request)
     {
-        $user = $request->user();
-        return view('painel.painel_cliente', compact('user'));
+        return view('painel.painel_cliente', [
+            'user' => $request->user(),
+        ]);
     }
 
-    // API (dados JSON para o frontend)
     public function freelancerData(Request $request)
     {
-        $token = $request->cookie('jwt_token');
-
-        if (!$token) {
-            return response()->json(['error' => 'Token não fornecido'], 401);
-        }
-
-        $user = \Tymon\JWTAuth\Facades\JWTAuth::setToken($token)->authenticate();
-
-        if (!$user || $user->funcao !== 'freelancer') {
-            return response()->json(['error' => 'Não autorizado'], 403);
-        }
+        $user = $request->user();
 
         return response()->json([
-            'user' => $user,
-            'metrics' => []
+            'user' => $this->userPayload($user),
+            'metrics' => [],
         ]);
     }
 
     public function clienteData(Request $request)
     {
-        $token = $request->cookie('jwt_token');
-
-        if (!$token) {
-            return response()->json(['error' => 'Token não fornecido'], 401);
-        }
-
-        $user = \Tymon\JWTAuth\Facades\JWTAuth::setToken($token)->authenticate();
-
-        if (!$user || $user->funcao !== 'cliente') {
-            return response()->json(['error' => 'Não autorizado'], 403);
-        }
+        $user = $request->user();
 
         return response()->json([
-            'user' => $user,
-            'metrics' => []
+            'user' => $this->userPayload($user),
+            'metrics' => [],
         ]);
+    }
+
+    private function userPayload($user): array
+    {
+        return [
+            'id' => $user->id,
+            'primeiro_nome' => $user->primeiro_nome,
+            'sobrenome' => $user->sobrenome,
+            'email' => $user->email,
+            'funcao' => $user->funcao,
+            'nome_usuario' => $user->nome_usuario,
+            'url_avatar' => $user->url_avatar,
+        ];
     }
 }
