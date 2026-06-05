@@ -754,6 +754,148 @@
 </div>
         `;
 
+        // ============================
+        // Template: Carteira > Pedir saque
+        // ============================
+        templates.carteira_pedir_saque = `
+<div id="view-carteira-pedir-saque" class="bg-[#D4FF00] min-h-screen flex flex-col items-center">
+  <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
+
+    <!-- Breadcrumb -->
+    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+      <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+      <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+      <span>Pedir saque</span>
+    </div>
+
+    <!-- Top mini header com voltar -->
+    <div class="flex items-center gap-3">
+      <button data-wallet-back class="p-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-black/10" type="button">
+        <span class="material-symbols-outlined text-black">arrow_back</span>
+      </button>
+      <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Pedir saque</h2>
+    </div>
+
+    <!-- Card Saldo -->
+    <div class="bg-white border border-black/10 rounded-xl p-6" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+      <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#444444] uppercase mb-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível</p>
+      <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</h2>
+    </div>
+
+    <!-- Seção Valor -->
+    <div class="space-y-3">
+      <div class="flex justify-between items-end">
+        <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">VALOR A SACAR</label>
+        <button data-withdraw-fill-all class="text-[14px] leading-[20px] tracking-[0.05em] text-black hover:underline transition-all font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Tudo</button>
+      </div>
+      <div class="relative group">
+        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-black/60" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Kz</span>
+        <input class="w-full bg-white border-2 border-black rounded-lg py-4 pl-12 pr-4 text-[24px] leading-[32px] font-semibold text-black focus:ring-0 transition-all"
+               id="withdraw-input" placeholder="0" type="number" style="font-family: Sora, ui-sans-serif, system-ui;">
+      </div>
+      <p class="text-[12px] leading-[16px] text-black/70 flex items-center gap-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+        <span class="material-symbols-outlined text-[14px]">info</span>
+        Mínimo 5 000 Kz
+      </p>
+    </div>
+
+    <!-- Seção IBAN -->
+    <div class="space-y-3">
+      <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN CADASTRADO</label>
+      <div class="bg-white border border-black/10 rounded-xl p-4 flex flex-col gap-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+        <div class="flex items-start justify-between">
+          <div class="flex gap-3">
+            <span class="material-symbols-outlined text-black">account_balance</span>
+            <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black break-all font-medium" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+              AO06 1234 5678 9012 3456 7890 1
+            </span>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                  style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Editar</button>
+          <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                  style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Trocar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Resumo -->
+    <div class="bg-white border border-black/10 rounded-xl p-5 space-y-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+      <div class="flex justify-between items-center border-b border-black/10 pb-3">
+        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Valor a sacar</span>
+        <span data-withdraw-summary-value class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">0 Kz</span>
+      </div>
+      <div class="flex justify-between items-center border-b border-black/10 pb-3">
+        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Taxa de serviço</span>
+        <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Grátis</span>
+      </div>
+      <div class="flex justify-between items-center pt-1">
+        <span class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Total a receber</span>
+        <span data-withdraw-summary-total class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">0 Kz</span>
+      </div>
+      <div class="flex items-center justify-between bg-black/5 p-3 rounded-lg mt-2">
+        <div class="flex flex-col">
+          <span class="text-[10px] uppercase text-[#444444]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Destino</span>
+          <span class="text-[12px] text-black font-medium truncate max-w-[200px]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">AO06...7890 1</span>
+        </div>
+        <button class="material-symbols-outlined text-black hover:opacity-70 transition-colors" type="button">content_copy</button>
+      </div>
+    </div>
+
+    <!-- Aviso -->
+    <div class="flex gap-3 bg-white border-2 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+      <span class="material-symbols-outlined text-black">warning</span>
+      <p class="text-[13px] leading-relaxed text-black font-medium" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+        Ao confirmar, o valor será transferido para o IBAN indicado. Esta ação não pode ser desfeita.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <button class="w-full bg-black text-[#D4FF00] text-[18px] py-4 rounded-xl font-bold shadow-xl hover:brightness-125 active:scale-[0.98] transition-all border-2 border-black"
+            style="font-family: Sora, ui-sans-serif, system-ui;" type="button">
+      Confirmar saque
+    </button>
+
+    <!-- Saques recentes -->
+    <div class="pt-8 space-y-4">
+      <h3 class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">SAQUES RECENTES</h3>
+      <div class="space-y-2">
+
+        <!-- Item 1 -->
+        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center">
+              <span class="material-symbols-outlined text-black">pending</span>
+            </div>
+            <div>
+              <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">50 000 Kz</p>
+              <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 Mar, 2024</p>
+            </div>
+          </div>
+          <span class="px-2 py-1 rounded bg-black/5 text-black text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pendente</span>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black">
+              <span class="material-symbols-outlined">check_circle</span>
+            </div>
+            <div>
+              <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">25 000 Kz</p>
+              <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">05 Mar, 2024</p>
+            </div>
+          </div>
+          <span class="px-2 py-1 rounded bg-black text-[#D4FF00] text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Concluído</span>
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+        `;
+
         // Template: Feed de Trabalhos
         templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20">
@@ -1150,6 +1292,8 @@
                 document.title = 'Skilla - A Minha Carteira';
             } else if (route === 'carteira_carregar_saldo') {
                 document.title = 'Skilla - Carregar saldo';
+            } else if (route === 'carteira_pedir_saque') {
+                document.title = 'Skilla - Pedir saque';
             } else {
                 document.title = 'Skilla - Dashboard do Freelancer';
             }
@@ -1185,7 +1329,12 @@
                             return;
                         }
 
-                        // próximos: ver-extrato, pedir-saque, comprar-creditos, extrato-creditos
+                        if (action === 'pedir-saque') {
+                            render('carteira_pedir_saque', true, { activeMenuRoute: 'carteira', hash: 'carteira/pedir-saque' });
+                            return;
+                        }
+
+                        // próximos: ver-extrato, comprar-creditos, extrato-creditos
                         console.log('wallet action:', action);
                     });
                 });
@@ -1237,11 +1386,52 @@
 
                 if (btnGoExtrato) {
                     btnGoExtrato.addEventListener('click', () => {
-                        // quando integrares a tela "Ver extrato", eu vou trocar isto para render('carteira_extrato', ...)
                         walletSetModalOpen(successModal, false);
-                        // fallback por enquanto: volta para carteira
                         render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
                     });
+                }
+            }
+
+            // Eventos da subview Pedir Saque
+            if (route === 'carteira_pedir_saque') {
+                const backBtn = spaView.querySelector('[data-wallet-back]');
+                if (backBtn) {
+                    backBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
+                    });
+                }
+
+                const input = spaView.querySelector('#withdraw-input');
+                const btnAll = spaView.querySelector('[data-withdraw-fill-all]');
+                const valSacarEl = spaView.querySelector('[data-withdraw-summary-value]');
+                const totalEl = spaView.querySelector('[data-withdraw-summary-total]');
+
+                function formatAO(n) {
+                    try {
+                        return new Intl.NumberFormat('pt-AO').format(n).replace(',', ' ');
+                    } catch {
+                        return String(n);
+                    }
+                }
+
+                function updateSummary(val) {
+                    const num = val ? Number(val) : 0;
+                    const formatted = num ? `${formatAO(num)} Kz` : '0 Kz';
+                    if (valSacarEl) valSacarEl.textContent = formatted;
+                    if (totalEl) totalEl.textContent = formatted;
+                }
+
+                if (btnAll && input) {
+                    btnAll.addEventListener('click', () => {
+                        input.value = '125000';
+                        updateSummary(input.value);
+                        input.dispatchEvent(new Event('input', { bubbles: true }));
+                    });
+                }
+
+                if (input) {
+                    input.addEventListener('input', (e) => updateSummary(e.target.value));
                 }
             }
         }
