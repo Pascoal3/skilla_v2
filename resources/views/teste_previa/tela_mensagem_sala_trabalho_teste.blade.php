@@ -219,7 +219,7 @@
           <div
             class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-label-sm text-label-sm text-gray-600 text-center max-w-md shadow-sm"
           >
-            O contrato foi iniciado. Podes usar esta sala para comunicar e enviar ficheiros.
+            O contrato foi iniciado. Pode usar esta sala para comunicar e enviar ficheiros.
           </div>
         </div>
 
