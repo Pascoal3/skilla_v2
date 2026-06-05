@@ -406,17 +406,9 @@
     </nav>
 
     <!-- MODAL: Entregar trabalho (inicialmente escondido) -->
-    <div
-      id="deliverModal"
-      class="fixed inset-0 bg-black/70 backdrop-blur-[4px] z-[60] hidden items-center justify-center p-4"
-      role="dialog"
-      aria-modal="true"
-      aria-hidden="true"
-    >
+    <div id="deliverModal" class="fixed inset-0 bg-black/70 backdrop-blur-[4px] z-[60] hidden items-center justify-center p-4 overflow-y-auto">
       <!-- Modal Container -->
-      <div
-        class="bg-white text-black w-full max-w-[560px] rounded-modal border-[2px] border-black modal-shadow flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300"
-      >
+      <div class="bg-white text-black w-full max-w-[560px] my-8 rounded-modal border-[2px] border-black modal-shadow flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300 max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] min-h-0">
         <!-- Header -->
         <div class="px-8 pt-8 pb-6 flex justify-between items-start">
           <div>
@@ -434,7 +426,7 @@
         </div>
 
         <!-- Modal Content -->
-        <div class="px-8 flex-1 overflow-y-auto custom-scrollbar space-y-8 pb-8">
+        <div class="px-8 flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-8 pb-8">
           <div class="space-y-3">
             <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">NOTAS DA ENTREGA (OPCIONAL)</label>
             <textarea
