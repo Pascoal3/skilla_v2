@@ -131,7 +131,7 @@
 <!-- Inbox List -->
 <div class="flex flex-col gap-3">
 <!-- Unread Item 1 -->
-<div class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
+<div data-open-chat class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
 <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
 <img class="w-12 h-12 rounded-full object-cover bg-secondary" data-alt="A professional headshot of a graphic designer smiling in a bright, modern studio space. High-key lighting, vibrant colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8IpAPjEGC61SjgTvvLluR4_zqfrAtVfAG1nLoA4Zfx42cFBApbVfnCNatWg3ZgQ0Jy8EishspWdM6L54qGXtImKfZ4cAZgqNARagAMjsXuDzjs5s0UknIkMd8YEcZitS42-zQT0iImQOmju6A4mMNUhZxtlKyVqIeamyLUd4xbTGqpD0JfTOLgJkG8RytvVO78wDhUJ2DQZRZFdKCi8T25VinDqtC4RvyqDfOm2dKaKtGUraovX8BShqlw66lqyfhBMTq7PA27tw"/>
 <div class="flex-1 min-w-0">
@@ -144,7 +144,7 @@
 </div>
 </div>
 <!-- Unread Item 2 -->
-<div class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
+<div data-open-chat class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
 <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
 <div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
 <span class="material-symbols-outlined">storefront</span>
@@ -159,7 +159,7 @@
 </div>
 </div>
 <!-- Read Item 1 -->
-<div class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
+<div data-open-chat class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
 <img class="w-12 h-12 rounded-full object-cover bg-secondary" data-alt="A portrait of a creative director in a stylish office, warm lighting, approachable demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9p5NtQ7f1wLUB5hoOGxrkk54JWkNOfzMOuEnGvgLaR7mdRj6Gb1K6xhI5rUri7CGqnrkPi8fS2eqGVhRGW5BLPQcBFh7VLnFGgK_w3_I78Tf_Qrk63_0Kz-MQMDu1XDzIUn32k7tsQuVVbKOBj9lDaI0bq3uQnk5MzDQYDFEVAtRCgfiolFx9NZPS7kATHEoODg-qEOBcyRhgX4vjp9VLNnFcSHuZL4cF77YCcaNMW_Bq-QbYaTbaCtUjBhkfpq6qPzAMoRLgo5M"/>
 <div class="flex-1 min-w-0">
 <h3 class="text-body-lg font-body-lg text-on-tertiary truncate">Identidade Visual Barber Shop</h3>
@@ -183,7 +183,7 @@
 </div>
 </div>
 <!-- Read Item 3 -->
-<div class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
+<div data-open-chat class="bg-tertiary rounded-xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
 <div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
 <span class="material-symbols-outlined">shopping_cart</span>
 </div>

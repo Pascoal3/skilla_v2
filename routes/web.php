@@ -44,6 +44,10 @@ Route::get('tela_mensaem_inbox/teste', fn () =>
     view('teste_previa.tela_mensagem_inbox')
 )->name('tela.mensagem.inbox.teste');
 
+Route::get('/painel/cliente/teste3', fn () =>
+    view('teste_previa.painel_cliente_teste')
+)->name('painel.cliente.teste');
+
 Route::get('/painel/freelancer/teste2', fn () =>
     view('painel.painel_freela_teste')
 )->name('painel.freelancer.teste');
