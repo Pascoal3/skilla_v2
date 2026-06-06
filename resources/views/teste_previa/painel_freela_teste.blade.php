@@ -744,20 +744,6 @@
                 </div>
                 </div>
 
-                <!-- Top Bar -->
-                <header class="h-16 px-4 md:px-[40px] flex items-center justify-between bg-white border-b border-black/5 sticky top-0 z-40 mt-4">
-                <div class="flex items-center gap-4">
-                    <button data-wallet-back class="p-2 hover:bg-gray-100 rounded-full transition-colors" type="button">
-                    <span class="material-symbols-outlined text-[#2F5BFF]">arrow_back</span>
-                    </button>
-                    <h2 class="text-[24px] leading-[32px] font-bold text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Carregar saldo</h2>
-                </div>
-                <div class="flex items-center gap-4">
-                    <span class="material-symbols-outlined text-gray-600 cursor-pointer hover:text-black">help</span>
-                    <span class="material-symbols-outlined text-gray-600 cursor-pointer hover:text-black">notifications</span>
-                </div>
-                </header>
-
                 <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] py-12 space-y-6">
 
                 <!-- 1. ENTRADA DE VALOR -->
@@ -1294,21 +1280,7 @@
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20">
                 <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 md:top-0 z-30 bg-[#CCFF00] shadow-sm">
                     <div class="max-w-[1280px] mx-auto">
-                        <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6 relative">
-                            <div class="relative w-full md:w-2/3 lg:w-1/2">
-                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-black">search</span>
-                                <input class="w-full pl-12 pr-4 py-4 rounded-xl border-none bg-white text-black placeholder-gray-500 focus:ring-2 focus:ring-[#FF5722] shadow-lg"
-                                       placeholder="Pesquisar projetos, clientes..." type="text"/>
-                            </div>
-                            <div class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-4">
-                                <button class="text-black relative">
-                                    <span class="material-symbols-outlined text-[28px]">notifications</span>
-                                    <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-[#CCFF00]"></span>
-                                </button>
-                                <img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-black"
-                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW051IkCVwLFK9Tx3xVu29WDoujSMURXPmh6Hy7uFVJZqYQ6KNnDaijrEEgByYpjxH6JmaDF6td5gbblRtBnKEsWtM_u7myuUdYQKUuguLh3qMwKvmXjIkU-SG-KdhbCa6NElskQOcZtpXWG_99K3W3quDymbulYEvBCv0e_AYkhYwYIPXNkntXs3Jo1u0YvbQx-Am0z37TByPGEL0HHGCtJ-Ss7jeZBho7bX6LSFEdnR2f7f7sBUsiXESe9FmoomzY1ZrqkIkGd8"/>
-                            </div>
-                        </div>
+                        
                         <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide no-scrollbar">
                             <button class="px-5 py-2 rounded-full bg-black text-[#D4FF00] font-bold whitespace-nowrap shadow-sm border border-black">Todos</button>
                             <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Design</button>
@@ -1384,7 +1356,7 @@
 
                     <section class="w-full lg:w-3/4 flex flex-col gap-5">
                         <div class="flex justify-between items-center bg-white/50 backdrop-blur-sm p-4 rounded-xl border border-white/40">
-                            <p class="text-[16px] leading-[24px] font-medium text-black"><span class="font-bold">246</span> projetos encontrados</p>
+                            <p class="text-[16px] leading-[24px] font-medium text-black"><span class="font-bold">2</span> projetos encontrados</p>
                             <div class="flex items-center gap-2">
                                 <span class="text-[12px] leading-[16px] font-medium text-gray-700">Ordenar por:</span>
                                 <select class="bg-white border-none rounded-lg text-black font-medium text-[12px] leading-[16px] focus:ring-0 py-2 pl-3 pr-8 shadow-sm cursor-pointer">
@@ -1483,15 +1455,12 @@
           <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
             <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
               <div class="flex flex-col gap-2">
-                <a data-back-to-feed class="inline-flex items-center gap-2 font-label-md text-label-md text-black hover:opacity-70 transition-opacity font-bold" href="#">
-                  <span class="material-symbols-outlined text-[18px]">arrow_back</span> Voltar ao feed
-                </a>
-                <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                  <a class="hover:underline" href="#">Início</a> &gt;
-                  <a class="hover:underline" href="#">Jobs</a> &gt;
-                  <a class="hover:underline" href="#">Design Gráfico</a> &gt;
-                  <span>Identidade Visual</span>
-                </div>
+                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
+                        <a class="hover:underline" href="#">Início</a> &gt;
+                        <a class="hover:underline" href="#">Jobs</a> &gt;
+                        <a class="hover:underline" href="#">Design Gráfico</a> &gt;
+                        <span>Identidade Visual</span>
+                    </div>
               </div>
 
               <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">

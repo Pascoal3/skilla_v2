@@ -443,19 +443,8 @@
                 <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 md:top-0 z-30 bg-[#CCFF00] shadow-sm">
                     <div class="max-w-[1280px] mx-auto">
                         <div class="flex flex-col md:flex-row gap-4 items-center justify-center mb-6 relative">
-                            <div class="relative w-full md:w-2/3 lg:w-1/2">
-                                <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-black">search</span>
-                                <input class="w-full pl-12 pr-4 py-4 rounded-xl border-none bg-white text-black placeholder-gray-500 focus:ring-2 focus:ring-[#FF5722] shadow-lg"
-                                       placeholder="Pesquisar projetos, clientes..." type="text"/>
-                            </div>
-                            <div class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 items-center gap-4">
-                                <button class="text-black relative">
-                                    <span class="material-symbols-outlined text-[28px]">notifications</span>
-                                    <span class="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-[#CCFF00]"></span>
-                                </button>
-                                <img alt="User avatar" class="w-10 h-10 rounded-full border-2 border-black"
-                                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW051IkCVwLFK9Tx3xVu29WDoujSMURXPmh6Hy7uFVJZqYQ6KNnDaijrEEgByYpjxH6JmaDF6td5gbblRtBnKEsWtM_u7myuUdYQKUuguLh3qMwKvmXjIkU-SG-KdhbCa6NElskQOcZtpXWG_99K3W3quDymbulYEvBCv0e_AYkhYwYIPXNkntXs3Jo1u0YvbQx-Am0z37TByPGEL0HHGCtJ-Ss7jeZBho7bX6LSFEdnR2f7f7sBUsiXESe9FmoomzY1ZrqkIkGd8"/>
-                            </div>
+                            
+                        
                         </div>
                         <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide no-scrollbar">
                             <button class="px-5 py-2 rounded-full bg-black text-[#D4FF00] font-bold whitespace-nowrap shadow-sm border border-black">Todos</button>

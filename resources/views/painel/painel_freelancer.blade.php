@@ -8,7 +8,7 @@
     <meta name="user-id" content="{{ auth()->id() }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     
-    <title>Skilla - Dashboard do Freelancer</title>
+    <title>Skilla - Painel de Freelancer</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
