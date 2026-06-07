@@ -303,7 +303,7 @@
 
     <div class="mt-auto pt-6">
         
-        <button  class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
+        <button data-route="carteira_comprar_creditos" class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
             Comprar Créditos
         </button>
         <div class="flex flex-col gap-2 mt-4 px-2">
@@ -492,7 +492,7 @@
                         <h3 class="font-headline-sm text-headline-sm text-black-pure px-2">Propostas</h3>
                         <div class="glass-card p-6 hard-shadow h-full flex flex-col">
                             <div class="flex-1 flex flex-col gap-4 mb-6" id="recent-proposals-container"></div>
-                            <button class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
+                            <button data-spa-link data-route="propostas" class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
                                 Ver Todas as Propostas
                             </button>
                         </div>
@@ -503,7 +503,7 @@
                 <div class="flex flex-col gap-6 mt-8">
                     <h3 class="font-headline-md text-headline-md text-black-pure">
                         Jobs Recomendados para Si
-                        <a class="float-right text-black-pure text-sm font-bold underline" href="#">Ver todos</a>
+                        <a class="float-right text-black-pure text-sm font-bold underline" data-spa-link data-route="trabalhos" href="#trabalhos">Ver todos</a>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="recommended-jobs-container"></div>
                 </div>
@@ -516,7 +516,7 @@
 
                     <!-- Skeleton path -->
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
                     <span>Minha carteira</span>
                     </div>
 
@@ -649,8 +649,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-3">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Comprar créditos</span>
                     </div>
 
@@ -782,8 +782,8 @@
                     <!-- Breadcrumb -->
                     <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] pt-6">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Carregar saldo</span>
                     </div>
                     </div>
@@ -935,8 +935,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-3 mb-8">
                         <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Extrato de créditos</span>
                         </div>
 
@@ -1112,8 +1112,8 @@
 
                     <!-- Breadcrumb -->
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                     <span>Pedir saque</span>
                     </div>
 
@@ -1253,8 +1253,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-4 mb-8">
                         <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Extrato</span>
                         </div>
 
@@ -1670,10 +1670,9 @@
                 <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
                 <div class="flex flex-col gap-2">
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#">Início</a> &gt;
-                    <a class="hover:underline" href="#">Trabalhos</a> &gt;
-                    <a class="hover:underline" href="#">Design Gráfico</a> &gt;
-                    <span>Identidade Visual</span>
+                    <a class="hover:underline" data-spa-link data-route="inicio" href="#inicio">Início</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="trabalhos" href="#trabalhos">Trabalhos</a> &gt;
+                    <span>Detalhe do Trabalho</span>
                     </div>
                 </div>
 
@@ -2178,10 +2177,10 @@
 
                         <!-- Voltar -->
                         <div class="px-margin-mobile md:px-gutter pt-4">
-                            <button data-back-to-inbox class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
-                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                            Voltar às mensagens
-                            </button>
+                    <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Voltar às mensagens
+                    </button>
                         </div>
 
                         <!-- Chat Header -->
@@ -2425,7 +2424,12 @@
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
             links.forEach(link => {
-                const isMatch = link.dataset.route === route || (route.startsWith('carteira') && link.dataset.route === 'carteira');
+                const linkRoute = link.dataset.route || link.getAttribute('data-route');
+                const isMatch = linkRoute === route || 
+                               (route.startsWith('carteira') && linkRoute === 'carteira') ||
+                               (route === 'trabalho_detalhe' && linkRoute === 'trabalhos') ||
+                               (route === 'mensagens_sala' && linkRoute === 'mensagens');
+                               
                 if (isMatch) {
                     link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
                     link.classList.remove('text-on-primary-container', 'hover:text-secondary');
@@ -2439,17 +2443,25 @@
         function render(route, push = true) {
             if (!App.templates[route]) route = 'inicio';
             spaView.innerHTML = App.templates[route];
+            window.scrollTo(0, 0);
 
             setActiveLink(route);
             if (push) history.pushState({ route }, '', `#${route}`);
             
-            // Re-vincular Lógica de Eventos (Original Restorada)
             initRouteScripts(route);
         }
 
         function initRouteScripts(route) {
             console.log('SPA Render:', route);
             
+            // Voltar Global
+            spaView.querySelectorAll('[data-wallet-back], [data-back-to-inbox], [data-success-back-wallet]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (btn.hasAttribute('data-back-to-inbox')) render('mensagens');
+                    else render('carteira');
+                });
+            });
+
             // Lógica Carteira
             if (route === 'carteira') {
                  spaView.querySelectorAll('[data-wallet-action]').forEach(btn => {
@@ -2458,31 +2470,113 @@
                         if (action === 'carregar-saldo') render('carteira_carregar_saldo');
                         if (action === 'ver-extrato') render('carteira_ver_extrato');
                         if (action === 'pedir-saque') render('carteira_pedir_saque');
+                        if (action === 'comprar-creditos') render('carteira_comprar_creditos');
+                        if (action === 'extrato-creditos') render('carteira_extrato_creditos');
+                        if (action === 'copiar-iban') {
+                            navigator.clipboard.writeText("AO06 1234 5678 9012 3456 7890 1");
+                            alert("IBAN copiado!");
+                        }
                     });
+                });
+            }
+
+            if (route === 'carteira_comprar_creditos') {
+                const summaryCost = spaView.querySelector('#summary-cost');
+                const summaryPkg = spaView.querySelector('#summary-pkg');
+                const summaryDebit = spaView.querySelector('#summary-debit-msg');
+                const summaryAfter = spaView.querySelector('#summary-after');
+                const buyBtn = spaView.querySelector('#buy-button');
+                const balance = 125000;
+
+                spaView.querySelectorAll('input[name="credit_package"]').forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        const credits = radio.dataset.credits;
+                        const cost = parseInt(radio.dataset.cost);
+                        summaryPkg.innerText = `${credits} créditos`;
+                        summaryCost.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryDebit.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryAfter.innerText = `${(balance - cost).toLocaleString()} Kz`;
+                    });
+                });
+
+                buyBtn?.addEventListener('click', () => {
+                    alert('Compra de créditos realizada com sucesso!');
+                    render('carteira');
                 });
             }
 
             if (route === 'carteira_carregar_saldo') {
                  const modal = spaView.querySelector('#successModal');
                  spaView.querySelector('[data-open-success-modal]')?.addEventListener('click', () => {
-                     modal.classList.remove('hidden');
-                     modal.classList.add('flex');
+                     modal?.classList.remove('hidden');
+                     modal?.classList.add('flex');
                  });
-                 spaView.querySelector('[data-success-back-wallet]')?.addEventListener('click', () => render('carteira'));
+                 spaView.querySelector('[data-success-go-extrato]')?.addEventListener('click', () => render('carteira_ver_extrato'));
+            }
+
+            if (route === 'carteira_extrato_creditos') {
+                spaView.querySelector('[data-go-add-creditos]')?.addEventListener('click', () => render('carteira_comprar_creditos'));
+            }
+
+            // Lógica Trabalhos
+            if (route === 'trabalhos') {
+                spaView.querySelectorAll('[data-open-job]').forEach(btn => {
+                    btn.addEventListener('click', () => render('trabalho_detalhe'));
+                });
+            }
+
+            if (route === 'trabalho_detalhe') {
+                const modal = spaView.querySelector('#modal-overlay');
+                spaView.querySelector('[data-open-proposta-modal]')?.addEventListener('click', () => {
+                    modal?.classList.remove('hidden');
+                    modal?.classList.add('flex');
+                });
+                spaView.querySelectorAll('[data-close-proposta-modal]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        modal?.classList.add('hidden');
+                        modal?.classList.remove('flex');
+                    });
+                });
+                spaView.querySelector('#proposta-form')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Proposta enviada com sucesso!');
+                    render('propostas');
+                });
+            }
+
+            // Lógica Mensagens
+            if (route === 'mensagens') {
+                spaView.querySelectorAll('[data-open-chat]').forEach(card => {
+                    card.addEventListener('click', () => render('mensagens_sala'));
+                });
+            }
+
+            if (route === 'inicio') {
+                spaView.querySelector('#btn-explorar-trabalhos')?.addEventListener('click', () => render('trabalhos'));
             }
         }
 
         // Navegação Global
         document.addEventListener('click', (e) => {
-            const link = e.target.closest('[data-spa-link]');
-            if (link) {
-                e.preventDefault();
-                render(link.dataset.route || link.getAttribute('data-route'));
+            const el = e.target.closest('[data-spa-link], [data-route], a[href^="#"]');
+            if (el) {
+                if (el.tagName === 'A' && el.getAttribute('href') === '#') return;
+
+                const route = el.dataset.route || el.getAttribute('data-route') || el.getAttribute('href')?.substring(1);
+                if (route && (App.templates[route] || route === 'inicio')) {
+                    e.preventDefault();
+                    render(route);
+                }
             }
         });
 
         window.addEventListener('popstate', (e) => {
-            if (e.state && e.state.route) render(e.state.route, false);
+            if (e.state && e.state.route) {
+                render(e.state.route, false);
+            } else {
+                const hash = window.location.hash.substring(1) || 'inicio';
+                render(hash, false);
+            }
         });
 
         // Init
