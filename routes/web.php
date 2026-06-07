@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProposalController;
 
+
 /*
 |--------------------------------------------------------------------------
 | PÚBLICAS

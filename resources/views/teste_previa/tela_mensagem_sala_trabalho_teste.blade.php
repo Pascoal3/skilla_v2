@@ -163,7 +163,7 @@
     </style>
   </head>
 
-  <body class="bg-[#D4FF00] text-black font-body-md text-body-md h-screen overflow-hidden flex">
+  <body class="bg-[#CCFF00] text-black font-body-md text-body-md h-screen overflow-hidden flex">
     <!-- Mobile TopAppBar (hidden on md) -->
     <header
       class="md:hidden fixed top-0 w-full z-50 bg-white border-b border-gray-200 flex justify-between items-center h-16 px-margin-mobile"
@@ -177,7 +177,7 @@
 
     <!-- Main Content Area -->
     <main
-      class="flex-1 lg:ml-64 h-full flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden"
+      class="flex-1 lg:ml-64 h-full flex flex-col bg-[#CCFF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden"
     >
       <!-- Chat Header -->
       <div
@@ -351,7 +351,7 @@
       <div class="absolute bottom-[80px] md:bottom-[90px] left-0 w-full flex justify-center px-4 pointer-events-none z-30">
         <button
           id="openDeliverModalBtn"
-          class="pointer-events-auto bg-[#D4FF00] text-black border border-transparent shadow-lg font-label-md text-label-md font-bold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-[#b4d400] transition-colors group"
+          class="pointer-events-auto bg-[#CCFF00] text-black border border-transparent shadow-lg font-label-md text-label-md font-bold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-[#b4d400] transition-colors group"
         >
           <span class="material-symbols-outlined text-black group-hover:scale-110 transition-transform">task_alt</span>
           Entregar trabalho

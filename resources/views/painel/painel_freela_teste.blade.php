@@ -229,9 +229,11 @@
                 <span class="text-on-primary-container text-[11px]" id="sidebar-user-rating">⭐ 0.0 (País)</span>
             </div>
         </div>
-        <button class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
-            Comprar Créditos
-        </button>
+        <a href="{{route('comprar_creditos')}}">
+            <button  class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
+                Comprar Créditos
+            </button>
+        </a>
         <div class="flex flex-col gap-2 mt-4 px-2">
             <a class="flex items-center gap-2 text-on-primary-container hover:text-secondary text-sm transition-colors" href="#">
                 <span class="material-symbols-outlined text-[18px]">help_outline</span> Ajuda
