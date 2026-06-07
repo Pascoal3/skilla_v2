@@ -596,133 +596,133 @@
         // ============================
         templates.carteira = `
             <div id="view-carteira" class="min-h-screen relative z-10 flex flex-col pb-20">
-            <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 py-8 flex flex-col gap-10">
+                <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 py-8 flex flex-col gap-10">
 
-                <!-- Skeleton path -->
-                <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                <span>Minha carteira</span>
-                </div>
-
-                <!-- Title -->
-                <div>
-                <h2 class="text-[64px] leading-[72px] tracking-[-0.04em] font-extrabold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">
-                    A Minha Carteira
-                </h2>
-                <p class="text-[18px] leading-[28px] text-gray-800">
-                    Gere os seus rendimentos e pagamentos de forma centralizada.
-                </p>
-                </div>
-
-                <!-- Visão Geral -->
-                <section>
-                <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                    Visão Geral
-                </h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <article class="bg-white rounded-2xl p-6 shadow-xl border border-transparent hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="flex justify-between items-start mb-4">
-                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-gray-500" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível (Kz)</p>
-                        <span class="material-symbols-outlined text-green-600 bg-green-50 rounded-full p-1 text-[20px]">check_circle</span>
-                    </div>
-                    <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">125.000 Kz</h4>
-                    <p class="text-[12px] leading-[16px] text-gray-400" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor pronto para usar.</p>
-                    <span class="material-symbols-outlined absolute bottom-6 right-6 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                    </article>
-
-                    <article class="bg-white rounded-2xl p-6 shadow-xl border-l-4 border-l-amber-500 hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="flex justify-between items-start mb-4">
-                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-gray-500" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo retido em Escrow (Kz)</p>
-                        <span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Em escrow</span>
-                    </div>
-                    <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">80.000 Kz</h4>
-                    <p class="text-[12px] leading-[16px] text-gray-400" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valores reservados em pagamentos em andamento.</p>
-                    <span class="material-symbols-outlined absolute bottom-6 right-6 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                    </article>
-
-                    <article class="bg-blue-50/50 rounded-2xl p-6 shadow-xl border border-blue-100 hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
-                    <div class="flex justify-between items-start mb-4">
-                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-blue-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">A receber (escrow retido)</p>
-                        <span class="material-symbols-outlined text-blue-500 text-[20px]">schedule</span>
-                    </div>
-                    <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">45.000 Kz</h4>
-                    <p class="text-[12px] leading-[16px] text-blue-400/80" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Recebíveis quando o escrow for liberado.</p>
-                    <span class="material-symbols-outlined absolute bottom-6 right-6 text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
-                    </article>
-                </div>
-                </section>
-
-                <!-- Ações & Dados Bancários -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <section>
-                    <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                    Ações
-                    </h3>
-                    <div class="bg-white rounded-2xl p-6 shadow-xl flex flex-col gap-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <button data-wallet-action="carregar-saldo" class="flex items-center justify-center gap-2 bg-[#0066FF] text-white py-4 px-6 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
-                        <span class="material-symbols-outlined">add</span>
-                        Carregar saldo
-                        </button>
-                        <button data-wallet-action="ver-extrato" class="flex items-center justify-center gap-2 border-2 border-[#0066FF] text-[#0066FF] py-4 px-6 rounded-xl font-bold hover:bg-blue-50 transition-colors">
-                        <span class="material-symbols-outlined">list_alt</span>
-                        Ver extrato
-                        </button>
+                    <!-- Skeleton path -->
+                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
+                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <span>Minha carteira</span>
                     </div>
 
-                    <button data-wallet-action="pedir-saque" class="flex items-center justify-center gap-2 border-2 border-black bg-white text-black py-4 px-6 rounded-xl font-bold hover:bg-black hover:text-white transition-all shadow-sm">
-                        <span class="material-symbols-outlined">logout</span>
-                        Pedir saque
-                    </button>
-                    </div>
-                </section>
-
-                <section>
-                    <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                    Dados Bancários
-                    </h3>
-                    <div class="bg-white rounded-2xl p-6 shadow-xl">
-                    <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
-                        <div class="flex justify-between items-center mb-3">
-                        <span class="text-[12px] leading-[16px] font-bold text-gray-400 uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Skilla</span>
-                        <button data-wallet-action="copiar-iban" class="text-[#0066FF] text-[14px] leading-[20px] tracking-[0.05em] flex items-center gap-1 hover:underline">
-                            <span class="material-symbols-outlined text-[18px]">content_copy</span>
-                            Copiar
-                        </button>
-                        </div>
-                        <p class="text-[18px] leading-[28px] text-black font-mono break-all tracking-wider">AO06 1234 5678 9012 3456 7890 1</p>
-                    </div>
-                    <p class="text-[12px] leading-[16px] text-gray-500 mt-4 flex items-center gap-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        <span class="material-symbols-outlined text-[16px]">info</span>
-                        Use este IBAN para transferências para a sua carteira.
+                    <!-- Title -->
+                    <div>
+                    <h2 class="text-[64px] leading-[72px] tracking-[-0.04em] font-extrabold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">
+                        A Minha Carteira
+                    </h2>
+                    <p class="text-[18px] leading-[28px] text-gray-800">
+                        Gere os seus rendimentos e pagamentos de forma centralizada.
                     </p>
                     </div>
-                </section>
-                </div>
 
-                <!-- Créditos -->
-                <section class="border-t border-black/10 pt-10">
-                <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                    Créditos
-                </h3>
-                <div class="bg-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-                    <div class="flex items-center gap-6">
-                    <div class="bg-black text-[#D4FF00] w-16 h-16 rounded-2xl flex items-center justify-center">
-                        <span class="text-[40px] leading-[48px] font-bold" style="font-family: Sora, ui-sans-serif, system-ui;">12</span>
-                    </div>
-                    <div>
-                        <h4 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Créditos disponíveis</h4>
-                        <p class="text-[16px] leading-[24px] text-gray-500">Use créditos para candidaturas e destaques.</p>
-                    </div>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                    <button data-wallet-action="comprar-creditos" class="px-8 py-3 rounded-xl border-2 border-[#0066FF] text-[#0066FF] font-bold hover:bg-blue-50 transition-colors">Comprar créditos</button>
-                    <button data-wallet-action="extrato-creditos" class="px-8 py-3 rounded-xl text-gray-500 font-bold hover:bg-gray-100 transition-colors">Extrato de créditos</button>
-                    </div>
-                </div>
-                </section>
+                    <!-- Visão Geral -->
+                    <section>
+                    <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        Visão Geral
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <article class="bg-white rounded-2xl p-6 shadow-xl border border-transparent hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-gray-500" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível (Kz)</p>
+                            <span class="material-symbols-outlined text-green-600 bg-green-50 rounded-full p-1 text-[20px]">check_circle</span>
+                        </div>
+                        <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">125.000 Kz</h4>
+                        <p class="text-[12px] leading-[16px] text-gray-400" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor pronto para usar.</p>
+                        <span class="material-symbols-outlined absolute bottom-6 right-6 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                        </article>
 
-            </div>
+                        <article class="bg-white rounded-2xl p-6 shadow-xl border-l-4 border-l-amber-500 hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-gray-500" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo retido em Escrow (Kz)</p>
+                            <span class="bg-amber-100 text-amber-700 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Em escrow</span>
+                        </div>
+                        <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">80.000 Kz</h4>
+                        <p class="text-[12px] leading-[16px] text-gray-400" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valores reservados em pagamentos em andamento.</p>
+                        <span class="material-symbols-outlined absolute bottom-6 right-6 text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                        </article>
+
+                        <article class="bg-blue-50/50 rounded-2xl p-6 shadow-xl border border-blue-100 hover:border-[#D4FF00] transition-all duration-300 group cursor-pointer relative overflow-hidden">
+                        <div class="flex justify-between items-start mb-4">
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-blue-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">A receber (escrow retido)</p>
+                            <span class="material-symbols-outlined text-blue-500 text-[20px]">schedule</span>
+                        </div>
+                        <h4 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-2" style="font-family: Sora, ui-sans-serif, system-ui;">45.000 Kz</h4>
+                        <p class="text-[12px] leading-[16px] text-blue-400/80" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Recebíveis quando o escrow for liberado.</p>
+                        <span class="material-symbols-outlined absolute bottom-6 right-6 text-blue-200 opacity-0 group-hover:opacity-100 transition-opacity">chevron_right</span>
+                        </article>
+                    </div>
+                    </section>
+
+                    <!-- Ações & Dados Bancários -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <section>
+                        <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        Ações
+                        </h3>
+                        <div class="bg-white rounded-2xl p-6 shadow-xl flex flex-col gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button data-wallet-action="carregar-saldo" class="flex items-center justify-center gap-2 bg-[#0066FF] text-white py-4 px-6 rounded-xl font-bold hover:bg-blue-700 transition-colors shadow-md">
+                            <span class="material-symbols-outlined">add</span>
+                            Carregar saldo
+                            </button>
+                            <button data-wallet-action="ver-extrato" class="flex items-center justify-center gap-2 border-2 border-[#0066FF] text-[#0066FF] py-4 px-6 rounded-xl font-bold hover:bg-blue-50 transition-colors">
+                            <span class="material-symbols-outlined">list_alt</span>
+                            Ver extrato
+                            </button>
+                        </div>
+
+                        <button data-wallet-action="pedir-saque" class="flex items-center justify-center gap-2 border-2 border-black bg-white text-black py-4 px-6 rounded-xl font-bold hover:bg-black hover:text-white transition-all shadow-sm">
+                            <span class="material-symbols-outlined">logout</span>
+                            Pedir saque
+                        </button>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        Dados Bancários
+                        </h3>
+                        <div class="bg-white rounded-2xl p-6 shadow-xl">
+                        <div class="bg-gray-50 rounded-xl p-5 border border-gray-100">
+                            <div class="flex justify-between items-center mb-3">
+                            <span class="text-[12px] leading-[16px] font-bold text-gray-400 uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Skilla</span>
+                            <button data-wallet-action="copiar-iban" class="text-[#0066FF] text-[14px] leading-[20px] tracking-[0.05em] flex items-center gap-1 hover:underline">
+                                <span class="material-symbols-outlined text-[18px]">content_copy</span>
+                                Copiar
+                            </button>
+                            </div>
+                            <p class="text-[18px] leading-[28px] text-black font-mono break-all tracking-wider">AO06 1234 5678 9012 3456 7890 1</p>
+                        </div>
+                        <p class="text-[12px] leading-[16px] text-gray-500 mt-4 flex items-center gap-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="material-symbols-outlined text-[16px]">info</span>
+                            Use este IBAN para transferências para a sua carteira.
+                        </p>
+                        </div>
+                    </section>
+                    </div>
+
+                    <!-- Créditos -->
+                    <section class="border-t border-black/10 pt-10">
+                    <h3 class="text-[12px] leading-[16px] font-bold text-gray-600 uppercase tracking-[0.2em] mb-6" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        Créditos
+                    </h3>
+                    <div class="bg-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center gap-6">
+                        <div class="bg-black text-[#D4FF00] w-16 h-16 rounded-2xl flex items-center justify-center">
+                            <span class="text-[40px] leading-[48px] font-bold" style="font-family: Sora, ui-sans-serif, system-ui;">12</span>
+                        </div>
+                        <div>
+                            <h4 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Créditos disponíveis</h4>
+                            <p class="text-[16px] leading-[24px] text-gray-500">Use créditos para candidaturas e destaques.</p>
+                        </div>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+                        <button data-wallet-action="comprar-creditos" class="px-8 py-3 rounded-xl border-2 border-[#0066FF] text-[#0066FF] font-bold hover:bg-blue-50 transition-colors">Comprar créditos</button>
+                        <button data-wallet-action="extrato-creditos" class="px-8 py-3 rounded-xl text-gray-500 font-bold hover:bg-gray-100 transition-colors">Extrato de créditos</button>
+                        </div>
+                    </div>
+                    </section>
+
+                </div>
             </div>
         `;
 
@@ -731,134 +731,134 @@
         // ============================
         templates.carteira_comprar_creditos = `
             <div id="view-carteira-comprar-creditos" class="bg-[#D4FF00] text-[#1A1C1E] min-h-screen flex flex-col items-center">
-            <main class="w-full max-w-[480px] px-4 py-8 flex flex-col gap-8 flex-grow">
+                <main class="w-full max-w-[480px] px-4 py-8 flex flex-col gap-8 flex-grow">
 
-                <!-- Breadcrumb + voltar -->
-                <div class="flex items-center justify-between gap-3">
-                <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                    <span>Comprar créditos</span>
-                </div>
-
-                <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                    <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                    Voltar
-                </button>
-                </div>
-
-                <!-- Wallet Balance Card -->
-                <section class="bg-white rounded-xl p-6 border border-[#E0E2E6] shadow-sm transition-all hover:shadow-md" id="wallet-balance">
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="material-symbols-outlined text-[#2F5BFF]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
-                    <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo da carteira</p>
-                </div>
-                <p class="text-[32px] leading-[40px] tracking-[-0.02em] font-bold text-[#2F5BFF]" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</p>
-                </section>
-
-                <!-- Credits Selection Section -->
-                <section id="package-selection">
-                <h2 class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase mb-4 px-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Escolha um pacote</h2>
-
-                <div class="grid grid-cols-1 gap-4">
-                    <!-- Package 1 -->
-                    <label class="relative cursor-pointer group block">
-                    <input class="peer hidden" name="credit_package" type="radio" value="10" data-credits="10" data-cost="5000"/>
-                    <div class="package-card flex items-center justify-between p-5 bg-white rounded-[14px] border border-[#E0E2E6] peer-checked:border-[#2F5BFF] peer-checked:bg-[#EEF2FF]/30 transition-all group-hover:border-[#2F5BFF]/40 shadow-sm">
-                        <div class="flex flex-col">
-                        <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">10</span>
-                        <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
-                        </div>
-                        <div class="text-right">
-                        <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">5 000 Kz</p>
-                        </div>
-                        <div class="radio-inner w-5 h-5 rounded-full border border-[#E0E2E6] absolute top-4 right-4 flex items-center justify-center bg-white peer-checked:border-[#2F5BFF]">
-                        <div class="w-2.5 h-2.5 rounded-full bg-transparent peer-checked:bg-[#2F5BFF]"></div>
-                        </div>
-                    </div>
-                    </label>
-
-                    <!-- Package 2 (Selected State) -->
-                    <label class="relative cursor-pointer group block">
-                    <input checked class="peer hidden" name="credit_package" type="radio" value="30" data-credits="30" data-cost="12000"/>
-                    <div class="package-card flex items-center justify-between p-5 bg-[#EEF2FF] border-2 border-[#2F5BFF] rounded-[14px] transition-all shadow-sm">
-                        <div class="flex flex-col">
-                        <div class="flex items-center gap-2">
-                            <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
-                            <span class="bg-[#DCFCE7] text-[#166534] text-[10px] px-2 py-0.5 rounded-full uppercase tracking-tighter font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Melhor valor</span>
-                        </div>
-                        <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
-                        </div>
-                        <div class="text-right">
-                        <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 000 Kz</p>
-                        </div>
-                        <div class="radio-inner w-5 h-5 rounded-full border-2 border-[#2F5BFF] absolute top-4 right-4 flex items-center justify-center bg-[#2F5BFF]">
-                        <div class="w-2 h-2 rounded-full bg-white"></div>
-                        </div>
-                    </div>
-                    </label>
-
-                    <!-- Package 3 -->
-                    <label class="relative cursor-pointer group block">
-                    <input class="peer hidden" name="credit_package" type="radio" value="100" data-credits="100" data-cost="35000"/>
-                    <div class="package-card flex items-center justify-between p-5 bg-white rounded-[14px] border border-[#E0E2E6] peer-checked:border-[#2F5BFF] peer-checked:bg-[#EEF2FF]/30 transition-all group-hover:border-[#2F5BFF]/40 shadow-sm">
-                        <div class="flex flex-col">
-                        <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">100</span>
-                        <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
-                        </div>
-                        <div class="text-right">
-                        <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">35 000 Kz</p>
-                        </div>
-                        <div class="radio-inner w-5 h-5 rounded-full border border-[#E0E2E6] absolute top-4 right-4 flex items-center justify-center bg-white"></div>
-                    </div>
-                    </label>
-                </div>
-                </section>
-
-                <!-- Confirmation Section -->
-                <section class="pb-8" id="confirmation">
-                <h2 class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase mb-4 px-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Confirmação</h2>
-
-                <div class="bg-white rounded-xl p-6 border border-[#E0E2E6] shadow-sm flex flex-col gap-6">
-                    <!-- Dynamic Message -->
-                    <div class="flex gap-3 bg-[#F7F8FB] p-4 rounded-lg border-l-4 border-[#2F5BFF]">
-                    <span class="material-symbols-outlined text-[#2F5BFF] text-[20px]">info</span>
-                    <p class="text-[16px] leading-[24px] text-[#5F6368]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                        Vai debitar <span class="text-[#1A1C1E] font-bold" id="summary-debit-msg">12 000 Kz</span> da tua carteira
-                    </p>
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-3">
+                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Comprar créditos</span>
                     </div>
 
-                    <!-- Details Grid -->
-                    <div class="flex flex-col gap-3" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                    <div class="flex justify-between items-center">
-                        <span class="text-[#5F6368]">Pacote</span>
-                        <span class="text-[#1A1C1E] font-semibold" id="summary-pkg">30 créditos</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-[#5F6368]">Custo</span>
-                        <span class="text-[#1A1C1E] font-semibold" id="summary-cost">12 000 Kz</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-[#5F6368]">Saldo atual</span>
-                        <span class="text-[#1A1C1E] font-semibold">125 000 Kz</span>
-                    </div>
-                    <div class="pt-3 border-t border-[#E0E2E6] flex justify-between items-center">
-                        <span class="text-[#5F6368]">Saldo após compra</span>
-                        <span class="text-[#2F5BFF] font-bold text-[18px] leading-[28px]" id="summary-after">113 000 Kz</span>
-                    </div>
-                    </div>
-
-                    <!-- Action Button -->
-                    <div class="mt-4">
-                    <button class="w-full bg-[#2F5BFF] text-white text-[24px] leading-[32px] py-4 rounded-[12px] active:scale-95 transition-transform shadow-lg glow-hover-blue cursor-pointer pointer-events-auto font-semibold"
-                            id="buy-button" type="button" style="font-family: Sora, ui-sans-serif, system-ui;">
-                        Comprar
+                    <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
+                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Voltar
                     </button>
                     </div>
-                </div>
-                </section>
 
-            </main>
+                    <!-- Wallet Balance Card -->
+                    <section class="bg-white rounded-xl p-6 border border-[#E0E2E6] shadow-sm transition-all hover:shadow-md" id="wallet-balance">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-[#2F5BFF]" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo da carteira</p>
+                    </div>
+                    <p class="text-[32px] leading-[40px] tracking-[-0.02em] font-bold text-[#2F5BFF]" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</p>
+                    </section>
+
+                    <!-- Credits Selection Section -->
+                    <section id="package-selection">
+                    <h2 class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase mb-4 px-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Escolha um pacote</h2>
+
+                    <div class="grid grid-cols-1 gap-4">
+                        <!-- Package 1 -->
+                        <label class="relative cursor-pointer group block">
+                        <input class="peer hidden" name="credit_package" type="radio" value="10" data-credits="10" data-cost="5000"/>
+                        <div class="package-card flex items-center justify-between p-5 bg-white rounded-[14px] border border-[#E0E2E6] peer-checked:border-[#2F5BFF] peer-checked:bg-[#EEF2FF]/30 transition-all group-hover:border-[#2F5BFF]/40 shadow-sm">
+                            <div class="flex flex-col">
+                            <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">10</span>
+                            <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
+                            </div>
+                            <div class="text-right">
+                            <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">5 000 Kz</p>
+                            </div>
+                            <div class="radio-inner w-5 h-5 rounded-full border border-[#E0E2E6] absolute top-4 right-4 flex items-center justify-center bg-white peer-checked:border-[#2F5BFF]">
+                            <div class="w-2.5 h-2.5 rounded-full bg-transparent peer-checked:bg-[#2F5BFF]"></div>
+                            </div>
+                        </div>
+                        </label>
+
+                        <!-- Package 2 (Selected State) -->
+                        <label class="relative cursor-pointer group block">
+                        <input checked class="peer hidden" name="credit_package" type="radio" value="30" data-credits="30" data-cost="12000"/>
+                        <div class="package-card flex items-center justify-between p-5 bg-[#EEF2FF] border-2 border-[#2F5BFF] rounded-[14px] transition-all shadow-sm">
+                            <div class="flex flex-col">
+                            <div class="flex items-center gap-2">
+                                <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
+                                <span class="bg-[#DCFCE7] text-[#166534] text-[10px] px-2 py-0.5 rounded-full uppercase tracking-tighter font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Melhor valor</span>
+                            </div>
+                            <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
+                            </div>
+                            <div class="text-right">
+                            <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 000 Kz</p>
+                            </div>
+                            <div class="radio-inner w-5 h-5 rounded-full border-2 border-[#2F5BFF] absolute top-4 right-4 flex items-center justify-center bg-[#2F5BFF]">
+                            <div class="w-2 h-2 rounded-full bg-white"></div>
+                            </div>
+                        </div>
+                        </label>
+
+                        <!-- Package 3 -->
+                        <label class="relative cursor-pointer group block">
+                        <input class="peer hidden" name="credit_package" type="radio" value="100" data-credits="100" data-cost="35000"/>
+                        <div class="package-card flex items-center justify-between p-5 bg-white rounded-[14px] border border-[#E0E2E6] peer-checked:border-[#2F5BFF] peer-checked:bg-[#EEF2FF]/30 transition-all group-hover:border-[#2F5BFF]/40 shadow-sm">
+                            <div class="flex flex-col">
+                            <span class="text-[24px] leading-[32px] font-semibold text-[#1A1C1E]" style="font-family: Sora, ui-sans-serif, system-ui;">100</span>
+                            <span class="text-[12px] leading-[16px] text-[#5F6368] uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">créditos</span>
+                            </div>
+                            <div class="text-right">
+                            <p class="text-[18px] leading-[28px] font-bold text-[#1A1C1E]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">35 000 Kz</p>
+                            </div>
+                            <div class="radio-inner w-5 h-5 rounded-full border border-[#E0E2E6] absolute top-4 right-4 flex items-center justify-center bg-white"></div>
+                        </div>
+                        </label>
+                    </div>
+                    </section>
+
+                    <!-- Confirmation Section -->
+                    <section class="pb-8" id="confirmation">
+                    <h2 class="text-[14px] leading-[20px] tracking-[0.05em] text-[#5F6368] uppercase mb-4 px-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Confirmação</h2>
+
+                    <div class="bg-white rounded-xl p-6 border border-[#E0E2E6] shadow-sm flex flex-col gap-6">
+                        <!-- Dynamic Message -->
+                        <div class="flex gap-3 bg-[#F7F8FB] p-4 rounded-lg border-l-4 border-[#2F5BFF]">
+                        <span class="material-symbols-outlined text-[#2F5BFF] text-[20px]">info</span>
+                        <p class="text-[16px] leading-[24px] text-[#5F6368]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                            Vai debitar <span class="text-[#1A1C1E] font-bold" id="summary-debit-msg">12 000 Kz</span> da tua carteira
+                        </p>
+                        </div>
+
+                        <!-- Details Grid -->
+                        <div class="flex flex-col gap-3" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#5F6368]">Pacote</span>
+                            <span class="text-[#1A1C1E] font-semibold" id="summary-pkg">30 créditos</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#5F6368]">Custo</span>
+                            <span class="text-[#1A1C1E] font-semibold" id="summary-cost">12 000 Kz</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#5F6368]">Saldo atual</span>
+                            <span class="text-[#1A1C1E] font-semibold">125 000 Kz</span>
+                        </div>
+                        <div class="pt-3 border-t border-[#E0E2E6] flex justify-between items-center">
+                            <span class="text-[#5F6368]">Saldo após compra</span>
+                            <span class="text-[#2F5BFF] font-bold text-[18px] leading-[28px]" id="summary-after">113 000 Kz</span>
+                        </div>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="mt-4">
+                        <button class="w-full bg-[#2F5BFF] text-white text-[24px] leading-[32px] py-4 rounded-[12px] active:scale-95 transition-transform shadow-lg glow-hover-blue cursor-pointer pointer-events-auto font-semibold"
+                                id="buy-button" type="button" style="font-family: Sora, ui-sans-serif, system-ui;">
+                            Comprar
+                        </button>
+                        </div>
+                    </div>
+                    </section>
+
+                </main>
             </div>
         `;
 
@@ -867,154 +867,154 @@
         // ============================
         templates.carteira_carregar_saldo = `
             <div id="view-carteira-carregar-saldo" class="min-h-screen bg-lime-main text-[#111827] overflow-hidden">
-            <main class="flex-1 flex flex-col bg-lime-main overflow-y-auto">
+                <main class="flex-1 flex flex-col bg-lime-main overflow-y-auto">
 
-                <!-- Breadcrumb -->
-                <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] pt-6">
-                <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                    <span>Carregar saldo</span>
+                    <!-- Breadcrumb -->
+                    <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] pt-6">
+                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Carregar saldo</span>
+                    </div>
+                    </div>
+
+                    <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] py-12 space-y-6">
+
+                    <!-- 1. ENTRADA DE VALOR -->
+                    <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5 volt-glow transition-all">
+                        <label class="block text-gray-600 mb-4 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor (Kz)</label>
+                        <div class="relative">
+                        <input class="w-full bg-[#F9FAFB] border-2 border-black/5 rounded-xl p-4 text-[24px] leading-[32px] font-bold text-[#111827] focus:border-[#2F5BFF] focus:ring-0 transition-all outline-none"
+                                placeholder="0 Kz" type="text" value="2.000 Kz">
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#DC2626] flex items-center gap-1 text-[12px] leading-[16px] font-semibold">
+                            <span class="material-symbols-outlined text-sm">error</span>
+                            O valor mínimo é 2.000 Kz.
+                        </span>
+                        </div>
+                    </section>
+
+                    <!-- 2. MÉTODO DE RECARGA -->
+                    <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5">
+                        <label class="block text-gray-600 mb-6 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Método de Recarga</label>
+                        <div class="grid grid-cols-1 gap-4">
+                        <!-- Desabilitado -->
+                        <div class="wallet-disabled-item flex items-center justify-between p-5 border border-gray-300 rounded-xl opacity-50 cursor-not-allowed bg-[#F9FAFB] grayscale">
+                            <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-3xl text-gray-600">payments</span>
+                            <div>
+                                <p class="font-bold text-[#111827]">Multicaixa Express</p>
+                                <p class="text-sm text-gray-600">Indisponível no momento</p>
+                            </div>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-600">lock</span>
+                        </div>
+
+                        <!-- Selecionado -->
+                        <div class="flex items-center justify-between p-5 border-2 border-[#2F5BFF] rounded-xl cursor-pointer bg-white ring-4 ring-[#2F5BFF]/5">
+                            <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-3xl text-[#2F5BFF]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                            <div>
+                                <p class="font-bold text-[#111827]">Banco Skilla</p>
+                                <p class="text-sm text-gray-600 font-medium">Transferência instantânea</p>
+                            </div>
+                            </div>
+                            <span class="material-symbols-outlined text-[#2F5BFF] font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        </div>
+
+                        <!-- Desabilitado -->
+                        <div class="wallet-disabled-item flex items-center justify-between p-5 border border-gray-300 rounded-xl opacity-50 cursor-not-allowed bg-[#F9FAFB] grayscale">
+                            <div class="flex items-center gap-4">
+                            <span class="material-symbols-outlined text-3xl text-gray-600">credit_card</span>
+                            <div>
+                                <p class="font-bold text-[#111827]">Multicaixa</p>
+                                <p class="text-sm text-gray-600">Referência de pagamento</p>
+                            </div>
+                            </div>
+                            <span class="material-symbols-outlined text-gray-600">lock</span>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. RESUMO DA RECARGA -->
+                    <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5 overflow-hidden relative">
+                        <div class="absolute top-0 right-0 p-4 opacity-5">
+                        <span class="material-symbols-outlined text-8xl text-[#111827]">receipt_long</span>
+                        </div>
+                        <label class="block text-gray-600 mb-6 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Resumo da Recarga</label>
+                        <div class="space-y-4">
+                        <div class="flex justify-between items-center py-2 border-b border-black/5">
+                            <span class="text-gray-600 font-medium">Valor da recarga</span>
+                            <span class="font-bold text-[#111827]">2.000 Kz</span>
+                        </div>
+                        <div class="flex justify-between items-center py-2 border-b border-black/5">
+                            <span class="text-gray-600 font-medium">Taxa de serviço</span>
+                            <span class="font-bold text-green-600">0 Kz</span>
+                        </div>
+                        <div class="flex justify-between items-center pt-4">
+                            <span class="text-[24px] leading-[32px] font-bold text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Total a pagar</span>
+                            <span class="text-[24px] leading-[32px] font-extrabold text-[#2F5BFF]" style="font-family: Sora, ui-sans-serif, system-ui;">2.000 Kz</span>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Botão Primário -->
+                    <div class="pt-8">
+                        <button data-open-success-modal class="w-full bg-[#111827] hover:bg-black text-white font-bold py-5 rounded-[24px] text-lg shadow-xl shadow-black/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]" type="button">
+                        Confirmar recarga
+                        <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="w-full py-12 px-4 md:px-[40px] max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between border-t border-black/10 mt-auto">
+                    <p class="text-[12px] leading-[16px] text-gray-600 font-medium">© 2024 Skilla Global Inc.</p>
+                    <div class="flex gap-6 mt-4 md:mt-0">
+                        <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Termos de Serviço</a>
+                        <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Privacidade</a>
+                        <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Ajuda</a>
+                    </div>
+                    </footer>
+                </main>
+
+                <!-- Overlay: Modal Informação -->
+                <div class="fixed inset-0 z-50 items-center justify-center p-6 modal-overlay hidden" id="infoModal">
+                    <div class="bg-white max-w-md w-full rounded-[24px] p-10 border border-black/5 text-center shadow-2xl animate-in fade-in zoom-in duration-300">
+                    <div class="w-20 h-20 bg-[#2F5BFF]/10 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="material-symbols-outlined text-4xl text-[#2F5BFF]">info</span>
+                    </div>
+                    <h3 class="text-[24px] leading-[32px] font-bold mb-2 text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Informação</h3>
+                    <p class="text-gray-600 mb-8" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Esta funcionalidade de recarga via Multicaixa estará disponível em breve para todos os usuários.
+                    </p>
+                    <button class="w-full py-4 bg-[#F9FAFB] border border-black/5 rounded-xl font-bold hover:bg-gray-100 text-[#111827] transition-all" type="button" data-close-modal="infoModal">
+                        OK
+                    </button>
+                    </div>
                 </div>
-                </div>
 
-                <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] py-12 space-y-6">
-
-                <!-- 1. ENTRADA DE VALOR -->
-                <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5 volt-glow transition-all">
-                    <label class="block text-gray-600 mb-4 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor (Kz)</label>
-                    <div class="relative">
-                    <input class="w-full bg-[#F9FAFB] border-2 border-black/5 rounded-xl p-4 text-[24px] leading-[32px] font-bold text-[#111827] focus:border-[#2F5BFF] focus:ring-0 transition-all outline-none"
-                            placeholder="0 Kz" type="text" value="2.000 Kz">
-                    <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#DC2626] flex items-center gap-1 text-[12px] leading-[16px] font-semibold">
-                        <span class="material-symbols-outlined text-sm">error</span>
-                        O valor mínimo é 2.000 Kz.
-                    </span>
+                <!-- Overlay: Sucesso -->
+                <div class="fixed inset-0 z-50 items-center justify-center p-6 modal-overlay hidden" id="successModal">
+                    <div class="bg-white max-w-md w-full rounded-[24px] p-10 border border-black/5 text-center shadow-2xl animate-in fade-in zoom-in duration-300">
+                    <div class="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 relative">
+                        <span class="material-symbols-outlined text-6xl text-green-600" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        <div class="absolute inset-0 rounded-full border-4 border-green-500 animate-ping opacity-20"></div>
                     </div>
-                </section>
-
-                <!-- 2. MÉTODO DE RECARGA -->
-                <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5">
-                    <label class="block text-gray-600 mb-6 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Método de Recarga</label>
-                    <div class="grid grid-cols-1 gap-4">
-                    <!-- Desabilitado -->
-                    <div class="wallet-disabled-item flex items-center justify-between p-5 border border-gray-300 rounded-xl opacity-50 cursor-not-allowed bg-[#F9FAFB] grayscale">
-                        <div class="flex items-center gap-4">
-                        <span class="material-symbols-outlined text-3xl text-gray-600">payments</span>
-                        <div>
-                            <p class="font-bold text-[#111827]">Multicaixa Express</p>
-                            <p class="text-sm text-gray-600">Indisponível no momento</p>
-                        </div>
-                        </div>
-                        <span class="material-symbols-outlined text-gray-600">lock</span>
-                    </div>
-
-                    <!-- Selecionado -->
-                    <div class="flex items-center justify-between p-5 border-2 border-[#2F5BFF] rounded-xl cursor-pointer bg-white ring-4 ring-[#2F5BFF]/5">
-                        <div class="flex items-center gap-4">
-                        <span class="material-symbols-outlined text-3xl text-[#2F5BFF]" style="font-variation-settings: 'FILL' 1;">account_balance</span>
-                        <div>
-                            <p class="font-bold text-[#111827]">Banco Skilla</p>
-                            <p class="text-sm text-gray-600 font-medium">Transferência instantânea</p>
-                        </div>
-                        </div>
-                        <span class="material-symbols-outlined text-[#2F5BFF] font-bold" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                    </div>
-
-                    <!-- Desabilitado -->
-                    <div class="wallet-disabled-item flex items-center justify-between p-5 border border-gray-300 rounded-xl opacity-50 cursor-not-allowed bg-[#F9FAFB] grayscale">
-                        <div class="flex items-center gap-4">
-                        <span class="material-symbols-outlined text-3xl text-gray-600">credit_card</span>
-                        <div>
-                            <p class="font-bold text-[#111827]">Multicaixa</p>
-                            <p class="text-sm text-gray-600">Referência de pagamento</p>
-                        </div>
-                        </div>
-                        <span class="material-symbols-outlined text-gray-600">lock</span>
-                    </div>
-                    </div>
-                </section>
-
-                <!-- 3. RESUMO DA RECARGA -->
-                <section class="bg-white p-8 rounded-[24px] border border-black/5 shadow-xl shadow-black/5 overflow-hidden relative">
-                    <div class="absolute top-0 right-0 p-4 opacity-5">
-                    <span class="material-symbols-outlined text-8xl text-[#111827]">receipt_long</span>
-                    </div>
-                    <label class="block text-gray-600 mb-6 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Resumo da Recarga</label>
+                    <h3 class="text-[24px] leading-[32px] font-bold mb-2 text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Recarga concluída</h3>
+                    <p class="text-gray-600 mb-10" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Seu saldo de 2.000 Kz foi carregado com sucesso em sua conta Skilla.
+                    </p>
                     <div class="space-y-4">
-                    <div class="flex justify-between items-center py-2 border-b border-black/5">
-                        <span class="text-gray-600 font-medium">Valor da recarga</span>
-                        <span class="font-bold text-[#111827]">2.000 Kz</span>
-                    </div>
-                    <div class="flex justify-between items-center py-2 border-b border-black/5">
-                        <span class="text-gray-600 font-medium">Taxa de serviço</span>
-                        <span class="font-bold text-green-600">0 Kz</span>
-                    </div>
-                    <div class="flex justify-between items-center pt-4">
-                        <span class="text-[24px] leading-[32px] font-bold text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Total a pagar</span>
-                        <span class="text-[24px] leading-[32px] font-extrabold text-[#2F5BFF]" style="font-family: Sora, ui-sans-serif, system-ui;">2.000 Kz</span>
+                        <button class="w-full py-5 bg-[#2F5BFF] text-white font-extrabold rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2" type="button" data-success-go-extrato>
+                        <span class="material-symbols-outlined">list_alt</span>
+                        Ver extrato
+                        </button>
+                        <button class="w-full py-4 text-gray-600 font-medium hover:text-[#111827] transition-all" type="button" data-success-back-wallet>
+                        Voltar para carteira
+                        </button>
                     </div>
                     </div>
-                </section>
-
-                <!-- Botão Primário -->
-                <div class="pt-8">
-                    <button data-open-success-modal class="w-full bg-[#111827] hover:bg-black text-white font-bold py-5 rounded-[24px] text-lg shadow-xl shadow-black/20 transition-all flex items-center justify-center gap-3 active:scale-[0.98]" type="button">
-                    Confirmar recarga
-                    <span class="material-symbols-outlined">arrow_forward</span>
-                    </button>
                 </div>
-                </div>
-
-                <!-- Footer -->
-                <footer class="w-full py-12 px-4 md:px-[40px] max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between border-t border-black/10 mt-auto">
-                <p class="text-[12px] leading-[16px] text-gray-600 font-medium">© 2024 Skilla Global Inc.</p>
-                <div class="flex gap-6 mt-4 md:mt-0">
-                    <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Termos de Serviço</a>
-                    <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Privacidade</a>
-                    <a class="text-[12px] leading-[16px] text-gray-600 hover:text-black font-medium underline transition-all" href="#">Ajuda</a>
-                </div>
-                </footer>
-            </main>
-
-            <!-- Overlay: Modal Informação -->
-            <div class="fixed inset-0 z-50 items-center justify-center p-6 modal-overlay hidden" id="infoModal">
-                <div class="bg-white max-w-md w-full rounded-[24px] p-10 border border-black/5 text-center shadow-2xl animate-in fade-in zoom-in duration-300">
-                <div class="w-20 h-20 bg-[#2F5BFF]/10 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <span class="material-symbols-outlined text-4xl text-[#2F5BFF]">info</span>
-                </div>
-                <h3 class="text-[24px] leading-[32px] font-bold mb-2 text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Informação</h3>
-                <p class="text-gray-600 mb-8" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                    Esta funcionalidade de recarga via Multicaixa estará disponível em breve para todos os usuários.
-                </p>
-                <button class="w-full py-4 bg-[#F9FAFB] border border-black/5 rounded-xl font-bold hover:bg-gray-100 text-[#111827] transition-all" type="button" data-close-modal="infoModal">
-                    OK
-                </button>
-                </div>
-            </div>
-
-            <!-- Overlay: Sucesso -->
-            <div class="fixed inset-0 z-50 items-center justify-center p-6 modal-overlay hidden" id="successModal">
-                <div class="bg-white max-w-md w-full rounded-[24px] p-10 border border-black/5 text-center shadow-2xl animate-in fade-in zoom-in duration-300">
-                <div class="w-24 h-24 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-8 relative">
-                    <span class="material-symbols-outlined text-6xl text-green-600" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                    <div class="absolute inset-0 rounded-full border-4 border-green-500 animate-ping opacity-20"></div>
-                </div>
-                <h3 class="text-[24px] leading-[32px] font-bold mb-2 text-[#111827]" style="font-family: Sora, ui-sans-serif, system-ui;">Recarga concluída</h3>
-                <p class="text-gray-600 mb-10" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                    Seu saldo de 2.000 Kz foi carregado com sucesso em sua conta Skilla.
-                </p>
-                <div class="space-y-4">
-                    <button class="w-full py-5 bg-[#2F5BFF] text-white font-extrabold rounded-xl hover:opacity-90 transition-all flex items-center justify-center gap-2" type="button" data-success-go-extrato>
-                    <span class="material-symbols-outlined">list_alt</span>
-                    Ver extrato
-                    </button>
-                    <button class="w-full py-4 text-gray-600 font-medium hover:text-[#111827] transition-all" type="button" data-success-back-wallet>
-                    Voltar para carteira
-                    </button>
-                </div>
-                </div>
-            </div>
             </div>
         `;
 
