@@ -782,14 +782,19 @@
         `;
 
         function setActiveLink(route) {
-            links.forEach(a => {
-                const isActive = a.dataset.route === route;
-                a.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-                a.classList.add('text-on-primary-container');
-                if (isActive) {
-                    a.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-                    a.classList.remove('text-on-primary-container');
-                }
+            // Delegação para TODOS os links do SPA (funciona após qualquer render)
+            spaView.addEventListener('click', (e) => {
+                const link = e.target.closest('a[data-spa-link]');
+                if (!link) return;
+
+                e.preventDefault();
+                const route = link.dataset.route;
+                if (!route || !templates[route]) return;
+
+                render(route, true, {
+                    activeMenuRoute: link.dataset.activeMenuRoute || route,
+                    hash: link.dataset.hash || route
+                });
             });
         }
 
@@ -842,11 +847,19 @@
             }
         });
 
-        links.forEach(a => {
-            a.addEventListener('click', (e) => {
-                e.preventDefault();
-                render(a.dataset.route, true);
-            });
+        // Delegação para TODOS os links do SPA (funciona após qualquer render)
+        spaView.addEventListener('click', (e) => {
+        const link = e.target.closest('a[data-spa-link]');
+        if (!link) return;
+
+        e.preventDefault();
+        const route = link.dataset.route;
+        if (!route || !templates[route]) return;
+
+        render(route, true, {
+            activeMenuRoute: link.dataset.activeMenuRoute || route,
+            hash: link.dataset.hash || route
+        });
         });
 
         window.addEventListener('popstate', (e) => {

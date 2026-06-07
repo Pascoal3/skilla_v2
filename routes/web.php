@@ -29,13 +29,19 @@ Route::get('/registar/cliente', fn () => view('registar.cliente'))
 Route::get('/registar/freelancer', fn () => view('registar.freela'))
     ->name('registar.freela');
 
-Route::get('/painel/cliente/teste2', fn () =>
-    view('painel.painel_cliente_teste')
-)->name('painel.cliente.teste');
+
 
 Route::get('/painel/freelancer/teste3', fn () =>
     view('teste_previa.painel_freela_teste')
 )->name('painel.freelancer.teste3');
+
+Route::get('/painel/freelancer/teste3-2', fn () =>
+    view('teste_previa.painel_freela_teste2')
+)->name('painel.freelancer.teste3-2');
+
+Route::get('/spa_freela', fn () =>
+    view('teste_previa.spa')
+)->name('painel.spa');
 
 Route::get('/tela-sala-trabalho/teste', fn () =>
     view('teste_previa.tela_mensagem_sala_trabalho_teste')
