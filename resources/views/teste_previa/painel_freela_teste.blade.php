@@ -9,13 +9,27 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Skilla - Dashboard do Freelancer</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa-link]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    render(route, true, { activeMenuRoute: route });
+});
+</script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa-link]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    render(route, true, { activeMenuRoute: route });
+});
+</script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -115,7 +129,14 @@
                 }
             }
         }
-    </script>
+    document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa-link]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    render(route, true, { activeMenuRoute: route });
+});
+</script>
 
     <style>
         :root{
@@ -483,7 +504,16 @@
     </div>
 </main>
 
-<script src="{{ asset('js/painel_freelancer.js') }}"></script>
+<script src="{{ asset('js/painel_freelancer.js') }}">
+
+    document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa-link]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    render(route, true, { activeMenuRoute: route });
+});
+</script>
 
 <script>
     async function logout(event) {
@@ -1556,255 +1586,255 @@
 
         // ===== TEMPLATE: TRABALHO DETALHE + MODAL ENVIAR PROPOSTA (com a estilização original) =====
         templates.trabalho_detalhe = `
-        <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
-            <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
-            <div class="flex flex-col gap-2">
-                <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                <a class="hover:underline" href="#">Início</a> &gt;
-                <a class="hover:underline" href="#">Trabalhos</a> &gt;
-                <a class="hover:underline" href="#">Design Gráfico</a> &gt;
-                <span>Identidade Visual</span>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <!-- Coluna Esquerda: Detalhes -->
-                <div class="lg:col-span-8 flex flex-col gap-6">
-                <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
-                    <div class="pb-8">
-                    <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
-                    <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
-                    <div class="flex flex-wrap gap-6 text-black">
-                        <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
-                        <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
-                        </div>
-                        <div class="flex items-center gap-2">
-                        <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
-                        <span class="font-body-md text-body-md">Prazo: 15 dias</span>
-                        </div>
-                    </div>
-                    </div>
-
-                    <hr class="border-gray-100"/>
-
-                    <div class="py-8 flex flex-col gap-4">
-                    <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
-                    <div class="font-body-md text-gray-700 space-y-4 break-words">
-                        <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
-                    </div>
-                    </div>
-
-                    <hr class="border-gray-100"/>
-
-                    <div class="py-8 flex flex-col gap-4">
-                    <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
-                    <ul class="flex flex-col gap-4 mt-2">
-                        <li class="flex items-start gap-3">
-                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                        <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
-                        </li>
-                    </ul>
+            <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
+                <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
+                <div class="flex flex-col gap-2">
+                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
+                    <a class="hover:underline" href="#">Início</a> &gt;
+                    <a class="hover:underline" href="#">Trabalhos</a> &gt;
+                    <a class="hover:underline" href="#">Design Gráfico</a> &gt;
+                    <span>Identidade Visual</span>
                     </div>
                 </div>
 
-                <div class="flex flex-col gap-8">
-                    <div class="flex justify-between items-center">
-                    <h2 class="font-headline-sm text-black flex items-center gap-3">
-                        <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
-                    </h2>
-                    </div>
-
-                    <div class="flex flex-col gap-6">
-                    <!-- Exemplo Proposta -->
-                    <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
-                        <div class="flex justify-between items-start">
-                        <div class="flex items-center gap-4">
-                            <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
-                            <div class="flex flex-col">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Coluna Esquerda: Detalhes -->
+                    <div class="lg:col-span-8 flex flex-col gap-6">
+                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
+                        <div class="pb-8">
+                        <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
+                        <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+                        <div class="flex flex-wrap gap-6 text-black">
                             <div class="flex items-center gap-2">
-                                <p class="font-label-md font-bold text-black">Mário Costa</p>
-                                <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
+                            <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
+                            <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
                             </div>
-                            <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
+                            <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
+                            <span class="font-body-md text-body-md">Prazo: 15 dias</span>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
+                        </div>
+
+                        <hr class="border-gray-100"/>
+
+                        <div class="py-8 flex flex-col gap-4">
+                        <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
+                        <div class="font-body-md text-gray-700 space-y-4 break-words">
+                            <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
                         </div>
                         </div>
-                        <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
-                        <div class="flex justify-between items-center pt-2">
-                        <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
+
+                        <hr class="border-gray-100"/>
+
+                        <div class="py-8 flex flex-col gap-4">
+                        <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
+                        <ul class="flex flex-col gap-4 mt-2">
+                            <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                            <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
+                            </li>
+                        </ul>
                         </div>
+                    </div>
+
+                    <div class="flex flex-col gap-8">
+                        <div class="flex justify-between items-center">
+                        <h2 class="font-headline-sm text-black flex items-center gap-3">
+                            <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
+                        </h2>
+                        </div>
+
+                        <div class="flex flex-col gap-6">
+                        <!-- Exemplo Proposta -->
+                        <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
+                            <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
+                                <div class="flex flex-col">
+                                <div class="flex items-center gap-2">
+                                    <p class="font-label-md font-bold text-black">Mário Costa</p>
+                                    <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
+                                </div>
+                                <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
+                            </div>
+                            </div>
+                            <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
+                            <div class="flex justify-between items-center pt-2">
+                            <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Coluna Direita: Sticky Sidebar Corrigida -->
+                    <div class="lg:col-span-4">
+                    <div class="sticky top-24 flex flex-col gap-6">
+
+                        <!-- Card de Ação / Enviar Proposta -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
+                            <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
+                            <span class="font-bold text-[20px]">42</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Propostas</span>
+                            <span class="font-bold text-[20px]">8</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
+                            <span class="font-bold text-[20px]">1</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-4 mt-2">
+                            <button
+                            type="button"
+                            data-open-proposta-modal
+                            class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center"
+                            >
+                            Enviar Proposta
+                            </button>
+
+                            <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+                            <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
+                            </button>
+                        </div>
+                        </div>
+
+                        <!-- Card Info Cliente -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                        <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
+                            <div>
+                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
+                            <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
+                                <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
+                            </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 mt-4">
+                            <div class="flex justify-between font-label-sm text-black">
+                            <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
+                            </div>
+                            <div class="flex justify-between font-label-sm text-black mt-2">
+                            <span class="text-gray-600">Avaliação Média</span>
+                            <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Trabalhos Semelhantes -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                        <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
+                        <div class="flex flex-col gap-5">
+                            <a class="group flex flex-col gap-1" href="#">
+                            <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
+                            <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
+                            </a>
+                        </div>
+                        </div>
+
                     </div>
                     </div>
                 </div>
                 </div>
 
-                <!-- Coluna Direita: Sticky Sidebar Corrigida -->
-                <div class="lg:col-span-4">
-                <div class="sticky top-24 flex flex-col gap-6">
+                <!-- MODAL: Enviar Proposta (NÃO corta conteúdo; só fica hidden/mostra) -->
+                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4"
+                    id="modal-overlay"
+                    aria-hidden="true">
+                <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden transform transition-all duration-300 scale-100 opacity-100"
+                    id="modal-content"
+                    role="dialog"
+                    aria-modal="true">
 
-                    <!-- Card de Ação / Enviar Proposta -->
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
-                    <div class="flex flex-col gap-1">
-                        <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
-                        <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
+                    <div class="px-8 pt-8 pb-4 flex justify-between items-start">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-obsidian mb-1">Enviar Proposta</h2>
+                        <p class="font-body-md text-obsidian/60">Preencha os detalhes para concorrer a este trabalho.</p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
-                        <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
-                        <span class="font-bold text-[20px]">42</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Propostas</span>
-                        <span class="font-bold text-[20px]">8</span>
-                        </div>
-                        <div class="flex flex-col items-center gap-2">
-                        <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
-                        <span class="font-bold text-[20px]">1</span>
-                        </div>
+                    <button class="p-2 hover:bg-obsidian/5 rounded-full transition-colors group"
+                            type="button"
+                            data-close-proposta-modal
+                            aria-label="Fechar">
+                        <span class="material-symbols-outlined text-obsidian text-2xl group-hover:rotate-90 transition-transform duration-200">close</span>
+                    </button>
                     </div>
 
-                    <div class="flex flex-col gap-4 mt-2">
-                        <button
-                        type="button"
-                        data-open-proposta-modal
-                        class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center"
-                        >
-                        Enviar Proposta
-                        </button>
-
-                        <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
-                        <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
-                        </button>
-                    </div>
-                    </div>
-
-                    <!-- Card Info Cliente -->
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                    <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
-                    <div class="flex items-center gap-4 mb-2">
-                        <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
-                        <div>
-                        <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
-                        <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
-                            <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
-                        </p>
-                        </div>
-                    </div>
-                    <div class="flex flex-col gap-4 mt-4">
-                        <div class="flex justify-between font-label-sm text-black">
-                        <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
-                        </div>
-                        <div class="flex justify-between font-label-sm text-black mt-2">
-                        <span class="text-gray-600">Avaliação Média</span>
-                        <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
-                        </div>
-                    </div>
-                    </div>
-
-                    <!-- Trabalhos Semelhantes -->
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                    <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
-                    <div class="flex flex-col gap-5">
-                        <a class="group flex flex-col gap-1" href="#">
-                        <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
-                        <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
-                        </a>
-                    </div>
-                    </div>
-
-                </div>
-                </div>
-            </div>
-            </div>
-
-            <!-- MODAL: Enviar Proposta (NÃO corta conteúdo; só fica hidden/mostra) -->
-            <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4"
-                id="modal-overlay"
-                aria-hidden="true">
-            <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden transform transition-all duration-300 scale-100 opacity-100"
-                id="modal-content"
-                role="dialog"
-                aria-modal="true">
-
-                <div class="px-8 pt-8 pb-4 flex justify-between items-start">
-                <div>
-                    <h2 class="font-headline-md text-headline-md text-obsidian mb-1">Enviar Proposta</h2>
-                    <p class="font-body-md text-obsidian/60">Preencha os detalhes para concorrer a este trabalho.</p>
-                </div>
-
-                <button class="p-2 hover:bg-obsidian/5 rounded-full transition-colors group"
-                        type="button"
-                        data-close-proposta-modal
-                        aria-label="Fechar">
-                    <span class="material-symbols-outlined text-obsidian text-2xl group-hover:rotate-90 transition-transform duration-200">close</span>
-                </button>
-                </div>
-
-                <form id="proposta-form" class="px-8 py-4 space-y-6">
-                <div class="space-y-2">
-                    <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Carta de apresentação</label>
-                    <div class="relative">
-                    <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 resize-none transition-all"
-                                id="cover-letter"
-                                maxlength="2000"
-                                placeholder="Escreva uma breve apresentação..."
-                                rows="5"></textarea>
-                    <div class="absolute bottom-3 right-4 font-label-sm text-label-sm text-obsidian/40" id="char-counter">0/2000</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <form id="proposta-form" class="px-8 py-4 space-y-6">
                     <div class="space-y-2">
-                    <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Valor proposto (Kz)</label>
-                    <div class="relative">
-                        <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all pr-12"
-                            id="proposta-valor"
-                            placeholder="Ex.: 150000"
-                            type="number"
-                            min="0"
-                            required />
-                        <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Kz</span>
-                    </div>
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Carta de apresentação</label>
+                        <div class="relative">
+                        <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 resize-none transition-all"
+                                    id="cover-letter"
+                                    maxlength="2000"
+                                    placeholder="Escreva uma breve apresentação..."
+                                    rows="5"></textarea>
+                        <div class="absolute bottom-3 right-4 font-label-sm text-label-sm text-obsidian/40" id="char-counter">0/2000</div>
+                        </div>
                     </div>
 
-                    <div class="space-y-2">
-                    <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Dias de entrega</label>
-                    <div class="relative">
-                        <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all"
-                            id="proposta-dias"
-                            placeholder="Ex.: 7"
-                            type="number"
-                            min="1"
-                            required />
-                        <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Dias</span>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Valor proposto (Kz)</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all pr-12"
+                                id="proposta-valor"
+                                placeholder="Ex.: 150000"
+                                type="number"
+                                min="0"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Kz</span>
+                        </div>
+                        </div>
+
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Dias de entrega</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all"
+                                id="proposta-dias"
+                                placeholder="Ex.: 7"
+                                type="number"
+                                min="1"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Dias</span>
+                        </div>
+                        </div>
                     </div>
+                    </form>
+
+                    <div class="px-8 pb-8 pt-4 flex flex-col sm:flex-row-reverse items-center justify-between gap-6">
+                    <button class="w-full sm:w-auto bg-obsidian text-volt-lime font-headline-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(212,255,0,0.15)] flex items-center justify-center gap-2"
+                            type="submit"
+                            form="proposta-form">
+                        <span>Enviar Proposta</span>
+                        <span class="text-[10px] opacity-80 font-label-sm bg-volt-lime/20 px-2 py-0.5 rounded-full">(gasta 1 crédito)</span>
+                    </button>
+
+                    <a class="text-obsidian font-label-md border-b-2 border-transparent hover:border-obsidian transition-all py-1"
+                        href="#"
+                        data-close-proposta-modal>
+                        Cancelar
+                    </a>
                     </div>
+
                 </div>
-                </form>
-
-                <div class="px-8 pb-8 pt-4 flex flex-col sm:flex-row-reverse items-center justify-between gap-6">
-                <button class="w-full sm:w-auto bg-obsidian text-volt-lime font-headline-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(212,255,0,0.15)] flex items-center justify-center gap-2"
-                        type="submit"
-                        form="proposta-form">
-                    <span>Enviar Proposta</span>
-                    <span class="text-[10px] opacity-80 font-label-sm bg-volt-lime/20 px-2 py-0.5 rounded-full">(gasta 1 crédito)</span>
-                </button>
-
-                <a class="text-obsidian font-label-md border-b-2 border-transparent hover:border-obsidian transition-all py-1"
-                    href="#"
-                    data-close-proposta-modal>
-                    Cancelar
-                </a>
                 </div>
-
             </div>
-            </div>
-        </div>
         `;
 
 
@@ -2395,112 +2425,112 @@
 
         templates.propostas = `
 
-        <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
+            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
 
-            <!-- Main Content Canvas -->
-            <!-- Header Actions -->
-            <header class="flex justify-between items-center mb-12">
-                <div>
-                <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
-                <div class="h-1.5 w-24 bg-black mt-2"></div>
-                </div>
+                <!-- Main Content Canvas -->
+                <!-- Header Actions -->
+                <header class="flex justify-between items-center mb-12">
+                    <div>
+                    <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
+                    <div class="h-1.5 w-24 bg-black mt-2"></div>
+                    </div>
 
-                <div class="flex items-center gap-4">
-                <div class="relative" id="propostas-search-wrap">
-                    <input id="propostas-search"
-                    class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
-                    placeholder="Procurar propostas..." type="text"/>
-                    <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
-                </div>
-                </div>
-            </header>
+                    <div class="flex items-center gap-4">
+                    <div class="relative" id="propostas-search-wrap">
+                        <input id="propostas-search"
+                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                        placeholder="Procurar propostas..." type="text"/>
+                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
+                    </div>
+                    </div>
+                </header>
 
-            <!-- Proposals List Section -->
-            <section class=" flex flex-col gap-6 max-w-5xl">
+                <!-- Proposals List Section -->
+                <section class=" flex flex-col gap-6 max-w-5xl">
 
-                <!-- Card 1 -->
-                <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                <div class="flex justify-between items-start">
-                    <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
-                    Desenvolvimento de Landing Page de Alta Conversão
-                    </a>
-                    <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
-                </div>
-                <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
-                </div>
-                </div>
+                    <!-- Card 1 -->
+                    <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
+                        Desenvolvimento de Landing Page de Alta Conversão
+                        </a>
+                        <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
+                    </div>
+                    </div>
 
-                <!-- Card 2 -->
-                <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                <div class="flex justify-between items-start">
-                    <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
-                    <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                </div>
-                <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
-                </div>
-                </div>
+                    <!-- Card 2 -->
+                    <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
+                    </div>
+                    </div>
 
-                <!-- Card 3 -->
-                <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                <div class="flex justify-between items-start">
-                    <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
-                    <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
-                </div>
-                <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
-                </div>
-                </div>
+                    <!-- Card 3 -->
+                    <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
+                        <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
+                    </div>
+                    </div>
 
-                <!-- Card 4 -->
-                <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                <div class="flex justify-between items-start">
-                    <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
-                    <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                </div>
-                <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
-                    <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
-                </div>
-                </div>
+                    <!-- Card 4 -->
+                    <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
+                    </div>
+                    </div>
 
-                <!-- Pagination -->
-                <div class="flex justify-end items-center gap-2 mt-4 pb-10">
-                <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
-                <div class="flex gap-1">
-                    <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
-                    <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
-                    <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
-                    <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
-                    <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
-                </div>
-                <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
-                </div>
+                    <!-- Pagination -->
+                    <div class="flex justify-end items-center gap-2 mt-4 pb-10">
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
+                    <div class="flex gap-1">
+                        <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
+                        <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
+                    </div>
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
+                    </div>
 
-            </section>
+                </section>
 
-            <!-- Footer -->
-            <footer class="mt-auto flex justify-between items-center w-full py-8 text-black border-t border-black/10">
-                <div class="font-label-sm text-label-sm font-bold">SKILLA © 2024 - Feito em Luanda</div>
-                <div class="flex gap-6">
-                <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100 underline decoration-2 underline-offset-4" href="#">Termos</a>
-                <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Privacidade</a>
-                <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Suporte</a>
-                </div>
-            </footer>
-        </div>
+                <!-- Footer -->
+                <footer class="mt-auto flex justify-between items-center w-full py-8 text-black border-t border-black/10">
+                    <div class="font-label-sm text-label-sm font-bold">SKILLA © 2024 - Feito em Luanda</div>
+                    <div class="flex gap-6">
+                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100 underline decoration-2 underline-offset-4" href="#">Termos</a>
+                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Privacidade</a>
+                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Suporte</a>
+                    </div>
+                </footer>
+            </div>
         `;
 
 
@@ -2553,7 +2583,6 @@
     return;
   }
 });
-        }
 
         function walletSetModalOpen(modalEl, open) {
             if (!modalEl) return;
@@ -3238,6 +3267,13 @@ document.addEventListener('keydown', (e) => {
 });
 
 
+document.addEventListener('click', function(e) {
+    const link = e.target.closest('a[data-spa-link]');
+    if (!link) return;
+    e.preventDefault();
+    const route = link.dataset.route;
+    render(route, true, { activeMenuRoute: route });
+});
 </script>
 </body>
 </html>
