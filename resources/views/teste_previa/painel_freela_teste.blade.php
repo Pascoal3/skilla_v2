@@ -1023,140 +1023,140 @@
         // ============================
         templates.carteira_pedir_saque = `
             <div id="view-carteira-pedir-saque" class="bg-[#D4FF00] min-h-screen flex flex-col items-center">
-            <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
+                <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
 
-                <!-- Breadcrumb -->
-                <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                <span>Pedir saque</span>
-                </div>
-
-                <!-- Top mini header com voltar -->
-                <div class="flex items-center gap-3">
-                <button data-wallet-back class="p-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-black/10" type="button">
-                    <span class="material-symbols-outlined text-black">arrow_back</span>
-                </button>
-                <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Pedir saque</h2>
-                </div>
-
-                <!-- Card Saldo -->
-                <div class="bg-white border border-black/10 rounded-xl p-6" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#444444] uppercase mb-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível</p>
-                <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</h2>
-                </div>
-
-                <!-- Seção Valor -->
-                <div class="space-y-3">
-                <div class="flex justify-between items-end">
-                    <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">VALOR A SACAR</label>
-                    <button data-withdraw-fill-all class="text-[14px] leading-[20px] tracking-[0.05em] text-black hover:underline transition-all font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Tudo</button>
-                </div>
-                <div class="relative group">
-                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-black/60" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Kz</span>
-                    <input class="w-full bg-white border-2 border-black rounded-lg py-4 pl-12 pr-4 text-[24px] leading-[32px] font-semibold text-black focus:ring-0 transition-all"
-                        id="withdraw-input" placeholder="0" type="number" style="font-family: Sora, ui-sans-serif, system-ui;">
-                </div>
-                <p class="text-[12px] leading-[16px] text-black/70 flex items-center gap-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                    <span class="material-symbols-outlined text-[14px]">info</span>
-                    Mínimo 5 000 Kz
-                </p>
-                </div>
-
-                <!-- Seção IBAN -->
-                <div class="space-y-3">
-                <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN CADASTRADO</label>
-                <div class="bg-white border border-black/10 rounded-xl p-4 flex flex-col gap-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                    <div class="flex items-start justify-between">
-                    <div class="flex gap-3">
-                        <span class="material-symbols-outlined text-black">account_balance</span>
-                        <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black break-all font-medium" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        AO06 1234 5678 9012 3456 7890 1
-                        </span>
+                    <!-- Breadcrumb -->
+                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                    <span>Pedir saque</span>
                     </div>
-                    </div>
-                    <div class="flex gap-2">
-                    <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
-                            style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Editar</button>
-                    <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
-                            style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Trocar</button>
-                    </div>
-                </div>
-                </div>
 
-                <!-- Card Resumo -->
-                <div class="bg-white border border-black/10 rounded-xl p-5 space-y-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                <div class="flex justify-between items-center border-b border-black/10 pb-3">
-                    <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Valor a sacar</span>
-                    <span data-withdraw-summary-value class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">0 Kz</span>
-                </div>
-                <div class="flex justify-between items-center border-b border-black/10 pb-3">
-                    <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Taxa de serviço</span>
-                    <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Grátis</span>
-                </div>
-                <div class="flex justify-between items-center pt-1">
-                    <span class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Total a receber</span>
-                    <span data-withdraw-summary-total class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">0 Kz</span>
-                </div>
-                <div class="flex items-center justify-between bg-black/5 p-3 rounded-lg mt-2">
-                    <div class="flex flex-col">
-                    <span class="text-[10px] uppercase text-[#444444]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Destino</span>
-                    <span class="text-[12px] text-black font-medium truncate max-w-[200px]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">AO06...7890 1</span>
-                    </div>
-                    <button class="material-symbols-outlined text-black hover:opacity-70 transition-colors" type="button">content_copy</button>
-                </div>
-                </div>
-
-                <!-- Aviso -->
-                <div class="flex gap-3 bg-white border-2 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-                <span class="material-symbols-outlined text-black">warning</span>
-                <p class="text-[13px] leading-relaxed text-black font-medium" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                    Ao confirmar, o valor será transferido para o IBAN indicado. Esta ação não pode ser desfeita.
-                </p>
-                </div>
-
-                <!-- CTA -->
-                <button class="w-full bg-black text-[#D4FF00] text-[18px] py-4 rounded-xl font-bold shadow-xl hover:brightness-125 active:scale-[0.98] transition-all border-2 border-black"
-                        style="font-family: Sora, ui-sans-serif, system-ui;" type="button">
-                Confirmar saque
-                </button>
-
-                <!-- Saques recentes -->
-                <div class="pt-8 space-y-4">
-                <h3 class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">SAQUES RECENTES</h3>
-                <div class="space-y-2">
-
-                    <!-- Item 1 -->
-                    <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                    <!-- Top mini header com voltar -->
                     <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center">
-                        <span class="material-symbols-outlined text-black">pending</span>
-                        </div>
-                        <div>
-                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">50 000 Kz</p>
-                        <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 Mar, 2024</p>
-                        </div>
-                    </div>
-                    <span class="px-2 py-1 rounded bg-black/5 text-black text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pendente</span>
+                    <button data-wallet-back class="p-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-black/10" type="button">
+                        <span class="material-symbols-outlined text-black">arrow_back</span>
+                    </button>
+                    <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Pedir saque</h2>
                     </div>
 
-                    <!-- Item 2 -->
-                    <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black">
-                        <span class="material-symbols-outlined">check_circle</span>
-                        </div>
-                        <div>
-                        <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">25 000 Kz</p>
-                        <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">05 Mar, 2024</p>
-                        </div>
-                    </div>
-                    <span class="px-2 py-1 rounded bg-black text-[#D4FF00] text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Concluído</span>
+                    <!-- Card Saldo -->
+                    <div class="bg-white border border-black/10 rounded-xl p-6" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                    <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#444444] uppercase mb-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível</p>
+                    <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</h2>
                     </div>
 
-                </div>
-                </div>
-            </main>
+                    <!-- Seção Valor -->
+                    <div class="space-y-3">
+                    <div class="flex justify-between items-end">
+                        <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">VALOR A SACAR</label>
+                        <button data-withdraw-fill-all class="text-[14px] leading-[20px] tracking-[0.05em] text-black hover:underline transition-all font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Tudo</button>
+                    </div>
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-black/60" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Kz</span>
+                        <input class="w-full bg-white border-2 border-black rounded-lg py-4 pl-12 pr-4 text-[24px] leading-[32px] font-semibold text-black focus:ring-0 transition-all"
+                            id="withdraw-input" placeholder="0" type="number" style="font-family: Sora, ui-sans-serif, system-ui;">
+                    </div>
+                    <p class="text-[12px] leading-[16px] text-black/70 flex items-center gap-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        <span class="material-symbols-outlined text-[14px]">info</span>
+                        Mínimo 5 000 Kz
+                    </p>
+                    </div>
+
+                    <!-- Seção IBAN -->
+                    <div class="space-y-3">
+                    <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN CADASTRADO</label>
+                    <div class="bg-white border border-black/10 rounded-xl p-4 flex flex-col gap-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-start justify-between">
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-black">account_balance</span>
+                            <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black break-all font-medium" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            AO06 1234 5678 9012 3456 7890 1
+                            </span>
+                        </div>
+                        </div>
+                        <div class="flex gap-2">
+                        <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Editar</button>
+                        <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Trocar</button>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Card Resumo -->
+                    <div class="bg-white border border-black/10 rounded-xl p-5 space-y-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                    <div class="flex justify-between items-center border-b border-black/10 pb-3">
+                        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Valor a sacar</span>
+                        <span data-withdraw-summary-value class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">0 Kz</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-black/10 pb-3">
+                        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Taxa de serviço</span>
+                        <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Grátis</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Total a receber</span>
+                        <span data-withdraw-summary-total class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">0 Kz</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-black/5 p-3 rounded-lg mt-2">
+                        <div class="flex flex-col">
+                        <span class="text-[10px] uppercase text-[#444444]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Destino</span>
+                        <span class="text-[12px] text-black font-medium truncate max-w-[200px]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">AO06...7890 1</span>
+                        </div>
+                        <button class="material-symbols-outlined text-black hover:opacity-70 transition-colors" type="button">content_copy</button>
+                    </div>
+                    </div>
+
+                    <!-- Aviso -->
+                    <div class="flex gap-3 bg-white border-2 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <span class="material-symbols-outlined text-black">warning</span>
+                    <p class="text-[13px] leading-relaxed text-black font-medium" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Ao confirmar, o valor será transferido para o IBAN indicado. Esta ação não pode ser desfeita.
+                    </p>
+                    </div>
+
+                    <!-- CTA -->
+                    <button class="w-full bg-black text-[#D4FF00] text-[18px] py-4 rounded-xl font-bold shadow-xl hover:brightness-125 active:scale-[0.98] transition-all border-2 border-black"
+                            style="font-family: Sora, ui-sans-serif, system-ui;" type="button">
+                    Confirmar saque
+                    </button>
+
+                    <!-- Saques recentes -->
+                    <div class="pt-8 space-y-4">
+                    <h3 class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">SAQUES RECENTES</h3>
+                    <div class="space-y-2">
+
+                        <!-- Item 1 -->
+                        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-black">pending</span>
+                            </div>
+                            <div>
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">50 000 Kz</p>
+                            <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 Mar, 2024</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 rounded bg-black/5 text-black text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pendente</span>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                            <div>
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">25 000 Kz</p>
+                            <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">05 Mar, 2024</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 rounded bg-black text-[#D4FF00] text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Concluído</span>
+                        </div>
+
+                    </div>
+                    </div>
+                </main>
             </div>
         `;
 
@@ -1165,247 +1165,247 @@
         // ============================
         templates.carteira_ver_extrato = `
             <div id="view-carteira-ver-extrato" class="overflow-x-hidden bg-[#D4FF00] min-h-screen">
-            <main class="pt-10 pb-20 px-4 md:px-10 min-h-screen">
-                <div class="max-w-[1280px] mx-auto">
+                <main class="pt-10 pb-20 px-4 md:px-10 min-h-screen">
+                    <div class="max-w-[1280px] mx-auto">
 
-                <!-- Breadcrumb + voltar -->
-                <div class="flex items-center justify-between gap-4 mb-8">
-                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                    <span>Extrato</span>
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-4 mb-8">
+                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Extrato</span>
+                        </div>
+
+                        <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
+                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Voltar
+                        </button>
                     </div>
 
-                    <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                    <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                    Voltar
-                    </button>
+                    <!-- Header Section -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                        <div>
+                        <h1 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-1" style="font-family: Sora, ui-sans-serif, system-ui;">Extrato</h1>
+                        <p class="text-[16px] leading-[24px] text-black/70" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Gerencie seu fluxo de caixa em Kwanzas (Kz)</p>
+                        </div>
+                        <button class="flex items-center gap-2 px-6 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
+                        <span class="material-symbols-outlined text-[20px]">file_download</span>
+                        Exportar
+                        </button>
+                    </div>
+
+                    <!-- Filters Section -->
+                    <section class="mb-10">
+                        <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <button class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-black hover:bg-black hover:text-white transition-all group" id="toggleFilters" type="button">
+                            <span class="material-symbols-outlined text-black group-hover:text-[#D4FF00]">tune</span>
+                            <span class="font-bold">Filtrar transações</span>
+                            <span class="bg-black text-[#D4FF00] text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">2</span>
+                        </button>
+
+                        <div class="h-6 w-px bg-black/20 mx-2 hidden md:block"></div>
+
+                        <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            Últimos 30 dias <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+                        </span>
+
+                        <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            Tipo: Recarga, Saque <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+                        </span>
+                        </div>
+
+                        <!-- Collapsible Content -->
+                        <div class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-white rounded-2xl border-2 border-black mb-8 animate-in fade-in slide-in-from-top-4 duration-300" id="filterPanel">
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Período</label>
+                            <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                            <option>Últimos 7 dias</option>
+                            <option selected="">Últimos 30 dias</option>
+                            <option>Último trimestre</option>
+                            <option>Personalizado</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Tipo de Transação</label>
+                            <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer">
+                                <input checked="" class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Recarga</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input checked="" class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saque</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pagamento</span>
+                            </label>
+                            </div>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Status</label>
+                            <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                            <option>Todos os status</option>
+                            <option selected="">Concluído</option>
+                            <option>Pendente</option>
+                            <option>Cancelado</option>
+                            </select>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Transactions List -->
+                    <div class="space-y-10">
+                        <!-- Group: Hoje -->
+                        <div>
+                        <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h3>
+                        <div class="space-y-3">
+
+                            <!-- Transaction Card 1 -->
+                            <div data-tx-card data-tx-id="TX4928310" class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black hover:border-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-black flex items-center justify-center text-[#D4FF00] group-hover:bg-[#D4FF00] group-hover:text-black">
+                                <span class="material-symbols-outlined text-[28px]">arrow_upward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Recarga de Saldo</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Depósito via Multicaixa Express • 14:20</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-[#D4FF00]" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Card 2 -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Saque Bancário</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Transferência para BFA • 09:45</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 125.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+
+                        <!-- Group: Ontem -->
+                        <div>
+                        <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h3>
+                        <div class="space-y-3">
+
+                            <!-- Pending Transaction -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white/70 border-2 border-black/10 rounded-2xl hover:bg-black hover:border-black transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-white/20 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">schedule</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black/60 group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Pagamento de Projeto</p>
+                                <p class="text-[12px] leading-[16px] text-black/40 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">UI Design Kit Pro • 18:30</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black/60 font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">+ 210.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black/60 px-2 py-0.5 rounded-full bg-gray-100 border border-black/10 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/20 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse group-hover:bg-white"></span> PENDENTE
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Assinatura Mensal</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Plano Skilla Pro • 12:00</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 5.500,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </main>
+
+                <!-- Modal: Transaction Details -->
+                <div class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 pointer-events-none opacity-0" id="modalOverlay">
+                    <div class="bg-white border-4 border-black w-full max-w-md rounded-3xl p-8 transform translate-y-8 transition-transform duration-300" id="modalContent">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                        <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Detalhes</h2>
+                        <p class="text-[12px] leading-[16px] text-black/60 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Referência: <span data-modal-ref>TX123456789</span></p>
+                        </div>
+                        <button class="material-symbols-outlined text-black p-2 hover:bg-[#D4FF00] rounded-full transition-colors" type="button" data-close-extrato-modal>close</button>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex flex-col items-center py-6 border-y-2 border-black/10">
+                        <p class="text-[12px] leading-[16px] text-black/60 mb-1 uppercase font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor da Transação</p>
+                        <p class="text-[32px] font-black text-black" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
+                        <span class="mt-2 inline-flex items-center gap-1.5 text-black px-3 py-1 rounded-full bg-[#D4FF00] border-2 border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="w-2 h-2 rounded-full bg-black"></span> Concluído
+                        </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Origem</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Cartão de Débito (**** 4291)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Destino</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Conta Principal Skilla</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Data e Hora</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">24 Out 2023, 14:20</span>
+                        </div>
+                        <div class="pt-4 mt-2 border-t-2 border-black/10">
+                            <p class="text-[12px] leading-[16px] text-black/60 mb-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Descrição Completa</p>
+                            <p class="text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Recarga de carteira efetuada via aplicativo Multicaixa Express. Processado via rede EMIS com sucesso.</p>
+                        </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-4">
+                        <button class="flex-1 bg-white border-2 border-black text-black py-3 rounded-xl font-bold hover:bg-gray-100 transition-all flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                            ID
+                        </button>
+                        <button class="flex-1 bg-black text-[#D4FF00] py-3 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="material-symbols-outlined text-[20px]">share</span>
+                            Recibo
+                        </button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-
-                <!-- Header Section -->
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                    <div>
-                    <h1 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-1" style="font-family: Sora, ui-sans-serif, system-ui;">Extrato</h1>
-                    <p class="text-[16px] leading-[24px] text-black/70" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Gerencie seu fluxo de caixa em Kwanzas (Kz)</p>
-                    </div>
-                    <button class="flex items-center gap-2 px-6 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                    <span class="material-symbols-outlined text-[20px]">file_download</span>
-                    Exportar
-                    </button>
-                </div>
-
-                <!-- Filters Section -->
-                <section class="mb-10">
-                    <div class="flex flex-wrap items-center gap-3 mb-6">
-                    <button class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-black hover:bg-black hover:text-white transition-all group" id="toggleFilters" type="button">
-                        <span class="material-symbols-outlined text-black group-hover:text-[#D4FF00]">tune</span>
-                        <span class="font-bold">Filtrar transações</span>
-                        <span class="bg-black text-[#D4FF00] text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">2</span>
-                    </button>
-
-                    <div class="h-6 w-px bg-black/20 mx-2 hidden md:block"></div>
-
-                    <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        Últimos 30 dias <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
-                    </span>
-
-                    <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        Tipo: Recarga, Saque <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
-                    </span>
-                    </div>
-
-                    <!-- Collapsible Content -->
-                    <div class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-white rounded-2xl border-2 border-black mb-8 animate-in fade-in slide-in-from-top-4 duration-300" id="filterPanel">
-                    <div class="space-y-3">
-                        <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Período</label>
-                        <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                        <option>Últimos 7 dias</option>
-                        <option selected="">Últimos 30 dias</option>
-                        <option>Último trimestre</option>
-                        <option>Personalizado</option>
-                        </select>
-                    </div>
-
-                    <div class="space-y-3">
-                        <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Tipo de Transação</label>
-                        <div class="flex flex-wrap gap-2">
-                        <label class="cursor-pointer">
-                            <input checked="" class="hidden peer" type="checkbox">
-                            <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Recarga</span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input checked="" class="hidden peer" type="checkbox">
-                            <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saque</span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input class="hidden peer" type="checkbox">
-                            <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pagamento</span>
-                        </label>
-                        </div>
-                    </div>
-
-                    <div class="space-y-3">
-                        <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Status</label>
-                        <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                        <option>Todos os status</option>
-                        <option selected="">Concluído</option>
-                        <option>Pendente</option>
-                        <option>Cancelado</option>
-                        </select>
-                    </div>
-                    </div>
-                </section>
-
-                <!-- Transactions List -->
-                <div class="space-y-10">
-                    <!-- Group: Hoje -->
-                    <div>
-                    <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h3>
-                    <div class="space-y-3">
-
-                        <!-- Transaction Card 1 -->
-                        <div data-tx-card data-tx-id="TX4928310" class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black hover:border-black transition-all glow-hover">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-black flex items-center justify-center text-[#D4FF00] group-hover:bg-[#D4FF00] group-hover:text-black">
-                            <span class="material-symbols-outlined text-[28px]">arrow_upward</span>
-                            </div>
-                            <div>
-                            <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Recarga de Saldo</p>
-                            <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Depósito via Multicaixa Express • 14:20</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-[#D4FF00]" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
-                            <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
-                            </span>
-                        </div>
-                        </div>
-
-                        <!-- Transaction Card 2 -->
-                        <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
-                            <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
-                            </div>
-                            <div>
-                            <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Saque Bancário</p>
-                            <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Transferência para BFA • 09:45</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 125.000,00 Kz</p>
-                            <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
-                            </span>
-                        </div>
-                        </div>
-
-                    </div>
-                    </div>
-
-                    <!-- Group: Ontem -->
-                    <div>
-                    <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h3>
-                    <div class="space-y-3">
-
-                        <!-- Pending Transaction -->
-                        <div class="group cursor-pointer flex items-center justify-between p-4 bg-white/70 border-2 border-black/10 rounded-2xl hover:bg-black hover:border-black transition-all">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-white/20 group-hover:text-white">
-                            <span class="material-symbols-outlined text-[28px]">schedule</span>
-                            </div>
-                            <div>
-                            <p class="text-[16px] leading-[24px] font-semibold text-black/60 group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Pagamento de Projeto</p>
-                            <p class="text-[12px] leading-[16px] text-black/40 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">UI Design Kit Pro • 18:30</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[16px] leading-[24px] text-black/60 font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">+ 210.000,00 Kz</p>
-                            <span class="inline-flex items-center gap-1.5 text-[10px] text-black/60 px-2 py-0.5 rounded-full bg-gray-100 border border-black/10 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/20 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse group-hover:bg-white"></span> PENDENTE
-                            </span>
-                        </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
-                            <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
-                            </div>
-                            <div>
-                            <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Assinatura Mensal</p>
-                            <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Plano Skilla Pro • 12:00</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 5.500,00 Kz</p>
-                            <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                            <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
-                            </span>
-                        </div>
-                        </div>
-
-                    </div>
-                    </div>
-                </div>
-
-                </div>
-            </main>
-
-            <!-- Modal: Transaction Details -->
-            <div class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 pointer-events-none opacity-0" id="modalOverlay">
-                <div class="bg-white border-4 border-black w-full max-w-md rounded-3xl p-8 transform translate-y-8 transition-transform duration-300" id="modalContent">
-                <div class="flex justify-between items-start mb-6">
-                    <div>
-                    <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Detalhes</h2>
-                    <p class="text-[12px] leading-[16px] text-black/60 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Referência: <span data-modal-ref>TX123456789</span></p>
-                    </div>
-                    <button class="material-symbols-outlined text-black p-2 hover:bg-[#D4FF00] rounded-full transition-colors" type="button" data-close-extrato-modal>close</button>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="flex flex-col items-center py-6 border-y-2 border-black/10">
-                    <p class="text-[12px] leading-[16px] text-black/60 mb-1 uppercase font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor da Transação</p>
-                    <p class="text-[32px] font-black text-black" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
-                    <span class="mt-2 inline-flex items-center gap-1.5 text-black px-3 py-1 rounded-full bg-[#D4FF00] border-2 border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        <span class="w-2 h-2 rounded-full bg-black"></span> Concluído
-                    </span>
-                    </div>
-
-                    <div class="grid grid-cols-1 gap-4">
-                    <div class="flex justify-between items-center">
-                        <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Origem</span>
-                        <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Cartão de Débito (**** 4291)</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Destino</span>
-                        <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Conta Principal Skilla</span>
-                    </div>
-                    <div class="flex justify-between items-center">
-                        <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Data e Hora</span>
-                        <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">24 Out 2023, 14:20</span>
-                    </div>
-                    <div class="pt-4 mt-2 border-t-2 border-black/10">
-                        <p class="text-[12px] leading-[16px] text-black/60 mb-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Descrição Completa</p>
-                        <p class="text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Recarga de carteira efetuada via aplicativo Multicaixa Express. Processado via rede EMIS com sucesso.</p>
-                    </div>
-                    </div>
-
-                    <div class="flex gap-3 pt-4">
-                    <button class="flex-1 bg-white border-2 border-black text-black py-3 rounded-xl font-bold hover:bg-gray-100 transition-all flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        <span class="material-symbols-outlined text-[20px]">content_copy</span>
-                        ID
-                    </button>
-                    <button class="flex-1 bg-black text-[#D4FF00] py-3 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        <span class="material-symbols-outlined text-[20px]">share</span>
-                        Recibo
-                    </button>
-                    </div>
-                </div>
-                </div>
-            </div>
             </div>
         `;
 
@@ -1843,178 +1843,178 @@
         // ============================
         templates.carteira_extrato_creditos = `
             <div id="view-carteira-extrato-creditos" class="flex min-h-screen bg-[#D4FF00] text-black">
-            <main class="flex-1 pb-24 md:pb-8">
-                <div class="mt-10 max-w-[640px] mx-auto px-4 md:px-0">
+                <main class="flex-1 pb-24 md:pb-8">
+                    <div class="mt-10 max-w-[640px] mx-auto px-4 md:px-0">
 
-                <!-- Breadcrumb + voltar -->
-                <div class="flex items-center justify-between gap-3 mb-8">
-                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                    <span>Extrato de créditos</span>
-                    </div>
-
-                
-                </div>
-
-                <!-- Balance Card -->
-                <section class="mb-8">
-                    <div class="bg-white border border-black/10 rounded-2xl p-8 relative overflow-hidden group hover:border-black/30 transition-all duration-300 shadow-sm">
-                    <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#D4FF00]/20 blur-[60px]"></div>
-
-                    <div class="flex items-center gap-4 mb-4">
-                        <div class="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center">
-                        <span class="material-symbols-outlined text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-3 mb-8">
+                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Extrato de créditos</span>
                         </div>
-                        <h3 class="text-[16px] leading-[24px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Créditos disponíveis</h3>
+
+                    
                     </div>
 
-                    <div class="flex items-baseline gap-2">
-                        <span class="text-[56px] font-bold text-black leading-none" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
-                        <span class="text-[18px] leading-[28px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">créditos</span>
-                    </div>
+                    <!-- Balance Card -->
+                    <section class="mb-8">
+                        <div class="bg-white border border-black/10 rounded-2xl p-8 relative overflow-hidden group hover:border-black/30 transition-all duration-300 shadow-sm">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#D4FF00]/20 blur-[60px]"></div>
 
-                    <div class="mt-6 flex gap-3">
-                        <button data-go-add-creditos class="flex-1 py-3 bg-black text-[#D4FF00] text-[14px] leading-[20px] font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                        Adicionar créditos
-                        </button>
-
-                        <button class="px-4 py-3 border border-gray-300 text-black text-[14px] leading-[20px] rounded-lg hover:bg-gray-100 transition-all"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                        Como funciona?
-                        </button>
-                    </div>
-                    </div>
-                </section>
-
-                <!-- Filters Section -->
-                <section class="mb-8 space-y-4">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div class="relative inline-block w-full md:w-auto">
-                        <select class="appearance-none w-full md:w-56 bg-white border border-gray-300 text-black text-[14px] leading-[20px] px-4 py-2.5 rounded-xl focus:ring-1 focus:ring-black outline-none cursor-pointer"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                        <option>Últimos 30 dias</option>
-                        <option>Últimos 7 dias</option>
-                        <option>Mês atual</option>
-                        </select>
-                        <span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-600 pointer-events-none">expand_more</span>
-                    </div>
-
-                    <div class="flex flex-wrap gap-2">
-                        <button class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-emerald-500/20 transition-all"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                        Compra
-                        </button>
-
-                        <button class="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-blue-500/20 transition-all"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                        Proposta
-                        </button>
-
-                        <button class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-amber-500/20 transition-all"
-                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                        <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                        Destaque
-                        </button>
-                    </div>
-                    </div>
-                </section>
-
-                <!-- Transaction List -->
-                <section class="space-y-6">
-                    <!-- Group: Hoje -->
-                    <div>
-                    <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h4>
-                    <div class="space-y-3">
-                        <!-- Transaction Item: Outflow -->
-                        <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
-                            <span class="material-symbols-outlined">send</span>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">stars</span>
                             </div>
-                            <div>
-                            <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Proposta #54321</h5>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 10:15 • Proposta enviada</p>
-                            </div>
-                        </div>
-                        <div class="text-right">
-                            <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 2</span>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
-                        </div>
+                            <h3 class="text-[16px] leading-[24px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Créditos disponíveis</h3>
                         </div>
 
-                        <!-- Transaction Item: Highlight -->
-                        <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600">
-                            <span class="material-symbols-outlined">bolt</span>
-                            </div>
-                            <div>
-                            <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Upgrade: Destaque Topo</h5>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 08:30 • Projeto: App Delivery</p>
-                            </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-[56px] font-bold text-black leading-none" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
+                            <span class="text-[18px] leading-[28px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">créditos</span>
                         </div>
-                        <div class="text-right">
-                            <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 5</span>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 22</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
 
-                    <!-- Group: Ontem -->
-                    <div>
-                    <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h4>
-                    <div class="space-y-3">
-                        <!-- Transaction Item: Inflow -->
-                        <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
-                            <span class="material-symbols-outlined">shopping_cart</span>
+                        <div class="mt-6 flex gap-3">
+                            <button data-go-add-creditos class="flex-1 py-3 bg-black text-[#D4FF00] text-[14px] leading-[20px] font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Adicionar créditos
+                            </button>
+
+                            <button class="px-4 py-3 border border-gray-300 text-black text-[14px] leading-[20px] rounded-lg hover:bg-gray-100 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Como funciona?
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Filters Section -->
+                    <section class="mb-8 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="relative inline-block w-full md:w-auto">
+                            <select class="appearance-none w-full md:w-56 bg-white border border-gray-300 text-black text-[14px] leading-[20px] px-4 py-2.5 rounded-xl focus:ring-1 focus:ring-black outline-none cursor-pointer"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <option>Últimos 30 dias</option>
+                            <option>Últimos 7 dias</option>
+                            <option>Mês atual</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-600 pointer-events-none">expand_more</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-emerald-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            Compra
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-blue-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            Proposta
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-amber-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            Destaque
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Transaction List -->
+                    <section class="space-y-6">
+                        <!-- Group: Hoje -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Outflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
+                                <span class="material-symbols-outlined">send</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Proposta #54321</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 10:15 • Proposta enviada</p>
+                                </div>
                             </div>
-                            <div>
-                            <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Compra de pacote — 10 créditos</h5>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 14:32 • Cartão de crédito</p>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: Highlight -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600">
+                                <span class="material-symbols-outlined">bolt</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Upgrade: Destaque Topo</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 08:30 • Projeto: App Delivery</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 5</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 22</p>
+                            </div>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 10</span>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 30</p>
-                        </div>
                         </div>
 
-                        <!-- Transaction Item: System Bonus -->
-                        <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer opacity-80 shadow-sm">
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-lg bg-black/10 flex items-center justify-center text-black">
-                            <span class="material-symbols-outlined">redeem</span>
+                        <!-- Group: Ontem -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Inflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Compra de pacote — 10 créditos</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 14:32 • Cartão de crédito</p>
+                                </div>
                             </div>
-                            <div>
-                            <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Bônus de Indicação</h5>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 11:00 • Programa Skilla+</p>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 10</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 30</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: System Bonus -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer opacity-80 shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-black/10 flex items-center justify-center text-black">
+                                <span class="material-symbols-outlined">redeem</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Bônus de Indicação</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 11:00 • Programa Skilla+</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
                             </div>
                         </div>
-                        <div class="text-right">
-                            <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 2</span>
-                            <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
                         </div>
-                        </div>
-                    </div>
-                    </div>
-                </section>
+                    </section>
 
-                <!-- Bottom Illustration / CTA -->
-                <section class="mt-12 py-10 text-center border-t border-black/10">
-                    <p class="text-[16px] leading-[24px] text-gray-600 mb-6" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                    Precisa de mais visibilidade? Use seus créditos para destacar seu perfil.
-                    </p>
-                </section>
+                    <!-- Bottom Illustration / CTA -->
+                    <section class="mt-12 py-10 text-center border-t border-black/10">
+                        <p class="text-[16px] leading-[24px] text-gray-600 mb-6" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Precisa de mais visibilidade? Use seus créditos para destacar seu perfil.
+                        </p>
+                    </section>
 
-                </div>
-            </main>
+                    </div>
+                </main>
             </div>
         `;
 

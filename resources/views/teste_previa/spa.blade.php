@@ -927,147 +927,1498 @@
                 </div>
             </div>
         `;
+         App.templates.carteira_extrato_creditos = `
+            <div id="view-carteira-extrato-creditos" class="flex min-h-screen bg-[#D4FF00] text-black">
+                <main class="flex-1 pb-24 md:pb-8">
+                    <div class="mt-10 max-w-[640px] mx-auto px-4 md:px-0">
+
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-3 mb-8">
+                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Extrato de créditos</span>
+                        </div>
+
+                    
+                    </div>
+
+                    <!-- Balance Card -->
+                    <section class="mb-8">
+                        <div class="bg-white border border-black/10 rounded-2xl p-8 relative overflow-hidden group hover:border-black/30 transition-all duration-300 shadow-sm">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#D4FF00]/20 blur-[60px]"></div>
+
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                            </div>
+                            <h3 class="text-[16px] leading-[24px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Créditos disponíveis</h3>
+                        </div>
+
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-[56px] font-bold text-black leading-none" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
+                            <span class="text-[18px] leading-[28px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">créditos</span>
+                        </div>
+
+                        <div class="mt-6 flex gap-3">
+                            <button data-go-add-creditos class="flex-1 py-3 bg-black text-[#D4FF00] text-[14px] leading-[20px] font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Adicionar créditos
+                            </button>
+
+                            <button class="px-4 py-3 border border-gray-300 text-black text-[14px] leading-[20px] rounded-lg hover:bg-gray-100 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Como funciona?
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Filters Section -->
+                    <section class="mb-8 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="relative inline-block w-full md:w-auto">
+                            <select class="appearance-none w-full md:w-56 bg-white border border-gray-300 text-black text-[14px] leading-[20px] px-4 py-2.5 rounded-xl focus:ring-1 focus:ring-black outline-none cursor-pointer"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <option>Últimos 30 dias</option>
+                            <option>Últimos 7 dias</option>
+                            <option>Mês atual</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-600 pointer-events-none">expand_more</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-emerald-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            Compra
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-blue-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            Proposta
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-amber-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            Destaque
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Transaction List -->
+                    <section class="space-y-6">
+                        <!-- Group: Hoje -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Outflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
+                                <span class="material-symbols-outlined">send</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Proposta #54321</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 10:15 • Proposta enviada</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: Highlight -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600">
+                                <span class="material-symbols-outlined">bolt</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Upgrade: Destaque Topo</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 08:30 • Projeto: App Delivery</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 5</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 22</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Group: Ontem -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Inflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Compra de pacote — 10 créditos</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 14:32 • Cartão de crédito</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 10</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 30</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: System Bonus -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer opacity-80 shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-black/10 flex items-center justify-center text-black">
+                                <span class="material-symbols-outlined">redeem</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Bônus de Indicação</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 11:00 • Programa Skilla+</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Bottom Illustration / CTA -->
+                    <section class="mt-12 py-10 text-center border-t border-black/10">
+                        <p class="text-[16px] leading-[24px] text-gray-600 mb-6" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Precisa de mais visibilidade? Use seus créditos para destacar seu perfil.
+                        </p>
+                    </section>
+
+                    </div>
+                </main>
+            </div>
+         `;
+
+        
 
         App.templates.carteira_pedir_saque = `
             <div id="view-carteira-pedir-saque" class="bg-[#D4FF00] min-h-screen flex flex-col items-center">
-            <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
-                <div class="text-[12px] text-black/70 flex items-center gap-2">
-                <a class="hover:underline" href="#carteira">Carteira</a> &gt; <a class="hover:underline" href="#carteira">Minha carteira</a> &gt; <span>Pedir saque</span>
-                </div>
-                <div class="bg-white border border-black/10 rounded-xl p-6 shadow-sm">
-                    <p class="text-xs uppercase text-gray-500 mb-1">Saldo disponível</p>
-                    <h2 class="text-2xl font-bold text-black">125 000 Kz</h2>
-                </div>
-                <div class="space-y-3">
-                    <div class="flex justify-between items-end">
-                        <label class="text-xs font-bold uppercase">VALOR A SACAR</label>
-                        <button data-withdraw-fill-all class="text-xs font-bold hover:underline">Tudo</button>
+                <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
+
+                    <!-- Breadcrumb -->
+                    <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                    <span>Pedir saque</span>
                     </div>
-                    <input class="w-full bg-white border-2 border-black rounded-lg py-4 px-4 text-2xl font-semibold" id="withdraw-input" placeholder="0" type="number">
-                </div>
-                <button class="w-full bg-black text-[#D4FF00] text-[18px] py-4 rounded-xl font-bold border-2 border-black">Confirmar saque</button>
-            </main>
+
+                    <!-- Top mini header com voltar -->
+                    <div class="flex items-center gap-3">
+                    <button data-wallet-back class="p-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-black/10" type="button">
+                        <span class="material-symbols-outlined text-black">arrow_back</span>
+                    </button>
+                    <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Pedir saque</h2>
+                    </div>
+
+                    <!-- Card Saldo -->
+                    <div class="bg-white border border-black/10 rounded-xl p-6" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                    <p class="text-[14px] leading-[20px] tracking-[0.05em] text-[#444444] uppercase mb-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo disponível</p>
+                    <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">125 000 Kz</h2>
+                    </div>
+
+                    <!-- Seção Valor -->
+                    <div class="space-y-3">
+                    <div class="flex justify-between items-end">
+                        <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">VALOR A SACAR</label>
+                        <button data-withdraw-fill-all class="text-[14px] leading-[20px] tracking-[0.05em] text-black hover:underline transition-all font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Tudo</button>
+                    </div>
+                    <div class="relative group">
+                        <span class="absolute left-4 top-1/2 -translate-y-1/2 text-black/60" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Kz</span>
+                        <input class="w-full bg-white border-2 border-black rounded-lg py-4 pl-12 pr-4 text-[24px] leading-[32px] font-semibold text-black focus:ring-0 transition-all"
+                            id="withdraw-input" placeholder="0" type="number" style="font-family: Sora, ui-sans-serif, system-ui;">
+                    </div>
+                    <p class="text-[12px] leading-[16px] text-black/70 flex items-center gap-1" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                        <span class="material-symbols-outlined text-[14px]">info</span>
+                        Mínimo 5 000 Kz
+                    </p>
+                    </div>
+
+                    <!-- Seção IBAN -->
+                    <div class="space-y-3">
+                    <label class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN CADASTRADO</label>
+                    <div class="bg-white border border-black/10 rounded-xl p-4 flex flex-col gap-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-start justify-between">
+                        <div class="flex gap-3">
+                            <span class="material-symbols-outlined text-black">account_balance</span>
+                            <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black break-all font-medium" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            AO06 1234 5678 9012 3456 7890 1
+                            </span>
+                        </div>
+                        </div>
+                        <div class="flex gap-2">
+                        <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Editar</button>
+                        <button class="flex-1 py-2 px-4 rounded border-2 border-black text-[14px] leading-[20px] tracking-[0.05em] text-black hover:bg-black/5 transition-colors font-bold"
+                                style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">Trocar</button>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Card Resumo -->
+                    <div class="bg-white border border-black/10 rounded-xl p-5 space-y-4" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                    <div class="flex justify-between items-center border-b border-black/10 pb-3">
+                        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Valor a sacar</span>
+                        <span data-withdraw-summary-value class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">0 Kz</span>
+                    </div>
+                    <div class="flex justify-between items-center border-b border-black/10 pb-3">
+                        <span class="text-[16px] leading-[24px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Taxa de serviço</span>
+                        <span class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Grátis</span>
+                    </div>
+                    <div class="flex justify-between items-center pt-1">
+                        <span class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Total a receber</span>
+                        <span data-withdraw-summary-total class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">0 Kz</span>
+                    </div>
+                    <div class="flex items-center justify-between bg-black/5 p-3 rounded-lg mt-2">
+                        <div class="flex flex-col">
+                        <span class="text-[10px] uppercase text-[#444444]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">IBAN Destino</span>
+                        <span class="text-[12px] text-black font-medium truncate max-w-[200px]" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">AO06...7890 1</span>
+                        </div>
+                        <button class="material-symbols-outlined text-black hover:opacity-70 transition-colors" type="button">content_copy</button>
+                    </div>
+                    </div>
+
+                    <!-- Aviso -->
+                    <div class="flex gap-3 bg-white border-2 border-black p-4 rounded-xl shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+                    <span class="material-symbols-outlined text-black">warning</span>
+                    <p class="text-[13px] leading-relaxed text-black font-medium" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Ao confirmar, o valor será transferido para o IBAN indicado. Esta ação não pode ser desfeita.
+                    </p>
+                    </div>
+
+                    <!-- CTA -->
+                    <button class="w-full bg-black text-[#D4FF00] text-[18px] py-4 rounded-xl font-bold shadow-xl hover:brightness-125 active:scale-[0.98] transition-all border-2 border-black"
+                            style="font-family: Sora, ui-sans-serif, system-ui;" type="button">
+                    Confirmar saque
+                    </button>
+
+                    <!-- Saques recentes -->
+                    <div class="pt-8 space-y-4">
+                    <h3 class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold uppercase" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">SAQUES RECENTES</h3>
+                    <div class="space-y-2">
+
+                        <!-- Item 1 -->
+                        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-black">pending</span>
+                            </div>
+                            <div>
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">50 000 Kz</p>
+                            <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">12 Mar, 2024</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 rounded bg-black/5 text-black text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pendente</span>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="bg-white border border-black/10 rounded-lg p-3 flex justify-between items-center" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black">
+                            <span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                            <div>
+                            <p class="text-[14px] leading-[20px] tracking-[0.05em] text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">25 000 Kz</p>
+                            <p class="text-[12px] text-[#444444]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">05 Mar, 2024</p>
+                            </div>
+                        </div>
+                        <span class="px-2 py-1 rounded bg-black text-[#D4FF00] text-[10px] uppercase border border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Concluído</span>
+                        </div>
+
+                    </div>
+                    </div>
+                </main>
             </div>
         `;
 
         App.templates.carteira_ver_extrato = `
             <div id="view-carteira-ver-extrato" class="overflow-x-hidden bg-[#D4FF00] min-h-screen">
-            <main class="pt-10 pb-20 px-4 md:px-10 max-w-[1280px] mx-auto">
-                <div class="flex items-center justify-between gap-4 mb-8">
-                    <div class="text-[12px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt; <a class="hover:underline" href="#carteira">Minha carteira</a> &gt; <span>Extrato</span>
+                <main class="pt-10 pb-20 px-4 md:px-10 min-h-screen">
+                    <div class="max-w-[1280px] mx-auto">
+
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-4 mb-8">
+                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <span>Extrato</span>
+                        </div>
+
+                        <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
+                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
+                        Voltar
+                        </button>
                     </div>
-                    <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00]">
-                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>Voltar
-                    </button>
-                </div>
-                <h1 class="text-4xl font-bold mb-8">Extrato</h1>
-                <div class="space-y-4">
-                     <div class="bg-white p-6 rounded-2xl border-2 border-black flex justify-between items-center shadow-lg">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-black text-[#D4FF00] flex items-center justify-center rounded-xl font-bold">↑</div>
-                            <div>
-                                <p class="font-bold">Recarga de Saldo</p>
-                                <p class="text-xs text-gray-500">Hoje, 14:20</p>
+
+                    <!-- Header Section -->
+                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+                        <div>
+                        <h1 class="text-[40px] leading-[48px] tracking-[-0.02em] font-bold text-black mb-1" style="font-family: Sora, ui-sans-serif, system-ui;">Extrato</h1>
+                        <p class="text-[16px] leading-[24px] text-black/70" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Gerencie seu fluxo de caixa em Kwanzas (Kz)</p>
+                        </div>
+                        <button class="flex items-center gap-2 px-6 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
+                        <span class="material-symbols-outlined text-[20px]">file_download</span>
+                        Exportar
+                        </button>
+                    </div>
+
+                    <!-- Filters Section -->
+                    <section class="mb-10">
+                        <div class="flex flex-wrap items-center gap-3 mb-6">
+                        <button class="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border-2 border-black hover:bg-black hover:text-white transition-all group" id="toggleFilters" type="button">
+                            <span class="material-symbols-outlined text-black group-hover:text-[#D4FF00]">tune</span>
+                            <span class="font-bold">Filtrar transações</span>
+                            <span class="bg-black text-[#D4FF00] text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold">2</span>
+                        </button>
+
+                        <div class="h-6 w-px bg-black/20 mx-2 hidden md:block"></div>
+
+                        <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            Últimos 30 dias <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+                        </span>
+
+                        <span class="px-3 py-1 bg-white text-black border-2 border-black rounded-full text-[12px] leading-[16px] flex items-center gap-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            Tipo: Recarga, Saque <span class="material-symbols-outlined text-sm cursor-pointer">close</span>
+                        </span>
+                        </div>
+
+                        <!-- Collapsible Content -->
+                        <div class="hidden grid grid-cols-1 md:grid-cols-3 gap-6 p-6 bg-white rounded-2xl border-2 border-black mb-8 animate-in fade-in slide-in-from-top-4 duration-300" id="filterPanel">
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Período</label>
+                            <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                            <option>Últimos 7 dias</option>
+                            <option selected="">Últimos 30 dias</option>
+                            <option>Último trimestre</option>
+                            <option>Personalizado</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Tipo de Transação</label>
+                            <div class="flex flex-wrap gap-2">
+                            <label class="cursor-pointer">
+                                <input checked="" class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Recarga</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input checked="" class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saque</span>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input class="hidden peer" type="checkbox">
+                                <span class="px-4 py-2 rounded-lg border-2 border-black bg-white peer-checked:bg-black peer-checked:text-[#D4FF00] text-[12px] leading-[16px] font-bold transition-all block" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Pagamento</span>
+                            </label>
                             </div>
                         </div>
-                        <p class="font-bold">+ 50.000 Kz</p>
-                     </div>
+
+                        <div class="space-y-3">
+                            <label class="text-[12px] leading-[16px] text-black/60 uppercase tracking-wider font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Status</label>
+                            <select class="w-full bg-white border-2 border-black rounded-xl p-3 text-black focus:ring-0" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                            <option>Todos os status</option>
+                            <option selected="">Concluído</option>
+                            <option>Pendente</option>
+                            <option>Cancelado</option>
+                            </select>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Transactions List -->
+                    <div class="space-y-10">
+                        <!-- Group: Hoje -->
+                        <div>
+                        <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h3>
+                        <div class="space-y-3">
+
+                            <!-- Transaction Card 1 -->
+                            <div data-tx-card data-tx-id="TX4928310" class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black hover:border-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-black flex items-center justify-center text-[#D4FF00] group-hover:bg-[#D4FF00] group-hover:text-black">
+                                <span class="material-symbols-outlined text-[28px]">arrow_upward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Recarga de Saldo</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Depósito via Multicaixa Express • 14:20</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-[#D4FF00]" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Card 2 -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Saque Bancário</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Transferência para BFA • 09:45</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 125.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+
+                        <!-- Group: Ontem -->
+                        <div>
+                        <h3 class="text-[14px] leading-[20px] tracking-[0.1em] uppercase font-bold text-black mb-4 px-2" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h3>
+                        <div class="space-y-3">
+
+                            <!-- Pending Transaction -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white/70 border-2 border-black/10 rounded-2xl hover:bg-black hover:border-black transition-all">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gray-200 flex items-center justify-center text-gray-500 group-hover:bg-white/20 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">schedule</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black/60 group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Pagamento de Projeto</p>
+                                <p class="text-[12px] leading-[16px] text-black/40 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">UI Design Kit Pro • 18:30</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black/60 font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">+ 210.000,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black/60 px-2 py-0.5 rounded-full bg-gray-100 border border-black/10 group-hover:bg-white/10 group-hover:text-white group-hover:border-white/20 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-gray-400 animate-pulse group-hover:bg-white"></span> PENDENTE
+                                </span>
+                            </div>
+                            </div>
+
+                            <!-- Card 4 -->
+                            <div class="group cursor-pointer flex items-center justify-between p-4 bg-white border-2 border-black rounded-2xl hover:bg-black transition-all glow-hover">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white">
+                                <span class="material-symbols-outlined text-[28px]">arrow_downward</span>
+                                </div>
+                                <div>
+                                <p class="text-[16px] leading-[24px] font-semibold text-black group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">Assinatura Mensal</p>
+                                <p class="text-[12px] leading-[16px] text-black/60 group-hover:text-white/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Plano Skilla Pro • 12:00</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-[16px] leading-[24px] text-black font-bold group-hover:text-white" style="font-family: Sora, ui-sans-serif, system-ui;">- 5.500,00 Kz</p>
+                                <span class="inline-flex items-center gap-1.5 text-[10px] text-black px-2 py-0.5 rounded-full bg-[#D4FF00] border border-black group-hover:border-[#D4FF00] group-hover:bg-white/10 group-hover:text-[#D4FF00] font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                                <span class="w-1.5 h-1.5 rounded-full bg-black group-hover:bg-[#D4FF00]"></span> CONCLUÍDO
+                                </span>
+                            </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+
+                    </div>
+                </main>
+
+                <!-- Modal: Transaction Details -->
+                <div class="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300 pointer-events-none opacity-0" id="modalOverlay">
+                    <div class="bg-white border-4 border-black w-full max-w-md rounded-3xl p-8 transform translate-y-8 transition-transform duration-300" id="modalContent">
+                    <div class="flex justify-between items-start mb-6">
+                        <div>
+                        <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Detalhes</h2>
+                        <p class="text-[12px] leading-[16px] text-black/60 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Referência: <span data-modal-ref>TX123456789</span></p>
+                        </div>
+                        <button class="material-symbols-outlined text-black p-2 hover:bg-[#D4FF00] rounded-full transition-colors" type="button" data-close-extrato-modal>close</button>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex flex-col items-center py-6 border-y-2 border-black/10">
+                        <p class="text-[12px] leading-[16px] text-black/60 mb-1 uppercase font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor da Transação</p>
+                        <p class="text-[32px] font-black text-black" style="font-family: Sora, ui-sans-serif, system-ui;">+ 50.000,00 Kz</p>
+                        <span class="mt-2 inline-flex items-center gap-1.5 text-black px-3 py-1 rounded-full bg-[#D4FF00] border-2 border-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="w-2 h-2 rounded-full bg-black"></span> Concluído
+                        </span>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4">
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Origem</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Cartão de Débito (**** 4291)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Destino</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Conta Principal Skilla</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-black/60" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Data e Hora</span>
+                            <span class="text-black font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">24 Out 2023, 14:20</span>
+                        </div>
+                        <div class="pt-4 mt-2 border-t-2 border-black/10">
+                            <p class="text-[12px] leading-[16px] text-black/60 mb-2 font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Descrição Completa</p>
+                            <p class="text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Recarga de carteira efetuada via aplicativo Multicaixa Express. Processado via rede EMIS com sucesso.</p>
+                        </div>
+                        </div>
+
+                        <div class="flex gap-3 pt-4">
+                        <button class="flex-1 bg-white border-2 border-black text-black py-3 rounded-xl font-bold hover:bg-gray-100 transition-all flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="material-symbols-outlined text-[20px]">content_copy</span>
+                            ID
+                        </button>
+                        <button class="flex-1 bg-black text-[#D4FF00] py-3 rounded-xl font-bold hover:scale-[1.02] transition-transform active:scale-95 flex items-center justify-center gap-2" type="button" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <span class="material-symbols-outlined text-[20px]">share</span>
+                            Recibo
+                        </button>
+                        </div>
+                    </div>
+                    </div>
                 </div>
-            </main>
             </div>
         `;
 
         App.templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20">
-                <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 z-30 bg-[#CCFF00] border-b border-black/10">
-                    <div class="max-w-[1280px] mx-auto flex gap-3 overflow-x-auto no-scrollbar scrollbar-hide">
-                         <button class="px-5 py-2 rounded-full bg-black text-[#D4FF00] font-bold whitespace-nowrap">Todos</button>
-                         <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap">Design</button>
-                         <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap">Desenvolvimento</button>
+                <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 md:top-0 z-30 bg-[#CCFF00] shadow-sm">
+                    <div class="max-w-[1280px] mx-auto">
+                        
+                        <div class="flex overflow-x-auto gap-3 pb-2 scrollbar-hide no-scrollbar">
+                            <button class="px-5 py-2 rounded-full bg-black text-[#D4FF00] font-bold whitespace-nowrap shadow-sm border border-black">Todos</button>
+                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Design</button>
+                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Desenvolvimento</button>
+                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Mobile</button>
+                            <button class="px-5 py-2 rounded-full bg-white text-[#FF5722] font-bold border border-[#FF5722] whitespace-nowrap hover:bg-orange-50 transition-colors shadow-sm flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[16px]">local_fire_department</span> Urgente
+                            </button>
+                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Remoto</button>
+                            <button class="px-5 py-2 rounded-full bg-white text-black font-medium whitespace-nowrap hover:bg-gray-100 transition-colors shadow-sm">Luanda</button>
+                        </div>
                     </div>
                 </header>
-                <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 grid lg:grid-cols-4 gap-6 mt-4">
-                    <aside class="col-span-1 hidden lg:block">
-                        <div class="bg-white rounded-2xl p-6 shadow-xl border-2 border-black">
-                             <h4 class="font-bold mb-4">Filtros</h4>
-                             <label class="flex items-center gap-2 mb-2"><input type="checkbox" checked> Sênior</label>
+
+                <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 flex flex-col lg:flex-row gap-6 mt-4">
+                    <aside class="w-full lg:w-1/4 flex flex-col gap-6">
+                        <div class="bg-white rounded-2xl p-6 shadow-xl text-black">
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-[24px] leading-[32px] font-semibold">Filtros</h2>
+                                <button class="text-[12px] leading-[16px] font-medium text-gray-500 hover:text-[#FF5722] underline">Limpar</button>
+                            </div>
+                            <div class="mb-8">
+                                <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Orçamento (Kz)</h3>
+                                <input class="w-full accent-[#D4FF00]" max="500000" min="10000" type="range" value="250000"/>
+                                <div class="flex justify-between mt-2 text-[12px] leading-[16px] text-gray-600">
+                                    <span>10K</span><span class="font-bold text-black">Até 250K</span><span>500K+</span>
+                                </div>
+                            </div>
+                            <hr class="border-gray-200 mb-6"/>
+                            <div class="mb-8">
+                                <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Prazo</h3>
+                                <div class="flex flex-col gap-3">
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00]" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black">Menos de 1 semana</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input checked class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00] bg-black" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black font-medium">1 a 4 semanas</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00]" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black">1 a 3 meses</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <hr class="border-gray-200 mb-6"/>
+                            <div class="mb-8">
+                                <h3 class="text-[14px] leading-[20px] font-medium font-bold mb-4 uppercase tracking-wider">Nível de Experiência</h3>
+                                <div class="flex flex-col gap-3">
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00]" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black flex-1">Júnior</span>
+                                        <span class="text-[12px] leading-[16px] text-gray-400 bg-gray-100 px-2 py-1 rounded-md">45</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00]" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black flex-1">Pleno</span>
+                                        <span class="text-[12px] leading-[16px] text-gray-400 bg-gray-100 px-2 py-1 rounded-md">112</span>
+                                    </label>
+                                    <label class="flex items-center gap-3 cursor-pointer group">
+                                        <input checked class="form-checkbox rounded border-gray-300 w-5 h-5 focus:ring-[#D4FF00] bg-black" type="checkbox"/>
+                                        <span class="text-[16px] leading-[24px] text-gray-700 group-hover:text-black flex-1 font-medium">Sênior</span>
+                                        <span class="text-[12px] leading-[16px] text-gray-400 bg-gray-100 px-2 py-1 rounded-md">89</span>
+                                    </label>
+                                </div>
+                            </div>
+                            <button class="w-full py-4 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition-colors shadow-md mt-4">
+                                Aplicar Filtros
+                            </button>
                         </div>
                     </aside>
-                    <section class="lg:col-span-3 space-y-6">
-                         <article class="bg-white rounded-2xl p-8 shadow-xl border-l-8 border-l-[#FF5722] transform hover:scale-[1.01] transition-all">
-                             <h3 class="text-2xl font-bold mb-2">Design de App Fintech + Dashboard Admin</h3>
-                             <p class="text-gray-600 mb-6 line-clamp-2">Procuramos Product Designer Sênior para conceber de raiz...</p>
-                             <div class="flex justify-between items-center pt-4 border-t">
-                                 <span class="text-2xl font-bold">1.500.000 Kz</span>
-                                 <button data-spa-link data-route="trabalho_detalhe" class="bg-black text-white px-6 py-2 rounded-xl font-bold">Ver job</button>
-                             </div>
-                         </article>
+
+                    <section class="w-full lg:w-3/4 flex flex-col gap-5">
+                        <div class="flex justify-between items-center bg-white/50 backdrop-blur-sm p-4 rounded-xl border border-white/40">
+                            <p class="text-[16px] leading-[24px] font-medium text-black"><span class="font-bold">2</span> projetos encontrados</p>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[12px] leading-[16px] font-medium text-gray-700">Ordenar por:</span>
+                                <select class="bg-white border-none rounded-lg text-black font-medium text-[12px] leading-[16px] focus:ring-0 py-2 pl-3 pr-8 shadow-sm cursor-pointer">
+                                    <option>Mais recentes</option>
+                                    <option>Maior orçamento</option>
+                                    <option>Mais propostas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Card Destaque -->
+                        <article class="bg-white rounded-2xl p-6 shadow-xl border-l-8 border-l-[#FF5722] relative group transition-transform duration-300 hover:-translate-y-1 hover:shadow-2xl text-black">
+                            <div class="absolute -top-3 right-6 bg-[#FF5722] text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-md flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[14px]">star</span> Destaque
+                            </div>
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+                                <h3 class="text-[24px] leading-[32px] font-semibold leading-tight group-hover:text-[#FF5722] transition-colors">Design de App Fintech + Dashboard Admin</h3>
+                                <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 shrink-0">
+                                    <span class="text-[24px] leading-[32px] font-semibold font-bold block">1.500.000 Kz</span>
+                                    <span class="text-[12px] leading-[16px] text-gray-500 uppercase tracking-wide">Orçamento Fixo</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-[12px] leading-[16px] text-gray-600 mb-4">
+                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Remoto (Luanda)</div>
+                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 1 a 3 meses</div>
+                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">work</span> Projeto Longo</div>
+                                <div class="flex items-center gap-1 text-green-600"><span class="material-symbols-outlined text-[16px]">verified</span> Pagamento Verificado</div>
+                            </div>
+                            <p class="text-[16px] leading-[24px] text-gray-700 mb-6 line-clamp-2">
+                                Procuramos um Product Designer (UI/UX) sênior para desenhar de raiz a nossa nova aplicação de mobile banking focada no mercado angolano, bem como o dashboard administrativo web para a equipa interna. Necessário portfólio forte em fintech.
+                            </p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Figma</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">UI/UX</span>
+                                <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-md text-[12px] leading-[16px] border border-gray-200">Fintech</span>
+                            </div>
+                            <hr class="border-gray-100 mb-4"/>
+                            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                                <div class="flex items-center gap-3">
+                                    <img alt="Client Avatar" class="w-10 h-10 rounded-full border-2 border-[#FF5722]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpq57DCqYCN3M32vbZwd5OS-DkMltmiYYIinWzDv7cGBAXTUHrJ8gveTiIZlW4Awi8g9YHeYUg12E8UhBQ9okGHZEFhlbex-F9D6cnwa6FLY2tEi4GnZfzgf-UWZu2BQtrqcaMMjFkIpVnwcpKjO1dTIsiCm5DqDE7LHD3R6Hln-c_ESx8_suqJUhotwqWa7hRAr5QCarDorfPwhL33dy1IYnnnHkCyI8OYwqS5AF8tt_d2SrNEEfKcICMY7yzOMHVfmByMKOEHVs"/>
+                                    <div>
+                                        <p class="text-[14px] leading-[20px] font-medium font-bold">Kamba Finance</p>
+                                        <div class="flex items-center gap-1 text-[#FF5722]">
+                                            <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                                            <span class="text-[12px] leading-[16px] text-gray-500 ml-1">(12)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 w-full md:w-auto">
+                                    <div class="text-right hidden md:block">
+                                        <p class="text-[14px] leading-[20px] font-medium font-bold text-gray-800">14 propostas</p>
+                                        <p class="text-[12px] leading-[16px] text-gray-500">Publicado há 2h</p>
+                                    </div>
+                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">Ver job</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Card Standard -->
+                        <article class="bg-white rounded-2xl p-6 shadow-md border border-gray-100 transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl text-black">
+                            <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4">
+                                <h3 class="text-[24px] leading-[32px] font-semibold leading-tight hover:text-blue-600 transition-colors cursor-pointer">Desenvolvimento de Landing Page (React/Next.js)</h3>
+                                <div class="bg-gray-50 px-4 py-2 rounded-lg border border-gray-100 shrink-0">
+                                    <span class="text-[24px] leading-[32px] font-semibold font-bold block">85.000 Kz</span>
+                                    <span class="text-[12px] leading-[16px] text-gray-500 uppercase tracking-wide">Orçamento Fixo</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap items-center gap-4 text-[12px] leading-[16px] text-gray-600 mb-4">
+                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> Remoto</div>
+                                <div class="flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> Menos de 1 semana</div>
+                            </div>
+                            <p class="text-[16px] leading-[24px] text-gray-700 mb-6 line-clamp-2">
+                                Preciso de um desenvolvedor front-end para criar uma landing page simples para um evento...
+                            </p>
+                            <hr class="border-gray-100 mb-4"/>
+                            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold text-[18px]">M</div>
+                                    <div><p class="text-[14px] leading-[20px] font-medium font-bold">Miguel Santos</p></div>
+                                </div>
+                                <div class="flex items-center gap-4 w-full md:w-auto">
+                                    <div class="text-right hidden md:block">
+                                        <p class="text-[14px] leading-[20px] font-medium font-bold text-gray-800">3 propostas</p>
+                                    </div>
+                                    <button data-open-job class="flex-1 md:flex-none border-2 border-black text-black px-6 py-2 rounded-xl font-bold hover:bg-black hover:text-white transition-colors">Ver job</button>
+                                </div>
+                            </div>
+                        </article>
                     </section>
                 </div>
             </div>
         `;
 
         App.templates.trabalho_detalhe = `
-            <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00] pb-20">
-                <div class="max-w-[1280px] mx-auto p-4 md:p-8 flex flex-col gap-8">
-                    <button data-spa-link data-route="trabalhos" class="flex items-center gap-2 font-bold"><span class="material-symbols-outlined">arrow_back</span>Voltar</button>
-                    <div class="grid lg:grid-cols-3 gap-8">
-                        <div class="lg:col-span-2 bg-white p-8 rounded-[32px] hard-shadow space-y-6 border-2 border-black">
-                            <h1 class="text-4xl font-bold">Identidade visual para empresa de logística</h1>
-                            <p class="text-gray-700 leading-relaxed">Descrição detalhada do projeto aqui...</p>
-                        </div>
-                        <aside class="space-y-6">
-                            <div class="bg-white p-8 rounded-[32px] hard-shadow border-2 border-black text-center space-y-6">
-                                <p class="text-4xl font-bold">75.000 Kz</p>
-                                <button onclick="App.render('proposta_modal')" class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-bold text-xl shadow-lg">Enviar Proposta</button>
-                            </div>
-                        </aside>
+            <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
+                <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
+                <div class="flex flex-col gap-2">
+                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
+                    <a class="hover:underline" href="#">Início</a> &gt;
+                    <a class="hover:underline" href="#">Trabalhos</a> &gt;
+                    <a class="hover:underline" href="#">Design Gráfico</a> &gt;
+                    <span>Identidade Visual</span>
                     </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Coluna Esquerda: Detalhes -->
+                    <div class="lg:col-span-8 flex flex-col gap-6">
+                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
+                        <div class="pb-8">
+                        <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
+                        <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+                        <div class="flex flex-wrap gap-6 text-black">
+                            <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
+                            <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
+                            <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <hr class="border-gray-100"/>
+
+                        <div class="py-8 flex flex-col gap-4">
+                        <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
+                        <div class="font-body-md text-gray-700 space-y-4 break-words">
+                            <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
+                        </div>
+                        </div>
+
+                        <hr class="border-gray-100"/>
+
+                        <div class="py-8 flex flex-col gap-4">
+                        <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
+                        <ul class="flex flex-col gap-4 mt-2">
+                            <li class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                            <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
+                            </li>
+                        </ul>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-8">
+                        <div class="flex justify-between items-center">
+                        <h2 class="font-headline-sm text-black flex items-center gap-3">
+                            <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
+                        </h2>
+                        </div>
+
+                        <div class="flex flex-col gap-6">
+                        <!-- Exemplo Proposta -->
+                        <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
+                            <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
+                                <div class="flex flex-col">
+                                <div class="flex items-center gap-2">
+                                    <p class="font-label-md font-bold text-black">Mário Costa</p>
+                                    <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
+                                </div>
+                                <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
+                            </div>
+                            </div>
+                            <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
+                            <div class="flex justify-between items-center pt-2">
+                            <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <!-- Coluna Direita: Sticky Sidebar Corrigida -->
+                    <div class="lg:col-span-4">
+                    <div class="sticky top-24 flex flex-col gap-6">
+
+                        <!-- Card de Ação / Enviar Proposta -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
+                            <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
+                        </div>
+
+                        <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
+                            <span class="font-bold text-[20px]">42</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Propostas</span>
+                            <span class="font-bold text-[20px]">8</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
+                            <span class="font-bold text-[20px]">1</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-4 mt-2">
+                            <button
+                            type="button"
+                            data-open-proposta-modal
+                            class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center"
+                            >
+                            Enviar Proposta
+                            </button>
+
+                            <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+                            <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
+                            </button>
+                        </div>
+                        </div>
+
+                        <!-- Card Info Cliente -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                        <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
+                            <div>
+                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
+                            <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
+                                <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
+                            </p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-4 mt-4">
+                            <div class="flex justify-between font-label-sm text-black">
+                            <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
+                            </div>
+                            <div class="flex justify-between font-label-sm text-black mt-2">
+                            <span class="text-gray-600">Avaliação Média</span>
+                            <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Trabalhos Semelhantes -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                        <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
+                        <div class="flex flex-col gap-5">
+                            <a class="group flex flex-col gap-1" href="#">
+                            <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
+                            <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
+                            </a>
+                        </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- MODAL: Enviar Proposta (NÃO corta conteúdo; só fica hidden/mostra) -->
+                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4"
+                    id="modal-overlay"
+                    aria-hidden="true">
+                <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden transform transition-all duration-300 scale-100 opacity-100"
+                    id="modal-content"
+                    role="dialog"
+                    aria-modal="true">
+
+                    <div class="px-8 pt-8 pb-4 flex justify-between items-start">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-obsidian mb-1">Enviar Proposta</h2>
+                        <p class="font-body-md text-obsidian/60">Preencha os detalhes para concorrer a este trabalho.</p>
+                    </div>
+
+                    <button class="p-2 hover:bg-obsidian/5 rounded-full transition-colors group"
+                            type="button"
+                            data-close-proposta-modal
+                            aria-label="Fechar">
+                        <span class="material-symbols-outlined text-obsidian text-2xl group-hover:rotate-90 transition-transform duration-200">close</span>
+                    </button>
+                    </div>
+
+                    <form id="proposta-form" class="px-8 py-4 space-y-6">
+                    <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Carta de apresentação</label>
+                        <div class="relative">
+                        <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 resize-none transition-all"
+                                    id="cover-letter"
+                                    maxlength="2000"
+                                    placeholder="Escreva uma breve apresentação..."
+                                    rows="5"></textarea>
+                        <div class="absolute bottom-3 right-4 font-label-sm text-label-sm text-obsidian/40" id="char-counter">0/2000</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Valor proposto (Kz)</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all pr-12"
+                                id="proposta-valor"
+                                placeholder="Ex.: 150000"
+                                type="number"
+                                min="0"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Kz</span>
+                        </div>
+                        </div>
+
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Dias de entrega</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all"
+                                id="proposta-dias"
+                                placeholder="Ex.: 7"
+                                type="number"
+                                min="1"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Dias</span>
+                        </div>
+                        </div>
+                    </div>
+                    </form>
+
+                    <div class="px-8 pb-8 pt-4 flex flex-col sm:flex-row-reverse items-center justify-between gap-6">
+                    <button class="w-full sm:w-auto bg-obsidian text-volt-lime font-headline-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(212,255,0,0.15)] flex items-center justify-center gap-2"
+                            type="submit"
+                            form="proposta-form">
+                        <span>Enviar Proposta</span>
+                        <span class="text-[10px] opacity-80 font-label-sm bg-volt-lime/20 px-2 py-0.5 rounded-full">(gasta 1 crédito)</span>
+                    </button>
+
+                    <a class="text-obsidian font-label-md border-b-2 border-transparent hover:border-obsidian transition-all py-1"
+                        href="#"
+                        data-close-proposta-modal>
+                        Cancelar
+                    </a>
+                    </div>
+
+                </div>
                 </div>
             </div>
         `;
 
         App.templates.propostas = `
-            <div id="view-propostas" class="bg-[#CCFF00] min-h-screen p-4 md:p-8">
-                <h2 class="text-5xl font-extrabold text-black mb-10">Minhas Propostas</h2>
-                <div class="space-y-6 max-w-4xl">
-                     <div class="bg-white border-4 border-black p-8 rounded-[32px] hard-shadow flex justify-between items-center group cursor-pointer">
-                        <div><h4 class="text-xl font-bold group-hover:underline">Landing Page Alta Conversão</h4><p class="text-sm text-gray-500">ID #1042 • Aceita</p></div>
-                        <span class="bg-green-400 border-2 border-black px-4 py-1 rounded-full font-bold">Aceita</span>
-                     </div>
-                </div>
+            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
+
+                <!-- Main Content Canvas -->
+                <!-- Header Actions -->
+                <header class="flex justify-between items-center mb-12">
+                    <div>
+                    <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
+                    <div class="h-1.5 w-24 bg-black mt-2"></div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                    <div class="relative" id="propostas-search-wrap">
+                        <input id="propostas-search"
+                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                        placeholder="Procurar propostas..." type="text"/>
+                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
+                    </div>
+                    </div>
+                </header>
+
+                <!-- Proposals List Section -->
+                <section class=" flex flex-col gap-6 max-w-5xl">
+
+                    <!-- Card 1 -->
+                    <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
+                        Desenvolvimento de Landing Page de Alta Conversão
+                        </a>
+                        <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
+                        <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-end items-center gap-2 mt-4 pb-10">
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
+                    <div class="flex gap-1">
+                        <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
+                        <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
+                    </div>
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
+                    </div>
+
+                </section>
             </div>
         `;
 
         App.templates.mensagens = `
-             <div id="view-mensagens" class="bg-[#D4FF00] min-h-screen p-4 md:p-8">
-                <h2 class="text-4xl font-bold mb-8">Mensagens</h2>
-                <div class="max-w-3xl space-y-2">
-                     <div data-spa-link data-route="mensagens_sala" class="bg-white p-4 rounded-xl hard-shadow border-2 border-black flex items-center gap-4 cursor-pointer hover:bg-gray-50">
-                        <div class="w-12 h-12 bg-black rounded-full flex items-center justify-center text-[#D4FF00] font-bold underline font-display-lg">RS</div>
-                        <div class="flex-1"><h4 class="font-bold">Sala de trabalho — Logo Skilla</h4><p class="text-sm text-gray-500">Pode validar os novos rascunhos?</p></div>
-                        <span class="bg-black text-[#D4FF00] text-xs font-bold px-2 py-1 rounded-full">3</span>
-                     </div>
+             <div id="view-mensagens" class="flex min-h-screen bg-[#D4FF00]">
+                <style>
+                #view-mensagens{
+                    --primary-container: #D4FF00;
+                    --tertiary: #FFFFFF;
+                    --on-tertiary: #101010;
+
+                    --surface-container-lowest: #101010;
+                    --surface-container: rgba(16,16,16,.70);
+                    --surface-variant: rgba(16,16,16,.55);
+
+                    --secondary: #E9E9E9;
+                    --secondary-container: #E9E9E9;
+                    --on-secondary-container: #101010;
+                    --on-primary-container: #101010;
+                }
+
+                #view-mensagens .bg-tertiary{ background: var(--tertiary) !important; }
+                #view-mensagens .text-on-tertiary{ color: var(--on-tertiary) !important; }
+
+                #view-mensagens .text-surface-container-lowest{ color: var(--surface-container-lowest) !important; }
+                #view-mensagens .text-surface-container{ color: var(--surface-container) !important; }
+                #view-mensagens .text-surface-variant{ color: var(--surface-variant) !important; }
+
+                #view-mensagens .bg-surface-container-lowest{ background: var(--surface-container-lowest) !important; }
+                #view-mensagens .text-primary-container{ color: var(--primary-container) !important; }
+
+                #view-mensagens .bg-secondary{ background: var(--secondary) !important; }
+                #view-mensagens .bg-secondary-container{ background: var(--secondary-container) !important; }
+                #view-mensagens .text-on-secondary-container{ color: var(--on-secondary-container) !important; }
+                #view-mensagens .text-on-primary-container{ color: var(--on-primary-container) !important; }
+
+                #view-mensagens input.bg-tertiary{
+                    background: var(--tertiary) !important;
+                    color: var(--on-tertiary) !important;
+                }
+                </style>
+
+                <div class="max-w-4xl mx-auto w-full px-margin-mobile md:px-margin-desktop pb-10">
+
+                <!-- Header Section -->
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                    <h2 class="text-headline-lg font-headline-lg text-surface-container-lowest tracking-tight mb-1">Mensagens</h2>
+                    <p class="text-body-md font-body-md text-surface-container">Salas de trabalho vinculadas a contratos</p>
+                    </div>
+                    <div class="flex gap-3">
+                    <button class="bg-surface-container-lowest text-primary-container p-2 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">more_horiz</span>
+                    </button>
+                    </div>
                 </div>
-             </div>
+
+                <!-- Search Input -->
+                <div class="mb-6 relative group">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-surface-variant group-focus-within:text-surface-container-lowest transition-colors">search</span>
+                    <input
+                    class="w-full bg-tertiary text-on-tertiary border border-transparent focus:border-surface-container-lowest rounded-xl py-3 pl-12 pr-4 text-body-md font-body-md shadow-sm outline-none transition-all placeholder:text-surface-variant"
+                    placeholder="Pesquisar conversas"
+                    type="text"
+                    />
+                </div>
+
+                <!-- Inbox List -->
+                <div class="flex flex-col gap-2">
+
+                    <!-- Unread Item 1 -->
+                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
+                    <img class="w-10 h-10 rounded-full object-cover bg-secondary"
+                        alt="Avatar"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8IpAPjEGC61SjgTvvLluR4_zqfrAtVfAG1nLoA4Zfx42cFBApbVfnCNatWg3ZgQ0Jy8EishspWdM6L54qGXtImKfZ4cAZgqNARagAMjsXuDzjs5s0UknIkMd8YEcZitS42-zQT0iImQOmju6A4mMNUhZxtlKyVqIeamyLUd4xbTGqpD0JfTOLgJkG8RytvVO78wDhUJ2DQZRZFdKCi8T25VinDqtC4RvyqDfOm2dKaKtGUraovX8BShqlw66lqyfhBMTq7PA27tw"/>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate">Sala de trabalho — Logo Skilla</h3>
+                        <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Enviei as primeiras opções do logotipo. Pode validar?</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                        <span class="text-label-sm font-label-sm text-surface-container-lowest font-bold">12:45</span>
+                        <span class="bg-surface-container-lowest text-primary-container text-label-sm font-label-sm rounded-full px-2 py-0.5 min-w-[22px] text-center">3</span>
+                    </div>
+                    </div>
+
+                    <!-- Unread Item 2 -->
+                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
+                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+                        <span class="material-symbols-outlined text-[20px]">storefront</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate">Website para Restaurante</h3>
+                        <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Os arquivos do Figma foram atualizados com as novas fotos.</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                        <span class="text-label-sm font-label-sm text-surface-container-lowest font-bold">09:30</span>
+                        <span class="bg-surface-container-lowest text-primary-container text-label-sm font-label-sm rounded-full px-2 py-0.5 min-w-[22px] text-center">1</span>
+                    </div>
+                    </div>
+
+                    <!-- Read Item 1 -->
+                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
+                    <img class="w-10 h-10 rounded-full object-cover bg-secondary"
+                        alt="Avatar"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9p5NtQ7f1wLUB5hoOGxrkk54JWkNOfzMOuEnGvgLaR7mdRj6Gb1K6xhI5rUri7CGqnrkPi8fS2eqGVhRGW5BLPQcBFh7VLnFGgK_w3_I78Tf_Qrk63_0Kz-MQMDu1XDzIUn32k7tsQuVVbKOBj9lDaI0bq3uQnk5MzDQYDFEVAtRCgfiolFx9NZPS7kATHEoODg-qEOBcyRhgX4vjp9VLNnFcSHuZL4cF77YCcaNMW_Bq-QbYaTbaCtUjBhkfpq6qPzAMoRLgo5M"/>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">Identidade Visual Barber Shop</h3>
+                        <p class="text-body-sm font-body-md text-surface-variant truncate">Tudo certo. O pagamento da primeira parcela foi liberado.</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                        <span class="text-label-sm font-label-sm text-surface-variant">Ontem</span>
+                    </div>
+                    </div>
+
+                    <!-- Read Item 2 -->
+                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
+                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+                        <span class="material-symbols-outlined text-[20px]">smartphone</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">Landing Page para App</h3>
+                        <p class="text-body-sm font-body-md text-surface-variant truncate">Perfeito, aguardo os próximos passos.</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                        <span class="text-label-sm font-label-sm text-surface-variant">Segunda</span>
+                    </div>
+                    </div>
+
+                    <!-- Read Item 3 -->
+                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
+                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+                        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">E-commerce Simples</h3>
+                        <p class="text-body-sm font-body-md text-surface-variant truncate">Projeto finalizado e arquivado.</p>
+                    </div>
+                    <div class="flex flex-col items-end gap-1 shrink-0">
+                        <span class="text-label-sm font-label-sm text-surface-variant">12 Mar</span>
+                    </div>
+                    </div>
+
+                </div>
+                </div>
+            </div>
         `;
 
         App.templates.mensagens_sala = `
-             <div id="view-mensagens-sala" class="h-[calc(100vh-10rem)] bg-white rounded-3xl border-4 border-black flex flex-col overflow-hidden shadow-2xl">
-                <header class="p-6 border-b-4 border-black bg-gray-50 flex justify-between items-center">
-                    <button data-spa-link data-route="mensagens" class="material-symbols-outlined font-bold">arrow_back</button>
-                    <h4 class="font-bold">Sala de trabalho — Logo Skilla</h4>
-                    <button class="bg-black text-white px-4 py-2 rounded-lg font-bold">Detalhes</button>
-                </header>
-                <div class="flex-1 p-6 overflow-y-auto space-y-4">
-                    <div class="bg-gray-100 p-4 rounded-xl border-2 border-black self-start max-w-[70%]">Olá! Ansioso para ver as ideias.</div>
-                </div>
-                <footer class="p-4 border-t-4 border-black flex gap-2">
-                    <input class="flex-1 border-2 border-black rounded-xl px-4 py-3" placeholder="Mensagem..." type="text">
-                    <button class="bg-black text-[#D4FF00] px-6 rounded-xl"><span class="material-symbols-outlined">send</span></button>
-                </footer>
-             </div>
+            <div id="view-mensagens-sala" class="flex min-h-screen bg-[#D4FF00]">
+                                <!-- Mobile TopAppBar (hidden on md) -->
+                        <header class="md:hidden fixed top-0 w-full z-50 bg-white border-b border-gray-200 flex justify-between items-center h-16 px-margin-mobile">
+                        <div class="font-display-lg text-headline-md font-black text-primary-fixed">Skilla</div>
+                        <div class="flex gap-4">
+                            <span class="material-symbols-outlined text-black">info</span>
+                            <span class="material-symbols-outlined text-black">more_vert</span>
+                        </div>
+                        </header>
+
+                        <!-- Main Content Area -->
+                        <main class="flex-1 w-full min-h-screen flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden">
+
+                        <!-- Voltar -->
+                        <div class="px-margin-mobile md:px-gutter pt-4">
+                            <button data-back-to-inbox class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                            Voltar às mensagens
+                            </button>
+                        </div>
+
+                        <!-- Chat Header -->
+                        <div class="bg-white border-b border-gray-200 px-margin-mobile md:px-gutter py-4 flex justify-between items-center shrink-0 shadow-sm z-20 rounded-b-xl lg:rounded-none">
+                            <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed hidden sm:block">
+                                <img
+                                alt="Client Logo"
+                                class="w-full h-full object-cover"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3mnX26vKnjiE7lkgPOzM_-P8x_gLtdhDtE4diNxIzJIMUPkVYMUyAgSJ1mooqjvIT6Wonn8Z1YXlTB22X4UUTfKQDx-Yqxk35-8dHhsfGvxaC3iZf2ZoFtHEBjqNbxaPZJgyeDCxem8wUV-MckGB6o9g3DD5__hK_SV4OOxMoLzpq8CbymlDAEnj2QrELQFpFRxWdbEYxpZK0h6xVRgY-fijAPbErhvj3gphkeCcZIaaekpXNmpnk46tPZ_GdOpZ8Dbnusgplt0I"
+                                />
+                            </div>
+                            <div>
+                                <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
+                                <div class="flex items-center gap-2 mt-1">
+                                <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
+                                <span class="font-label-sm text-label-sm text-primary-fixed font-bold">Status: Ativo</span>
+                                </div>
+                            </div>
+                            </div>
+
+                            <button class="hidden sm:flex px-4 py-2 bg-gray-50 border border-gray-200 text-black rounded-lg font-label-md text-label-md hover:border-primary-fixed transition-colors items-center gap-2">
+                            <span class="material-symbols-outlined text-[18px]">visibility</span>
+                            Ver detalhes
+                            </button>
+
+                            <button class="sm:hidden p-2 text-gray-500 hover:text-primary-fixed">
+                            <span class="material-symbols-outlined">info</span>
+                            </button>
+                        </div>
+
+                        <!-- Chat Messages Area -->
+                        <div class="flex-1 overflow-y-auto bg-white p-margin-mobile md:p-gutter flex flex-col gap-6 relative">
+
+                            <div class="flex justify-center my-4">
+                            <div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-label-sm text-label-sm text-gray-600 text-center max-w-md shadow-sm">
+                                O contrato foi iniciado. Pode usar esta sala para comunicar e enviar ficheiros.
+                            </div>
+                            </div>
+
+                            <div class="flex flex-col items-start gap-1 max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Client"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdsdrxNRELguNRZj1IJOZLygHNtSPVOgi8_ZOn-y4IAJOwfmHVOgkqbnYLILHPczmdjFaeFVkGoCeuimXarQp-jNI4jpQEi7BS42bFszr6a1SUMqjy5migHyRF47acCZAfTwj-NZbm6AD6PgoHzW8ZJPOl7CY7zokqiujQ4Vl42jeLt1j6ehPipnSZsO-gS9Ifl8eLLgwtxqhOZ1LW41bTrZzWpNVxaNSpBtNa4XPslv47OIYZroenTGJ8WsGiZxzNP6qPwF3IQWQ"
+                                />
+                                </div>
+                                <div class="bg-gray-50 text-black border border-gray-200 p-4 rounded-2xl rounded-bl-sm shadow-sm">
+                                <p class="font-body-md text-body-md">
+                                    Olá! Obrigado por aceitares o projeto. Estamos muito entusiasmados para ver as tuas ideias para o logo da Skilla.
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 ml-10">10:00 AM</span>
+                            </div>
+
+                            <div class="flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Freelancer"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI"
+                                />
+                                </div>
+                                <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md">
+                                <p class="font-body-md text-body-md">
+                                    Olá! O prazer é meu. Já estive a ler o briefing. Têm alguma preferência de cor além do que está no documento?
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 mr-10">10:15 AM</span>
+                            </div>
+
+                            <div class="flex flex-col items-start gap-1 max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Client"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMtEUukVwRHLJWA5VJMB_Z2OEDM67ml2iqohOuys-svJk8tZVdelRDaJULTvOOg0b09uYDnfHIOJrt2t-12khyF2esX0rUUL_JW6GpRkT2PuByURWoEUzSdlGi-geyI9Ij2VJgooVx3yw5EisDpkaE-oIzQ8F2Qimq7zaWYpL-MTaxbxSaX3sroKwzML6rQpdvI80i2nCEXkkoleLyixfrCncdLCOsnBVfYB9WSCzb4YuFPRVuCHhzcorTBK65jo3wW8_hAtzCtpE"
+                                />
+                                </div>
+                                <div class="bg-gray-50 text-black border border-gray-200 p-4 rounded-2xl rounded-bl-sm shadow-sm">
+                                <p class="font-body-md text-body-md">
+                                    Queremos algo que transmita 'energia' e 'eficiência'. Talvez explorar tons de verde ou amarelo néon, mas mantendo um ar profissional SaaS.
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 ml-10">10:22 AM</span>
+                            </div>
+
+                            <div class="flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Freelancer"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb9jdD_yRthmEprVP0ea3a8-bww_hRnImKg7n83h3HhxGlMyegvdSlKyHybq31r6trs2NNkh2GhHRvq4Jj_4e_AJNVN2zGvMAk9HywKw68WCUzjJrzRJoOo72cScpBzB1MuhtpfLvFl-NyymlR76vcU3yar2CODAm2u6kv6G02j-vkD8bJDR3eGtWZ4BR2KndHT8pXJ1lruZ4EU0bROMPf-dYpvJtYEgPOh_N5tWgNHrFm2DRk-KYQc5ngF9BOWLakraXevaHXe88"
+                                />
+                                </div>
+                                <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md">
+                                <p class="font-body-md text-body-md">
+                                    Perfeito. 'Neo-Brutalism' misturado com 'High-End SaaS' parece o caminho. Vou preparar alguns rascunhos iniciais.
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 mr-10">10:30 AM</span>
+                            </div>
+
+                            <div class="flex justify-center my-4">
+                            <div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-label-sm text-label-sm text-gray-600 text-center max-w-md shadow-sm">
+                                Ficheiro anexado: 'skilla_brand_guidelines_v1.pdf'
+                            </div>
+                            </div>
+
+                            <div class="flex flex-col items-start gap-1 max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Client"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_7HpkQlvWrDJO81nsCR4JzInDcoNgIAYKbC4qYmXGcof3aZDBnoUy_Qy_87_BqBrc4doYgvlGQheL8QhDJcL81bg5SGhiVfIDuY_U7xvkZQ2oaiolthsRo5O69XePpsNXyWsPX_xmj-pIMqvaXQQOelFHiBSAUjgO0UD21Op62cYl8lKKuoWqKq7BqUNLOGPeHKDLTpJQxmz7VYqvnpHrpQhwBC0XRj6iaikikansYSgz0PpnPN4o2TQZ-RA0_ymdadsimmoAn0g"
+                                />
+                                </div>
+                                <div class="bg-gray-50 text-black border border-gray-200 p-4 rounded-2xl rounded-bl-sm shadow-sm">
+                                <p class="font-body-md text-body-md">
+                                    Acabei de enviar as guidelines antigas, apenas como referência do que NÃO queremos fazer. Ignora a paleta antiga.
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 ml-10">10:35 AM</span>
+                            </div>
+
+                            <div class="flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%]">
+                            <div class="flex items-end gap-2 flex-row-reverse">
+                                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img
+                                    alt="Freelancer"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsEBlojcd2zurnGbBmWqrsITHv5CYOl1IMzIPbUmeIFpj-bJs8AAtlvpcqT-ir7Z5yWCqd2pgX0YD-p0IO37Xf5_-Q8fZbwheoFJA0gE2f9vtmcI7wv5vdoCdLMBO2arxTyrHQWFDNn5H9tiA0OY9aFylBv6C1zrGTBgjVnVNe8mjPnLE7jdodTm7PCr52sG_98dtnHE5SuIEvWYDYS120EDssyrrC_cY2hjRxWIXihz5QSNWrWMkePFAh-2ECB3SjJFxD1VnT3ag"
+                                />
+                                </div>
+                                <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md">
+                                <p class="font-body-md text-body-md">
+                                    Recebido. Vou focar-me no contraste alto. Em 48h envio as primeiras 3 propostas.
+                                </p>
+                                </div>
+                            </div>
+                            <span class="font-label-sm text-label-sm text-gray-500 mr-10">10:40 AM</span>
+                            </div>
+
+                            <div class="h-10 shrink-0"></div>
+                        </div>
+
+                        <!-- Floating Action / Delivery Button -->
+                        <div class="absolute bottom-[80px] md:bottom-[90px] left-0 w-full flex justify-center px-4 pointer-events-none z-30">
+                            <button id="openDeliverModalBtn" class="pointer-events-auto bg-[#D4FF00] text-black border border-transparent shadow-lg font-label-md text-label-md font-bold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-[#b4d400] transition-colors group">
+                            <span class="material-symbols-outlined text-black group-hover:scale-110 transition-transform">task_alt</span>
+                            Entregar trabalho
+                            </button>
+                        </div>
+
+                        <!-- Chat Composer Footer -->
+                        <div class="bg-white border-t border-gray-200 p-3 md:p-4 shrink-0 z-20">
+                            <div class="max-w-4xl mx-auto flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl p-2 focus-within:border-primary-fixed transition-colors shadow-sm">
+                            <button class="p-2 text-gray-500 hover:text-primary-fixed transition-colors rounded-lg hover:bg-gray-100">
+                                <span class="material-symbols-outlined">attach_file</span>
+                            </button>
+                            <input class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
+                            <button class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
+                                <span class="material-symbols-outlined text-[20px]">send</span>
+                            </button>
+                            </div>
+                        </div>
+                        </main>
+
+                        <!-- MODAL: Entregar trabalho (inicialmente escondido) -->
+                        <div id="deliverModal" class="fixed inset-0 bg-black/70 backdrop-blur-[4px] z-[60] hidden items-center justify-center p-4 overflow-y-auto">
+                        <div class="bg-white text-black w-full max-w-[560px] my-8 rounded-modal border-[2px] border-black modal-shadow flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300 max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] min-h-0">
+                            <div class="px-8 pt-8 pb-6 flex justify-between items-start">
+                            <div>
+                                <h1 class="font-headline-md text-[26px] font-extrabold leading-tight tracking-tight">Entregar trabalho</h1>
+                                <p class="font-body-md text-slate-500 text-sm mt-1">Envie notas e anexos para concluir a entrega.</p>
+                            </div>
+                            <button id="closeDeliverModalBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors group" type="button" aria-label="Fechar">
+                                <span class="material-symbols-outlined text-slate-900">close</span>
+                            </button>
+                            </div>
+
+                            <div class="px-8 flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-8 pb-8">
+                            <div class="space-y-3">
+                                <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">NOTAS DA ENTREGA (OPCIONAL)</label>
+                                <textarea class="w-full min-h-[120px] rounded-xl border-[2px] border-black p-4 font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
+                                placeholder="Descreva o que foi entregue, instruções de uso, credenciais de teste, próximos passos..."></textarea>
+                                <p class="font-body-md text-slate-500 text-[13px]">Estas notas serão enviadas ao cliente.</p>
+                            </div>
+
+                            <div class="space-y-6">
+                                <div class="space-y-3">
+                                <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">ANEXOS E/OU LINK</label>
+                                <div class="relative group cursor-pointer">
+                                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file" />
+                                    <div class="border-[2px] border-dashed border-black rounded-2xl p-8 flex flex-col items-center justify-center text-center bg-white group-hover:bg-slate-50 transition-all">
+                                    <span class="material-symbols-outlined text-[40px] mb-3 text-slate-900" style="font-variation-settings: 'wght' 300;">upload</span>
+                                    <p class="font-headline-md text-base font-bold">Arraste ficheiros aqui ou clique para selecionar</p>
+                                    <p class="font-body-md text-slate-500 text-[13px] mt-1">PDF, ZIP, PNG, JPG (máx. 25MB)</p>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="space-y-3">
+                                <div class="relative flex items-center">
+                                    <span class="material-symbols-outlined absolute left-4 text-slate-400">link</span>
+                                    <input class="w-full h-[56px] pl-12 pr-4 rounded-xl border-[2px] border-black font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
+                                    placeholder="Cole um link (Google Drive, GitHub, Figma...)" type="url" />
+                                </div>
+                                <p class="font-body-md text-slate-500 text-[13px]">Certifique-se de que o link está acessível ao cliente.</p>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="px-8 py-6 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50/50">
+                            <button id="cancelDeliverModalBtn" class="px-6 py-3 rounded-xl border-[2px] border-black bg-white font-headline-md text-sm font-bold hover:bg-slate-50 active:scale-95 transition-all" type="button">
+                                Cancelar
+                            </button>
+                            <button class="px-6 py-3 rounded-xl bg-black text-primary-container font-headline-md text-sm font-bold flex items-center gap-2 hover:brightness-125 active:scale-95 transition-all" type="button">
+                                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+                                Confirmar entrega
+                            </button>
+                            </div>
+                        </div>
+                        </div>
+            </div>  
         `;
 
         // Funções de Apoio SPA
