@@ -236,6 +236,21 @@
             border-color: #D4FF00 !important;
             box-shadow: 0 0 0 2px rgba(212, 255, 0, 0.2);
         }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #D4FF00; }
+        ::-webkit-scrollbar-thumb { background: #000000; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333333; }
+        
+        /* High Contrast Specifics */
+        .card-shadow {
+            box-shadow: 6px 6px 0px 0px #000000;
+        }
     </style>
 </head>
 
@@ -293,12 +308,6 @@
             <span class="font-label-md text-label-md">Perfil</span>
         </a>
 
-        <a data-spa-link data-route="definicoes"
-           class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors"
-           href="#definicoes">
-            <span class="material-symbols-outlined">settings</span>
-            <span class="font-label-md text-label-md">Definições</span>
-        </a>
     </div>
 
     <div class="mt-auto pt-6">
@@ -2420,6 +2429,193 @@
             </div>  
         `;
 
+        App.templates.perfil =`
+            <div id="view-perfil" class="bg-[#CCFF00] text-black font-body-md text-body-md">
+                <main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12 min-h-screen">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Local Anchor Navigation -->
+                    <nav class="lg:col-span-3 space-y-1">
+                        <a
+                        class="flex items-center gap-3 px-4 py-3 border-2 border-black bg-black text-white font-label-md text-label-md transition-all duration-200"
+                        href="#minha-info"
+                        >
+                        <span class="material-symbols-outlined text-[20px]">person</span>
+                        Minha informação
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">payments</span>
+                        Faturação e pagamentos
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">shield</span>
+                        Palavra-passe e segurança
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        Definições de notificações
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">groups</span>
+                        Teams
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">settings</span>
+                        Preferências
+                        </a>
+                    </nav>
+
+                    <!-- Main Content Area -->
+                    <div class="lg:col-span-9 space-y-8">
+                        <!-- Section: Minha informação -->
+                        <section id="minha-info" class="bg-white border-2 border-black p-8 relative card-shadow">
+                        <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="relative group">
+                            <img
+                                alt="Profile"
+                                class="w-32 h-32 object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+                                src="/img/foto_perfil_exemplar.png"
+                            />
+                            <div class="absolute -bottom-2 -right-2 bg-black text-white p-1.5 border border-black">
+                                <span class="material-symbols-outlined text-[18px]" data-weight="fill">verified</span>
+                            </div>
+                            </div>
+
+                            <div class="flex-1 space-y-4">
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-black">Pedro Manuel</h2>
+                                <p class="font-label-md text-label-md text-black/70">@pedromanuel</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">work</span>
+                                <span class="font-body-md">Designer UI/UX Senior</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                <span class="font-body-md">Luanda, Angola</span>
+                                </div>
+                            </div>
+
+                            <p class="text-black leading-relaxed max-w-2xl">
+                                Apaixonado por criar experiências digitais que fundem funcionalidade técnica com estética brutalista.
+                                Especialista em sistemas de design escaláveis e interfaces de alta performance para produtos SaaS globais.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Interface Design</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Figma Expert</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Prototyping</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">React UI</span>
+                            </div>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Section: Informação de contacto -->
+                        <section class="bg-white border-2 border-black p-8 relative card-shadow">
+                            <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                            </button>
+
+                            <h3 class="font-headline-md text-headline-md text-black mb-6">Informação de contacto</h3>
+
+                            <div class="space-y-4">
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Email</span>
+                                <span class="text-black font-body-md">pe*********@skilla.com</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Telemóvel</span>
+                                <span class="text-black font-body-md">+244 923 *** 456</span>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- Section: Destacar perfil -->
+                        <section class="bg-black p-8 flex flex-col justify-between items-start border-none group overflow-hidden relative card-shadow">
+                            <div class="absolute -right-8 -top-8 w-32 h-32 bg-white opacity-10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                            <div class="relative z-10">
+                            <h3 class="font-headline-md text-headline-md text-white mb-2">Alcance mais clientes</h3>
+                            <p class="text-white font-body-md mb-6 opacity-80">
+                                Promova o seu perfil para o topo das pesquisas e receba 3x mais propostas diretas.
+                            </p>
+                            </div>
+                            <button class="px-6 py-3 bg-white text-black font-label-md text-label-md border-2 border-white hover:bg-black hover:text-white transition-all duration-200 relative z-10">
+                            Destacar perfil
+                            </button>
+                        </section>
+                        </div>
+
+                        <!-- Portfólio em destaque -->
+                        <section class="space-y-6 pt-4">
+                        <div class="flex justify-between items-end">
+                            <div>
+                            <h3 class="font-headline-md text-headline-md text-black">Portfólio em destaque</h3>
+                            <p class="text-black/70 font-body-md">Exiba os seus melhores trabalhos para potenciais clientes.</p>
+                            </div>
+                            <a class="text-black font-bold font-label-md text-label-md flex items-center gap-1 hover:underline underline-offset-4" href="#">
+                            Gerir portfólio
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 1"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLapq4NnoPNElbAVd9m_VWF8nmc0zPd0k4mM42Day2e_E-iRgRrb-EGtmgIdmZ4aREoS7rvWff5Dag4CSa_LvmbxFCO08KAfJYkFa3D1reRSfPteTMoyCpKwbSdQfQfXT6V7MnCLb51cX4m2IPYEtZNRM-YWXfgCzFwURdmY2V898T8Walttt7ozTrZede2lI60FfrWru-lcvqxJ2wpTMMEBbmgi3EY8JQLWpjRA4i4OTEJ-WmGzHPV4Yi4UhsZFgf1Tb843Pn0xU" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">NovaPay Mobile App</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Fintech • 2023</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 2"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD14VabbFyfYxboRlBjHkRAYZBbxAQXXmK-ewnGbtEDcEiLSEBjnkOgxQOSSK89cZxWRVA4WfAqk5BbQdonraNXUyDiDUKFOOGEhrtSU375GB6-_3zLWbKUenOO2QIyccZlB-bmYfe85lenHmj4ILbrase_vqdEcyeF-_A5-h1oeIMD-UngkK1vVusAI3bqO4KdV886-mNAa4QRY2PgK_Qx0TdQLt44lYe7h6MqfV5tz9i33GjDa6052hYkPmy2Yp3x-dvSNo8FJak" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Kinetix Design System</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Design System • 2024</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 3"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZnYVCZiBL3lE639tZin3AcmhPR0LjGMxg6n-5w8k__IXlwAsCz0unBtb3zUVamifLC79zFyFim82h7lEAMyn2ETUGBO6iNBwsFAxHr9x8Pxx0uWnq8VU9N9Q9TDzjPl3Tj3I1XXiY-o9UXs2LdXzJyBWsjDmnE8zRa78Q-rmyDp0wv7ZKYExFATyHO0mLZ46YpWKVdHfrTIJTAKOeBLLGcDUptg37erP19ElN7xa1gDCSf62_M7aWykqCl8bqp1iMYoEeEIV00M" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Vortex Analytics Web</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Dashboards • 2023</p>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="pt-12 border-t border-black flex justify-end items-center gap-4">
+                        <button class="px-6 py-2 text-black/70 hover:text-black font-label-md text-label-md transition-colors">Descartar</button>
+                        <button class="px-8 py-3 bg-black text-white font-label-md text-label-md border-2 border-black hover:bg-white hover:text-black transition-all">
+                            Guardar alterações
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </main>
+            </div>
+        `;
+
         // Funções de Apoio SPA
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
@@ -2586,6 +2782,27 @@
         });
 
     })();
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Active state toggle
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary', 'text-white', 'border-2', 'border-primary');
+                    a.classList.add('text-on-surface-variant', 'hover:text-black');
+                });
+                this.classList.add('bg-primary', 'text-white', 'border-2', 'border-primary');
+                this.classList.remove('text-on-surface-variant', 'hover:text-black');
+            }
+        });
+    });
 </script>
 </body>
 </html>
