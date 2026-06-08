@@ -1688,43 +1688,126 @@
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     <!-- Coluna Esquerda: Detalhes -->
                     <div class="lg:col-span-8 flex flex-col gap-6">
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
-                        <div class="pb-8">
-                        <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
-                        <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
-                        <div class="flex flex-wrap gap-6 text-black">
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
-                            <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
+    
+                            <!-- Job Header Section -->
+                            <div class="pb-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full">Design Gráfico</span>
+                                    <div class="flex gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">link</span>
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">push_pin</span>
+                                    </div>
+                                </div>
+
+                                <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+
+                                <div class="flex flex-wrap gap-6 text-black">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
+                                        <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
+                                        <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">bolt</span>
+                                        <span class="font-body-md text-body-md font-bold text-green-600">Aberto a propostas</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">calendar_today</span>
+                                        <span class="font-body-md text-body-md">Publicado há 2 horas</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
-                            <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+
+                            <!-- Status Bar -->
+                            <div class="flex gap-3 pb-8 flex-wrap">
+                                <span class="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200">
+                                    <span class="material-symbols-outlined text-[14px]">credit_card</span> Multicaixa Express
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-200">
+                                    <span class="material-symbols-outlined text-[14px]">verified_user</span> Cliente Verificado
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1.5 rounded-full border border-yellow-200">
+                                    <span class="material-symbols-outlined text-[14px]">star</span> Job em Destaque
+                                </span>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Project Description Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
+                                <div class="font-body-md text-gray-700 space-y-4 break-words leading-[1.6]">
+                                    <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística, a "RápidaExpress", focada em entregas last-mile na grande Luanda.</p>
+                                    <p>Precisamos de algo moderno, que transmita confiança, velocidade e inovação tecnológica. O design deve ser facilmente aplicável tanto em meios digitais (app, website) como físicos (uniformes, viaturas de entrega, embalagens).</p>
+                                    <p>A entrega final deve incluir todos os ficheiros abertos e um manual de normas da marca detalhado.</p>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Deliverables Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
+                                <ul class="flex flex-col gap-4 mt-2">
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Paleta de cores e tipografia institucional</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design para cartões de visita e papel timbrado</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Mockups de aplicação em viatura (carrinha) e uniforme (t-shirt/boné)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Manual de Normas da Marca (Brandbook em PDF)</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Skills Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Competências necessárias</h2>
+                                <div class="flex flex-wrap gap-3 mt-2">
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Illustrator</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Photoshop</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Design de Identidade Visual</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Branding</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Figma</span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Screening Questions Section -->
+                            <div class="pt-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-orange-500">help</span> Perguntas de triagem
+                                </h2>
+                                <p class="font-body-md text-gray-700 mb-2">Terá de responder a estas perguntas ao enviar a sua proposta:</p>
+                                <div class="flex flex-col gap-4">
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes na área de transportes/logística?</p>
+                                    </div>
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">2. Qual é a sua disponibilidade para eventuais reuniões presenciais em Luanda (Talatona)?</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
-                        <div class="font-body-md text-gray-700 space-y-4 break-words">
-                            <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
-                        </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
-                        <ul class="flex flex-col gap-4 mt-2">
-                            <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                            <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
 
                     <div class="flex flex-col gap-8">
                         <div class="flex justify-between items-center">

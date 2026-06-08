@@ -1586,256 +1586,189 @@
 
         // ===== TEMPLATE: TRABALHO DETALHE + MODAL ENVIAR PROPOSTA (com a estilização original) =====
         templates.trabalho_detalhe = `
-            <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
-                <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
+        <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
+            <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
+                
+                <!-- Header & Breadcrumbs -->
                 <div class="flex flex-col gap-2">
-                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#">Início</a> &gt;
-                    <a class="hover:underline" href="#">Trabalhos</a> &gt;
-                    <a class="hover:underline" href="#">Design Gráfico</a> &gt;
-                    <span>Identidade Visual</span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    <!-- Coluna Esquerda: Detalhes -->
-                    <div class="lg:col-span-8 flex flex-col gap-6">
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
-                        <div class="pb-8">
-                        <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
-                        <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
-                        <div class="flex flex-wrap gap-6 text-black">
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
-                            <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
-                            <span class="font-body-md text-body-md">Prazo: 15 dias</span>
-                            </div>
-                        </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
-                        <div class="font-body-md text-gray-700 space-y-4 break-words">
-                            <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
-                        </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
-                        <ul class="flex flex-col gap-4 mt-2">
-                            <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                            <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-
-                    <div class="flex flex-col gap-8">
-                        <div class="flex justify-between items-center">
-                        <h2 class="font-headline-sm text-black flex items-center gap-3">
-                            <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
-                        </h2>
-                        </div>
-
-                        <div class="flex flex-col gap-6">
-                        <!-- Exemplo Proposta -->
-                        <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
-                            <div class="flex justify-between items-start">
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
-                                <div class="flex flex-col">
-                                <div class="flex items-center gap-2">
-                                    <p class="font-label-md font-bold text-black">Mário Costa</p>
-                                    <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
-                                </div>
-                                <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
-                            </div>
-                            </div>
-                            <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
-                            <div class="flex justify-between items-center pt-2">
-                            <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <!-- Coluna Direita: Sticky Sidebar Corrigida -->
-                    <div class="lg:col-span-4">
-                    <div class="sticky top-24 flex flex-col gap-6">
-
-                        <!-- Card de Ação / Enviar Proposta -->
-                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
-                        <div class="flex flex-col gap-1">
-                            <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
-                            <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
-                        </div>
-
-                        <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
-                            <div class="flex flex-col items-center gap-2">
-                            <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
-                            <span class="font-bold text-[20px]">42</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-2">
-                            <span class="text-gray-600 text-[12px] text-center">Propostas</span>
-                            <span class="font-bold text-[20px]">8</span>
-                            </div>
-                            <div class="flex flex-col items-center gap-2">
-                            <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
-                            <span class="font-bold text-[20px]">1</span>
-                            </div>
-                        </div>
-
-                        <div class="flex flex-col gap-4 mt-2">
-                            <button
-                            type="button"
-                            data-open-proposta-modal
-                            class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center"
-                            >
-                            Enviar Proposta
-                            </button>
-
-                            <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
-                            <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
-                            </button>
-                        </div>
-                        </div>
-
-                        <!-- Card Info Cliente -->
-                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                        <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
-                        <div class="flex items-center gap-4 mb-2">
-                            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
-                            <div>
-                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
-                            <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
-                                <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
-                            </p>
-                            </div>
-                        </div>
-                        <div class="flex flex-col gap-4 mt-4">
-                            <div class="flex justify-between font-label-sm text-black">
-                            <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
-                            </div>
-                            <div class="flex justify-between font-label-sm text-black mt-2">
-                            <span class="text-gray-600">Avaliação Média</span>
-                            <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
-                            </div>
-                        </div>
-                        </div>
-
-                        <!-- Trabalhos Semelhantes -->
-                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                        <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
-                        <div class="flex flex-col gap-5">
-                            <a class="group flex flex-col gap-1" href="#">
-                            <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
-                            <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
-                            </a>
-                        </div>
-                        </div>
-
-                    </div>
-                    </div>
-                </div>
-                </div>
-
-                <!-- MODAL: Enviar Proposta (NÃO corta conteúdo; só fica hidden/mostra) -->
-                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4"
-                    id="modal-overlay"
-                    aria-hidden="true">
-                <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden transform transition-all duration-300 scale-100 opacity-100"
-                    id="modal-content"
-                    role="dialog"
-                    aria-modal="true">
-
-                    <div class="px-8 pt-8 pb-4 flex justify-between items-start">
-                    <div>
-                        <h2 class="font-headline-md text-headline-md text-obsidian mb-1">Enviar Proposta</h2>
-                        <p class="font-body-md text-obsidian/60">Preencha os detalhes para concorrer a este trabalho.</p>
-                    </div>
-
-                    <button class="p-2 hover:bg-obsidian/5 rounded-full transition-colors group"
-                            type="button"
-                            data-close-proposta-modal
-                            aria-label="Fechar">
-                        <span class="material-symbols-outlined text-obsidian text-2xl group-hover:rotate-90 transition-transform duration-200">close</span>
-                    </button>
-                    </div>
-
-                    <form id="proposta-form" class="px-8 py-4 space-y-6">
-                    <div class="space-y-2">
-                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Carta de apresentação</label>
-                        <div class="relative">
-                        <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 resize-none transition-all"
-                                    id="cover-letter"
-                                    maxlength="2000"
-                                    placeholder="Escreva uma breve apresentação..."
-                                    rows="5"></textarea>
-                        <div class="absolute bottom-3 right-4 font-label-sm text-label-sm text-obsidian/40" id="char-counter">0/2000</div>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="space-y-2">
-                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Valor proposto (Kz)</label>
-                        <div class="relative">
-                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all pr-12"
-                                id="proposta-valor"
-                                placeholder="Ex.: 150000"
-                                type="number"
-                                min="0"
-                                required />
-                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Kz</span>
-                        </div>
-                        </div>
-
-                        <div class="space-y-2">
-                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Dias de entrega</label>
-                        <div class="relative">
-                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all"
-                                id="proposta-dias"
-                                placeholder="Ex.: 7"
-                                type="number"
-                                min="1"
-                                required />
-                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Dias</span>
-                        </div>
-                        </div>
-                    </div>
-                    </form>
-
-                    <div class="px-8 pb-8 pt-4 flex flex-col sm:flex-row-reverse items-center justify-between gap-6">
-                    <button class="w-full sm:w-auto bg-obsidian text-volt-lime font-headline-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(212,255,0,0.15)] flex items-center justify-center gap-2"
-                            type="submit"
-                            form="proposta-form">
-                        <span>Enviar Proposta</span>
-                        <span class="text-[10px] opacity-80 font-label-sm bg-volt-lime/20 px-2 py-0.5 rounded-full">(gasta 1 crédito)</span>
-                    </button>
-
-                    <a class="text-obsidian font-label-md border-b-2 border-transparent hover:border-obsidian transition-all py-1"
-                        href="#"
-                        data-close-proposta-modal>
-                        Cancelar
+                    <a class="inline-flex items-center gap-2 font-label-md text-label-md text-black hover:opacity-70 transition-opacity font-bold" href="#">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Voltar ao feed
                     </a>
+                    <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
+                        <a class="hover:underline" href="#">Início</a> &gt; 
+                        <a class="hover:underline" href="#">Jobs</a> &gt; 
+                        <a class="hover:underline" href="#">Design Gráfico</a> &gt; 
+                        <span>Identidade Visual</span>
+                    </div>
+                </div>
+
+                <!-- Grid Principal (Conteúdo | Sidebar) -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    
+                    <!-- Coluna Esquerda: Detalhes do Trabalho -->
+                    <div class="lg:col-span-8 flex flex-col gap-6">
+                        
+                        <!-- Card Principal do Job -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
+                            <!-- Job Header -->
+                            <div class="pb-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full">Design Gráfico</span>
+                                    <div class="flex gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">link</span>
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">push_pin</span>
+                                    </div>
+                                </div>
+                                <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+                                <div class="flex flex-wrap gap-6 text-black">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
+                                        <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
+                                        <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">bolt</span>
+                                        <span class="font-body-md text-body-md font-bold text-green-600">Aberto a propostas</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">calendar_today</span>
+                                        <span class="font-body-md text-body-md">Publicado há 2 horas</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Status Bar -->
+                            <div class="flex gap-3 pb-8 flex-wrap">
+                                <span class="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200">
+                                    <span class="material-symbols-outlined text-[14px]">credit_card</span> Multicaixa Express
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-200">
+                                    <span class="material-symbols-outlined text-[14px]">verified_user</span> Cliente Verificado
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1.5 rounded-full border border-yellow-200">
+                                    <span class="material-symbols-outlined text-[14px]">star</span> Job em Destaque
+                                </span>
+                            </div>
+                            <hr class="border-gray-100">
+
+                            <!-- Descrição -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
+                                <div class="font-body-md text-gray-700 space-y-4 break-words leading-[1.6]">
+                                    <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística, a "RápidaExpress", focada em entregas last-mile na grande Luanda.</p>
+                                    <p>Precisamos de algo moderno, que transmita confiança, velocidade e inovação tecnológica. O design deve ser facilmente aplicável tanto em meios digitais (app, website) como físicos (uniformes, viaturas de entrega, embalagens).</p>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100">
+
+                            <!-- Entregáveis -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
+                                <ul class="flex flex-col gap-4 mt-2">
+                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Design de Logótipo</span></li>
+                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Paleta de cores e tipografia</span></li>
+                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Cartões de visita e papel timbrado</span></li>
+                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Mockups (viatura e uniforme)</span></li>
+                                </ul>
+                            </div>
+                            <hr class="border-gray-100">
+
+                            <!-- Competências -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Competências necessárias</h2>
+                                <div class="flex flex-wrap gap-3 mt-2">
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Illustrator</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Photoshop</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Figma</span>
+                                </div>
+                            </div>
+                            <hr class="border-gray-100">
+
+                            <!-- Perguntas de Triagem -->
+                            <div class="pt-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-orange-500">help</span> Perguntas de triagem
+                                </h2>
+                                <div class="flex flex-col gap-4">
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes?</p>
+                                    </div>
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">2. Qual a sua disponibilidade para reuniões presenciais?</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Lista de Propostas -->
+                        <div class="flex flex-col gap-6 mt-8">
+                            <h2 class="font-headline-sm text-black flex items-center gap-3">
+                                <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
+                            </h2>
+                            
+                            <!-- Card de Proposta (Exemplo) -->
+                            <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
+                                <div class="flex justify-between items-start">
+                                    <div class="flex items-center gap-4">
+                                        <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
+                                        <div>
+                                            <p class="font-label-md font-bold text-black">Mário Costa</p>
+                                            <p class="text-xs text-gray-600">+120 trabalhos realizados</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                    <!-- Coluna Direita: Ações / Info Cliente -->
+                    <div class="lg:col-span-4 flex flex-col gap-6">
+                        <!-- Card de Ação -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6 sticky top-24">
+                            <h2 class="font-display-lg text-[40px] leading-none font-bold text-black">75.000 Kz</h2>
+                            <button class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-bold hover:bg-[#E66912] transition-colors">Enviar Proposta</button>
+                        </div>
+
+                        <!-- Info Cliente -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                            <h3 class="font-headline-sm text-black font-bold">Sobre o Cliente</h3>
+                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- MODAL: Enviar Proposta -->
+                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4" id="modal-overlay">
+                    <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden" id="modal-content">
+                        <div class="px-8 pt-8 pb-4 flex justify-between items-start">
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-obsidian">Enviar Proposta</h2>
+                            </div>
+                            <button type="button" data-close-proposta-modal><span class="material-symbols-outlined">close</span></button>
+                        </div>
+                        
+                        <form id="proposta-form" class="px-8 py-4 space-y-6">
+                            <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4" id="cover-letter" rows="5"></textarea>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <input class="border-2 border-obsidian rounded-xl p-4" type="number" placeholder="Valor (Kz)" required />
+                                <input class="border-2 border-obsidian rounded-xl p-4" type="number" placeholder="Dias" required />
+                            </div>
+                        </form>
+
+                        <div class="px-8 pb-8 pt-4">
+                            <button type="submit" form="proposta-form" class="w-full bg-obsidian text-volt-lime py-4 rounded-full">Enviar Proposta</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-        `;
+        </div>
+`;
 
 
         // ============================
