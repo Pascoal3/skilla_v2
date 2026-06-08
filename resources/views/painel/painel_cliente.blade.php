@@ -116,6 +116,9 @@
             }
         }
     </script>
+    style{
+        
+    }
 </head>
 <body class="bg-[#CCFF00] font-body-md text-on-surface flex min-h-screen">
 <!-- SideNavBar -->
