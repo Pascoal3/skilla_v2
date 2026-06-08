@@ -236,6 +236,21 @@
             border-color: #D4FF00 !important;
             box-shadow: 0 0 0 2px rgba(212, 255, 0, 0.2);
         }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #D4FF00; }
+        ::-webkit-scrollbar-thumb { background: #000000; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333333; }
+        
+        /* High Contrast Specifics */
+        .card-shadow {
+            box-shadow: 6px 6px 0px 0px #000000;
+        }
     </style>
 </head>
 
@@ -293,17 +308,11 @@
             <span class="font-label-md text-label-md">Perfil</span>
         </a>
 
-        <a data-spa-link data-route="definicoes"
-           class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors"
-           href="#definicoes">
-            <span class="material-symbols-outlined">settings</span>
-            <span class="font-label-md text-label-md">Definições</span>
-        </a>
     </div>
 
     <div class="mt-auto pt-6">
         
-        <button  class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
+        <button data-route="carteira_comprar_creditos" class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
             Comprar Créditos
         </button>
         <div class="flex flex-col gap-2 mt-4 px-2">
@@ -492,7 +501,7 @@
                         <h3 class="font-headline-sm text-headline-sm text-black-pure px-2">Propostas</h3>
                         <div class="glass-card p-6 hard-shadow h-full flex flex-col">
                             <div class="flex-1 flex flex-col gap-4 mb-6" id="recent-proposals-container"></div>
-                            <button class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
+                            <button data-spa-link data-route="propostas" class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
                                 Ver Todas as Propostas
                             </button>
                         </div>
@@ -503,7 +512,7 @@
                 <div class="flex flex-col gap-6 mt-8">
                     <h3 class="font-headline-md text-headline-md text-black-pure">
                         Jobs Recomendados para Si
-                        <a class="float-right text-black-pure text-sm font-bold underline" href="#">Ver todos</a>
+                        <a class="float-right text-black-pure text-sm font-bold underline" data-spa-link data-route="trabalhos" href="#trabalhos">Ver todos</a>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="recommended-jobs-container"></div>
                 </div>
@@ -516,7 +525,7 @@
 
                     <!-- Skeleton path -->
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
                     <span>Minha carteira</span>
                     </div>
 
@@ -649,8 +658,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-3">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Comprar créditos</span>
                     </div>
 
@@ -782,8 +791,8 @@
                     <!-- Breadcrumb -->
                     <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] pt-6">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Carregar saldo</span>
                     </div>
                     </div>
@@ -935,8 +944,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-3 mb-8">
                         <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Extrato de créditos</span>
                         </div>
 
@@ -1112,8 +1121,8 @@
 
                     <!-- Breadcrumb -->
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                     <span>Pedir saque</span>
                     </div>
 
@@ -1253,8 +1262,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-4 mb-8">
                         <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Extrato</span>
                         </div>
 
@@ -1670,53 +1679,135 @@
                 <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
                 <div class="flex flex-col gap-2">
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#">Início</a> &gt;
-                    <a class="hover:underline" href="#">Trabalhos</a> &gt;
-                    <a class="hover:underline" href="#">Design Gráfico</a> &gt;
-                    <span>Identidade Visual</span>
+                    <a class="hover:underline" data-spa-link data-route="inicio" href="#inicio">Início</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="trabalhos" href="#trabalhos">Trabalhos</a> &gt;
+                    <span>Detalhe do Trabalho</span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     <!-- Coluna Esquerda: Detalhes -->
                     <div class="lg:col-span-8 flex flex-col gap-6">
-                    <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
-                        <div class="pb-8">
-                        <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full mb-4">Design Gráfico</span>
-                        <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
-                        <div class="flex flex-wrap gap-6 text-black">
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
-                            <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
+    
+                            <!-- Job Header Section -->
+                            <div class="pb-8">
+                                <div class="flex justify-between items-start mb-4">
+                                    <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full">Design Gráfico</span>
+                                    <div class="flex gap-2">
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">link</span>
+                                        <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">push_pin</span>
+                                    </div>
+                                </div>
+
+                                <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+
+                                <div class="flex flex-wrap gap-6 text-black">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
+                                        <span class="font-body-md text-body-md">Luanda (Remoto/Híbrido)</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
+                                        <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">bolt</span>
+                                        <span class="font-body-md text-body-md font-bold text-green-600">Aberto a propostas</span>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-[20px] opacity-70">calendar_today</span>
+                                        <span class="font-body-md text-body-md">Publicado há 2 horas</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[20px] opacity-70">schedule</span>
-                            <span class="font-body-md text-body-md">Prazo: 15 dias</span>
+
+                            <!-- Status Bar -->
+                            <div class="flex gap-3 pb-8 flex-wrap">
+                                <span class="inline-flex items-center gap-1 bg-gray-100 text-gray-700 text-xs font-bold px-3 py-1.5 rounded-full border border-gray-200">
+                                    <span class="material-symbols-outlined text-[14px]">credit_card</span> Multicaixa Express
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-green-50 text-green-700 text-xs font-bold px-3 py-1.5 rounded-full border border-green-200">
+                                    <span class="material-symbols-outlined text-[14px]">verified_user</span> Cliente Verificado
+                                </span>
+                                <span class="inline-flex items-center gap-1 bg-yellow-50 text-yellow-700 text-xs font-bold px-3 py-1.5 rounded-full border border-yellow-200">
+                                    <span class="material-symbols-outlined text-[14px]">star</span> Job em Destaque
+                                </span>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Project Description Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
+                                <div class="font-body-md text-gray-700 space-y-4 break-words leading-[1.6]">
+                                    <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística, a "RápidaExpress", focada em entregas last-mile na grande Luanda.</p>
+                                    <p>Precisamos de algo moderno, que transmita confiança, velocidade e inovação tecnológica. O design deve ser facilmente aplicável tanto em meios digitais (app, website) como físicos (uniformes, viaturas de entrega, embalagens).</p>
+                                    <p>A entrega final deve incluir todos os ficheiros abertos e um manual de normas da marca detalhado.</p>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Deliverables Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
+                                <ul class="flex flex-col gap-4 mt-2">
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Paleta de cores e tipografia institucional</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design para cartões de visita e papel timbrado</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Mockups de aplicação em viatura (carrinha) e uniforme (t-shirt/boné)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Manual de Normas da Marca (Brandbook em PDF)</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Skills Section -->
+                            <div class="py-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black">Competências necessárias</h2>
+                                <div class="flex flex-wrap gap-3 mt-2">
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Illustrator</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Photoshop</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Design de Identidade Visual</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Branding</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Figma</span>
+                                </div>
+                            </div>
+
+                            <hr class="border-gray-100">
+
+                            <!-- Screening Questions Section -->
+                            <div class="pt-8 flex flex-col gap-4">
+                                <h2 class="font-headline-sm text-black flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-orange-500">help</span> Perguntas de triagem
+                                </h2>
+                                <p class="font-body-md text-gray-700 mb-2">Terá de responder a estas perguntas ao enviar a sua proposta:</p>
+                                <div class="flex flex-col gap-4">
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes na área de transportes/logística?</p>
+                                    </div>
+                                    <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
+                                        <p class="font-body-md text-black font-semibold">2. Qual é a sua disponibilidade para eventuais reuniões presenciais em Luanda (Talatona)?</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
-                        <div class="font-body-md text-gray-700 space-y-4 break-words">
-                            <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística...</p>
-                        </div>
-                        </div>
-
-                        <hr class="border-gray-100"/>
-
-                        <div class="py-8 flex flex-col gap-4">
-                        <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
-                        <ul class="flex flex-col gap-4 mt-2">
-                            <li class="flex items-start gap-3">
-                            <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
-                            <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
 
                     <div class="flex flex-col gap-8">
                         <div class="flex justify-between items-center">
@@ -2178,10 +2269,10 @@
 
                         <!-- Voltar -->
                         <div class="px-margin-mobile md:px-gutter pt-4">
-                            <button data-back-to-inbox class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
-                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                            Voltar às mensagens
-                            </button>
+                    <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Voltar às mensagens
+                    </button>
                         </div>
 
                         <!-- Chat Header -->
@@ -2421,11 +2512,203 @@
             </div>  
         `;
 
+        App.templates.perfil =`
+            <div id="view-perfil" class="bg-[#CCFF00] text-black font-body-md text-body-md">
+                <main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12 min-h-screen">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Local Anchor Navigation -->
+                    <nav class="lg:col-span-3 space-y-1">
+                        <a
+                        class="flex items-center gap-3 px-4 py-3 border-2 border-black bg-black text-white font-label-md text-label-md transition-all duration-200"
+                        href="#minha-info"
+                        >
+                        <span class="material-symbols-outlined text-[20px]">person</span>
+                        Minha informação
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">payments</span>
+                        Faturação e pagamentos
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">shield</span>
+                        Palavra-passe e segurança
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        Definições de notificações
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">groups</span>
+                        Teams
+                        </a>
+
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">settings</span>
+                        Preferências
+                        </a>
+                    </nav>
+
+                    <!-- Main Content Area -->
+                    <div class="lg:col-span-9 space-y-8">
+                        <!-- Section: Minha informação -->
+                        <section id="minha-info" class="bg-white border-2 border-black p-8 relative card-shadow">
+                        <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="relative group">
+                            <img
+                                alt="Profile"
+                                class="w-32 h-32 object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+                                src="/img/foto_perfil_exemplar.png"
+                            />
+                            <div class="absolute -bottom-2 -right-2 bg-black text-white p-1.5 border border-black">
+                                <span class="material-symbols-outlined text-[18px]" data-weight="fill">verified</span>
+                            </div>
+                            </div>
+
+                            <div class="flex-1 space-y-4">
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-black">Pedro Manuel</h2>
+                                <p class="font-label-md text-label-md text-black/70">@pedromanuel</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">work</span>
+                                <span class="font-body-md">Designer UI/UX Senior</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                <span class="font-body-md">Luanda, Angola</span>
+                                </div>
+                            </div>
+
+                            <p class="text-black leading-relaxed max-w-2xl">
+                                Apaixonado por criar experiências digitais que fundem funcionalidade técnica com estética brutalista.
+                                Especialista em sistemas de design escaláveis e interfaces de alta performance para produtos SaaS globais.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Interface Design</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Figma Expert</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Prototyping</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">React UI</span>
+                            </div>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Section: Informação de contacto -->
+                        <section class="bg-white border-2 border-black p-8 relative card-shadow">
+                            <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                            </button>
+
+                            <h3 class="font-headline-md text-headline-md text-black mb-6">Informação de contacto</h3>
+
+                            <div class="space-y-4">
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Email</span>
+                                <span class="text-black font-body-md">pe*********@skilla.com</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Telemóvel</span>
+                                <span class="text-black font-body-md">+244 923 *** 456</span>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- Section: Destacar perfil -->
+                        <section class="bg-black p-8 flex flex-col justify-between items-start border-none group overflow-hidden relative card-shadow">
+                            <div class="absolute -right-8 -top-8 w-32 h-32 bg-white opacity-10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                            <div class="relative z-10">
+                            <h3 class="font-headline-md text-headline-md text-white mb-2">Alcance mais clientes</h3>
+                            <p class="text-white font-body-md mb-6 opacity-80">
+                                Promova o seu perfil para o topo das pesquisas e receba 3x mais propostas diretas.
+                            </p>
+                            </div>
+                            <button class="px-6 py-3 bg-white text-black font-label-md text-label-md border-2 border-white hover:bg-black hover:text-white transition-all duration-200 relative z-10">
+                            Destacar perfil
+                            </button>
+                        </section>
+                        </div>
+
+                        <!-- Portfólio em destaque -->
+                        <section class="space-y-6 pt-4">
+                        <div class="flex justify-between items-end">
+                            <div>
+                            <h3 class="font-headline-md text-headline-md text-black">Portfólio em destaque</h3>
+                            <p class="text-black/70 font-body-md">Exiba os seus melhores trabalhos para potenciais clientes.</p>
+                            </div>
+                            <a class="text-black font-bold font-label-md text-label-md flex items-center gap-1 hover:underline underline-offset-4" href="#">
+                            Gerir portfólio
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 1"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLapq4NnoPNElbAVd9m_VWF8nmc0zPd0k4mM42Day2e_E-iRgRrb-EGtmgIdmZ4aREoS7rvWff5Dag4CSa_LvmbxFCO08KAfJYkFa3D1reRSfPteTMoyCpKwbSdQfQfXT6V7MnCLb51cX4m2IPYEtZNRM-YWXfgCzFwURdmY2V898T8Walttt7ozTrZede2lI60FfrWru-lcvqxJ2wpTMMEBbmgi3EY8JQLWpjRA4i4OTEJ-WmGzHPV4Yi4UhsZFgf1Tb843Pn0xU" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">NovaPay Mobile App</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Fintech • 2023</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 2"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD14VabbFyfYxboRlBjHkRAYZBbxAQXXmK-ewnGbtEDcEiLSEBjnkOgxQOSSK89cZxWRVA4WfAqk5BbQdonraNXUyDiDUKFOOGEhrtSU375GB6-_3zLWbKUenOO2QIyccZlB-bmYfe85lenHmj4ILbrase_vqdEcyeF-_A5-h1oeIMD-UngkK1vVusAI3bqO4KdV886-mNAa4QRY2PgK_Qx0TdQLt44lYe7h6MqfV5tz9i33GjDa6052hYkPmy2Yp3x-dvSNo8FJak" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Kinetix Design System</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Design System • 2024</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 3"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZnYVCZiBL3lE639tZin3AcmhPR0LjGMxg6n-5w8k__IXlwAsCz0unBtb3zUVamifLC79zFyFim82h7lEAMyn2ETUGBO6iNBwsFAxHr9x8Pxx0uWnq8VU9N9Q9TDzjPl3Tj3I1XXiY-o9UXs2LdXzJyBWsjDmnE8zRa78Q-rmyDp0wv7ZKYExFATyHO0mLZ46YpWKVdHfrTIJTAKOeBLLGcDUptg37erP19ElN7xa1gDCSf62_M7aWykqCl8bqp1iMYoEeEIV00M" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Vortex Analytics Web</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Dashboards • 2023</p>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="pt-12 border-t border-black flex justify-end items-center gap-4">
+                        <button class="px-6 py-2 text-black/70 hover:text-black font-label-md text-label-md transition-colors">Descartar</button>
+                        <button class="px-8 py-3 bg-black text-white font-label-md text-label-md border-2 border-black hover:bg-white hover:text-black transition-all">
+                            Guardar alterações
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </main>
+            </div>
+        `;
+
         // Funções de Apoio SPA
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
             links.forEach(link => {
-                const isMatch = link.dataset.route === route || (route.startsWith('carteira') && link.dataset.route === 'carteira');
+                const linkRoute = link.dataset.route || link.getAttribute('data-route');
+                const isMatch = linkRoute === route || 
+                               (route.startsWith('carteira') && linkRoute === 'carteira') ||
+                               (route === 'trabalho_detalhe' && linkRoute === 'trabalhos') ||
+                               (route === 'mensagens_sala' && linkRoute === 'mensagens');
+                               
                 if (isMatch) {
                     link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
                     link.classList.remove('text-on-primary-container', 'hover:text-secondary');
@@ -2439,17 +2722,25 @@
         function render(route, push = true) {
             if (!App.templates[route]) route = 'inicio';
             spaView.innerHTML = App.templates[route];
+            window.scrollTo(0, 0);
 
             setActiveLink(route);
             if (push) history.pushState({ route }, '', `#${route}`);
             
-            // Re-vincular Lógica de Eventos (Original Restorada)
             initRouteScripts(route);
         }
 
         function initRouteScripts(route) {
             console.log('SPA Render:', route);
             
+            // Voltar Global
+            spaView.querySelectorAll('[data-wallet-back], [data-back-to-inbox], [data-success-back-wallet]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (btn.hasAttribute('data-back-to-inbox')) render('mensagens');
+                    else render('carteira');
+                });
+            });
+
             // Lógica Carteira
             if (route === 'carteira') {
                  spaView.querySelectorAll('[data-wallet-action]').forEach(btn => {
@@ -2458,31 +2749,113 @@
                         if (action === 'carregar-saldo') render('carteira_carregar_saldo');
                         if (action === 'ver-extrato') render('carteira_ver_extrato');
                         if (action === 'pedir-saque') render('carteira_pedir_saque');
+                        if (action === 'comprar-creditos') render('carteira_comprar_creditos');
+                        if (action === 'extrato-creditos') render('carteira_extrato_creditos');
+                        if (action === 'copiar-iban') {
+                            navigator.clipboard.writeText("AO06 1234 5678 9012 3456 7890 1");
+                            alert("IBAN copiado!");
+                        }
                     });
+                });
+            }
+
+            if (route === 'carteira_comprar_creditos') {
+                const summaryCost = spaView.querySelector('#summary-cost');
+                const summaryPkg = spaView.querySelector('#summary-pkg');
+                const summaryDebit = spaView.querySelector('#summary-debit-msg');
+                const summaryAfter = spaView.querySelector('#summary-after');
+                const buyBtn = spaView.querySelector('#buy-button');
+                const balance = 125000;
+
+                spaView.querySelectorAll('input[name="credit_package"]').forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        const credits = radio.dataset.credits;
+                        const cost = parseInt(radio.dataset.cost);
+                        summaryPkg.innerText = `${credits} créditos`;
+                        summaryCost.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryDebit.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryAfter.innerText = `${(balance - cost).toLocaleString()} Kz`;
+                    });
+                });
+
+                buyBtn?.addEventListener('click', () => {
+                    alert('Compra de créditos realizada com sucesso!');
+                    render('carteira');
                 });
             }
 
             if (route === 'carteira_carregar_saldo') {
                  const modal = spaView.querySelector('#successModal');
                  spaView.querySelector('[data-open-success-modal]')?.addEventListener('click', () => {
-                     modal.classList.remove('hidden');
-                     modal.classList.add('flex');
+                     modal?.classList.remove('hidden');
+                     modal?.classList.add('flex');
                  });
-                 spaView.querySelector('[data-success-back-wallet]')?.addEventListener('click', () => render('carteira'));
+                 spaView.querySelector('[data-success-go-extrato]')?.addEventListener('click', () => render('carteira_ver_extrato'));
+            }
+
+            if (route === 'carteira_extrato_creditos') {
+                spaView.querySelector('[data-go-add-creditos]')?.addEventListener('click', () => render('carteira_comprar_creditos'));
+            }
+
+            // Lógica Trabalhos
+            if (route === 'trabalhos') {
+                spaView.querySelectorAll('[data-open-job]').forEach(btn => {
+                    btn.addEventListener('click', () => render('trabalho_detalhe'));
+                });
+            }
+
+            if (route === 'trabalho_detalhe') {
+                const modal = spaView.querySelector('#modal-overlay');
+                spaView.querySelector('[data-open-proposta-modal]')?.addEventListener('click', () => {
+                    modal?.classList.remove('hidden');
+                    modal?.classList.add('flex');
+                });
+                spaView.querySelectorAll('[data-close-proposta-modal]').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        modal?.classList.add('hidden');
+                        modal?.classList.remove('flex');
+                    });
+                });
+                spaView.querySelector('#proposta-form')?.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Proposta enviada com sucesso!');
+                    render('propostas');
+                });
+            }
+
+            // Lógica Mensagens
+            if (route === 'mensagens') {
+                spaView.querySelectorAll('[data-open-chat]').forEach(card => {
+                    card.addEventListener('click', () => render('mensagens_sala'));
+                });
+            }
+
+            if (route === 'inicio') {
+                spaView.querySelector('#btn-explorar-trabalhos')?.addEventListener('click', () => render('trabalhos'));
             }
         }
 
         // Navegação Global
         document.addEventListener('click', (e) => {
-            const link = e.target.closest('[data-spa-link]');
-            if (link) {
-                e.preventDefault();
-                render(link.dataset.route || link.getAttribute('data-route'));
+            const el = e.target.closest('[data-spa-link], [data-route], a[href^="#"]');
+            if (el) {
+                if (el.tagName === 'A' && el.getAttribute('href') === '#') return;
+
+                const route = el.dataset.route || el.getAttribute('data-route') || el.getAttribute('href')?.substring(1);
+                if (route && (App.templates[route] || route === 'inicio')) {
+                    e.preventDefault();
+                    render(route);
+                }
             }
         });
 
         window.addEventListener('popstate', (e) => {
-            if (e.state && e.state.route) render(e.state.route, false);
+            if (e.state && e.state.route) {
+                render(e.state.route, false);
+            } else {
+                const hash = window.location.hash.substring(1) || 'inicio';
+                render(hash, false);
+            }
         });
 
         // Init
@@ -2492,6 +2865,27 @@
         });
 
     })();
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Active state toggle
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary', 'text-white', 'border-2', 'border-primary');
+                    a.classList.add('text-on-surface-variant', 'hover:text-black');
+                });
+                this.classList.add('bg-primary', 'text-white', 'border-2', 'border-primary');
+                this.classList.remove('text-on-surface-variant', 'hover:text-black');
+            }
+        });
+    });
 </script>
 </body>
 </html>
