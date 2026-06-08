@@ -9,33 +9,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Skilla - Dashboard do Freelancer</title>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[data-spa-link]');
-    if (!link) return;
-    e.preventDefault();
-    const route = link.dataset.route;
-    render(route, true, { activeMenuRoute: route });
-});
-</script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries">document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[data-spa-link]');
-    if (!link) return;
-    e.preventDefault();
-    const route = link.dataset.route;
-    render(route, true, { activeMenuRoute: route });
-});
-</script>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Hanken+Grotesk:wght@400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500&family=JetBrains+Mono:wght@500&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/>
-    <!-- Fontes extras (para as telas da Carteira) -->
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 
     <script id="tailwind-config">
@@ -90,7 +68,10 @@
                         "on-tertiary-fixed": "#1b1b1b",
                         "outline-variant": "#4c4546",
                         "error": "#ffb4ab",
-                        "tertiary-fixed-dim": "#c6c6c6"
+                        "tertiary-fixed-dim": "#c6c6c6",
+                        "obsidian": "#101010",
+                        "volt-lime": "#D4FF00",
+                        "black-pure": "#000000"
                     },
                     "borderRadius": {
                         "DEFAULT": "0.25rem",
@@ -104,7 +85,9 @@
                         "gutter": "24px",
                         "base": "8px",
                         "container-padding-desktop": "32px",
-                        "sidebar-width": "280px"
+                        "sidebar-width": "280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px"
                     },
                     "fontFamily": {
                         "headline-sm": ["Space Grotesk"],
@@ -129,14 +112,7 @@
                 }
             }
         }
-    document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[data-spa-link]');
-    if (!link) return;
-    e.preventDefault();
-    const route = link.dataset.route;
-    render(route, true, { activeMenuRoute: route });
-});
-</script>
+    </script>
 
     <style>
         :root{
@@ -260,6 +236,21 @@
             border-color: #D4FF00 !important;
             box-shadow: 0 0 0 2px rgba(212, 255, 0, 0.2);
         }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glow-hover:hover {
+            box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #D4FF00; }
+        ::-webkit-scrollbar-thumb { background: #000000; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333333; }
+        
+        /* High Contrast Specifics */
+        .card-shadow {
+            box-shadow: 6px 6px 0px 0px #000000;
+        }
     </style>
 </head>
 
@@ -317,17 +308,11 @@
             <span class="font-label-md text-label-md">Perfil</span>
         </a>
 
-        <a data-spa-link data-route="definicoes"
-           class="flex items-center gap-3 text-on-primary-container hover:text-secondary px-4 py-3 transition-colors"
-           href="#definicoes">
-            <span class="material-symbols-outlined">settings</span>
-            <span class="font-label-md text-label-md">Definições</span>
-        </a>
     </div>
 
     <div class="mt-auto pt-6">
         
-        <button  class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
+        <button data-route="carteira_comprar_creditos" class="w-full font-label-md text-label-md py-3 rounded-lg font-bold hover:bg-secondary-fixed-dim transition-colors scale-98 active:scale-95 bg-[#CCFF00] text-black-pure">
             Comprar Créditos
         </button>
         <div class="flex flex-col gap-2 mt-4 px-2">
@@ -361,7 +346,7 @@
                 <span class="absolute top-0 right-0 w-2.5 h-2.5 bg-error rounded-full border-2 border-[#CCFF00]"></span>
             </button>
             <div class="w-10 h-10 rounded-full bg-white border border-outline overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
-                <img alt="User Avatar" class="w-full h-full object-cover" id="header-user-avatar" src="">
+                <img alt="User Avatar" class="w-full h-full object-cover" id="header-user-avatar" src="https://ui-avatars.com/api/?name=Freelancer&background=random">
             </div>
         </div>
     </header>
@@ -370,9 +355,42 @@
     <div class="flex-1 p-container-padding-mobile md:p-container-padding-desktop flex flex-col gap-8 pb-20">
 
         <!-- SPA VIEWPORT -->
-        <section id="spa-view" class="bg-[#CCFF00]">
+        <section id="spa-view" class="bg-[#CCFF00]"></section>
+    </div>
+</main>
 
-            <!-- VIEW: INÍCIO -->
+<script>
+    async function logout(event) {
+        event.preventDefault();
+        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
+        const response = await fetch('/logout-api', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken,
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        });
+        if (response.ok) {
+            window.location.href = '/login';
+        }
+    }
+</script>
+
+<script>
+    (function () {
+        const spaView = document.getElementById('spa-view');
+        if (!spaView) return;
+
+        // --- OBJETO APP (Padrão solicitado) ---
+        window.App = {
+            templates: {},
+            spaView: spaView,
+            render: render
+        };
+
+        // Templates (Conteúdo Integral Restaurado)
+        App.templates.inicio = `
             <div id="view-inicio">
                 <!-- Page Header (Gap/Margem adicionada aqui com mb-10) -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
@@ -483,7 +501,7 @@
                         <h3 class="font-headline-sm text-headline-sm text-black-pure px-2">Propostas</h3>
                         <div class="glass-card p-6 hard-shadow h-full flex flex-col">
                             <div class="flex-1 flex flex-col gap-4 mb-6" id="recent-proposals-container"></div>
-                            <button class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
+                            <button data-spa-link data-route="propostas" class="w-full border-2 border-black-pure text-black-pure py-3 rounded-lg font-label-md text-label-md font-bold hover:bg-black-pure hover:text-white transition-colors mt-auto">
                                 Ver Todas as Propostas
                             </button>
                         </div>
@@ -494,113 +512,20 @@
                 <div class="flex flex-col gap-6 mt-8">
                     <h3 class="font-headline-md text-headline-md text-black-pure">
                         Jobs Recomendados para Si
-                        <a class="float-right text-black-pure text-sm font-bold underline" href="#">Ver todos</a>
+                        <a class="float-right text-black-pure text-sm font-bold underline" data-spa-link data-route="trabalhos" href="#trabalhos">Ver todos</a>
                     </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="recommended-jobs-container"></div>
                 </div>
             </div>
+        `;
 
-        </section>
-    </div>
-</main>
-
-<script src="{{ asset('js/painel_freelancer.js') }}">
-
-    document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[data-spa-link]');
-    if (!link) return;
-    e.preventDefault();
-    const route = link.dataset.route;
-    render(route, true, { activeMenuRoute: route });
-});
-</script>
-
-<script>
-    async function logout(event) {
-        event.preventDefault();
-        const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
-        const response = await fetch('/logout-api', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken,
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        });
-        if (response.ok) {
-            window.location.href = '/login';
-        }
-    }
-</script>
-
-<script>
-    (function () {
-        const spaView = document.getElementById('spa-view');
-        if (!spaView) return;
-
-        // Templates
-        const templates = {
-            inicio: document.getElementById('view-inicio')?.outerHTML || ''
-        };
-
-        // Delegação de eventos única
-        spaView.addEventListener('click', function(e) {
-            const link = e.target.closest('a[data-spa-link]');
-            if (!link) return;
-            e.preventDefault();
-            const route = link.dataset.route;
-            render(route, true, { activeMenuRoute: route });
-        });
-
-        // Define o link ativo no menu
-        function setActiveLink(route) {
-            const links = spaView.querySelectorAll('a[data-spa-link]');
-            links.forEach(link => {
-                const isActive = link.dataset.route === route;
-                if (isActive) {
-                    link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-                    link.classList.remove('text-on-primary-container', 'hover:text-secondary');
-                } else {
-                    link.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-                    link.classList.add('text-on-primary-container', 'hover:text-secondary');
-                }
-            });
-        }
-
-        function render(route, push = true, opts = {}) {
-            if (!templates[route]) route = 'inicio';
-            spaView.innerHTML = templates[route];
-
-            const activeMenuRoute = opts.activeMenuRoute || route;
-            setActiveLink(activeMenuRoute);
-
-            if (push) {
-                const hash = opts.hash || route;
-                history.pushState({ route, opts }, '', `#${hash}`);
-            }
-        }
-
-        // Delegação de eventos para a sidebar (que está dentro do spaView)
-        spaView.addEventListener('click', function(e) {
-            // Verifica se é um link da sidebar
-            const spaLink = e.target.closest('a[data-spa-link]');
-            if (spaLink) {
-                e.preventDefault();
-                const route = spaLink.dataset.route;
-                render(route, true, { activeMenuRoute: route });
-            }
-        });
-
-        // ============================
-        // Template: Carteira (Minha Carteira - principal)
-        // ============================
-        templates.carteira = `
+        App.templates.carteira = `
             <div id="view-carteira" class="min-h-screen relative z-10 flex flex-col pb-20">
                 <div class="max-w-[1280px] mx-auto w-full px-4 md:px-10 py-8 flex flex-col gap-10">
 
                     <!-- Skeleton path -->
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
                     <span>Minha carteira</span>
                     </div>
 
@@ -726,18 +651,15 @@
             </div>
         `;
 
-        // ============================
-        // Template: Carteira > Comprar créditos
-        // ============================
-        templates.carteira_comprar_creditos = `
+        App.templates.carteira_comprar_creditos = `
             <div id="view-carteira-comprar-creditos" class="bg-[#D4FF00] text-[#1A1C1E] min-h-screen flex flex-col items-center">
                 <main class="w-full max-w-[480px] px-4 py-8 flex flex-col gap-8 flex-grow">
 
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-3">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Comprar créditos</span>
                     </div>
 
@@ -862,18 +784,15 @@
             </div>
         `;
 
-        // ============================
-        // Template: Carteira > Carregar saldo
-        // ============================
-        templates.carteira_carregar_saldo = `
+        App.templates.carteira_carregar_saldo = `
             <div id="view-carteira-carregar-saldo" class="min-h-screen bg-lime-main text-[#111827] overflow-hidden">
                 <main class="flex-1 flex flex-col bg-lime-main overflow-y-auto">
 
                     <!-- Breadcrumb -->
                     <div class="max-w-[800px] w-full mx-auto px-4 md:px-[40px] pt-6">
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Carregar saldo</span>
                     </div>
                     </div>
@@ -1017,18 +936,193 @@
                 </div>
             </div>
         `;
+         App.templates.carteira_extrato_creditos = `
+            <div id="view-carteira-extrato-creditos" class="flex min-h-screen bg-[#D4FF00] text-black">
+                <main class="flex-1 pb-24 md:pb-8">
+                    <div class="mt-10 max-w-[640px] mx-auto px-4 md:px-0">
 
-        // ============================
-        // Template: Carteira > Pedir saque
-        // ============================
-        templates.carteira_pedir_saque = `
+                    <!-- Breadcrumb + voltar -->
+                    <div class="flex items-center justify-between gap-3 mb-8">
+                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
+                        <span>Extrato de créditos</span>
+                        </div>
+
+                    
+                    </div>
+
+                    <!-- Balance Card -->
+                    <section class="mb-8">
+                        <div class="bg-white border border-black/10 rounded-2xl p-8 relative overflow-hidden group hover:border-black/30 transition-all duration-300 shadow-sm">
+                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#D4FF00]/20 blur-[60px]"></div>
+
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center">
+                            <span class="material-symbols-outlined text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">stars</span>
+                            </div>
+                            <h3 class="text-[16px] leading-[24px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Créditos disponíveis</h3>
+                        </div>
+
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-[56px] font-bold text-black leading-none" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
+                            <span class="text-[18px] leading-[28px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">créditos</span>
+                        </div>
+
+                        <div class="mt-6 flex gap-3">
+                            <button data-go-add-creditos class="flex-1 py-3 bg-black text-[#D4FF00] text-[14px] leading-[20px] font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Adicionar créditos
+                            </button>
+
+                            <button class="px-4 py-3 border border-gray-300 text-black text-[14px] leading-[20px] rounded-lg hover:bg-gray-100 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            Como funciona?
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Filters Section -->
+                    <section class="mb-8 space-y-4">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                        <div class="relative inline-block w-full md:w-auto">
+                            <select class="appearance-none w-full md:w-56 bg-white border border-gray-300 text-black text-[14px] leading-[20px] px-4 py-2.5 rounded-xl focus:ring-1 focus:ring-black outline-none cursor-pointer"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
+                            <option>Últimos 30 dias</option>
+                            <option>Últimos 7 dias</option>
+                            <option>Mês atual</option>
+                            </select>
+                            <span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-600 pointer-events-none">expand_more</span>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2">
+                            <button class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-emerald-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                            Compra
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-blue-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                            Proposta
+                            </button>
+
+                            <button class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-amber-500/20 transition-all"
+                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
+                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+                            Destaque
+                            </button>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Transaction List -->
+                    <section class="space-y-6">
+                        <!-- Group: Hoje -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Outflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
+                                <span class="material-symbols-outlined">send</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Proposta #54321</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 10:15 • Proposta enviada</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: Highlight -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600">
+                                <span class="material-symbols-outlined">bolt</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Upgrade: Destaque Topo</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 08:30 • Projeto: App Delivery</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 5</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 22</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+
+                        <!-- Group: Ontem -->
+                        <div>
+                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h4>
+                        <div class="space-y-3">
+                            <!-- Transaction Item: Inflow -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                                <span class="material-symbols-outlined">shopping_cart</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Compra de pacote — 10 créditos</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 14:32 • Cartão de crédito</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 10</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 30</p>
+                            </div>
+                            </div>
+
+                            <!-- Transaction Item: System Bonus -->
+                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer opacity-80 shadow-sm">
+                            <div class="flex items-center gap-4">
+                                <div class="w-10 h-10 rounded-lg bg-black/10 flex items-center justify-center text-black">
+                                <span class="material-symbols-outlined">redeem</span>
+                                </div>
+                                <div>
+                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Bônus de Indicação</h5>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 11:00 • Programa Skilla+</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 2</span>
+                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
+                            </div>
+                            </div>
+                        </div>
+                        </div>
+                    </section>
+
+                    <!-- Bottom Illustration / CTA -->
+                    <section class="mt-12 py-10 text-center border-t border-black/10">
+                        <p class="text-[16px] leading-[24px] text-gray-600 mb-6" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
+                        Precisa de mais visibilidade? Use seus créditos para destacar seu perfil.
+                        </p>
+                    </section>
+
+                    </div>
+                </main>
+            </div>
+         `;
+
+        
+
+        App.templates.carteira_pedir_saque = `
             <div id="view-carteira-pedir-saque" class="bg-[#D4FF00] min-h-screen flex flex-col items-center">
                 <main class="w-full max-w-[480px] px-4 py-8 space-y-6">
 
                     <!-- Breadcrumb -->
                     <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                    <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                    <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                     <span>Pedir saque</span>
                     </div>
 
@@ -1160,10 +1254,7 @@
             </div>
         `;
 
-        // ============================
-        // Template: Carteira > Ver extrato
-        // ============================
-        templates.carteira_ver_extrato = `
+        App.templates.carteira_ver_extrato = `
             <div id="view-carteira-ver-extrato" class="overflow-x-hidden bg-[#D4FF00] min-h-screen">
                 <main class="pt-10 pb-20 px-4 md:px-10 min-h-screen">
                     <div class="max-w-[1280px] mx-auto">
@@ -1171,8 +1262,8 @@
                     <!-- Breadcrumb + voltar -->
                     <div class="flex items-center justify-between gap-4 mb-8">
                         <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Carteira</a> &gt;
+                        <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Extrato</span>
                         </div>
 
@@ -1409,8 +1500,7 @@
             </div>
         `;
 
-        // Template: Feed de Trabalhos
-        templates.trabalhos = `
+        App.templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20">
                 <header class="w-full px-4 md:px-10 pt-8 pb-6 sticky top-0 md:top-0 z-30 bg-[#CCFF00] shadow-sm">
                     <div class="max-w-[1280px] mx-auto">
@@ -1584,33 +1674,23 @@
             </div>
         `;
 
-        // ===== TEMPLATE: TRABALHO DETALHE + MODAL ENVIAR PROPOSTA (com a estilização original) =====
-        templates.trabalho_detalhe = `
-        <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
-            <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
-                
-                <!-- Header & Breadcrumbs -->
+        App.templates.trabalho_detalhe = `
+            <div id="view-trabalho-detalhe" class="min-h-screen bg-[#D4FF00]">
+                <div class="p-6 md:p-8 space-y-8 max-w-[1280px] mx-auto w-full pb-20">
                 <div class="flex flex-col gap-2">
-                    <a class="inline-flex items-center gap-2 font-label-md text-label-md text-black hover:opacity-70 transition-opacity font-bold" href="#">
-                        <span class="material-symbols-outlined text-[18px]">arrow_back</span> Voltar ao feed
-                    </a>
                     <div class="font-label-sm text-label-sm text-black opacity-70 flex items-center gap-2">
-                        <a class="hover:underline" href="#">Início</a> &gt; 
-                        <a class="hover:underline" href="#">Jobs</a> &gt; 
-                        <a class="hover:underline" href="#">Design Gráfico</a> &gt; 
-                        <span>Identidade Visual</span>
+                    <a class="hover:underline" data-spa-link data-route="inicio" href="#inicio">Início</a> &gt;
+                    <a class="hover:underline" data-spa-link data-route="trabalhos" href="#trabalhos">Trabalhos</a> &gt;
+                    <span>Detalhe do Trabalho</span>
                     </div>
                 </div>
 
-                <!-- Grid Principal (Conteúdo | Sidebar) -->
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                    
-                    <!-- Coluna Esquerda: Detalhes do Trabalho -->
+                    <!-- Coluna Esquerda: Detalhes -->
                     <div class="lg:col-span-8 flex flex-col gap-6">
-                        
-                        <!-- Card Principal do Job -->
                         <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col">
-                            <!-- Job Header -->
+    
+                            <!-- Job Header Section -->
                             <div class="pb-8">
                                 <div class="flex justify-between items-start mb-4">
                                     <span class="inline-block bg-[#D4FF00] text-black text-[12px] font-bold px-3 py-1 rounded-full">Design Gráfico</span>
@@ -1619,7 +1699,9 @@
                                         <span class="material-symbols-outlined text-gray-500 hover:text-black cursor-pointer transition-colors text-[20px]">push_pin</span>
                                     </div>
                                 </div>
+
                                 <h1 class="font-headline-lg text-3xl md:text-4xl text-black mb-4">Criar identidade visual completa para empresa de logística em Luanda</h1>
+
                                 <div class="flex flex-wrap gap-6 text-black">
                                     <div class="flex items-center gap-2">
                                         <span class="material-symbols-outlined text-[20px] opacity-70">location_on</span>
@@ -1652,307 +1734,381 @@
                                     <span class="material-symbols-outlined text-[14px]">star</span> Job em Destaque
                                 </span>
                             </div>
+
                             <hr class="border-gray-100">
 
-                            <!-- Descrição -->
+                            <!-- Project Description Section -->
                             <div class="py-8 flex flex-col gap-4">
                                 <h2 class="font-headline-sm text-black">Descrição do Projeto</h2>
                                 <div class="font-body-md text-gray-700 space-y-4 break-words leading-[1.6]">
                                     <p>Estamos à procura de um designer gráfico talentoso e experiente para desenvolver a identidade visual completa da nossa nova empresa de logística, a "RápidaExpress", focada em entregas last-mile na grande Luanda.</p>
                                     <p>Precisamos de algo moderno, que transmita confiança, velocidade e inovação tecnológica. O design deve ser facilmente aplicável tanto em meios digitais (app, website) como físicos (uniformes, viaturas de entrega, embalagens).</p>
+                                    <p>A entrega final deve incluir todos os ficheiros abertos e um manual de normas da marca detalhado.</p>
                                 </div>
                             </div>
+
                             <hr class="border-gray-100">
 
-                            <!-- Entregáveis -->
+                            <!-- Deliverables Section -->
                             <div class="py-8 flex flex-col gap-4">
                                 <h2 class="font-headline-sm text-black">O que precisamos (Entregáveis)</h2>
                                 <ul class="flex flex-col gap-4 mt-2">
-                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Design de Logótipo</span></li>
-                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Paleta de cores e tipografia</span></li>
-                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Cartões de visita e papel timbrado</span></li>
-                                    <li class="flex items-start gap-3"><span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span> <span class="font-body-md text-gray-700">Mockups (viatura e uniforme)</span></li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design de Logótipo (Versões principal, secundária e monocromática)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Paleta de cores e tipografia institucional</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Design para cartões de visita e papel timbrado</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Mockups de aplicação em viatura (carrinha) e uniforme (t-shirt/boné)</span>
+                                    </li>
+                                    <li class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-green-600 text-[24px]">check_circle</span>
+                                        <span class="font-body-md text-gray-700 break-words">Manual de Normas da Marca (Brandbook em PDF)</span>
+                                    </li>
                                 </ul>
                             </div>
+
                             <hr class="border-gray-100">
 
-                            <!-- Competências -->
+                            <!-- Skills Section -->
                             <div class="py-8 flex flex-col gap-4">
                                 <h2 class="font-headline-sm text-black">Competências necessárias</h2>
                                 <div class="flex flex-wrap gap-3 mt-2">
                                     <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Illustrator</span>
                                     <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Adobe Photoshop</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Design de Identidade Visual</span>
+                                    <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Branding</span>
                                     <span class="px-4 py-2 bg-gray-100 border border-gray-200 rounded-full font-label-md text-gray-800">Figma</span>
                                 </div>
                             </div>
+
                             <hr class="border-gray-100">
 
-                            <!-- Perguntas de Triagem -->
+                            <!-- Screening Questions Section -->
                             <div class="pt-8 flex flex-col gap-4">
                                 <h2 class="font-headline-sm text-black flex items-center gap-2">
                                     <span class="material-symbols-outlined text-orange-500">help</span> Perguntas de triagem
                                 </h2>
+                                <p class="font-body-md text-gray-700 mb-2">Terá de responder a estas perguntas ao enviar a sua proposta:</p>
                                 <div class="flex flex-col gap-4">
                                     <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
-                                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes?</p>
+                                        <p class="font-body-md text-black font-semibold">1. Pode partilhar o seu portfólio com trabalhos semelhantes na área de transportes/logística?</p>
                                     </div>
                                     <div class="bg-gray-50 border-l-[4px] border-orange-400 p-4 rounded-r-lg">
-                                        <p class="font-body-md text-black font-semibold">2. Qual a sua disponibilidade para reuniões presenciais?</p>
+                                        <p class="font-body-md text-black font-semibold">2. Qual é a sua disponibilidade para eventuais reuniões presenciais em Luanda (Talatona)?</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Lista de Propostas -->
-                        <div class="flex flex-col gap-6 mt-8">
-                            <h2 class="font-headline-sm text-black flex items-center gap-3">
-                                <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
-                            </h2>
-                            
-                            <!-- Card de Proposta (Exemplo) -->
-                            <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
-                                <div class="flex justify-between items-start">
-                                    <div class="flex items-center gap-4">
-                                        <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
-                                        <div>
-                                            <p class="font-label-md font-bold text-black">Mário Costa</p>
-                                            <p class="text-xs text-gray-600">+120 trabalhos realizados</p>
-                                        </div>
-                                    </div>
-                                    <div class="text-right">
-                                        <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
-                                    </div>
+                    <div class="flex flex-col gap-8">
+                        <div class="flex justify-between items-center">
+                        <h2 class="font-headline-sm text-black flex items-center gap-3">
+                            <span class="material-symbols-outlined">forum</span> Propostas recebidas (8)
+                        </h2>
+                        </div>
+
+                        <div class="flex flex-col gap-6">
+                        <!-- Exemplo Proposta -->
+                        <div class="bg-white rounded-[24px] p-6 hard-shadow flex flex-col gap-4">
+                            <div class="flex justify-between items-start">
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center font-bold text-black border border-gray-200 shrink-0">MC</div>
+                                <div class="flex flex-col">
+                                <div class="flex items-center gap-2">
+                                    <p class="font-label-md font-bold text-black">Mário Costa</p>
+                                    <span class="text-yellow-600 text-sm font-bold">⭐ 4.8</span>
+                                </div>
+                                <p class="font-label-sm text-gray-700 font-bold mt-1">Designer Sénior</p>
                                 </div>
                             </div>
+                            <div class="text-right">
+                                <p class="font-headline-sm text-black font-bold">80.000 Kz</p>
+                            </div>
+                            </div>
+                            <div class="font-body-sm text-gray-600 line-clamp-3">Olá! Tenho mais de 5 anos de experiência...</div>
+                            <div class="flex justify-between items-center pt-2">
+                            <button class="bg-black text-white px-6 py-2 rounded-lg font-label-md text-sm font-bold hover:bg-gray-800 transition-colors">Ver perfil</button>
+                            </div>
+                        </div>
                         </div>
                     </div>
+                    </div>
 
-                    <!-- Coluna Direita: Ações / Info Cliente -->
-                    <div class="lg:col-span-4 flex flex-col gap-6">
-                        <!-- Card de Ação -->
-                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6 sticky top-24">
-                            <h2 class="font-display-lg text-[40px] leading-none font-bold text-black">75.000 Kz</h2>
-                            <button class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-bold hover:bg-[#E66912] transition-colors">Enviar Proposta</button>
+                    <!-- Coluna Direita: Sticky Sidebar Corrigida -->
+                    <div class="lg:col-span-4">
+                    <div class="sticky top-24 flex flex-col gap-6">
+
+                        <!-- Card de Ação / Enviar Proposta -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-6">
+                        <div class="flex flex-col gap-1">
+                            <span class="font-label-sm text-gray-600 uppercase tracking-wider">Orçamento Fixo</span>
+                            <span class="text-[40px] leading-none font-bold text-black">75.000 Kz</span>
                         </div>
 
-                        <!-- Info Cliente -->
+                        <div class="grid grid-cols-3 gap-[20px] font-label-md text-black border-y border-gray-200 py-6">
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Visualizações</span>
+                            <span class="font-bold text-[20px]">42</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Propostas</span>
+                            <span class="font-bold text-[20px]">8</span>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                            <span class="text-gray-600 text-[12px] text-center">Entrevistas</span>
+                            <span class="font-bold text-[20px]">1</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col gap-4 mt-2">
+                            <button
+                            type="button"
+                            data-open-proposta-modal
+                            class="w-full bg-[#FF7A1A] text-white py-4 rounded-xl font-label-md font-bold hover:bg-[#E66912] transition-colors shadow-md text-lg flex justify-center items-center"
+                            >
+                            Enviar Proposta
+                            </button>
+
+                            <button class="w-full border-2 border-black text-black py-4 rounded-xl font-label-md font-bold hover:bg-black hover:text-white transition-colors flex justify-center items-center gap-2">
+                            <span class="material-symbols-outlined">favorite_border</span> Guardar Trabalho
+                            </button>
+                        </div>
+                        </div>
+
+                        <!-- Card Info Cliente -->
                         <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
-                            <h3 class="font-headline-sm text-black font-bold">Sobre o Cliente</h3>
-                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MODAL: Enviar Proposta -->
-                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4" id="modal-overlay">
-                    <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden" id="modal-content">
-                        <div class="px-8 pt-8 pb-4 flex justify-between items-start">
+                        <h3 class="font-headline-sm text-black font-bold mb-2">Sobre o Cliente</h3>
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center font-display-lg text-[24px] text-blue-800 font-bold border border-blue-200 shrink-0">RE</div>
                             <div>
-                                <h2 class="font-headline-md text-headline-md text-obsidian">Enviar Proposta</h2>
+                            <p class="font-card-title text-black font-bold">RápidaExpress Lda.</p>
+                            <p class="font-label-sm text-gray-600 flex items-center gap-1 mt-1">
+                                <span class="material-symbols-outlined text-[14px]">location_on</span> Angola, Luanda
+                            </p>
                             </div>
-                            <button type="button" data-close-proposta-modal><span class="material-symbols-outlined">close</span></button>
                         </div>
-                        
-                        <form id="proposta-form" class="px-8 py-4 space-y-6">
-                            <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4" id="cover-letter" rows="5"></textarea>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <input class="border-2 border-obsidian rounded-xl p-4" type="number" placeholder="Valor (Kz)" required />
-                                <input class="border-2 border-obsidian rounded-xl p-4" type="number" placeholder="Dias" required />
+                        <div class="flex flex-col gap-4 mt-4">
+                            <div class="flex justify-between font-label-sm text-black">
+                            <span class="text-gray-600">Trabalhos publicados</span><span class="font-bold">5</span>
                             </div>
-                        </form>
+                            <div class="flex justify-between font-label-sm text-black mt-2">
+                            <span class="text-gray-600">Avaliação Média</span>
+                            <span class="font-bold flex items-center text-yellow-600">⭐ 4.5 (3 reviews)</span>
+                            </div>
+                        </div>
+                        </div>
 
-                        <div class="px-8 pb-8 pt-4">
-                            <button type="submit" form="proposta-form" class="w-full bg-obsidian text-volt-lime py-4 rounded-full">Enviar Proposta</button>
+                        <!-- Trabalhos Semelhantes -->
+                        <div class="bg-white rounded-[24px] p-8 hard-shadow flex flex-col gap-4">
+                        <h3 class="font-headline-sm text-black font-bold">Trabalhos Semelhantes</h3>
+                        <div class="flex flex-col gap-5">
+                            <a class="group flex flex-col gap-1" href="#">
+                            <p class="font-label-md text-black font-bold group-hover:text-blue-600 transition-colors line-clamp-2">Re-branding para cadeia de supermercados</p>
+                            <p class="font-label-sm text-gray-500">KZS 120.000,00 • Há 2 dias</p>
+                            </a>
                         </div>
+                        </div>
+
+                    </div>
                     </div>
                 </div>
-            </div>
-        </div>
-`;
+                </div>
 
+                <!-- MODAL: Enviar Proposta (NÃO corta conteúdo; só fica hidden/mostra) -->
+                <div class="fixed inset-0 z-[60] bg-obsidian/80 backdrop-blur-md hidden items-center justify-center p-4"
+                    id="modal-overlay"
+                    aria-hidden="true">
+                <div class="bg-white text-obsidian w-full max-w-2xl rounded-2xl border-[2px] border-obsidian high-contrast-shadow overflow-hidden transform transition-all duration-300 scale-100 opacity-100"
+                    id="modal-content"
+                    role="dialog"
+                    aria-modal="true">
 
-        // ============================
-        // Template: Carteira > Extrato de créditos
-        // ============================
-        templates.carteira_extrato_creditos = `
-            <div id="view-carteira-extrato-creditos" class="flex min-h-screen bg-[#D4FF00] text-black">
-                <main class="flex-1 pb-24 md:pb-8">
-                    <div class="mt-10 max-w-[640px] mx-auto px-4 md:px-0">
-
-                    <!-- Breadcrumb + voltar -->
-                    <div class="flex items-center justify-between gap-3 mb-8">
-                        <div class="text-[12px] leading-[16px] text-black/70 flex items-center gap-2">
-                        <a class="hover:underline" href="#carteira">Carteira</a> &gt;
-                        <a class="hover:underline" href="#carteira">Minha carteira</a> &gt;
-                        <span>Extrato de créditos</span>
-                        </div>
-
-                    
+                    <div class="px-8 pt-8 pb-4 flex justify-between items-start">
+                    <div>
+                        <h2 class="font-headline-md text-headline-md text-obsidian mb-1">Enviar Proposta</h2>
+                        <p class="font-body-md text-obsidian/60">Preencha os detalhes para concorrer a este trabalho.</p>
                     </div>
 
-                    <!-- Balance Card -->
-                    <section class="mb-8">
-                        <div class="bg-white border border-black/10 rounded-2xl p-8 relative overflow-hidden group hover:border-black/30 transition-all duration-300 shadow-sm">
-                        <div class="absolute -top-10 -right-10 w-32 h-32 bg-[#D4FF00]/20 blur-[60px]"></div>
-
-                        <div class="flex items-center gap-4 mb-4">
-                            <div class="w-12 h-12 bg-black/5 rounded-xl flex items-center justify-center">
-                            <span class="material-symbols-outlined text-[#F59E0B]" style="font-variation-settings: 'FILL' 1;">stars</span>
-                            </div>
-                            <h3 class="text-[16px] leading-[24px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Créditos disponíveis</h3>
-                        </div>
-
-                        <div class="flex items-baseline gap-2">
-                            <span class="text-[56px] font-bold text-black leading-none" style="font-family: Sora, ui-sans-serif, system-ui;">30</span>
-                            <span class="text-[18px] leading-[28px] text-gray-600" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">créditos</span>
-                        </div>
-
-                        <div class="mt-6 flex gap-3">
-                            <button data-go-add-creditos class="flex-1 py-3 bg-black text-[#D4FF00] text-[14px] leading-[20px] font-bold rounded-lg hover:opacity-90 active:scale-95 transition-all"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                            Adicionar créditos
-                            </button>
-
-                            <button class="px-4 py-3 border border-gray-300 text-black text-[14px] leading-[20px] rounded-lg hover:bg-gray-100 transition-all"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                            Como funciona?
-                            </button>
-                        </div>
-                        </div>
-                    </section>
-
-                    <!-- Filters Section -->
-                    <section class="mb-8 space-y-4">
-                        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                        <div class="relative inline-block w-full md:w-auto">
-                            <select class="appearance-none w-full md:w-56 bg-white border border-gray-300 text-black text-[14px] leading-[20px] px-4 py-2.5 rounded-xl focus:ring-1 focus:ring-black outline-none cursor-pointer"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">
-                            <option>Últimos 30 dias</option>
-                            <option>Últimos 7 dias</option>
-                            <option>Mês atual</option>
-                            </select>
-                            <span class="material-symbols-outlined absolute right-3 top-2.5 text-gray-600 pointer-events-none">expand_more</span>
-                        </div>
-
-                        <div class="flex flex-wrap gap-2">
-                            <button class="px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-emerald-500/20 transition-all"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            Compra
-                            </button>
-
-                            <button class="px-4 py-2 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-blue-500/20 transition-all"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-                            Proposta
-                            </button>
-
-                            <button class="px-4 py-2 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 text-[12px] leading-[16px] font-bold flex items-center gap-2 hover:bg-amber-500/20 transition-all"
-                                    style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;" type="button">
-                            <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                            Destaque
-                            </button>
-                        </div>
-                        </div>
-                    </section>
-
-                    <!-- Transaction List -->
-                    <section class="space-y-6">
-                        <!-- Group: Hoje -->
-                        <div>
-                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje</h4>
-                        <div class="space-y-3">
-                            <!-- Transaction Item: Outflow -->
-                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-600">
-                                <span class="material-symbols-outlined">send</span>
-                                </div>
-                                <div>
-                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Proposta #54321</h5>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 10:15 • Proposta enviada</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 2</span>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
-                            </div>
-                            </div>
-
-                            <!-- Transaction Item: Highlight -->
-                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-600">
-                                <span class="material-symbols-outlined">bolt</span>
-                                </div>
-                                <div>
-                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Upgrade: Destaque Topo</h5>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Hoje, 08:30 • Projeto: App Delivery</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[16px] leading-[24px] font-bold text-[#DC2626]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">- 5</span>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 22</p>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-
-                        <!-- Group: Ontem -->
-                        <div>
-                        <h4 class="text-[14px] leading-[20px] text-gray-600 px-2 mb-3" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Ontem</h4>
-                        <div class="space-y-3">
-                            <!-- Transaction Item: Inflow -->
-                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer shadow-sm">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
-                                <span class="material-symbols-outlined">shopping_cart</span>
-                                </div>
-                                <div>
-                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Compra de pacote — 10 créditos</h5>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 14:32 • Cartão de crédito</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 10</span>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 30</p>
-                            </div>
-                            </div>
-
-                            <!-- Transaction Item: System Bonus -->
-                            <div data-credit-item class="bg-white border border-black/10 p-4 rounded-xl flex items-center justify-between hover:border-black/30 transition-all group cursor-pointer opacity-80 shadow-sm">
-                            <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 rounded-lg bg-black/10 flex items-center justify-center text-black">
-                                <span class="material-symbols-outlined">redeem</span>
-                                </div>
-                                <div>
-                                <h5 class="text-[16px] leading-[24px] font-bold text-black" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">Bônus de Indicação</h5>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">15 Jan, 11:00 • Programa Skilla+</p>
-                                </div>
-                            </div>
-                            <div class="text-right">
-                                <span class="text-[16px] leading-[24px] font-bold text-[#16A34A]" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">+ 2</span>
-                                <p class="text-[12px] leading-[16px] text-gray-600" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Saldo: 20</p>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </section>
-
-                    <!-- Bottom Illustration / CTA -->
-                    <section class="mt-12 py-10 text-center border-t border-black/10">
-                        <p class="text-[16px] leading-[24px] text-gray-600 mb-6" style="font-family: Hanken Grotesk, ui-sans-serif, system-ui;">
-                        Precisa de mais visibilidade? Use seus créditos para destacar seu perfil.
-                        </p>
-                    </section>
-
+                    <button class="p-2 hover:bg-obsidian/5 rounded-full transition-colors group"
+                            type="button"
+                            data-close-proposta-modal
+                            aria-label="Fechar">
+                        <span class="material-symbols-outlined text-obsidian text-2xl group-hover:rotate-90 transition-transform duration-200">close</span>
+                    </button>
                     </div>
-                </main>
+
+                    <form id="proposta-form" class="px-8 py-4 space-y-6">
+                    <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Carta de apresentação</label>
+                        <div class="relative">
+                        <textarea class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 resize-none transition-all"
+                                    id="cover-letter"
+                                    maxlength="2000"
+                                    placeholder="Escreva uma breve apresentação..."
+                                    rows="5"></textarea>
+                        <div class="absolute bottom-3 right-4 font-label-sm text-label-sm text-obsidian/40" id="char-counter">0/2000</div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Valor proposto (Kz)</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all pr-12"
+                                id="proposta-valor"
+                                placeholder="Ex.: 150000"
+                                type="number"
+                                min="0"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Kz</span>
+                        </div>
+                        </div>
+
+                        <div class="space-y-2">
+                        <label class="block font-label-md text-label-md uppercase tracking-wider text-obsidian">Dias de entrega</label>
+                        <div class="relative">
+                            <input class="w-full bg-obsidian/5 border-2 border-obsidian rounded-xl p-4 font-body-md text-obsidian placeholder:text-obsidian/40 transition-all"
+                                id="proposta-dias"
+                                placeholder="Ex.: 7"
+                                type="number"
+                                min="1"
+                                required />
+                            <span class="absolute right-4 top-1/2 -translate-y-1/2 font-label-md text-obsidian/40">Dias</span>
+                        </div>
+                        </div>
+                    </div>
+                    </form>
+
+                    <div class="px-8 pb-8 pt-4 flex flex-col sm:flex-row-reverse items-center justify-between gap-6">
+                    <button class="w-full sm:w-auto bg-obsidian text-volt-lime font-headline-md text-label-md px-8 py-4 rounded-full hover:scale-105 active:scale-95 transition-all shadow-[0px_4px_20px_rgba(212,255,0,0.15)] flex items-center justify-center gap-2"
+                            type="submit"
+                            form="proposta-form">
+                        <span>Enviar Proposta</span>
+                        <span class="text-[10px] opacity-80 font-label-sm bg-volt-lime/20 px-2 py-0.5 rounded-full">(gasta 1 crédito)</span>
+                    </button>
+
+                    <a class="text-obsidian font-label-md border-b-2 border-transparent hover:border-obsidian transition-all py-1"
+                        href="#"
+                        data-close-proposta-modal>
+                        Cancelar
+                    </a>
+                    </div>
+
+                </div>
+                </div>
             </div>
         `;
 
-        templates.mensagens = `
-            <div id="view-mensagens" class="flex min-h-screen bg-[#D4FF00]">
+        App.templates.propostas = `
+            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
+
+                <!-- Main Content Canvas -->
+                <!-- Header Actions -->
+                <header class="flex justify-between items-center mb-12">
+                    <div>
+                    <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
+                    <div class="h-1.5 w-24 bg-black mt-2"></div>
+                    </div>
+
+                    <div class="flex items-center gap-4">
+                    <div class="relative" id="propostas-search-wrap">
+                        <input id="propostas-search"
+                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
+                        placeholder="Procurar propostas..." type="text"/>
+                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
+                    </div>
+                    </div>
+                </header>
+
+                <!-- Proposals List Section -->
+                <section class=" flex flex-col gap-6 max-w-5xl">
+
+                    <!-- Card 1 -->
+                    <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
+                        Desenvolvimento de Landing Page de Alta Conversão
+                        </a>
+                        <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
+                        <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
+                    <div class="flex justify-between items-start">
+                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
+                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
+                    </div>
+                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
+                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
+                    </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-end items-center gap-2 mt-4 pb-10">
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
+                    <div class="flex gap-1">
+                        <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
+                        <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
+                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
+                    </div>
+                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
+                    </div>
+
+                </section>
+            </div>
+        `;
+
+        App.templates.mensagens = `
+             <div id="view-mensagens" class="flex min-h-screen bg-[#D4FF00]">
                 <style>
                 #view-mensagens{
                     --primary-container: #D4FF00;
@@ -2097,7 +2253,7 @@
             </div>
         `;
 
-        templates.mensagens_sala = `
+        App.templates.mensagens_sala = `
             <div id="view-mensagens-sala" class="flex min-h-screen bg-[#D4FF00]">
                                 <!-- Mobile TopAppBar (hidden on md) -->
                         <header class="md:hidden fixed top-0 w-full z-50 bg-white border-b border-gray-200 flex justify-between items-center h-16 px-margin-mobile">
@@ -2113,10 +2269,10 @@
 
                         <!-- Voltar -->
                         <div class="px-margin-mobile md:px-gutter pt-4">
-                            <button data-back-to-inbox class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
-                            <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                            Voltar às mensagens
-                            </button>
+                    <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                        Voltar às mensagens
+                    </button>
                         </div>
 
                         <!-- Chat Header -->
@@ -2356,857 +2512,380 @@
             </div>  
         `;
 
-        templates.propostas = `
-
-            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
-
-                <!-- Main Content Canvas -->
-                <!-- Header Actions -->
-                <header class="flex justify-between items-center mb-12">
-                    <div>
-                    <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
-                    <div class="h-1.5 w-24 bg-black mt-2"></div>
-                    </div>
-
-                    <div class="flex items-center gap-4">
-                    <div class="relative" id="propostas-search-wrap">
-                        <input id="propostas-search"
-                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
-                        placeholder="Procurar propostas..." type="text"/>
-                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
-                    </div>
-                    </div>
-                </header>
-
-                <!-- Proposals List Section -->
-                <section class=" flex flex-col gap-6 max-w-5xl">
-
-                    <!-- Card 1 -->
-                    <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
-                        Desenvolvimento de Landing Page de Alta Conversão
+        App.templates.perfil =`
+            <div id="view-perfil" class="bg-[#CCFF00] text-black font-body-md text-body-md">
+                <main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12 min-h-screen">
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    <!-- Local Anchor Navigation -->
+                    <nav class="lg:col-span-3 space-y-1">
+                        <a
+                        class="flex items-center gap-3 px-4 py-3 border-2 border-black bg-black text-white font-label-md text-label-md transition-all duration-200"
+                        href="#minha-info"
+                        >
+                        <span class="material-symbols-outlined text-[20px]">person</span>
+                        Minha informação
                         </a>
-                        <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
-                    </div>
-                    </div>
 
-                    <!-- Card 2 -->
-                    <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
-                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
-                    </div>
-                    </div>
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">payments</span>
+                        Faturação e pagamentos
+                        </a>
 
-                    <!-- Card 3 -->
-                    <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
-                        <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
-                    </div>
-                    </div>
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">shield</span>
+                        Palavra-passe e segurança
+                        </a>
 
-                    <!-- Card 4 -->
-                    <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
-                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
-                    </div>
-                    </div>
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">notifications</span>
+                        Definições de notificações
+                        </a>
 
-                    <!-- Pagination -->
-                    <div class="flex justify-end items-center gap-2 mt-4 pb-10">
-                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
-                    <div class="flex gap-1">
-                        <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
-                        <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
-                    </div>
-                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
-                    </div>
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">groups</span>
+                        Teams
+                        </a>
 
-                </section>
+                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
+                        <span class="material-symbols-outlined text-[20px]">settings</span>
+                        Preferências
+                        </a>
+                    </nav>
 
-                <!-- Footer -->
-                <footer class="mt-auto flex justify-between items-center w-full py-8 text-black border-t border-black/10">
-                    <div class="font-label-sm text-label-sm font-bold">SKILLA © 2024 - Feito em Luanda</div>
-                    <div class="flex gap-6">
-                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100 underline decoration-2 underline-offset-4" href="#">Termos</a>
-                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Privacidade</a>
-                    <a class="font-label-sm text-label-sm opacity-70 hover:opacity-100" href="#">Suporte</a>
+                    <!-- Main Content Area -->
+                    <div class="lg:col-span-9 space-y-8">
+                        <!-- Section: Minha informação -->
+                        <section id="minha-info" class="bg-white border-2 border-black p-8 relative card-shadow">
+                        <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                        </button>
+
+                        <div class="flex flex-col md:flex-row gap-8 items-start">
+                            <div class="relative group">
+                            <img
+                                alt="Profile"
+                                class="w-32 h-32 object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
+                                src="/img/foto_perfil_exemplar.png"
+                            />
+                            <div class="absolute -bottom-2 -right-2 bg-black text-white p-1.5 border border-black">
+                                <span class="material-symbols-outlined text-[18px]" data-weight="fill">verified</span>
+                            </div>
+                            </div>
+
+                            <div class="flex-1 space-y-4">
+                            <div>
+                                <h2 class="font-headline-md text-headline-md text-black">Pedro Manuel</h2>
+                                <p class="font-label-md text-label-md text-black/70">@pedromanuel</p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">work</span>
+                                <span class="font-body-md">Designer UI/UX Senior</span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[20px]">location_on</span>
+                                <span class="font-body-md">Luanda, Angola</span>
+                                </div>
+                            </div>
+
+                            <p class="text-black leading-relaxed max-w-2xl">
+                                Apaixonado por criar experiências digitais que fundem funcionalidade técnica com estética brutalista.
+                                Especialista em sistemas de design escaláveis e interfaces de alta performance para produtos SaaS globais.
+                            </p>
+
+                            <div class="flex flex-wrap gap-2 pt-2">
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Interface Design</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Figma Expert</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Prototyping</span>
+                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">React UI</span>
+                            </div>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <!-- Section: Informação de contacto -->
+                        <section class="bg-white border-2 border-black p-8 relative card-shadow">
+                            <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
+                            <span class="material-symbols-outlined">edit</span>
+                            </button>
+
+                            <h3 class="font-headline-md text-headline-md text-black mb-6">Informação de contacto</h3>
+
+                            <div class="space-y-4">
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Email</span>
+                                <span class="text-black font-body-md">pe*********@skilla.com</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Telemóvel</span>
+                                <span class="text-black font-body-md">+244 923 *** 456</span>
+                            </div>
+                            </div>
+                        </section>
+
+                        <!-- Section: Destacar perfil -->
+                        <section class="bg-black p-8 flex flex-col justify-between items-start border-none group overflow-hidden relative card-shadow">
+                            <div class="absolute -right-8 -top-8 w-32 h-32 bg-white opacity-10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
+                            <div class="relative z-10">
+                            <h3 class="font-headline-md text-headline-md text-white mb-2">Alcance mais clientes</h3>
+                            <p class="text-white font-body-md mb-6 opacity-80">
+                                Promova o seu perfil para o topo das pesquisas e receba 3x mais propostas diretas.
+                            </p>
+                            </div>
+                            <button class="px-6 py-3 bg-white text-black font-label-md text-label-md border-2 border-white hover:bg-black hover:text-white transition-all duration-200 relative z-10">
+                            Destacar perfil
+                            </button>
+                        </section>
+                        </div>
+
+                        <!-- Portfólio em destaque -->
+                        <section class="space-y-6 pt-4">
+                        <div class="flex justify-between items-end">
+                            <div>
+                            <h3 class="font-headline-md text-headline-md text-black">Portfólio em destaque</h3>
+                            <p class="text-black/70 font-body-md">Exiba os seus melhores trabalhos para potenciais clientes.</p>
+                            </div>
+                            <a class="text-black font-bold font-label-md text-label-md flex items-center gap-1 hover:underline underline-offset-4" href="#">
+                            Gerir portfólio
+                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                            </a>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 1"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLapq4NnoPNElbAVd9m_VWF8nmc0zPd0k4mM42Day2e_E-iRgRrb-EGtmgIdmZ4aREoS7rvWff5Dag4CSa_LvmbxFCO08KAfJYkFa3D1reRSfPteTMoyCpKwbSdQfQfXT6V7MnCLb51cX4m2IPYEtZNRM-YWXfgCzFwURdmY2V898T8Walttt7ozTrZede2lI60FfrWru-lcvqxJ2wpTMMEBbmgi3EY8JQLWpjRA4i4OTEJ-WmGzHPV4Yi4UhsZFgf1Tb843Pn0xU" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">NovaPay Mobile App</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Fintech • 2023</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 2"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD14VabbFyfYxboRlBjHkRAYZBbxAQXXmK-ewnGbtEDcEiLSEBjnkOgxQOSSK89cZxWRVA4WfAqk5BbQdonraNXUyDiDUKFOOGEhrtSU375GB6-_3zLWbKUenOO2QIyccZlB-bmYfe85lenHmj4ILbrase_vqdEcyeF-_A5-h1oeIMD-UngkK1vVusAI3bqO4KdV886-mNAa4QRY2PgK_Qx0TdQLt44lYe7h6MqfV5tz9i33GjDa6052hYkPmy2Yp3x-dvSNo8FJak" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Kinetix Design System</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Design System • 2024</p>
+                            </div>
+
+                            <div class="group cursor-pointer">
+                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
+                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
+                                alt="Project 3"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZnYVCZiBL3lE639tZin3AcmhPR0LjGMxg6n-5w8k__IXlwAsCz0unBtb3zUVamifLC79zFyFim82h7lEAMyn2ETUGBO6iNBwsFAxHr9x8Pxx0uWnq8VU9N9Q9TDzjPl3Tj3I1XXiY-o9UXs2LdXzJyBWsjDmnE8zRa78Q-rmyDp0wv7ZKYExFATyHO0mLZ46YpWKVdHfrTIJTAKOeBLLGcDUptg37erP19ElN7xa1gDCSf62_M7aWykqCl8bqp1iMYoEeEIV00M" />
+                            </div>
+                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Vortex Analytics Web</h4>
+                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Dashboards • 2023</p>
+                            </div>
+                        </div>
+                        </section>
+
+                        <div class="pt-12 border-t border-black flex justify-end items-center gap-4">
+                        <button class="px-6 py-2 text-black/70 hover:text-black font-label-md text-label-md transition-colors">Descartar</button>
+                        <button class="px-8 py-3 bg-black text-white font-label-md text-label-md border-2 border-black hover:bg-white hover:text-black transition-all">
+                            Guardar alterações
+                        </button>
+                        </div>
                     </div>
-                </footer>
+                    </div>
+                </main>
             </div>
         `;
 
-
-         // Define o link ativo no menu
-  function setActiveLink(route) {
-    const links = spaView.querySelectorAll('a[data-spa-link]');
-    links.forEach(link => {
-      const isActive = link.dataset.route === route;
-      if (isActive) {
-        link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-        link.classList.remove('text-on-primary-container', 'hover:text-secondary');
-      } else {
-        link.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
-        link.classList.add('text-on-primary-container', 'hover:text-secondary');
-      }
-    });
-  }
-
-  // abrir modal proposta
-  const open = e.target.closest('[data-open-proposta-modal]');
-  if (open) {
-    e.preventDefault();
-    const overlay = spaView.querySelector('#modal-overlay');
-    if (!overlay) return;
-    overlay.classList.remove('hidden');
-    overlay.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    spaView.querySelector('#cover-letter')?.focus();
-    return;
-  }
-
-  // fechar modal proposta
-  const close = e.target.closest('[data-close-proposta-modal]');
-  if (close) {
-    e.preventDefault();
-    const overlay = spaView.querySelector('#modal-overlay');
-    if (!overlay) return;
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.body.style.overflow = '';
-    return;
-  }
-
-  // clicar no backdrop fecha
-  if (e.target && e.target.id === 'modal-overlay') {
-    const overlay = e.target;
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.body.style.overflow = '';
-    return;
-  }
-});
-
-        function walletSetModalOpen(modalEl, open) {
-            if (!modalEl) return;
-            if (open) {
-                modalEl.classList.remove('pointer-events-none', 'opacity-0', 'hidden');
-                modalEl.classList.add('opacity-100');
-            } else {
-                modalEl.classList.add('pointer-events-none', 'opacity-0');
-                modalEl.classList.remove('opacity-100');
-            }
+        // Funções de Apoio SPA
+        function setActiveLink(route) {
+            const links = document.querySelectorAll('[data-spa-link]');
+            links.forEach(link => {
+                const linkRoute = link.dataset.route || link.getAttribute('data-route');
+                const isMatch = linkRoute === route || 
+                               (route.startsWith('carteira') && linkRoute === 'carteira') ||
+                               (route === 'trabalho_detalhe' && linkRoute === 'trabalhos') ||
+                               (route === 'mensagens_sala' && linkRoute === 'mensagens');
+                               
+                if (isMatch) {
+                    link.classList.add('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
+                    link.classList.remove('text-on-primary-container', 'hover:text-secondary');
+                } else {
+                    link.classList.remove('bg-[#CCFF00]', 'text-black-pure', 'rounded-lg', 'font-bold');
+                    link.classList.add('text-on-primary-container', 'hover:text-secondary');
+                }
+            });
         }
 
-        function walletSetOverlayModalOpen(modalEl, contentEl, open) {
-            if (!modalEl || !contentEl) return;
-            if (open) {
-                modalEl.classList.remove('pointer-events-none', 'opacity-0');
-                contentEl.classList.remove('translate-y-8');
-                contentEl.classList.add('translate-y-0');
-            } else {
-                modalEl.classList.add('pointer-events-none', 'opacity-0');
-                contentEl.classList.add('translate-y-8');
-                contentEl.classList.remove('translate-y-0');
-            }
-        }
+        function render(route, push = true) {
+            if (!App.templates[route]) route = 'inicio';
+            spaView.innerHTML = App.templates[route];
+            window.scrollTo(0, 0);
 
-        function render(route, push = true, opts = {}) {
-            if (!templates[route]) route = 'inicio';
-            spaView.innerHTML = templates[route];
-
-            const activeMenuRoute = opts.activeMenuRoute || route;
-            setActiveLink(activeMenuRoute);
-
-            if (push) {
-                const hash = opts.hash || route;
-                history.pushState({ route, opts }, '', `#${hash}`);
-            }
+            setActiveLink(route);
+            if (push) history.pushState({ route }, '', `#${route}`);
             
-             if (route === 'carteira_comprar_creditos') {
-                document.title = 'Skilla - Comprar Créditos';
-            }else if (route === 'carteira_extrato_creditos') {
-                document.title = 'Skilla - Extrato de Créditos';
-            }else if (route === 'trabalhos') {
-                document.title = 'Skilla - Feed de Projetos';
-            } else if (route === 'trabalho_detalhe') {
-                document.title = 'Skilla - Detalhes do Trabalho';
-            } else if (route === 'carteira') {
-                document.title = 'Skilla - A Minha Carteira';
-            } else if (route === 'carteira_carregar_saldo') {
-                document.title = 'Skilla - Carregar saldo';
-            } else if (route === 'carteira_pedir_saque') {
-                document.title = 'Skilla - Pedir saque';
-            } else if (route === 'carteira_ver_extrato') {
-                document.title = 'Skilla - Extrato';
-            }  else if (route === 'mensagens') {
-            document.title = 'Skilla - Mensagens';
-            } else if (route === 'mensagens_sala') {
-            document.title = 'Skilla - Sala de Trabalho';
-            }else if (route === 'propostas') {
-            document.title = 'Skilla - Minhas Propostas';
-            }else {
-                document.title = 'Skilla - Dashboard do Freelancer';
+            initRouteScripts(route);
+        }
+
+        function initRouteScripts(route) {
+            console.log('SPA Render:', route);
+            
+            // Voltar Global
+            spaView.querySelectorAll('[data-wallet-back], [data-back-to-inbox], [data-success-back-wallet]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (btn.hasAttribute('data-back-to-inbox')) render('mensagens');
+                    else render('carteira');
+                });
+            });
+
+            // Lógica Carteira
+            if (route === 'carteira') {
+                 spaView.querySelectorAll('[data-wallet-action]').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = btn.getAttribute('data-wallet-action');
+                        if (action === 'carregar-saldo') render('carteira_carregar_saldo');
+                        if (action === 'ver-extrato') render('carteira_ver_extrato');
+                        if (action === 'pedir-saque') render('carteira_pedir_saque');
+                        if (action === 'comprar-creditos') render('carteira_comprar_creditos');
+                        if (action === 'extrato-creditos') render('carteira_extrato_creditos');
+                        if (action === 'copiar-iban') {
+                            navigator.clipboard.writeText("AO06 1234 5678 9012 3456 7890 1");
+                            alert("IBAN copiado!");
+                        }
+                    });
+                });
             }
 
+            if (route === 'carteira_comprar_creditos') {
+                const summaryCost = spaView.querySelector('#summary-cost');
+                const summaryPkg = spaView.querySelector('#summary-pkg');
+                const summaryDebit = spaView.querySelector('#summary-debit-msg');
+                const summaryAfter = spaView.querySelector('#summary-after');
+                const buyBtn = spaView.querySelector('#buy-button');
+                const balance = 125000;
+
+                spaView.querySelectorAll('input[name="credit_package"]').forEach(radio => {
+                    radio.addEventListener('change', () => {
+                        const credits = radio.dataset.credits;
+                        const cost = parseInt(radio.dataset.cost);
+                        summaryPkg.innerText = `${credits} créditos`;
+                        summaryCost.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryDebit.innerText = `${cost.toLocaleString()} Kz`;
+                        summaryAfter.innerText = `${(balance - cost).toLocaleString()} Kz`;
+                    });
+                });
+
+                buyBtn?.addEventListener('click', () => {
+                    alert('Compra de créditos realizada com sucesso!');
+                    render('carteira');
+                });
+            }
+
+            if (route === 'carteira_carregar_saldo') {
+                 const modal = spaView.querySelector('#successModal');
+                 spaView.querySelector('[data-open-success-modal]')?.addEventListener('click', () => {
+                     modal?.classList.remove('hidden');
+                     modal?.classList.add('flex');
+                 });
+                 spaView.querySelector('[data-success-go-extrato]')?.addEventListener('click', () => render('carteira_ver_extrato'));
+            }
+
+            if (route === 'carteira_extrato_creditos') {
+                spaView.querySelector('[data-go-add-creditos]')?.addEventListener('click', () => render('carteira_comprar_creditos'));
+            }
+
+            // Lógica Trabalhos
             if (route === 'trabalhos') {
                 spaView.querySelectorAll('[data-open-job]').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('trabalho_detalhe', true, { activeMenuRoute: 'trabalhos', hash: 'trabalhos/detalhe' });
-                    });
+                    btn.addEventListener('click', () => render('trabalho_detalhe'));
                 });
             }
 
             if (route === 'trabalho_detalhe') {
-                    // =========================
-                    // MODAL: Enviar Proposta
-                    // =========================
-                    const overlay = spaView.querySelector('#modal-overlay');
-                    const openBtn = spaView.querySelector('[data-open-proposta-modal]');
-                    const closeEls = spaView.querySelectorAll('[data-close-proposta-modal]');
-
-                    const cover = spaView.querySelector('#cover-letter');
-                    const counter = spaView.querySelector('#char-counter');
-                    const form = spaView.querySelector('#proposta-form');
-
-                    const valorInput = spaView.querySelector('#proposta-valor');
-                    const diasInput = spaView.querySelector('#proposta-dias');
-
-                    const openModal = () => {
-                        if (!overlay) return;
-
-                        overlay.classList.remove('hidden');
-                        overlay.classList.add('flex');
-                        overlay.setAttribute('aria-hidden', 'false');
-
-                        // Focar no textarea ao abrir
-                        setTimeout(() => {
-                        cover?.focus();
-                        }, 0);
-                    };
-
-                    const closeModal = (e) => {
-                        e?.preventDefault?.();
-
-                        if (!overlay) return;
-
-                        overlay.classList.add('hidden');
-                        overlay.classList.remove('flex');
-                        overlay.setAttribute('aria-hidden', 'true');
-                    };
-
-                    // Abrir modal
-                    openBtn?.addEventListener('click', openModal);
-
-                    // Fechar modal pelos botões/links com data-close-proposta-modal
-                    closeEls.forEach((el) => {
-                        el.addEventListener('click', closeModal);
-                    });
-
-                    // Fechar ao clicar fora do conteúdo
-                    overlay?.addEventListener('click', (e) => {
-                        if (e.target === overlay) {
-                        closeModal(e);
-                        }
-                    });
-
-                    // Fechar com ESC
-                    const onEsc = (e) => {
-                        if (
-                        e.key === 'Escape' &&
-                        overlay &&
-                        !overlay.classList.contains('hidden')
-                        ) {
-                        closeModal(e);
-                        }
-                    };
-
-                    document.addEventListener('keydown', onEsc);
-
-                    // Contador de caracteres
-                    const updateCounter = () => {
-                        if (!cover || !counter) return;
-                        counter.textContent = `${cover.value.length}/2000`;
-                    };
-
-                    cover?.addEventListener('input', updateCounter);
-                    updateCounter();
-
-                    // Submit do formulário
-                    form?.addEventListener('submit', (e) => {
-                        e.preventDefault();
-
-                        const payload = {
-                        coverLetter: cover?.value?.trim() || '',
-                        valor: Number(valorInput?.value || 0),
-                        dias: Number(diasInput?.value || 0),
-                        };
-
-                        // Validação simples
-                        if (!payload.coverLetter) {
-                        cover?.focus();
-                        return;
-                        }
-
-                        if (!payload.valor || payload.valor <= 0) {
-                        valorInput?.focus();
-                        return;
-                        }
-
-                        if (!payload.dias || payload.dias <= 0) {
-                        diasInput?.focus();
-                        return;
-                        }
-
-                        console.log('Enviar proposta:', payload);
-
-                        // TODO: aqui ligas à tua API / backend
-                        // Exemplo:
-                        // await enviarProposta(payload);
-
-                        closeModal();
-                    });
-            }
-
-            // Eventos da subview Extrato de Créditos
-            if (route === 'carteira_extrato_creditos') {
-                // voltar
-                const backBtn = spaView.querySelector('[data-wallet-back]');
-                if (backBtn) {
-                    backBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                // botão "Adicionar créditos" -> abre comprar créditos (se já integraste)
-                const btnAdd = spaView.querySelector('[data-go-add-creditos]');
-                if (btnAdd) {
-                    btnAdd.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        // se a tua rota for exatamente carteira_comprar_creditos:
-                        render('carteira_comprar_creditos', true, { activeMenuRoute: 'carteira', hash: 'carteira/comprar-creditos' });
-                    });
-                }
-
-                // micro-interaction (apenas itens do extrato)
-                spaView.querySelectorAll('[data-credit-item]').forEach(item => {
-                    item.addEventListener('click', () => {
-                        item.style.transform = 'scale(0.98)';
-                        setTimeout(() => { item.style.transform = 'scale(1)'; }, 100);
-                    });
+                const modal = spaView.querySelector('#modal-overlay');
+                spaView.querySelector('[data-open-proposta-modal]')?.addEventListener('click', () => {
+                    modal?.classList.remove('hidden');
+                    modal?.classList.add('flex');
                 });
-            }
-
-            // Eventos da Carteira (Minha carteira)
-            if (route === 'carteira') {
-                spaView.querySelectorAll('[data-wallet-action]').forEach(btn => {
-                    btn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const action = btn.getAttribute('data-wallet-action');
-
-                        if (action === 'carregar-saldo') {
-                            render('carteira_carregar_saldo', true, { activeMenuRoute: 'carteira', hash: 'carteira/carregar-saldo' });
-                            return;
-                        }
-                        if (action === 'comprar-creditos') {
-                            render('carteira_comprar_creditos', true, { activeMenuRoute: 'carteira', hash: 'carteira/comprar-creditos' });
-                            return;
-                        }
-                        if (action === 'comprar-creditos') {
-                            render('carteira_comprar_creditos', true, { activeMenuRoute: 'carteira', hash: 'carteira/comprar-creditos' });
-                            return;
-                        } 
-
-                        if (action === 'pedir-saque') {
-                            render('carteira_pedir_saque', true, { activeMenuRoute: 'carteira', hash: 'carteira/pedir-saque' });
-                            return;
-                        }
-
-                        if (action === 'ver-extrato') {
-                            render('carteira_ver_extrato', true, { activeMenuRoute: 'carteira', hash: 'carteira/extrato' });
-                            return;
-                        }
-                        if (action === 'extrato-creditos') {
-                            render('carteira_extrato_creditos', true, { activeMenuRoute: 'carteira', hash: 'carteira/extrato-creditos' });
-                            return;
-                        }
-
-                        // próximos: comprar-creditos, extrato-creditos
-                        console.log('wallet action:', action);
-                    });
-                });
-            }
-            
-            // Eventos Comprar Créditos
-            if (route === 'carteira_comprar_creditos') {
-                const backBtn = spaView.querySelector('[data-wallet-back]');
-                if (backBtn) {
-                    backBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                const initialBalance = 125000;
-
-                const formatCurrency = (val) => {
-                    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") + " Kz";
-                };
-
-                const debitMsg = spaView.querySelector('#summary-debit-msg');
-                const pkg = spaView.querySelector('#summary-pkg');
-                const costEl = spaView.querySelector('#summary-cost');
-                const afterEl = spaView.querySelector('#summary-after');
-
-                function updateSummary(credits, cost) {
-                    const afterBalance = initialBalance - cost;
-                    if (debitMsg) debitMsg.innerText = formatCurrency(cost);
-                    if (pkg) pkg.innerText = `${credits} créditos`;
-                    if (costEl) costEl.innerText = formatCurrency(cost);
-                    if (afterEl) afterEl.innerText = formatCurrency(afterBalance);
-                }
-
-                // Bind radios
-                spaView.querySelectorAll('input[name="credit_package"]').forEach(radio => {
-                    radio.addEventListener('change', () => {
-                        const credits = Number(radio.getAttribute('data-credits') || 0);
-                        const cost = Number(radio.getAttribute('data-cost') || 0);
-                        updateSummary(credits, cost);
-                    });
-                });
-
-                // inicializa com o selecionado
-                const selected = spaView.querySelector('input[name="credit_package"]:checked');
-                if (selected) {
-                    updateSummary(
-                        Number(selected.getAttribute('data-credits') || 0),
-                        Number(selected.getAttribute('data-cost') || 0)
-                    );
-                }
-
-                // Botão comprar
-                const buyBtn = spaView.querySelector('#buy-button');
-                if (buyBtn) {
-                    buyBtn.addEventListener('click', () => {
-                        buyBtn.innerText = "Processando...";
-                        buyBtn.classList.add('opacity-80');
-                        buyBtn.disabled = true;
-
-                        setTimeout(() => {
-                            alert('Compra realizada com sucesso!');
-                            buyBtn.innerText = "Comprar";
-                            buyBtn.classList.remove('opacity-80');
-                            buyBtn.disabled = false;
-                        }, 1500);
-                    });
-                }
-            }
-
-            // Eventos da subview Carregar Saldo
-            if (route === 'carteira_carregar_saldo') {
-                // voltar
-                const backBtn = spaView.querySelector('[data-wallet-back]');
-                if (backBtn) {
-                    backBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                // abrir modal sucesso
-                const successOpenBtn = spaView.querySelector('[data-open-success-modal]');
-                const successModal = spaView.querySelector('#successModal');
-                const infoModal = spaView.querySelector('#infoModal');
-
-                function setModalOpen(modal, open) {
-                    if (!modal) return;
-                    if (open) {
-                        modal.classList.remove('hidden');
-                        modal.classList.add('flex');
-                    } else {
-                        modal.classList.add('hidden');
-                        modal.classList.remove('flex');
-                    }
-                }
-
-                if (successOpenBtn) {
-                    successOpenBtn.addEventListener('click', () => setModalOpen(successModal, true));
-                }
-
-                // fechar modais (botões com data-close-modal)
-                spaView.querySelectorAll('[data-close-modal]').forEach(btn => {
+                spaView.querySelectorAll('[data-close-proposta-modal]').forEach(btn => {
                     btn.addEventListener('click', () => {
-                        const id = btn.getAttribute('data-close-modal');
-                        setModalOpen(spaView.querySelector('#' + CSS.escape(id)), false);
+                        modal?.classList.add('hidden');
+                        modal?.classList.remove('flex');
                     });
                 });
-
-                // clicar nos itens desabilitados -> abre info modal
-                spaView.querySelectorAll('.wallet-disabled-item').forEach(item => {
-                    item.addEventListener('click', () => setModalOpen(infoModal, true));
-                });
-
-                // ações do modal sucesso
-                const btnGoExtrato = spaView.querySelector('[data-success-go-extrato]');
-                const btnBackWallet = spaView.querySelector('[data-success-back-wallet]');
-
-                if (btnBackWallet) {
-                    btnBackWallet.addEventListener('click', () => {
-                        setModalOpen(successModal, false);
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                if (btnGoExtrato) {
-                    btnGoExtrato.addEventListener('click', () => {
-                        setModalOpen(successModal, false);
-                        render('carteira_ver_extrato', true, { activeMenuRoute: 'carteira', hash: 'carteira/extrato' });
-                    });
-                }
-            }
-
-            // Eventos da subview Pedir Saque
-            if (route === 'carteira_pedir_saque') {
-                const backBtn = spaView.querySelector('[data-wallet-back]');
-                if (backBtn) {
-                    backBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                const input = spaView.querySelector('#withdraw-input');
-                const btnAll = spaView.querySelector('[data-withdraw-fill-all]');
-                const valSacarEl = spaView.querySelector('[data-withdraw-summary-value]');
-                const totalEl = spaView.querySelector('[data-withdraw-summary-total]');
-
-                function formatAO(n) {
-                    try { return new Intl.NumberFormat('pt-AO').format(n).replace(',', ' '); }
-                    catch { return String(n); }
-                }
-
-                function updateSummary(val) {
-                    const num = val ? Number(val) : 0;
-                    const formatted = num ? `${formatAO(num)} Kz` : '0 Kz';
-                    if (valSacarEl) valSacarEl.textContent = formatted;
-                    if (totalEl) totalEl.textContent = formatted;
-                }
-
-                if (btnAll && input) {
-                    btnAll.addEventListener('click', () => {
-                        input.value = '125000';
-                        updateSummary(input.value);
-                        input.dispatchEvent(new Event('input', { bubbles: true }));
-                    });
-                }
-
-                if (input) input.addEventListener('input', (e) => updateSummary(e.target.value));
-            }
-
-            // Eventos da subview Ver Extrato
-            if (route === 'carteira_ver_extrato') {
-                const backBtn = spaView.querySelector('[data-wallet-back]');
-                if (backBtn) {
-                    backBtn.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        render('carteira', true, { activeMenuRoute: 'carteira', hash: 'carteira' });
-                    });
-                }
-
-                // Toggle Filter Panel
-                const toggleBtn = spaView.querySelector('#toggleFilters');
-                const filterPanel = spaView.querySelector('#filterPanel');
-                if (toggleBtn && filterPanel) {
-                    toggleBtn.addEventListener('click', () => {
-                        filterPanel.classList.toggle('hidden');
-                    });
-                }
-
-                // Modal Logic
-                const overlay = spaView.querySelector('#modalOverlay');
-                const content = spaView.querySelector('#modalContent');
-                const closeBtn = spaView.querySelector('[data-close-extrato-modal]');
-                const refEl = spaView.querySelector('[data-modal-ref]');
-
-                function showDetails(txId) {
-                    if (refEl) refEl.textContent = txId;
-                    walletSetOverlayModalOpen(overlay, content, true);
-                }
-
-                function closeModal() {
-                    walletSetOverlayModalOpen(overlay, content, false);
-                }
-
-                spaView.querySelectorAll('[data-tx-card]').forEach(card => {
-                    card.addEventListener('click', () => {
-                        const id = card.getAttribute('data-tx-id') || 'TX123456789';
-                        showDetails(id);
-                    });
-                });
-
-                if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-                // Close on backdrop click
-                if (overlay) {
-                    overlay.addEventListener('click', (e) => {
-                        if (e.target === overlay) closeModal();
-                    });
-                }
-            }
-            
-            // =====================
-        // SPA: Mensagens (Inbox)
-        // =====================
-        if (route === 'mensagens') {
-            // clicar em qualquer item (lido/não-lido) -> abrir sala
-            spaView.querySelectorAll('[data-open-chat]').forEach(item => {
-            item.addEventListener('click', (e) => {
-            e.preventDefault();
-            render('mensagens_sala', true, {
-            activeMenuRoute: 'mensagens',
-            hash: 'mensagens/sala'
-                    });
-                });
-            });
-        }
-
-        if (route === 'propostas') {
-            // Pesquisa
-            const input = spaView.querySelector('#propostas-search');
-            const cards = Array.from(spaView.querySelectorAll('.proposal-card'));
-
-            if (input) {
-                input.addEventListener('input', () => {
-                const q = input.value.trim().toLowerCase();
-                cards.forEach(card => {
-                    const text = card.innerText.toLowerCase();
-                    card.style.display = text.includes(q) ? '' : 'none';
-                });
-                });
-            }
-
-            // Evitar que links com # naveguem
-            spaView.querySelectorAll('#view-propostas-freela a[href="#"]').forEach(a => {
-                a.addEventListener('click', (e) => e.preventDefault());
-            });
-            /* 
-                            // Abrir detalhe ao clicar no card (agora com data-open-proposta)
-            spaView.querySelectorAll('[data-open-proposta]').forEach(card => {
-                card.addEventListener('click', (e) => {
-                e.preventDefault();
-                render('propostas_detalhe', true, {
-                    activeMenuRoute: 'propostas',
-                    hash: 'propostas/detalhe'
-                });
-                });
-            });
-            */
-
-            
-        }
-
-
-        // =============================
-        // SPA: Mensagens (Sala de chat)
-        // =============================
-        if (route === 'mensagens_sala') {
-            // voltar para inbox
-            const back = spaView.querySelector('[data-back-to-inbox]');
-                if (back) {
-                    back.addEventListener('click', (e) => {
+                spaView.querySelector('#proposta-form')?.addEventListener('submit', (e) => {
                     e.preventDefault();
-                    render('mensagens', true, {
-                        activeMenuRoute: 'mensagens',
-                        hash: 'mensagens'
-                    });
-                    });
-                }
-
-            // modal entregar trabalho
-            const modal = spaView.querySelector('#deliverModal');
-            const openBtn = spaView.querySelector('#openDeliverModalBtn');
-            const closeBtn = spaView.querySelector('#closeDeliverModalBtn');
-            const cancelBtn = spaView.querySelector('#cancelDeliverModalBtn');
-
-            function openModal() {
-                if (!modal) return;
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.classList.add('overflow-hidden');
-            }
-
-            function closeModal() {
-                if (!modal) return;
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.classList.remove('overflow-hidden');
-            }
-
-            if (openBtn) openBtn.addEventListener('click', openModal);
-            if (closeBtn) closeBtn.addEventListener('click', closeModal);
-            if (cancelBtn) cancelBtn.addEventListener('click', closeModal);
-
-            // fechar ao clicar no backdrop
-            if (modal) {
-                modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
+                    alert('Proposta enviada com sucesso!');
+                    render('propostas');
                 });
             }
 
-            // fechar com ESC (remove handler anterior para evitar duplicar a cada render)
-            if (window.__deliverEscHandler) {
-                document.removeEventListener('keydown', window.__deliverEscHandler);
+            // Lógica Mensagens
+            if (route === 'mensagens') {
+                spaView.querySelectorAll('[data-open-chat]').forEach(card => {
+                    card.addEventListener('click', () => render('mensagens_sala'));
+                });
             }
-            window.__deliverEscHandler = (e) => {
-                if (e.key === 'Escape' && modal && !modal.classList.contains('hidden')) closeModal();
-            };
-            document.addEventListener('keydown', window.__deliverEscHandler);
+
+            if (route === 'inicio') {
+                spaView.querySelector('#btn-explorar-trabalhos')?.addEventListener('click', () => render('trabalhos'));
+            }
         }
 
-           
+        // Navegação Global
+        document.addEventListener('click', (e) => {
+            const el = e.target.closest('[data-spa-link], [data-route], a[href^="#"]');
+            if (el) {
+                if (el.tagName === 'A' && el.getAttribute('href') === '#') return;
 
-        }
+                const route = el.dataset.route || el.getAttribute('data-route') || el.getAttribute('href')?.substring(1);
+                if (route && (App.templates[route] || route === 'inicio')) {
+                    e.preventDefault();
+                    render(route);
+                }
+            }
+        });
 
-
-  // abrir modal proposta
-  const open = e.target.closest('[data-open-proposta-modal]');
-  if (open) {
-    e.preventDefault();
-    const overlay = spaView.querySelector('#modal-overlay');
-    if (!overlay) return;
-    overlay.classList.remove('hidden');
-    overlay.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-    spaView.querySelector('#cover-letter')?.focus();
-    return;
-  }
-
-  // fechar modal proposta
-  const close = e.target.closest('[data-close-proposta-modal]');
-  if (close) {
-    e.preventDefault();
-    const overlay = spaView.querySelector('#modal-overlay');
-    if (!overlay) return;
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.body.style.overflow = '';
-    return;
-  }
-
-  // clicar no backdrop fecha
-  if (e.target && e.target.id === 'modal-overlay') {
-    const overlay = e.target;
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.body.style.overflow = '';
-    return;
-  }
-});
-
-        
-        
-    })();
-
-
-    /* ========================================
-            
-    Código script do modal enviar proposta 
-    
-    */ ========================================
-
-     // Character counter logic
-        const textarea = document.getElementById('cover-letter');
-        const counter = document.getElementById('char-counter');
-
-        textarea.addEventListener('input', (e) => {
-            const length = e.target.value.length;
-            counter.textContent = `${length}/2000`;
-            if (length > 1900) {
-                counter.classList.add('text-error');
+        window.addEventListener('popstate', (e) => {
+            if (e.state && e.state.route) {
+                render(e.state.route, false);
             } else {
-                counter.classList.remove('text-error');
+                const hash = window.location.hash.substring(1) || 'inicio';
+                render(hash, false);
             }
         });
 
-        // Close modal function
-        function closeModal() {
-            const content = document.getElementById('modal-content');
-            const overlay = document.getElementById('modal-overlay');
-            
-            content.classList.add('scale-95', 'opacity-0');
-            overlay.classList.add('opacity-0');
-            
-            setTimeout(() => {
-                // In a real app, you'd navigate or remove the element
-                alert('Modal fechado. Voltando para Minhas Propostas.');
-            }, 300);
-        }
-
-        // Close on escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeModal();
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            const initial = window.location.hash.substring(1) || 'inicio';
+            render(initial);
         });
 
-        // Simple entrance animation trigger
-        window.onload = () => {
-            const content = document.getElementById('modal-content');
-            content.classList.add('scale-100', 'opacity-100');
-        };
-
-        
-
-document.addEventListener('keydown', (e) => {
-  if (e.key !== 'Escape') return;
-  const overlay = spaView.querySelector('#modal-overlay');
-  if (overlay && !overlay.classList.contains('hidden')) {
-    overlay.classList.add('hidden');
-    overlay.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-});
-
-
-document.addEventListener('click', function(e) {
-    const link = e.target.closest('a[data-spa-link]');
-    if (!link) return;
-    e.preventDefault();
-    const route = link.dataset.route;
-    render(route, true, { activeMenuRoute: route });
-});
+    })();
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Active state toggle
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary', 'text-white', 'border-2', 'border-primary');
+                    a.classList.add('text-on-surface-variant', 'hover:text-black');
+                });
+                this.classList.add('bg-primary', 'text-white', 'border-2', 'border-primary');
+                this.classList.remove('text-on-surface-variant', 'hover:text-black');
+            }
+        });
+    });
 </script>
 </body>
 </html>
