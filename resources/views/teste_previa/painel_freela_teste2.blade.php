@@ -2435,7 +2435,7 @@
                         <div class="absolute bottom-[80px] md:bottom-[90px] left-0 w-full flex justify-center px-4 pointer-events-none z-30">
                             <button id="openDeliverModalBtn" class="pointer-events-auto bg-[#D4FF00] text-black border border-transparent shadow-lg font-label-md text-label-md font-bold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-[#b4d400] transition-colors group">
                             <span class="material-symbols-outlined text-black group-hover:scale-110 transition-transform">task_alt</span>
-                            Entregar trabalho
+                            Aprovar entrega
                             </button>
                         </div>
 
