@@ -13,8 +13,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Space+Grotesk:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
 
     <script id="tailwind-config">
         tailwind.config = {
@@ -150,7 +150,10 @@
         .bg-secondary-container{ background: var(--secondary-container); }
         .text-on-secondary-container{ color: var(--on-secondary-container); }
         .text-on-primary-container{ color: var(--on-primary-container); }
-        body { background-color: #CCFF00; }
+        body { 
+            background-color: #CCFF00; 
+    
+        }
         .glass-card { background: #FFFFFF; border-radius: 24px; }
         .neon-accent { color: #CCFF00; }
         .bg-neon-accent { background-color: #CCFF00; }
@@ -269,8 +272,22 @@
         .neo-border {
             border: 2px solid #000000;
         }
+        .neo-shadow {
+            box-shadow: 6px 6px 0px 0px #000000;
+        }
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .neo-card {
+            box-shadow: 4px 4px 0px 0px #101415;
+        }
+        .neo-button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #101415;
+        }
+        .neo-button:active {
+            transform: translate(0px, 0px);
+            box-shadow: 2px 2px 0px 0px #101415;
         }
     </style>
 </head>
@@ -354,7 +371,7 @@
         <div class="flex-1 flex justify-center md:justify-start">
             <div class="relative w-full max-w-md hidden md:block">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-tertiary-container">search</span>
-                <input class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-outline focus:border-black-pure focus:ring-2 focus:ring-black-pure transition-all outline-none font-body-md text-on-primary-fixed" placeholder="Pesquisar projetos, clientes..." type="text">
+                <input class="w-full pl-12 pr-4 py-3 rounded-full bg-white border border-outline focus:border-black-pure focus:ring-2 focus:ring-black-pure transition-all outline-none font-body-md text-on-primary-fixed" placeholder="Pesquisar projetos, freelancers..." type="text">
             </div>
         </div>
         <div class="flex items-center gap-6">
@@ -501,7 +518,7 @@
                         <h3 class="text-headline-sm font-headline-sm mb-6">A Minha Carteira Skilla</h3>
                         <div class="flex-1 flex flex-col justify-center">
                             <div class="mb-6">
-                            <p class="text-body-sm font-body-sm text-secondary mb-1">Saldo Disponível</p>
+                            <p class="text-body-sm font-body-sm text-black-pure mb-1">Saldo Disponível</p>
                             <p class="text-metric-lg font-metric-lg text-[#1A1A1A]" id="wallet-balance">0,00 KZS</p>
                             </div>
                             <div class="mb-8 bg-[#1A1A1A] p-4 rounded-lg">
@@ -509,9 +526,12 @@
                             <p class="text-headline-md font-headline-md text-[#CCFF00]" id="escrow-amount">0,00 KZS</p>
                             </div>
                             <div class="mt-auto">
-                            <button class="w-full sm:w-auto border border-[#1A1A1A] text-[#1A1A1A] hover:bg-gray-100 text-label-md font-label-md px-6 py-2.5 rounded-lg transition-colors">
-                                Recarregar Saldo
-                            </button>
+                                <button id="botaoDirecionarCarregarSaldo" class="group flex items-center justify-center gap-2 bg-[#CCFF00] text-black-pure py-4 px-6 rounded-xl font-bold shadow-md transform transition-all duration-200 ease-out hover:scale-[1.02]">
+                                    <span class="material-symbols-outlined transition-transform duration-300 ease-in-out group-hover:rotate-90">
+                                        add
+                                    </span>
+                                    Carregar saldo
+                                </button>
                             </div>
                         </div>
                         </div>
@@ -842,9 +862,6 @@
                 </div>
             </div>
         `;
-
-
-        
 
         App.templates.carteira_pedir_saque = `
             <div id="view-carteira-pedir-saque" class="bg-[#D4FF00] min-h-screen flex flex-col items-center">
@@ -1259,109 +1276,124 @@
                     </nav>
                     <!-- Job Cards Grid -->
                     <section class="grid grid-cols-1 gap-8 mb-12">
-                    <!-- Card 1 -->
-                    <article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                    <h3 class="text-2xl font-black uppercase tracking-tight">Desenvolvimento de App Mobile E-commerce</h3>
-                    <span class="px-4 py-1 bg-[#FFD600] neo-border rounded-full font-mono-bold text-xs uppercase">Em Aberto</span>
-                    </div>
-                    <hr class="border-gray-200 mb-8">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
-                    <p class="font-mono-bold text-black">12/OUT/2023</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
-                    <p class="font-mono-bold text-black">15.000 Kz</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
-                    <p class="font-mono-bold text-black">08 Recebidas</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
-                    <p class="font-mono-bold text-black">#1031</p>
-                    </div>
-                    </div>
-                    <div class="flex justify-end gap-4 mt-8">
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="edit">edit</span>
-                    </button>
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
-                    </button>
-                    </div>
-                    </article>
-                    <!-- Card 2 -->
-                    <article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                    <h3 class="text-2xl font-black uppercase tracking-tight">Redesign de Interface SaaS Financeiro</h3>
-                    <span class="px-4 py-1 bg-[#00E5FF] neo-border rounded-full font-mono-bold text-xs uppercase">Em Progresso</span>
-                    </div>
-                    <hr class="border-gray-200 mb-8">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
-                    <p class="font-mono-bold text-black">05/OUT/2023</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
-                    <p class="font-mono-bold text-black">8.200 Kz</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
-                    <p class="font-mono-bold text-black">15 Recebidas</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
-                    <p class="font-mono-bold text-black">#1032</p>
-                    </div>
-                    </div>
-                    <div class="flex justify-end gap-4 mt-8">
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="edit">edit</span>
-                    </button>
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
-                    </button>
-                    </div>
-                    </article>
-                    <!-- Card 3 -->
-                    <article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
-                    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                    <h3 class="text-2xl font-black uppercase tracking-tight">Criação de Identidade Visual Tech</h3>
-                    <span class="px-4 py-1 bg-[#FF9100] neo-border rounded-full font-mono-bold text-xs uppercase">Aguardando</span>
-                    </div>
-                    <hr class="border-gray-200 mb-8">
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
-                    <p class="font-mono-bold text-black">28/SET/2023</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
-                    <p class="font-mono-bold text-black">4.500 Kz</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
-                    <p class="font-mono-bold text-black">03 Recebidas</p>
-                    </div>
-                    <div>
-                    <p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
-                    <p class="font-mono-bold text-black">#1033</p>
-                    </div>
-                    </div>
-                    <div class="flex justify-end gap-4 mt-8">
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="edit">edit</span>
-                    </button>
-                    <button class="p-2 neo-border rounded-lg bg-white hover:bg-primary-container transition-colors">
-                    <span class="material-symbols-outlined" data-icon="visibility">visibility</span>
-                    </button>
-                    </div>
-                    </article>
-                    </section>
+<!-- Card 1 -->
+<article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<h3 class="text-2xl font-black uppercase tracking-tight">Desenvolvimento de App Mobile E-commerce</h3>
+<span class="px-4 py-1 bg-[#FFD600] neo-border rounded-full font-mono-bold text-xs uppercase">Em Aberto</span>
+</div>
+<hr class="border-gray-200 mb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
+<p class="font-mono-bold text-black">12/OUT/2023</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
+<p class="font-mono-bold text-black">15.000 Kz</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
+<p class="font-mono-bold text-black">08 Recebidas</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
+<p class="font-mono-bold text-black">#1031</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="edit">
+        edit
+    </span>
+</button>
+
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="visibility">
+        visibility
+    </span>
+</button>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<h3 class="text-2xl font-black uppercase tracking-tight">Redesign de Interface SaaS Financeiro</h3>
+<span class="px-4 py-1 bg-[#00E5FF] neo-border rounded-full font-mono-bold text-xs uppercase">Em Progresso</span>
+</div>
+<hr class="border-gray-200 mb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
+<p class="font-mono-bold text-black">05/OUT/2023</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
+<p class="font-mono-bold text-black">8.200 Kz</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
+<p class="font-mono-bold text-black">15 Recebidas</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
+<p class="font-mono-bold text-black">#1032</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="edit">
+        edit
+    </span>
+</button>
+
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="visibility">
+        visibility
+    </span>
+</button>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="bg-white neo-border neo-shadow rounded-neo p-8 transition-all hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[10px_10px_0px_0px_#000]">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<h3 class="text-2xl font-black uppercase tracking-tight">Criação de Identidade Visual Tech</h3>
+<span class="px-4 py-1 bg-[#FF9100] neo-border rounded-full font-mono-bold text-xs uppercase">Aguardando</span>
+</div>
+<hr class="border-gray-200 mb-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Data de Publicação</p>
+<p class="font-mono-bold text-black">28/SET/2023</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Valor Estimado</p>
+<p class="font-mono-bold text-black">4.500 Kz</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">Propostas</p>
+<p class="font-mono-bold text-black">03 Recebidas</p>
+</div>
+<div>
+<p class="font-label-sm text-gray-500 uppercase mb-1">ID</p>
+<p class="font-mono-bold text-black">#1033</p>
+</div>
+</div>
+<div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="edit">
+        edit
+    </span>
+</button>
+
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-icon="visibility">
+        visibility
+    </span>
+</button>
+</div>
+</article>
+</section>
                     <!-- Pagination Section -->
                     <footer class="flex items-center justify-between mt-12 pb-12"><div class="flex items-center gap-2">
                     <button class="px-6 py-3 bg-white neo-border neo-shadow-sm font-bold uppercase hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">Anterior</button>
@@ -1713,101 +1745,203 @@
         `;
 
         App.templates.propostas = `
-            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background">
+            <div id="view-propostas-freela" class="bg-[#CCFF00] font-body-md text-on-background w-full">
 
-                <!-- Main Content Canvas -->
-                <!-- Header Actions -->
-                <header class="flex justify-between items-center mb-12">
-                    <div>
-                    <h2 class="font-headline-lg text-black text-[40px] font-bold">Minhas Propostas</h2>
-                    <div class="h-1.5 w-24 bg-black mt-2"></div>
-                    </div>
+                <main class="w-full mx-auto px-margin-mobile md:px-gutter pt-8 pb-20">
+                    <!-- Header / Topbar -->
+                    <header class="flex flex-col md:flex-row items-center justify-between gap-4 mb-12">
+                    <h1 class="text-5xl text-black uppercase italic tracking-tighter border-b-[8px] border-black inline-block">Propostas Recebidas</h1>
+                    </header>
+                    <nav class="flex flex-wrap gap-3 mb-12">
+                        <button class="px-6 py-2 bg-black text-white neo-border font-bold rounded-full transition-transform active:scale-95">Aceitas</button>
+                        <button class="px-6 py-2 bg-white text-black neo-border font-bold rounded-full hover:bg-gray-100 transition-all">Pendente</button>
+                        <button class="px-6 py-2 bg-white text-black neo-border font-bold rounded-full hover:bg-gray-100 transition-all">Rejeitadas</button>
+                    </nav>
+                    <!-- Proposals List -->
+                    <div class="space-y-6">
+                        <!-- Card 1 -->
+                        <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                            <div class="flex justify-between items-start mb-6">
+                                <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Desenvolvimento de Landing Page de Alta Conversão</h2>
+                                <span class="bg-[#4CAF50] text-white px-4 py-1 rounded-full font-label-md text-label-md border border-background">Aceito</span>
+                            </div>
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                <div>
+                                    <p class="text-label-sm font-label-sm text-gray-600 uppercase">Data de envio</p>
+                                    <p class="font-bold text-background">18/12/2024</p>
+                                </div>
+                                <div>
+                                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Valor proposto</p>
+                                <p class="font-bold text-background">150.000 Kz</p>
+                                </div>
+                                <div>
+                                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Prazo de entrega</p>
+                                <p class="font-bold text-background">7 dias</p>
+                                </div>
+                                <div>
+                                <p class="text-label-sm font-label-sm text-gray-600 uppercase">ID</p>
+                                <p class="font-bold text-background">#1042</p>
+                            </div>
+                            
+                        
+                        </div>    
+                        
+                </div>
+                <!-- Card 2 -->
+                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div class="flex justify-between items-start mb-6">
+                <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">App Mobile de Entrega (UI/UX Design)</h2>
+                <span class="bg-[#FFD700] text-background px-4 py-1 rounded-full font-label-md text-label-md border border-background">Pendente</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Data de envio</p>
+                <p class="font-bold text-background">28/05/2024</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Valor proposto</p>
+                <p class="font-bold text-background">450.000 Kz</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Prazo de entrega</p>
+                <p class="font-bold text-background">21 dias</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">ID</p>
+                <p class="font-bold text-background">#1055</p>
+                </div>
+                </div>
+                <div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        check_circle
+    </span>
+</button>
 
-                    <div class="flex items-center gap-4">
-                    <div class="relative" id="propostas-search-wrap">
-                        <input id="propostas-search"
-                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
-                        placeholder="Procurar propostas..." type="text"/>
-                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
-                    </div>
-                    </div>
-                </header>
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        cancel
+    </span>
+</button>
+</div>
+                </div>
+                <!-- Card 3 -->
+                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div class="flex justify-between items-start mb-6">
+                <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Identidade Visual para Startup de Fintech</h2>
+                <span class="bg-[#FF5252] text-white px-4 py-1 rounded-full font-label-md text-label-md border border-background">Rejeitado</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Data de envio</p>
+                <p class="font-bold text-background">18/03/2024</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Valor proposto</p>
+                <p class="font-bold text-background">200.000 Kz</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Prazo de entrega</p>
+                <p class="font-bold text-background">14 dias</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">ID</p>
+                <p class="font-bold text-background">#1031</p>
+                </div>
+                </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div class="flex justify-between items-start mb-6">
+                <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Manutenção de Banco de Dados e-Commerce</h2>
+                <span class="bg-[#FFD700] text-background px-4 py-1 rounded-full font-label-md text-label-md border border-background">Pendente</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Data de envio</p>
+                <p class="font-bold text-background">18/01/2024</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Valor proposto</p>
+                <p class="font-bold text-background">75.000 Kz</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Prazo de entrega</p>
+                <p class="font-bold text-background">3 dias</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">ID</p>
+                <p class="font-bold text-background">#1062</p>
+                </div>
+                </div>
+                <div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        check_circle
+    </span>
+</button>
 
-                <!-- Proposals List Section -->
-                <section class=" flex flex-col gap-6 max-w-5xl">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        cancel
+    </span>
+</button>
+</div>
+                </div>
+                <!-- Card 5 -->
+                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div class="flex justify-between items-start mb-6">
+                <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Criação de Website Institucional Responsivo</h2>
+                <span class="bg-[#FFD700] text-background px-4 py-1 rounded-full font-label-md text-label-md border border-background">Pendente</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Data de envio</p>
+                <p class="font-bold text-background">02/02/2024</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Valor proposto</p>
+                <p class="font-bold text-background">320.000 Kz</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">Prazo de entrega</p>
+                <p class="font-bold text-background">10 dias</p>
+                </div>
+                <div>
+                <p class="text-label-sm font-label-sm text-gray-600 uppercase">ID</p>
+                <p class="font-bold text-background">#1070</p>
+                </div>
+                </div>
+                <div class="flex justify-end gap-4 mt-8">
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        check_circle
+    </span>
+</button>
 
-                    <!-- Card 1 -->
-                    <div data-open-proposta="1042" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">
-                        Desenvolvimento de Landing Page de Alta Conversão
-                        </a>
-                        <span class="px-4 py-1.5 bg-[#4ADE80] border-2 border-black rounded-full text-black font-bold text-sm">Aceita</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">12/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">150.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">7 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1042</p></div>
-                    </div>
-                    </div>
-
-                    <!-- Card 2 -->
-                    <div data-open-proposta="1055" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">App Mobile de Entrega (UI/UX Design)</a>
-                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">15/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">450.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">21 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1055</p></div>
-                    </div>
-                    </div>
-
-                    <!-- Card 3 -->
-                    <div data-open-proposta="1031" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Identidade Visual para Startup de Fintech</a>
-                        <span class="px-4 py-1.5 bg-[#F87171] border-2 border-black rounded-full text-black font-bold text-sm">Rejeitada</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">08/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">200.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">14 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1031</p></div>
-                    </div>
-                    </div>
-
-                    <!-- Card 4 -->
-                    <div data-open-proposta="1062" class="proposal-card bg-white border-2 border-black rounded-[24px] p-8 flex flex-col gap-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 glow-hover">
-                    <div class="flex justify-between items-start">
-                        <a class="font-headline-md text-black hover:underline underline-offset-4 decoration-2" href="#">Manutenção de Banco de Dados E-commerce</a>
-                        <span class="px-4 py-1.5 bg-[#FACC15] border-2 border-black rounded-full text-black font-bold text-sm">Pendente</span>
-                    </div>
-                    <div class="grid grid-cols-4 gap-4 border-t-2 border-black/10 pt-6">
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Data de envio</p><p class="font-label-md text-black">18/10/2024</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Valor proposto</p><p class="font-label-md text-black">75.000 Kz</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">Prazo de entrega</p><p class="font-label-md text-black">3 dias</p></div>
-                        <div><p class="font-label-sm text-[10px] text-black/50 uppercase mb-1">ID</p><p class="font-label-md text-black">#1062</p></div>
-                    </div>
-                    </div>
-
-                    <!-- Pagination -->
-                    <div class="flex justify-end items-center gap-2 mt-4 pb-10">
-                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Anterior</button>
-                    <div class="flex gap-1">
-                        <button class="w-10 h-10 border-2 border-black bg-black text-white rounded-lg font-bold">1</button>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">2</button>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">3</button>
-                        <span class="flex items-end px-2 text-black font-bold pb-2">...</span>
-                        <button class="w-10 h-10 border-2 border-black bg-white text-black rounded-lg font-bold hover:bg-black/5">8</button>
-                    </div>
-                    <button class="bg-white border-2 border-black px-4 py-2 font-bold text-black rounded-lg hover:bg-black hover:text-white transition-colors">Próxima</button>
-                    </div>
-
-                </section>
+<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">
+        cancel
+    </span>
+</button>
+</div>
+                </div>
+                
+                </div>
+                <!-- Pagination -->
+                <footer class="mt-16 flex justify-center">
+                <nav class="flex items-center gap-2">
+                <button class="neo-button bg-white border-2 border-background px-4 py-2 rounded-lg font-label-md text-label-md transition-all">Anterior</button>
+                <div class="flex gap-1">
+                <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-background text-white rounded-lg font-label-md">1</button>
+                <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">2</button>
+                <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">3</button>
+                <span class="w-10 h-10 flex items-center justify-center font-bold">...</span>
+                </div>
+                <button class="neo-button bg-white border-2 border-background px-4 py-2 rounded-lg font-label-md text-label-md transition-all">Próximo</button>
+                </nav>
+                </footer>
+                </main>
             </div>
         `;
 
@@ -2218,188 +2352,103 @@
 
         App.templates.perfil =`
             <div id="view-perfil" class="bg-[#CCFF00] text-black font-body-md text-body-md">
-                <main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-12 min-h-screen">
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-                    <!-- Local Anchor Navigation -->
-                    <nav class="lg:col-span-3 space-y-1">
-                        <a
-                        class="flex items-center gap-3 px-4 py-3 border-2 border-black bg-black text-white font-label-md text-label-md transition-all duration-200"
-                        href="#minha-info"
-                        >
-                        <span class="material-symbols-outlined text-[20px]">person</span>
-                        Minha informação
-                        </a>
-
-                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
-                        <span class="material-symbols-outlined text-[20px]">payments</span>
-                        Faturação e pagamentos
-                        </a>
-
-                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
-                        <span class="material-symbols-outlined text-[20px]">shield</span>
-                        Palavra-passe e segurança
-                        </a>
-
-                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
-                        <span class="material-symbols-outlined text-[20px]">notifications</span>
-                        Definições de notificações
-                        </a>
-
-                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
-                        <span class="material-symbols-outlined text-[20px]">groups</span>
-                        Teams
-                        </a>
-
-                        <a class="flex items-center gap-3 px-4 py-3 text-black/80 hover:text-black font-label-md text-label-md transition-all duration-200" href="#">
-                        <span class="material-symbols-outlined text-[20px]">settings</span>
-                        Preferências
-                        </a>
-                    </nav>
-
-                    <!-- Main Content Area -->
-                    <div class="lg:col-span-9 space-y-8">
-                        <!-- Section: Minha informação -->
-                        <section id="minha-info" class="bg-white border-2 border-black p-8 relative card-shadow">
-                        <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
-                            <span class="material-symbols-outlined">edit</span>
-                        </button>
-
-                        <div class="flex flex-col md:flex-row gap-8 items-start">
-                            <div class="relative group">
-                            <img
-                                alt="Profile"
-                                class="w-32 h-32 object-cover border-2 border-black grayscale hover:grayscale-0 transition-all duration-500"
-                                src="/img/foto_perfil_exemplar.png"
-                            />
-                            <div class="absolute -bottom-2 -right-2 bg-black text-white p-1.5 border border-black">
-                                <span class="material-symbols-outlined text-[18px]" data-weight="fill">verified</span>
-                            </div>
-                            </div>
-
-                            <div class="flex-1 space-y-4">
-                            <div>
-                                <h2 class="font-headline-md text-headline-md text-black">Pedro Manuel</h2>
-                                <p class="font-label-md text-label-md text-black/70">@pedromanuel</p>
-                            </div>
-
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-black">
-                                <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[20px]">work</span>
-                                <span class="font-body-md">Designer UI/UX Senior</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                <span class="material-symbols-outlined text-[20px]">location_on</span>
-                                <span class="font-body-md">Luanda, Angola</span>
-                                </div>
-                            </div>
-
-                            <p class="text-black leading-relaxed max-w-2xl">
-                                Apaixonado por criar experiências digitais que fundem funcionalidade técnica com estética brutalista.
-                                Especialista em sistemas de design escaláveis e interfaces de alta performance para produtos SaaS globais.
-                            </p>
-
-                            <div class="flex flex-wrap gap-2 pt-2">
-                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Interface Design</span>
-                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Figma Expert</span>
-                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">Prototyping</span>
-                                <span class="px-3 py-1 bg-black text-white font-label-sm text-label-sm uppercase tracking-wider">React UI</span>
-                            </div>
-                            </div>
-                        </div>
-                        </section>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Section: Informação de contacto -->
-                        <section class="bg-white border-2 border-black p-8 relative card-shadow">
-                            <button class="absolute top-6 right-6 p-2 hover:bg-black/5 text-black transition-colors">
-                            <span class="material-symbols-outlined">edit</span>
-                            </button>
-
-                            <h3 class="font-headline-md text-headline-md text-black mb-6">Informação de contacto</h3>
-
-                            <div class="space-y-4">
-                            <div class="flex flex-col">
-                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Email</span>
-                                <span class="text-black font-body-md">pe*********@skilla.com</span>
-                            </div>
-                            <div class="flex flex-col">
-                                <span class="font-label-sm text-label-sm text-black/70 uppercase mb-1">Telemóvel</span>
-                                <span class="text-black font-body-md">+244 923 *** 456</span>
-                            </div>
-                            </div>
-                        </section>
-
-                        <!-- Section: Destacar perfil -->
-                        <section class="bg-black p-8 flex flex-col justify-between items-start border-none group overflow-hidden relative card-shadow">
-                            <div class="absolute -right-8 -top-8 w-32 h-32 bg-white opacity-10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-700"></div>
-                            <div class="relative z-10">
-                            <h3 class="font-headline-md text-headline-md text-white mb-2">Alcance mais clientes</h3>
-                            <p class="text-white font-body-md mb-6 opacity-80">
-                                Promova o seu perfil para o topo das pesquisas e receba 3x mais propostas diretas.
-                            </p>
-                            </div>
-                            <button class="px-6 py-3 bg-white text-black font-label-md text-label-md border-2 border-white hover:bg-black hover:text-white transition-all duration-200 relative z-10">
-                            Destacar perfil
-                            </button>
-                        </section>
-                        </div>
-
-                        <!-- Portfólio em destaque -->
-                        <section class="space-y-6 pt-4">
-                        <div class="flex justify-between items-end">
-                            <div>
-                            <h3 class="font-headline-md text-headline-md text-black">Portfólio em destaque</h3>
-                            <p class="text-black/70 font-body-md">Exiba os seus melhores trabalhos para potenciais clientes.</p>
-                            </div>
-                            <a class="text-black font-bold font-label-md text-label-md flex items-center gap-1 hover:underline underline-offset-4" href="#">
-                            Gerir portfólio
-                            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                            </a>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div class="group cursor-pointer">
-                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
-                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
-                                alt="Project 1"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLapq4NnoPNElbAVd9m_VWF8nmc0zPd0k4mM42Day2e_E-iRgRrb-EGtmgIdmZ4aREoS7rvWff5Dag4CSa_LvmbxFCO08KAfJYkFa3D1reRSfPteTMoyCpKwbSdQfQfXT6V7MnCLb51cX4m2IPYEtZNRM-YWXfgCzFwURdmY2V898T8Walttt7ozTrZede2lI60FfrWru-lcvqxJ2wpTMMEBbmgi3EY8JQLWpjRA4i4OTEJ-WmGzHPV4Yi4UhsZFgf1Tb843Pn0xU" />
-                            </div>
-                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">NovaPay Mobile App</h4>
-                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Fintech • 2023</p>
-                            </div>
-
-                            <div class="group cursor-pointer">
-                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
-                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
-                                alt="Project 2"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD14VabbFyfYxboRlBjHkRAYZBbxAQXXmK-ewnGbtEDcEiLSEBjnkOgxQOSSK89cZxWRVA4WfAqk5BbQdonraNXUyDiDUKFOOGEhrtSU375GB6-_3zLWbKUenOO2QIyccZlB-bmYfe85lenHmj4ILbrase_vqdEcyeF-_A5-h1oeIMD-UngkK1vVusAI3bqO4KdV886-mNAa4QRY2PgK_Qx0TdQLt44lYe7h6MqfV5tz9i33GjDa6052hYkPmy2Yp3x-dvSNo8FJak" />
-                            </div>
-                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Kinetix Design System</h4>
-                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Design System • 2024</p>
-                            </div>
-
-                            <div class="group cursor-pointer">
-                            <div class="aspect-video overflow-hidden bg-white border-2 border-black mb-3 relative card-shadow transition-transform hover:-translate-y-1">
-                                <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
-                                alt="Project 3"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmZnYVCZiBL3lE639tZin3AcmhPR0LjGMxg6n-5w8k__IXlwAsCz0unBtb3zUVamifLC79zFyFim82h7lEAMyn2ETUGBO6iNBwsFAxHr9x8Pxx0uWnq8VU9N9Q9TDzjPl3Tj3I1XXiY-o9UXs2LdXzJyBWsjDmnE8zRa78Q-rmyDp0wv7ZKYExFATyHO0mLZ46YpWKVdHfrTIJTAKOeBLLGcDUptg37erP19ElN7xa1gDCSf62_M7aWykqCl8bqp1iMYoEeEIV00M" />
-                            </div>
-                            <h4 class="font-label-md text-label-md text-black group-hover:underline decoration-2 transition-colors">Vortex Analytics Web</h4>
-                            <p class="font-label-sm text-label-sm text-black/70 uppercase">Dashboards • 2023</p>
-                            </div>
-                        </div>
-                        </section>
-
-                        <div class="pt-12 border-t border-black flex justify-end items-center gap-4">
-                        <button class="px-6 py-2 text-black/70 hover:text-black font-label-md text-label-md transition-colors">Descartar</button>
-                        <button class="px-8 py-3 bg-black text-white font-label-md text-label-md border-2 border-black hover:bg-white hover:text-black transition-all">
-                            Guardar alterações
-                        </button>
-                        </div>
-                    </div>
-                    </div>
-                </main>
+                <main class="max-w-[1000px] mx-auto px-margin-mobile md:px-margin-desktop py-12 flex flex-col gap-8">
+<!-- Top Card: Identity -->
+<section class="bg-white neo-border neo-shadow p-6 md:p-10 flex flex-col md:flex-row gap-8 relative overflow-hidden">
+<div class="flex-shrink-0">
+<div class="w-32 h-32 md:w-48 md:h-48 neo-border overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="foto_cliente" src="/img/foto_perfil_exemplar.png"/>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<div class="flex justify-between items-start w-full">
+<div>
+<h2 class="font-headline-lg text-black mb-1">Pedro Manuel</h2>
+<p class="font-label-md text-black opacity-70 mb-4 uppercase tracking-widest">Diretor Geral • Luanda, Angola</p>
+</div>
+<button class="bg-white neo-border neo-shadow neo-shadow-hover px-4 py-2 flex items-center gap-2 font-bold hover:bg-[#CCFF00] transition-colors">
+<span class="material-symbols-outlined text-sm">cancel</span>
+                        EDITAR
+</button>
+</div>
+<p class="font-body-lg text-black max-w-2xl mb-8 leading-relaxed">
+                    Estrategista focado na transformação digital e escalabilidade de infraestruturas logísticas no mercado angolano. Com mais de 15 anos de experiência na liderança de equipas multidisciplinares.
+                </p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-black text-white font-label-md px-3 py-1 neo-border">E-COMMERCE</span>
+<span class="bg-black text-white font-label-md px-3 py-1 neo-border">LOGÍSTICA</span>
+<span class="bg-black text-white font-label-md px-3 py-1 neo-border">SAAS</span>
+</div>
+</div>
+</section>
+<!-- Central Grid: Contact & Metrics -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Contact Info Card -->
+<section class="bg-white neo-border neo-shadow p-8 flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-black mb-8 border-b-4 border-black pb-2">Informação de contacto</h3>
+<div class="space-y-6 mb-10">
+<div class="flex flex-col">
+<span class="font-label-sm text-black opacity-50 uppercase mb-1">EMAIL:</span>
+<span class="font-label-md text-black text-lg">pedro.m@empresa.ao</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-black opacity-50 uppercase mb-1">TELEFONE:</span>
+<span class="font-label-md text-black text-lg">+244 923 000 000</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-black opacity-50 uppercase mb-1">SITE:</span>
+<span class="font-label-md text-black text-lg">www.empresa.ao</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-black opacity-50 uppercase mb-1">Nº DO BILHETE:</span>
+<span class="font-label-md text-black text-lg">000567890LA042</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-white neo-border neo-shadow neo-shadow-hover py-4 font-headline-md text-sm uppercase tracking-tighter hover:bg-[#CCFF00] transition-colors">
+                    ACTUALIZAR INFORMAÇÕES
+                </button>
+</section>
+<!-- Metrics Card -->
+<section class="bg-black neo-border neo-shadow p-8 flex flex-col justify-between text-white">
+<div>
+<h3 class="font-headline-md text-white mb-8 border-b-4 border-white pb-2">As suas Métricas</h3>
+<div class="grid grid-cols-2 gap-y-10 gap-x-4 mb-10">
+<div class="flex flex-col">
+<span class="font-label-sm text-white opacity-60 uppercase mb-1">TRABALHOS:</span>
+<span class="font-display-lg text-[40px] leading-none font-black">12</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-white opacity-60 uppercase mb-1">CONTRATOS:</span>
+<span class="font-display-lg text-[40px] leading-none font-black">8</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-white opacity-60 uppercase mb-1">INVESTIDO:</span>
+<span class="font-display-lg text-[32px] leading-none font-black text-neo-lime">850.000 <span class="text-xl">Kz</span></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-white opacity-60 uppercase mb-1">AVALIAÇÕES:</span>
+<span class="font-display-lg text-[32px] leading-none font-black text-neo-lime">4.9 ★</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-white text-black neo-border rounded-full py-3 font-bold hover:bg-[#CCFF00] transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                    Ver Financeiro Completo
+                </button>
+</section>
+</div>
+<!-- System Actions Footer -->
+<footer class="flex justify-end items-center gap-8 mt-4 mb-20">
+<button class="font-bold text-black hover:underline underline-offset-4 decoration-4">
+                Descartar
+            </button>
+<button class="bg-black text-white neo-border neo-shadow neo-shadow-hover px-10 py-5 font-headline-md text-lg tracking-tight uppercase hover:bg-white hover:text-black transition-all">
+                Guardar alterações
+            </button>
+</footer>
+</main>
             </div>
         `;
 
@@ -2536,6 +2585,7 @@
 
             if (route === 'inicio') {
                 spaView.querySelector('#btn-explorar-trabalhos')?.addEventListener('click', () => render('trabalhos'));
+                spaView.querySelector('#botaoDirecionarCarregarSaldo')?.addEventListener('click', () => render('carteira_carregar_saldo'));
             }
         }
 
@@ -2612,6 +2662,42 @@
                 el.style.boxShadow = '';
             });
         });
+
+        document.querySelectorAll('.neo-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translate(-4px, -4px)';
+                card.style.boxShadow = '8px 8px 0px 0px #101415';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translate(0px, 0px)';
+                card.style.boxShadow = '4px 4px 0px 0px #101415';
+            });
+        });
+        document.querySelectorAll('.neo-shadow-hover').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'translate(4px, 4px)';
+                button.classList.remove('neo-shadow');
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'translate(0px, 0px)';
+                button.classList.add('neo-shadow');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'translate(0px, 0px)';
+                button.classList.add('neo-shadow');
+            });
+        });
+
+        // Atmospheric micro-interaction: The profile card responds slightly to mouse movement
+        const profileCard = document.querySelector('section.bg-white');
+        if (profileCard) {
+            document.addEventListener('mousemove', (e) => {
+                const xAxis = (window.innerWidth / 2 - e.pageX) / 100;
+                const yAxis = (window.innerHeight / 2 - e.pageY) / 100;
+                // Only very subtle to maintain the rigid "Neo-brutalism" feel
+                // profileCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+         });
+        }
 </script>
 </body>
 </html>
