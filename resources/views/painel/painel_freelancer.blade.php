@@ -150,6 +150,7 @@
         .bg-secondary-container{ background: var(--secondary-container); }
         .text-on-secondary-container{ color: var(--on-secondary-container); }
         .text-on-primary-container{ color: var(--on-primary-container); }
+        .text-verde{ color: #CCFF00; }
         body { background-color: #CCFF00; }
         .glass-card { background: #FFFFFF; border-radius: 24px; }
         .neon-accent { color: #CCFF00; }
@@ -662,11 +663,6 @@
                         <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Comprar créditos</span>
                     </div>
-
-                    <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                        Voltar
-                    </button>
                     </div>
 
                     <!-- Wallet Balance Card -->
@@ -804,7 +800,7 @@
                         <label class="block text-gray-600 mb-4 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor (Kz)</label>
                         <div class="relative">
                         <input class="w-full bg-[#F9FAFB] border-2 border-black/5 rounded-xl p-4 text-[24px] leading-[32px] font-bold text-[#111827] focus:border-[#2F5BFF] focus:ring-0 transition-all outline-none"
-                                placeholder="0 Kz" type="text" value="2.000 Kz">
+                                placeholder="0 Kz" id="topup-amount" type="text" value="2.000 Kz">
                         <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#DC2626] flex items-center gap-1 text-[12px] leading-[16px] font-semibold">
                             <span class="material-symbols-outlined text-sm">error</span>
                             O valor mínimo é 2.000 Kz.
@@ -2019,14 +2015,7 @@
                     <div class="h-1.5 w-24 bg-black mt-2"></div>
                     </div>
 
-                    <div class="flex items-center gap-4">
-                    <div class="relative" id="propostas-search-wrap">
-                        <input id="propostas-search"
-                        class="bg-white border-2 border-black rounded-full px-6 py-3 w-80 text-black font-label-md focus:outline-none focus:ring-2 focus:ring-black/20"
-                        placeholder="Procurar propostas..." type="text"/>
-                        <span class="material-symbols-outlined absolute right-5 top-1/2 -translate-y-1/2 text-black" data-icon="search">search</span>
-                    </div>
-                    </div>
+                    
                 </header>
 
                 <!-- Proposals List Section -->
@@ -2445,8 +2434,8 @@
                             <button class="p-2 text-gray-500 hover:text-primary-fixed transition-colors rounded-lg hover:bg-gray-100">
                                 <span class="material-symbols-outlined">attach_file</span>
                             </button>
-                            <input class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
-                            <button class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
+                            <input id="chat-input" class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
+                            <button id="chat-send-btn" class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity" type="button">
                                 <span class="material-symbols-outlined text-[20px]">send</span>
                             </button>
                             </div>
@@ -2461,15 +2450,15 @@
                                 <h1 class="font-headline-md text-[26px] font-extrabold leading-tight tracking-tight">Entregar trabalho</h1>
                                 <p class="font-body-md text-slate-500 text-sm mt-1">Envie notas e anexos para concluir a entrega.</p>
                             </div>
-                            <button id="closeDeliverModalBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors group" type="button" aria-label="Fechar">
-                                <span class="material-symbols-outlined text-slate-900">close</span>
+                            <button id="closeDeliverModalBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-all duration-300 ease-in-out group" type="button" aria-label="Fechar">
+                                <span class="material-symbols-outlined text-slate-900 transition-transform duration-300 ease-in-out group-hover:rotate-90"> close </span>
                             </button>
                             </div>
 
                             <div class="px-8 flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-8 pb-8">
                             <div class="space-y-3">
                                 <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">NOTAS DA ENTREGA (OPCIONAL)</label>
-                                <textarea class="w-full min-h-[120px] rounded-xl border-[2px] border-black p-4 font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
+                                <textarea id="deliverNotes" class="w-full min-h-[120px] rounded-xl border-[2px] border-black p-4 font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
                                 placeholder="Descreva o que foi entregue, instruções de uso, credenciais de teste, próximos passos..."></textarea>
                                 <p class="font-body-md text-slate-500 text-[13px]">Estas notas serão enviadas ao cliente.</p>
                             </div>
@@ -2477,12 +2466,12 @@
                             <div class="space-y-6">
                                 <div class="space-y-3">
                                 <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">ANEXOS E/OU LINK</label>
-                                <div class="relative group cursor-pointer">
-                                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file" />
+                                <div id="deliverDropzone" class="relative group cursor-pointer">
+                                    <input id="deliverFile" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file" />
                                     <div class="border-[2px] border-dashed border-black rounded-2xl p-8 flex flex-col items-center justify-center text-center bg-white group-hover:bg-slate-50 transition-all">
                                     <span class="material-symbols-outlined text-[40px] mb-3 text-slate-900" style="font-variation-settings: 'wght' 300;">upload</span>
-                                    <p class="font-headline-md text-base font-bold">Arraste ficheiros aqui ou clique para selecionar</p>
-                                    <p class="font-body-md text-slate-500 text-[13px] mt-1">PDF, ZIP, PNG, JPG (máx. 25MB)</p>
+                                    <p class="font-headline-md text-base font-bold text-center">Arraste ficheiros aqui ou clique para selecionar</p>
+                                    <p class="font-body-md text-slate-500 text-[13px] mt-1 text-center">PDF, ZIP, PNG, JPG (máx. 25MB)</p>
                                     </div>
                                 </div>
                                 </div>
@@ -2490,7 +2479,7 @@
                                 <div class="space-y-3">
                                 <div class="relative flex items-center">
                                     <span class="material-symbols-outlined absolute left-4 text-slate-400">link</span>
-                                    <input class="w-full h-[56px] pl-12 pr-4 rounded-xl border-[2px] border-black font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
+                                    <input id="deliverLink" class="w-full h-[56px] pl-12 pr-4 rounded-xl border-[2px] border-black font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
                                     placeholder="Cole um link (Google Drive, GitHub, Figma...)" type="url" />
                                 </div>
                                 <p class="font-body-md text-slate-500 text-[13px]">Certifique-se de que o link está acessível ao cliente.</p>
@@ -2502,8 +2491,8 @@
                             <button id="cancelDeliverModalBtn" class="px-6 py-3 rounded-xl border-[2px] border-black bg-white font-headline-md text-sm font-bold hover:bg-slate-50 active:scale-95 transition-all" type="button">
                                 Cancelar
                             </button>
-                            <button class="px-6 py-3 rounded-xl bg-black text-primary-container font-headline-md text-sm font-bold flex items-center gap-2 hover:brightness-125 active:scale-95 transition-all" type="button">
-                                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
+                            <button id="confirmDeliverBtn" class="px-6 py-3 rounded-xl bg-black text-verde font-headline-md text-sm font-bold flex items-center gap-2 hover:brightness-125 active:scale-95 transition-all" type="button">
+                                <span class="material-symbols-outlined text-[20px] text-verde" style="font-variation-settings: 'FILL' 1;">check</span>
                                 Confirmar entrega
                             </button>
                             </div>
@@ -2699,6 +2688,144 @@
             </div>
         `;
 
+        // Wallet Store Module
+        const WalletStore = {
+            // State management
+            getState() {
+                const defaultState = {
+                    wallet: {
+                        available: 125000, // Saldo disponível em Kz
+                        escrow: 80000,      // Saldo retido em escrow
+                        receivable: 45000,    // A receber
+                        ledger: [
+                            {
+                                id: 'TXN-001',
+                                date: new Date().toISOString(),
+                                title: 'Recarga de Saldo',
+                                subtitle: 'Depósito via Banco Skilla',
+                                amount: 50000,
+                                type: 'credit',
+                                status: 'CONCLUÍDO'
+                            },
+                            {
+                                id: 'TXN-002',
+                                date: new Date(Date.now() - 86400000).toISOString(), // Ontem
+                                title: 'Saque Bancário',
+                                subtitle: 'Transferência para BFA',
+                                amount: -125000,
+                                type: 'debit',
+                                status: 'CONCLUÍDO'
+                            },
+                            {
+                                id: 'TXN-003',
+                                date: new Date(Date.now() - 172800000).toISOString(), // Anteontem
+                                title: 'Pagamento de Projeto',
+                                subtitle: 'UI Design Kit Pro',
+                                amount: 210000,
+                                type: 'credit',
+                                status: 'PENDENTE'
+                            }
+                        ]
+                    }
+                };
+
+                try {
+                    const savedState = localStorage.getItem('skilla_wallet_state_v1');
+                    return savedState ? JSON.parse(savedState) : defaultState;
+                } catch (e) {
+                    console.warn('Error loading wallet state from localStorage:', e);
+                    return defaultState;
+                }
+            },
+
+            saveState(state) {
+                try {
+                    localStorage.setItem('skilla_wallet_state_v1', JSON.stringify(state));
+                } catch (e) {
+                    console.warn('Error saving wallet state to localStorage:', e);
+                }
+            },
+
+            subscribe(fn) {
+                // Simple subscription mechanism
+                // In a real implementation, you might want a more robust event system
+                if (typeof fn === 'function') {
+                    this.subscribers = this.subscribers || [];
+                    this.subscribers.push(fn);
+                }
+            },
+
+            // Top up wallet
+            topUp({amount, method, status = 'CONCLUÍDO'}) {
+                const state = this.getState();
+                const transaction = {
+                    id: 'TXN-' + Math.random().toString(36).substr(2, 9).toUpperCase(),
+                    date: new Date().toISOString(),
+                    title: 'Recarga de Saldo',
+                    subtitle: `Depósito via ${method}`,
+                    amount: amount,
+                    type: 'credit',
+                    status: status
+                };
+
+                state.wallet.available += amount;
+                state.wallet.ledger.unshift(transaction);
+
+                this.saveState(state);
+
+                // Notify subscribers
+                if (this.subscribers) {
+                    this.subscribers.forEach(fn => fn(state));
+                }
+
+                return transaction;
+            },
+
+            // Format helpers
+            formatKz(amount) {
+                // Format number with pt-PT format: point for thousands, comma for decimals
+                const formatted = (amount / 1000).toFixed(3).replace('.', ',');
+                return `${formatted} Kz`;
+            },
+
+            formatTime(dateString) {
+                const date = new Date(dateString);
+                return date.toLocaleTimeString('pt-PT', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                });
+            },
+
+            formatDateLabel(dateString) {
+                const date = new Date(dateString);
+                const today = new Date();
+                const yesterday = new Date(today);
+                yesterday.setDate(yesterday.getDate() - 1);
+
+                const isToday = date.getDate() === today.getDate() &&
+                               date.getMonth() === today.getMonth() &&
+                               date.getFullYear() === today.getFullYear();
+
+                const isYesterday = date.getDate() === yesterday.getDate() &&
+                                   date.getMonth() === yesterday.getMonth() &&
+                                   date.getFullYear() === yesterday.getFullYear();
+
+                if (isToday) return 'HOJE';
+                if (isYesterday) return 'ONTEM';
+
+                const anteontem = new Date(yesterday);
+                anteontem.setDate(anteontem.getDate() - 1);
+                const isAnteontem = date.getDate() === anteontem.getDate() &&
+                                   date.getMonth() === anteontem.getMonth() &&
+                                   date.getFullYear() === anteontem.getFullYear();
+
+                if (isAnteontem) return 'ANTEONTEM';
+
+                return date.toLocaleDateString('pt-PT');
+            }
+        };
+
         // Funções de Apoio SPA
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
@@ -2743,6 +2870,18 @@
 
             // Lógica Carteira
             if (route === 'carteira') {
+                 // Atualizar saldos dinamicamente
+                 const state = WalletStore.getState();
+
+                 // Atualizar elementos de saldo
+                 const availableElement = spaView.querySelector('#wallet-available');
+                 const escrowElement = spaView.querySelector('#wallet-escrow');
+                 const receivableElement = spaView.querySelector('#wallet-receivable');
+
+                 if (availableElement) availableElement.textContent = WalletStore.formatKz(state.wallet.available);
+                 if (escrowElement) escrowElement.textContent = WalletStore.formatKz(state.wallet.escrow);
+                 if (receivableElement) receivableElement.textContent = WalletStore.formatKz(state.wallet.receivable);
+
                  spaView.querySelectorAll('[data-wallet-action]').forEach(btn => {
                     btn.addEventListener('click', (e) => {
                         const action = btn.getAttribute('data-wallet-action');
@@ -2786,6 +2925,68 @@
 
             if (route === 'carteira_carregar_saldo') {
                  const modal = spaView.querySelector('#successModal');
+                 const amountInput = spaView.querySelector('#topup-amount');
+                 const errorElement = spaView.querySelector('#topup-error');
+                 const summaryAmount = spaView.querySelector('#summary-amount');
+                 const summaryFee = spaView.querySelector('#summary-fee');
+                 const summaryTotal = spaView.querySelector('#summary-total');
+                 const confirmBtn = spaView.querySelector('#btn-confirm-topup');
+                 const successAmountText = spaView.querySelector('#success-amount-text');
+                 const btnGoStatement = spaView.querySelector('#btn-go-statement');
+                 const btnGoWallet = spaView.querySelector('#btn-go-wallet');
+
+                 // Validar e atualizar resumo em tempo real
+                 if (amountInput) {
+                     amountInput.addEventListener('input', () => {
+                         const value = parseFloat(amountInput.value) || 0;
+                         const fee = value * 0.1; // 10% taxa
+                         const total = value - fee;
+
+                         // Atualizar mensagens de erro
+                         if (errorElement) {
+                             if (value < 2000) {
+                                 errorElement.style.display = 'flex';
+                                 confirmBtn.disabled = true;
+                             } else {
+                                 errorElement.style.display = 'none';
+                                 confirmBtn.disabled = false;
+                             }
+                         }
+
+                         // Atualizar resumo
+                         if (summaryAmount) summaryAmount.textContent = WalletStore.formatKz(value);
+                         if (summaryFee) summaryFee.textContent = WalletStore.formatKz(fee);
+                         if (summaryTotal) summaryTotal.textContent = WalletStore.formatKz(total);
+                     });
+                 }
+
+                 // Confirmar recarga
+                 if (confirmBtn) {
+                     confirmBtn.addEventListener('click', () => {
+                         const amount = parseFloat(amountInput.value) || 0;
+                         if (amount >= 2000) {
+                             // Adicionar ao extrato
+                             const method = spaView.querySelector('input[name="topup_method"]:checked')?.getAttribute('data-method') || 'Banco Skilla';
+                             WalletStore.topUp({amount, method});
+
+                             // Mostrar modal de sucesso
+                             if (successAmountText) successAmountText.textContent = `Seu saldo de ${WalletStore.formatKz(amount)} foi carregado com sucesso em sua conta Skilla.`;
+                             if (modal) {
+                                 modal.classList.remove('hidden');
+                                 modal.classList.add('flex');
+                             }
+                         }
+                     });
+                 }
+
+                 // Botões do modal
+                 if (btnGoStatement) {
+                     btnGoStatement.addEventListener('click', () => render('carteira_ver_extrato'));
+                 }
+                 if (btnGoWallet) {
+                     btnGoWallet.addEventListener('click', () => render('carteira'));
+                 }
+
                  spaView.querySelector('[data-open-success-modal]')?.addEventListener('click', () => {
                      modal?.classList.remove('hidden');
                      modal?.classList.add('flex');
@@ -2828,6 +3029,229 @@
                 spaView.querySelectorAll('[data-open-chat]').forEach(card => {
                     card.addEventListener('click', () => render('mensagens_sala'));
                 });
+            }
+
+            if (route === 'mensagens_sala') {
+                const modal = spaView.querySelector('#deliverModal');
+                const openBtn = spaView.querySelector('#openDeliverModalBtn');
+                const closeBtn = spaView.querySelector('#closeDeliverModalBtn');
+                const cancelBtn = spaView.querySelector('#cancelDeliverModalBtn');
+                const confirmBtn = spaView.querySelector('#confirmDeliverBtn');
+                const fileInput = spaView.querySelector('#deliverFile');
+                const dropzone = spaView.querySelector('#deliverDropzone');
+                const linkInput = spaView.querySelector('#deliverLink');
+                const notesTextarea = spaView.querySelector('#deliverNotes');
+                
+                // Open modal
+                openBtn?.addEventListener('click', () => {
+                    modal?.classList.remove('hidden');
+                    modal?.classList.add('flex');
+                });
+
+                // Close modal helper
+                const closeModal = () => {
+                    modal?.classList.add('hidden');
+                    modal?.classList.remove('flex');
+                    if (notesTextarea) notesTextarea.value = '';
+                    if (linkInput) linkInput.value = '';
+                    if (fileInput) fileInput.value = '';
+                    if (dropzone) {
+                        const dropzoneText = dropzone.querySelector('p.font-headline-md');
+                        const dropzoneSubtext = dropzone.querySelector('p.font-body-md');
+                        const dropzoneIcon = dropzone.querySelector('span.material-symbols-outlined');
+                        if (dropzoneText) dropzoneText.textContent = 'Arraste ficheiros aqui ou clique para selecionar';
+                        if (dropzoneSubtext) dropzoneSubtext.textContent = 'PDF, ZIP, PNG, JPG (máx. 25MB)';
+                        if (dropzoneIcon) dropzoneIcon.textContent = 'upload';
+                    }
+                };
+
+                closeBtn?.addEventListener('click', closeModal);
+                cancelBtn?.addEventListener('click', closeModal);
+                modal?.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                // Dropzone file change handling
+                fileInput?.addEventListener('change', () => {
+                    if (fileInput.files && fileInput.files.length > 0) {
+                        const file = fileInput.files[0];
+                        const dropzoneText = dropzone.querySelector('p.font-headline-md');
+                        const dropzoneSubtext = dropzone.querySelector('p.font-body-md');
+                        const dropzoneIcon = dropzone.querySelector('span.material-symbols-outlined');
+                        
+                        if (dropzoneText) dropzoneText.textContent = `Ficheiro selecionado: ${file.name}`;
+                        if (dropzoneSubtext) {
+                            const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                            dropzoneSubtext.textContent = `Tamanho: ${sizeMB} MB`;
+                        }
+                        if (dropzoneIcon) dropzoneIcon.textContent = 'check_circle';
+                    }
+                });
+
+                // Drag & Drop visual feedback
+                if (dropzone) {
+                    ['dragenter', 'dragover'].forEach(eventName => {
+                        dropzone.addEventListener(eventName, () => {
+                            dropzone.querySelector('div').classList.add('bg-slate-50', 'border-primary-fixed');
+                        });
+                    });
+                    ['dragleave', 'drop'].forEach(eventName => {
+                        dropzone.addEventListener(eventName, () => {
+                            dropzone.querySelector('div').classList.remove('bg-slate-50', 'border-primary-fixed');
+                        });
+                    });
+                }
+
+                // Confirm delivery action
+                confirmBtn?.addEventListener('click', () => {
+                    const notes = notesTextarea ? notesTextarea.value.trim() : '';
+                    const link = linkInput ? linkInput.value.trim() : '';
+                    const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
+                    const fileName = hasFile ? fileInput.files[0].name : '';
+
+                    if (!notes && !link && !hasFile) {
+                        alert('Por favor, adicione notas, um link ou um ficheiro para realizar a entrega.');
+                        return;
+                    }
+
+                    // Simulated upload delay
+                    const originalBtnHTML = confirmBtn.innerHTML;
+                    confirmBtn.disabled = true;
+                    confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> A enviar...';
+
+                    setTimeout(() => {
+                        confirmBtn.disabled = false;
+                        confirmBtn.innerHTML = originalBtnHTML;
+
+                        // Insert new bubble in the chat messages container
+                        const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
+                        if (messagesContainer) {
+                            const bubble = document.createElement('div');
+                            bubble.className = 'flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300';
+                            
+                            let attachmentsHTML = '';
+                            if (hasFile) {
+                                attachmentsHTML += `
+                                    <div class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3 w-full">
+                                        <span class="material-symbols-outlined text-slate-700">description</span>
+                                        <div class="flex-1 min-w-0 text-left">
+                                            <p class="font-label-md text-sm font-bold text-slate-900 truncate">${fileName}</p>
+                                            <p class="font-body-md text-xs text-slate-500">Documento de entrega</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+                            if (link) {
+                                attachmentsHTML += `
+                                    <div class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3 w-full">
+                                        <span class="material-symbols-outlined text-slate-700">link</span>
+                                        <div class="flex-1 min-w-0 text-left">
+                                            <a href="${link}" target="_blank" class="font-label-md text-sm font-bold text-blue-600 hover:underline truncate block">${link}</a>
+                                            <p class="font-body-md text-xs text-slate-500 font-medium">Link externo do projeto</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+
+                            bubble.innerHTML = `
+                                <div class="flex items-end gap-2 flex-row-reverse w-full">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                        <img alt="Freelancer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI" />
+                                    </div>
+                                    <div class="bg-white text-black border-2 border-black p-5 rounded-2xl rounded-tr-sm shadow-md w-full text-left">
+                                        <div class="flex items-center gap-2 text-green-600 mb-2">
+                                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            <span class="font-label-md text-sm font-bold uppercase tracking-wider">Trabalho Entregue</span>
+                                        </div>
+                                        ${notes ? `<p class="font-body-md text-body-md text-slate-800 italic bg-slate-50 p-3 rounded-lg border border-slate-100 mb-2">"${notes}"</p>` : ''}
+                                        ${attachmentsHTML}
+                                    </div>
+                                </div>
+                                <span class="font-label-sm text-label-sm text-gray-500 mr-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            `;
+                            
+                            const spacer = messagesContainer.querySelector('.h-10.shrink-0');
+                            if (spacer) {
+                                messagesContainer.insertBefore(bubble, spacer);
+                            } else {
+                                messagesContainer.appendChild(bubble);
+                            }
+
+                            // Scroll to bottom
+                            messagesContainer.scrollTo({
+                                top: messagesContainer.scrollHeight,
+                                behavior: 'smooth'
+                            });
+                        }
+
+                        // Update Status Badge in Header
+                        const statusBadge = spaView.querySelector('span.text-primary-fixed.font-bold');
+                        if (statusBadge) {
+                            statusBadge.textContent = 'Status: Em Revisão';
+                            statusBadge.className = 'font-label-sm text-label-sm text-amber-600 font-bold';
+                        }
+
+                        closeModal();
+                        alert('Entrega realizada com sucesso!');
+                    }, 1200);
+                });
+
+                // Implement chat composer functionality
+                const chatInput = spaView.querySelector('#chat-input');
+                const chatSendBtn = spaView.querySelector('#chat-send-btn');
+                const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
+
+                const sendTextMessage = () => {
+                    const text = chatInput ? chatInput.value.trim() : '';
+                    if (!text) return;
+
+                    if (chatInput) chatInput.value = '';
+
+                    const bubble = document.createElement('div');
+                    bubble.className = 'flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300 w-full';
+                    bubble.innerHTML = `
+                        <div class="flex items-end gap-2 flex-row-reverse w-full">
+                            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img alt="Freelancer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI" />
+                            </div>
+                            <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md text-left">
+                                <p class="font-body-md text-body-md">${text}</p>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-gray-500 mr-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    `;
+
+                    const spacer = messagesContainer?.querySelector('.h-10.shrink-0');
+                    if (messagesContainer) {
+                        if (spacer) {
+                            messagesContainer.insertBefore(bubble, spacer);
+                        } else {
+                            messagesContainer.appendChild(bubble);
+                        }
+                        messagesContainer.scrollTo({
+                            top: messagesContainer.scrollHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+
+                chatSendBtn?.addEventListener('click', sendTextMessage);
+                chatInput?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        sendTextMessage();
+                    }
+                });
+
+                // Adicionar lógica de sincronização de mensagens
+                const originalSendTextMessage = sendTextMessage;
+                sendTextMessage = () => {
+                    originalSendTextMessage();
+                    const chatInput = spaView.querySelector('#chat-input');
+                    if (chatInput && chatInput.value.trim()) {
+                        saveMessageToLocalStorage(chatInput.value.trim(), true);
+                    }
+                };
             }
 
             if (route === 'inicio') {
@@ -2886,6 +3310,62 @@
             }
         });
     });
+
+    // Função para adicionar mensagem à sala de mensagens
+    function addMessageToChat(message) {
+        if (!spaView || !message) return;
+        
+        // Verificar se estamos na tela de mensagens ou sala de mensagens
+        const isOnMessagesRoute = window.location.hash === '#mensagens' || window.location.hash === '#mensagens_sala';
+        if (!isOnMessagesRoute) return;
+        
+        const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
+        if (!messagesContainer) return;
+
+        const bubble = document.createElement('div');
+        bubble.className = 'flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300 w-full';
+        bubble.innerHTML = `
+            <div class="flex items-end gap-2 flex-row-reverse w-full">
+                <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                    <img alt="${message.isUser ? 'Freelancer' : 'Client'}" class="w-full h-full object-cover" src="${message.avatar}" />
+                </div>
+                <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md text-left">
+                    <p class="font-body-md text-body-md">${message.text}</p>
+                </div>
+            </div>
+            <span class="font-label-sm text-label-sm text-gray-500 mr-10">${new Date(message.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+        `;
+
+        const spacer = messagesContainer.querySelector('.h-10.shrink-0');
+        if (messagesContainer) {
+            if (spacer) {
+                messagesContainer.insertBefore(bubble, spacer);
+            } else {
+                messagesContainer.appendChild(bubble);
+            }
+            messagesContainer.scrollTo({
+                top: messagesContainer.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    // Carregar mensagens salvas do localStorage
+    function loadMessagesFromLocalStorage() {
+        const messages = JSON.parse(localStorage.getItem('skilla_messages') || '[]');
+        messages.forEach(message => {
+            addMessageToChat(message);
+        });
+    }
+
+    // Ouvir eventos de mensagens de outras páginas
+    window.addEventListener('skilla-message-received', (event) => {
+        const message = event.detail;
+        addMessageToChat(message);
+    });
+
+    // Carregar mensagens existentes quando a página carregar
+    window.addEventListener('load', loadMessagesFromLocalStorage);
 </script>
 </body>
 </html>

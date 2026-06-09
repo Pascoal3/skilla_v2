@@ -2955,6 +2955,37 @@
                 this.classList.remove('text-on-surface-variant', 'hover:text-black');
             }
         });
+
+        // Função para salvar mensagem no localStorage e notificar outras páginas
+        function saveMessageToLocalStorage(message, isUser = true) {
+            const messages = JSON.parse(localStorage.getItem('skilla_messages') || '[]');
+            const newMessage = {
+                id: Date.now(),
+                text: message,
+                timestamp: new Date().toISOString(),
+                isUser: isUser,
+                avatar: isUser ? 
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI" :
+                    "https://lh3.googleusercontent.com/aida-public/AB6AXuAdsdrxNRELguNRZj1IJOZLygHNtSPVOgi8_ZOn-y4IAJOwfmHVOgkqbnYLILHPczmdjFaeFVkGoCeuimXarQp-jNI4jpQEi7BS42bFszr6a1SUMqjy5migHyRF47acCZAfTwj-NZbm6AD6PgoHzW8ZJPOl7CY7zokqiujQ4Vl42jeLt1j6ehPipnSZsO-gS9Ifl8eLLgwtxqhOZ1LW41bTrZzWpNVxaNSpBtNa4XPslv47OIYZroenTGJ8WsGiZxzNP6qPwF3IQWQ"
+            };
+            messages.push(newMessage);
+            localStorage.setItem('skilla_messages', JSON.stringify(messages));
+            
+            // Notificar outras páginas sobre nova mensagem
+            window.dispatchEvent(new CustomEvent('skilla-message-received', {
+                detail: newMessage
+            }));
+        }
+
+        // Modificar a função sendTextMessage para salvar no localStorage
+        const originalSendTextMessage = sendTextMessage;
+        sendTextMessage = () => {
+            originalSendTextMessage();
+            const chatInput = spaView.querySelector('#chat-input');
+            if (chatInput && chatInput.value.trim()) {
+                saveMessageToLocalStorage(chatInput.value.trim(), true);
+            }
+        };
     });
 </script>
 </body>
