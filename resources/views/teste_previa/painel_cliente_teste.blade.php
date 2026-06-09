@@ -113,6 +113,7 @@
             }
         }
     </script>
+    <script src="{{ asset('js/mensagens-sala.js') }}" defer></script>
 
     <style>
         :root{
@@ -292,6 +293,7 @@
             box-shadow: 2px 2px 0px 0px #101415;
         }
     </style>
+    <script src="{{ asset('js/proposta.js') }}" defer></script>
 </head>
 
 <body class="font-body-md text-body-md text-on-primary-fixed min-h-screen flex overflow-x-hidden">
@@ -1809,18 +1811,14 @@
                 <p class="font-bold text-background">#1055</p>
                 </div>
                 </div>
-                <div class="flex justify-end gap-4 mt-8">
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        check_circle
-    </span>
-</button>
+                <div class="flex justify-end gap-4 mt-8 divDosIcones">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
+  </button>
 
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        cancel
-    </span>
-</button>
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
+  </button>
 </div>
                 </div>
                 <!-- Card 3 -->
@@ -1849,7 +1847,7 @@
                 </div>
                 </div>
                 <!-- Card 4 -->
-                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div id="card4-proposta" class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
                 <div class="flex justify-between items-start mb-6">
                 <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Manutenção de Banco de Dados e-Commerce</h2>
                 <span class="bg-[#FFD700] text-background px-4 py-1 rounded-full font-label-md text-label-md border border-background">Pendente</span>
@@ -1872,22 +1870,18 @@
                 <p class="font-bold text-background">#1062</p>
                 </div>
                 </div>
-                <div class="flex justify-end gap-4 mt-8">
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        check_circle
-    </span>
-</button>
+                <div class="flex justify-end gap-4 mt-8 divDosIcones">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
+  </button>
 
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        cancel
-    </span>
-</button>
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
+  </button>
 </div>
                 </div>
                 <!-- Card 5 -->
-                <div class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
+                <div id="card5-proposta" class="neo-card bg-white border-2 border-background rounded-xxl p-6 transition-all hover:scale-[1.01]">
                 <div class="flex justify-between items-start mb-6">
                 <h2 class="font-headline-md text-headline-md text-background max-w-[70%]">Criação de Website Institucional Responsivo</h2>
                 <span class="bg-[#FFD700] text-background px-4 py-1 rounded-full font-label-md text-label-md border border-background">Pendente</span>
@@ -1910,18 +1904,14 @@
                 <p class="font-bold text-background">#1070</p>
                 </div>
                 </div>
-                <div class="flex justify-end gap-4 mt-8">
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        check_circle
-    </span>
-</button>
+                <div class="flex justify-end gap-4 mt-8 divDosIcones">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
+  </button>
 
-<button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">
-        cancel
-    </span>
-</button>
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
+    <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
+  </button>
 </div>
                 </div>
                 
@@ -2134,7 +2124,7 @@
                         </div>
 
                         <!-- Chat Messages Area -->
-                        <div class="flex-1 overflow-y-auto bg-white p-margin-mobile md:p-gutter flex flex-col gap-6 relative">
+                        <div id="chat-messages" class="flex-1 overflow-y-auto bg-white p-margin-mobile md:p-gutter flex flex-col gap-6 relative">
 
                             <div class="flex justify-center my-4">
                             <div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-label-sm text-label-sm text-gray-600 text-center max-w-md shadow-sm">
@@ -2270,9 +2260,11 @@
                         <!-- Chat Composer Footer -->
                         <div class="bg-white border-t border-gray-200 p-3 md:p-4 shrink-0 z-20">
                             <div class="max-w-4xl mx-auto flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl p-2 focus-within:border-primary-fixed transition-colors shadow-sm">
-                            <button class="p-2 text-gray-500 hover:text-primary-fixed transition-colors rounded-lg hover:bg-gray-100">
-                                <span class="material-symbols-outlined">attach_file</span>
-                            </button>
+                            <label for="deliverFile"
+                            class="inline-flex p-2 text-gray-500 hover:text-primary-fixed transition-colors rounded-lg hover:bg-gray-100 cursor-pointer">
+                            <span class="material-symbols-outlined">attach_file</span>
+                            </label>
+                            <input id="deliverFile" type="file" class="hidden" />
                             <input id="chat-input" class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
                             <button id="chat-send-btn" class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
                                 <span class="material-symbols-outlined text-[20px]">send</span>
@@ -2627,6 +2619,7 @@
             }
 
             if (route === 'mensagens_sala') {
+                
                 const modal = spaView.querySelector('#deliverModal');
                 const openBtn = spaView.querySelector('#openDeliverModalBtn');
                 const closeBtn = spaView.querySelector('#closeDeliverModalBtn');
@@ -2636,6 +2629,7 @@
                 const dropzone = spaView.querySelector('#deliverDropzone');
                 const linkInput = spaView.querySelector('#deliverLink');
                 const notesTextarea = spaView.querySelector('#deliverNotes');
+                
                 
                 // Open modal
                 openBtn?.addEventListener('click', () => {
@@ -2987,6 +2981,11 @@
             }
         };
     });
+    document.getElementById("deliverFile").addEventListener("change", (e) => {
+  const file = e.target.files?.[0];
+  if (file) console.log("Selecionado:", file.name, file.size);
+});
+    
 </script>
 </body>
 </html>
