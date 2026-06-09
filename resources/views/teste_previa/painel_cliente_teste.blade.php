@@ -150,6 +150,7 @@
         .bg-secondary-container{ background: var(--secondary-container); }
         .text-on-secondary-container{ color: var(--on-secondary-container); }
         .text-on-primary-container{ color: var(--on-primary-container); }
+        .text-verde{ color: #CCFF00;}
         body { 
             background-color: #CCFF00; 
     
@@ -205,6 +206,7 @@
         /* Utilitário (usado no template Trabalhos) */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
 
         /* CSS da tela Carregar Saldo (mantido) */
         .volt-glow:hover { box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08); }
@@ -1015,10 +1017,6 @@
                         <span>Extrato</span>
                         </div>
 
-                        <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                        Voltar
-                        </button>
                     </div>
 
                     <!-- Header Section -->
@@ -1936,7 +1934,7 @@
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-background text-white rounded-lg font-label-md">1</button>
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">2</button>
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">3</button>
-                <span class="w-10 h-10 flex items-center justify-center font-bold">...</span>
+                <span class="w-10 h-10 flex items-center justify-center font-bold text-black">...</span>
                 </div>
                 <button class="neo-button bg-white border-2 border-background px-4 py-2 rounded-lg font-label-md text-label-md transition-all">Próximo</button>
                 </nav>
@@ -1999,15 +1997,7 @@
                     </div>
                 </div>
 
-                <!-- Search Input -->
-                <div class="mb-6 relative group">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-surface-variant group-focus-within:text-surface-container-lowest transition-colors">search</span>
-                    <input
-                    class="w-full bg-tertiary text-on-tertiary border border-transparent focus:border-surface-container-lowest rounded-xl py-3 pl-12 pr-4 text-body-md font-body-md shadow-sm outline-none transition-all placeholder:text-surface-variant"
-                    placeholder="Pesquisar conversas"
-                    type="text"
-                    />
-                </div>
+            
 
                 <!-- Inbox List -->
                 <div class="flex flex-col gap-2">
@@ -2127,8 +2117,8 @@
                                 <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
                                 <div class="flex items-center gap-2 mt-1">
                                 <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
-                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
-                                <span class="font-label-sm text-label-sm text-primary-fixed font-bold">Status: Ativo</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#CCFF00] text-verde"></span>
+                                <span class="font-label-sm text-label-sm  font-bold text-verde">Estado: <span id="estado_contrato">Ativo</span></span>
                                 </div>
                             </div>
                             </div>
@@ -2283,8 +2273,8 @@
                             <button class="p-2 text-gray-500 hover:text-primary-fixed transition-colors rounded-lg hover:bg-gray-100">
                                 <span class="material-symbols-outlined">attach_file</span>
                             </button>
-                            <input class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
-                            <button class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
+                            <input id="chat-input" class="flex-1 bg-transparent border-none focus:ring-0 text-black font-body-md text-body-md placeholder:text-gray-400" placeholder="Escreve uma mensagem..." type="text" />
+                            <button id="chat-send-btn" class="w-10 h-10 bg-primary-fixed text-black rounded-lg flex items-center justify-center hover:opacity-90 transition-opacity">
                                 <span class="material-symbols-outlined text-[20px]">send</span>
                             </button>
                             </div>
@@ -2642,52 +2632,33 @@
                 const closeBtn = spaView.querySelector('#closeDeliverModalBtn');
                 const cancelBtn = spaView.querySelector('#cancelDeliverModalBtn');
                 const confirmBtn = spaView.querySelector('#confirmDeliverBtn');
-                const requestRevisionBtn = spaView.querySelector('#requestRevisionBtn');
-                const openDisputeBtn = spaView.querySelector('#openDisputeBtn');
-                const starBtns = spaView.querySelectorAll('.star-btn');
-                const reviewComment = spaView.querySelector('#reviewComment');
-
-                // Estado de avaliação
-                let selectedRating = 0;
-
-                // Abrir modal
+                const fileInput = spaView.querySelector('#deliverFile');
+                const dropzone = spaView.querySelector('#deliverDropzone');
+                const linkInput = spaView.querySelector('#deliverLink');
+                const notesTextarea = spaView.querySelector('#deliverNotes');
+                
+                // Open modal
                 openBtn?.addEventListener('click', () => {
                     modal?.classList.remove('hidden');
                     modal?.classList.add('flex');
                 });
 
-                // Fechar modal (helper)
+                // Close modal helper
                 const closeModal = () => {
                     modal?.classList.add('hidden');
                     modal?.classList.remove('flex');
-                    selectedRating = 0;
-                    updateStars(0);
-                    if (reviewComment) reviewComment.value = '';
+                    if (notesTextarea) notesTextarea.value = '';
+                    if (linkInput) linkInput.value = '';
+                    if (fileInput) fileInput.value = '';
+                    if (dropzone) {
+                        const dropzoneText = dropzone.querySelector('p.font-headline-md');
+                        const dropzoneSubtext = dropzone.querySelector('p.font-body-md');
+                        const dropzoneIcon = dropzone.querySelector('span.material-symbols-outlined');
+                        if (dropzoneText) dropzoneText.textContent = 'Arraste ficheiros aqui ou clique para selecionar';
+                        if (dropzoneSubtext) dropzoneSubtext.textContent = 'PDF, ZIP, PNG, JPG (máx. 25MB)';
+                        if (dropzoneIcon) dropzoneIcon.textContent = 'upload';
+                    }
                 };
-
-                // Atualizar estrelas visualmente
-                const updateStars = (rating) => {
-                    starBtns.forEach((btn, index) => {
-                        const filled = index < rating;
-                        btn.style.fontVariationSettings = filled ? "'FILL' 1" : "'FILL' 0";
-                        btn.classList.toggle('text-[#D4FF00]', filled);
-                        btn.classList.toggle('text-on-surface-variant', !filled);
-                    });
-                };
-
-                // Interação de estrelas
-                starBtns.forEach((btn) => {
-                    btn.addEventListener('click', () => {
-                        selectedRating = parseInt(btn.dataset.value);
-                        updateStars(selectedRating);
-                    });
-                    btn.addEventListener('mouseenter', () => {
-                        updateStars(parseInt(btn.dataset.value));
-                    });
-                    btn.addEventListener('mouseleave', () => {
-                        updateStars(selectedRating);
-                    });
-                });
 
                 closeBtn?.addEventListener('click', closeModal);
                 cancelBtn?.addEventListener('click', closeModal);
@@ -2695,62 +2666,176 @@
                     if (e.target === modal) closeModal();
                 });
 
-                // Aprovar trabalho
+                // Dropzone file change handling
+                fileInput?.addEventListener('change', () => {
+                    if (fileInput.files && fileInput.files.length > 0) {
+                        const file = fileInput.files[0];
+                        const dropzoneText = dropzone.querySelector('p.font-headline-md');
+                        const dropzoneSubtext = dropzone.querySelector('p.font-body-md');
+                        const dropzoneIcon = dropzone.querySelector('span.material-symbols-outlined');
+                        
+                        if (dropzoneText) dropzoneText.textContent = `Ficheiro selecionado: ${file.name}`;
+                        if (dropzoneSubtext) {
+                            const sizeMB = (file.size / (1024 * 1024)).toFixed(2);
+                            dropzoneSubtext.textContent = `Tamanho: ${sizeMB} MB`;
+                        }
+                        if (dropzoneIcon) dropzoneIcon.textContent = 'check_circle';
+                    }
+                });
+
+                // Drag & Drop visual feedback
+                if (dropzone) {
+                    ['dragenter', 'dragover'].forEach(eventName => {
+                        dropzone.addEventListener(eventName, () => {
+                            dropzone.querySelector('div').classList.add('bg-slate-50', 'border-primary-fixed');
+                        });
+                    });
+                    ['dragleave', 'drop'].forEach(eventName => {
+                        dropzone.addEventListener(eventName, () => {
+                            dropzone.querySelector('div').classList.remove('bg-slate-50', 'border-primary-fixed');
+                        });
+                    });
+                }
+
+                // Confirm delivery action
                 confirmBtn?.addEventListener('click', () => {
-                    const originalHTML = confirmBtn.innerHTML;
+                    const notes = notesTextarea ? notesTextarea.value.trim() : '';
+                    const link = linkInput ? linkInput.value.trim() : '';
+                    const hasFile = fileInput && fileInput.files && fileInput.files.length > 0;
+                    const fileName = hasFile ? fileInput.files[0].name : '';
+
+                    if (!notes && !link && !hasFile) {
+                        alert('Por favor, adicione notas, um link ou um ficheiro para realizar a entrega.');
+                        return;
+                    }
+
+                    // Simulated upload delay
+                    const originalBtnHTML = confirmBtn.innerHTML;
                     confirmBtn.disabled = true;
-                    confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> A processar...';
+                    confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> A enviar...';
 
                     setTimeout(() => {
                         confirmBtn.disabled = false;
-                        confirmBtn.innerHTML = originalHTML;
+                        confirmBtn.innerHTML = originalBtnHTML;
 
-                        // Inserir bolha de aprovação na conversa
+                        // Insert new bubble in the chat messages container
                         const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
                         if (messagesContainer) {
                             const bubble = document.createElement('div');
-                            bubble.className = 'flex flex-col items-start gap-1 max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300';
-                            const ratingStars = selectedRating > 0
-                                ? Array.from({length: 5}, (_, i) =>
-                                    `<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: '${i < selectedRating ? 'FILL' : 'FILL'} ${i < selectedRating ? '1' : '0'}'; color: ${i < selectedRating ? '#D4FF00' : '#ccc'};">star</span>`
-                                  ).join('')
-                                : '';
-                            bubble.innerHTML = `
-                                <div class="flex items-end gap-2">
-                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
-                                        <img alt="Cliente" class="w-full h-full object-cover" src="https://ui-avatars.com/api/?name=Cliente&background=random" />
-                                    </div>
-                                    <div class="bg-green-50 text-black border border-green-200 p-4 rounded-2xl rounded-bl-sm shadow-sm">
-                                        <div class="flex items-center gap-2 text-green-700 mb-1">
-                                            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                            <span class="font-label-md text-sm font-bold uppercase tracking-wider">Entrega Aprovada</span>
+                            bubble.className = 'flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300';
+                            
+                            let attachmentsHTML = '';
+                            if (hasFile) {
+                                attachmentsHTML += `
+                                    <div class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3 w-full">
+                                        <span class="material-symbols-outlined text-slate-700">description</span>
+                                        <div class="flex-1 min-w-0 text-left">
+                                            <p class="font-label-md text-sm font-bold text-slate-900 truncate">${fileName}</p>
+                                            <p class="font-body-md text-xs text-slate-500">Documento de entrega</p>
                                         </div>
-                                        ${ratingStars ? `<div class="flex gap-0.5 mt-1">${ratingStars}</div>` : ''}
-                                        ${reviewComment && reviewComment.value.trim() ? `<p class="font-body-md text-sm text-gray-600 mt-2 italic">"${reviewComment.value.trim()}"</p>` : ''}
+                                    </div>
+                                `;
+                            }
+                            if (link) {
+                                attachmentsHTML += `
+                                    <div class="mt-3 p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center gap-3 w-full">
+                                        <span class="material-symbols-outlined text-slate-700">link</span>
+                                        <div class="flex-1 min-w-0 text-left">
+                                            <a href="${link}" target="_blank" class="font-label-md text-sm font-bold text-blue-600 hover:underline truncate block">${link}</a>
+                                            <p class="font-body-md text-xs text-slate-500 font-medium">Link externo do projeto</p>
+                                        </div>
+                                    </div>
+                                `;
+                            }
+
+                            bubble.innerHTML = `
+                                <div class="flex items-end gap-2 flex-row-reverse w-full">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                        <img alt="Freelancer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI" />
+                                    </div>
+                                    <div class="bg-white text-black border-2 border-black p-5 rounded-2xl rounded-tr-sm shadow-md w-full text-left">
+                                        <div class="flex items-center gap-2 text-green-600 mb-2">
+                                            <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            <span class="font-label-md text-sm font-bold uppercase tracking-wider">Trabalho Entregue</span>
+                                        </div>
+                                        ${notes ? `<p class="font-body-md text-body-md text-slate-800 italic bg-slate-50 p-3 rounded-lg border border-slate-100 mb-2">"${notes}"</p>` : ''}
+                                        ${attachmentsHTML}
                                     </div>
                                 </div>
-                                <span class="font-label-sm text-label-sm text-gray-500 ml-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                                <span class="font-label-sm text-label-sm text-gray-500 mr-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
                             `;
+                            
                             const spacer = messagesContainer.querySelector('.h-10.shrink-0');
-                            spacer ? messagesContainer.insertBefore(bubble, spacer) : messagesContainer.appendChild(bubble);
-                            messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+                            if (spacer) {
+                                messagesContainer.insertBefore(bubble, spacer);
+                            } else {
+                                messagesContainer.appendChild(bubble);
+                            }
+
+                            // Scroll to bottom
+                            messagesContainer.scrollTo({
+                                top: messagesContainer.scrollHeight,
+                                behavior: 'smooth'
+                            });
+                        }
+
+                        // Update Status Badge in Header
+                        const statusBadge = spaView.querySelector('span.text-primary-fixed.font-bold');
+                        if (statusBadge) {
+                            statusBadge.textContent = 'Status: Em Revisão';
+                            statusBadge.className = 'font-label-sm text-label-sm text-amber-600 font-bold';
                         }
 
                         closeModal();
-                        alert('Trabalho aprovado! O pagamento foi libertado ao freelancer.');
-                    }, 1000);
+                        alert('Entrega realizada com sucesso!');
+                    }, 1200);
                 });
 
-                // Solicitar revisões
-                requestRevisionBtn?.addEventListener('click', () => {
-                    closeModal();
-                    alert('Pedido de revisão enviado ao freelancer.');
-                });
+                // Implement chat composer functionality
+                const chatInput = spaView.querySelector('#chat-input');
+                const chatSendBtn = spaView.querySelector('#chat-send-btn');
+                const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
 
-                // Abrir disputa
-                openDisputeBtn?.addEventListener('click', () => {
-                    closeModal();
-                    alert('Disputa aberta. A equipa Skilla irá analisar o caso.');
+                const sendTextMessage = () => {
+                    const text = chatInput ? chatInput.value.trim() : '';
+                    if (!text) return;
+
+                    if (chatInput) chatInput.value = '';
+
+                    const bubble = document.createElement('div');
+                    bubble.className = 'flex flex-col items-end gap-1 self-end max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300 w-full';
+                    bubble.innerHTML = `
+                        <div class="flex items-end gap-2 flex-row-reverse w-full">
+                            <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                <img alt="Freelancer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVh9mjw_BNDKV0SQb7r7p6eg28yfNAcoDEVFV3yOooMbrvXBMvLQ1DgzGQ7Asu-RLUS8V8yJmetSFOkiDuuC7mSSWjhABZZ6B8k__8evJeWMGv6wjNtCdFKKAfojUlhvxoWJ1_lCqGX8Xq3wLfhfk74dE74jCej86W65UJshxxJgL-vOFxhRYZ0b8KoaQW0OXxU4sW--xTiKVQ-i_seqAaCrvQz1sJuEssSxojG1Vm5sCP7NYdeUmPfGXgFulzHQXKKCqlDlBCNUI" />
+                            </div>
+                            <div class="bg-white text-black border border-gray-200 p-4 rounded-2xl rounded-br-sm shadow-md text-left">
+                                <p class="font-body-md text-body-md">${text}</p>
+                            </div>
+                        </div>
+                        <span class="font-label-sm text-label-sm text-gray-500 mr-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                    `;
+
+                    const spacer = messagesContainer?.querySelector('.h-10.shrink-0');
+                    if (messagesContainer) {
+                        if (spacer) {
+                            messagesContainer.insertBefore(bubble, spacer);
+                        } else {
+                            messagesContainer.appendChild(bubble);
+                        }
+                        messagesContainer.scrollTo({
+                            top: messagesContainer.scrollHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                };
+
+                chatSendBtn?.addEventListener('click', sendTextMessage);
+                chatInput?.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        sendTextMessage();
+                    }
                 });
             }
 
@@ -2790,27 +2875,7 @@
         });
 
     })();
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-                
-                // Active state toggle
-                document.querySelectorAll('nav a').forEach(a => {
-                    a.classList.remove('bg-primary', 'text-white', 'border-2', 'border-primary');
-                    a.classList.add('text-on-surface-variant', 'hover:text-black');
-                });
-                this.classList.add('bg-primary', 'text-white', 'border-2', 'border-primary');
-                this.classList.remove('text-on-surface-variant', 'hover:text-black');
-            }
-        });
-    });
+    
 
     // Micro-interactions for neo-brutalism feel
         document.querySelectorAll('button, article').forEach(el => {
@@ -2869,6 +2934,28 @@
                 // profileCard.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
          });
         }
+
+        // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                
+                // Active state toggle
+                document.querySelectorAll('nav a').forEach(a => {
+                    a.classList.remove('bg-primary', 'text-white', 'border-2', 'border-primary');
+                    a.classList.add('text-on-surface-variant', 'hover:text-black');
+                });
+                this.classList.add('bg-primary', 'text-white', 'border-2', 'border-primary');
+                this.classList.remove('text-on-surface-variant', 'hover:text-black');
+            }
+        });
+    });
 </script>
 </body>
 </html>

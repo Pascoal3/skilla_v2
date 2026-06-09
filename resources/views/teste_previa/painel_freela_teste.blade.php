@@ -662,11 +662,6 @@
                         <a class="hover:underline" data-spa-link data-route="carteira" href="#carteira">Minha carteira</a> &gt;
                         <span>Comprar créditos</span>
                     </div>
-
-                    <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                        Voltar
-                    </button>
                     </div>
 
                     <!-- Wallet Balance Card -->

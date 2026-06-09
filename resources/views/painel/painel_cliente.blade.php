@@ -150,6 +150,7 @@
         .bg-secondary-container{ background: var(--secondary-container); }
         .text-on-secondary-container{ color: var(--on-secondary-container); }
         .text-on-primary-container{ color: var(--on-primary-container); }
+        .text-verde{ color: #CCFF00;}
         body { 
             background-color: #CCFF00; 
     
@@ -205,6 +206,7 @@
         /* Utilitário (usado no template Trabalhos) */
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
 
         /* CSS da tela Carregar Saldo (mantido) */
         .volt-glow:hover { box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08); }
@@ -1936,7 +1938,7 @@
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-background text-white rounded-lg font-label-md">1</button>
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">2</button>
                 <button class="w-10 h-10 flex items-center justify-center border-2 border-background bg-white text-background rounded-lg font-label-md hover:bg-gray-100">3</button>
-                <span class="w-10 h-10 flex items-center justify-center font-bold">...</span>
+                <span class="w-10 h-10 flex items-center justify-center font-bold text-black">...</span>
                 </div>
                 <button class="neo-button bg-white border-2 border-background px-4 py-2 rounded-lg font-label-md text-label-md transition-all">Próximo</button>
                 </nav>
@@ -1999,15 +2001,7 @@
                     </div>
                 </div>
 
-                <!-- Search Input -->
-                <div class="mb-6 relative group">
-                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-surface-variant group-focus-within:text-surface-container-lowest transition-colors">search</span>
-                    <input
-                    class="w-full bg-tertiary text-on-tertiary border border-transparent focus:border-surface-container-lowest rounded-xl py-3 pl-12 pr-4 text-body-md font-body-md shadow-sm outline-none transition-all placeholder:text-surface-variant"
-                    placeholder="Pesquisar conversas"
-                    type="text"
-                    />
-                </div>
+            
 
                 <!-- Inbox List -->
                 <div class="flex flex-col gap-2">
@@ -2127,8 +2121,8 @@
                                 <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
                                 <div class="flex items-center gap-2 mt-1">
                                 <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
-                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
-                                <span class="font-label-sm text-label-sm text-primary-fixed font-bold">Status: Ativo</span>
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#CCFF00] text-verde"></span>
+                                <span class="font-label-sm text-label-sm  font-bold text-verde">Estado: <span id="estado_contrato">Ativo</span></span>
                                 </div>
                             </div>
                             </div>
@@ -2269,11 +2263,11 @@
                             <div class="h-10 shrink-0"></div>
                         </div>
 
-                        <!-- Floating Action / Delivery Button -->
+                        <!-- Floating Action / Approve Button -->
                         <div class="absolute bottom-[80px] md:bottom-[90px] left-0 w-full flex justify-center px-4 pointer-events-none z-30">
                             <button id="openDeliverModalBtn" class="pointer-events-auto bg-[#D4FF00] text-black border border-transparent shadow-lg font-label-md text-label-md font-bold py-3 px-8 rounded-full flex items-center gap-2 hover:bg-[#b4d400] transition-colors group">
-                            <span class="material-symbols-outlined text-black group-hover:scale-110 transition-transform">task_alt</span>
-                            Entregar trabalho
+                            <span class="material-symbols-outlined text-black group-hover:scale-110 transition-transform">verified</span>
+                            Aprovar entrega
                             </button>
                         </div>
 
@@ -2291,58 +2285,111 @@
                         </div>
                         </main>
 
-                        <!-- MODAL: Entregar trabalho (inicialmente escondido) -->
-                        <div id="deliverModal" class="fixed inset-0 bg-black/70 backdrop-blur-[4px] z-[60] hidden items-center justify-center p-4 overflow-y-auto">
-                        <div class="bg-white text-black w-full max-w-[560px] my-8 rounded-modal border-[2px] border-black modal-shadow flex flex-col overflow-hidden animate-in fade-in zoom-in duration-300 max-h-[calc(100vh-2rem)] sm:max-h-[calc(100vh-4rem)] min-h-0">
-                            <div class="px-8 pt-8 pb-6 flex justify-between items-start">
-                            <div>
-                                <h1 class="font-headline-md text-[26px] font-extrabold leading-tight tracking-tight">Entregar trabalho</h1>
-                                <p class="font-body-md text-slate-500 text-sm mt-1">Envie notas e anexos para concluir a entrega.</p>
-                            </div>
-                            <button id="closeDeliverModalBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-colors group" type="button" aria-label="Fechar">
-                                <span class="material-symbols-outlined text-slate-900">close</span>
+                        <!-- MODAL: Aprovar Entrega -->
+                        <div id="deliverModal" class="modal-backdrop fixed inset-0 bg-black/60 backdrop-blur-[3px] z-[100] hidden items-center justify-center p-4">
+                        <div class="bg-white border border-outline-variant/30 shadow-[0_10px_40px_rgba(0,0,0,0.15)] rounded-xl w-full max-w-[520px] max-h-[92vh] overflow-hidden flex flex-col transition-all duration-300 transform scale-100">
+                            <!-- Header -->
+                            <div class="flex items-center justify-between px-6 pt-6 pb-4 shrink-0">
+                            <h2 class="font-headline-md text-headline-md text-black">Aprovação da Entrega</h2>
+                            <button id="closeDeliverModalBtn" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-slate-100 transition-all duration-300 ease-in-out group" type="button" aria-label="Fechar">
+                                <span class="material-symbols-outlined text-slate-900 transition-transform duration-300 ease-in-out group-hover:rotate-90"> close </span>
                             </button>
                             </div>
-
-                            <div class="px-8 flex-1 min-h-0 overflow-y-auto custom-scrollbar space-y-8 pb-8">
+                            <!-- Scrollable Body -->
+                            <div class="px-6 pb-6 overflow-y-auto custom-scrollbar flex-1 space-y-6">
+                            <!-- Submission Info -->
+                            <div class="flex items-center gap-2 text-on-surface-variant">
+                                <span class="material-symbols-outlined text-[18px] text-black">schedule</span>
+                                <span class="font-label-md text-label-md text-black">Entregue em 01/10/2025 às 14:32</span>
+                            </div>
+                            <!-- Message Box -->
+                            <div class="bg-grey border border-outline-variant/20 rounded-xl p-4">
+                                <p class="font-body-md text-secondary leading-relaxed text-black">
+                                Olá! Finalizei todas as telas do projeto conforme conversamos. O manual do cliente contém as instruções para exportação de assets e uso da biblioteca de componentes. Fico à disposição para eventuais ajustes.
+                                </p>
+                            </div>
+                            <!-- Files Section -->
                             <div class="space-y-3">
-                                <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">NOTAS DA ENTREGA (OPCIONAL)</label>
-                                <textarea class="w-full min-h-[120px] rounded-xl border-[2px] border-black p-4 font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
-                                placeholder="Descreva o que foi entregue, instruções de uso, credenciais de teste, próximos passos..."></textarea>
-                                <p class="font-body-md text-slate-500 text-[13px]">Estas notas serão enviadas ao cliente.</p>
-                            </div>
-
-                            <div class="space-y-6">
-                                <div class="space-y-3">
-                                <label class="font-label-sm uppercase tracking-[0.15em] text-slate-500 block">ANEXOS E/OU LINK</label>
-                                <div class="relative group cursor-pointer">
-                                    <input class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10" type="file" />
-                                    <div class="border-[2px] border-dashed border-black rounded-2xl p-8 flex flex-col items-center justify-center text-center bg-white group-hover:bg-slate-50 transition-all">
-                                    <span class="material-symbols-outlined text-[40px] mb-3 text-slate-900" style="font-variation-settings: 'wght' 300;">upload</span>
-                                    <p class="font-headline-md text-base font-bold">Arraste ficheiros aqui ou clique para selecionar</p>
-                                    <p class="font-body-md text-slate-500 text-[13px] mt-1">PDF, ZIP, PNG, JPG (máx. 25MB)</p>
+                                <h3 class="font-label-sm text-label-sm tracking-widest uppercase text-black">Ficheiros Entregues</h3>
+                                <div class="space-y-2">
+                                <!-- File Row 1 -->
+                                <div class="flex items-center justify-between p-3 bg-[#f8f9fa] rounded-lg border border-outline-variant/20">
+                                    <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white border border-outline-variant/20 rounded">
+                                        <span class="material-symbols-outlined text-black">picture_as_pdf</span>
                                     </div>
+                                    <div>
+                                        <p class="font-label-md text-label-md font-bold text-black">Projeto_Final.pdf</p>
+                                        <p class="font-label-sm text-label-sm text-black">2.4 MB</p>
+                                    </div>
+                                    </div>
+                                    <button class="px-3 py-1.5 border border-outline-variant/40 rounded-md font-label-sm text-label-sm text-secondary bg-surface-container-high transition-colors">Visualizar</button>
                                 </div>
+                                <!-- File Row 2 -->
+                                <div class="flex items-center justify-between p-3 bg-[#f8f9fa] rounded-lg border border-outline-variant/20">
+                                    <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white border border-outline-variant/20 rounded">
+                                        <span class="material-symbols-outlined text-black">image</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-md text-label-md text-black font-bold">Mockups_Entrega.png</p>
+                                        <p class="font-label-sm text-label-sm text-black">1.8 MB</p>
+                                    </div>
+                                    </div>
+                                    <button class="px-3 py-1.5 border border-outline-variant/40 rounded-md font-label-sm text-label-sm text-secondary bg-surface-container-high transition-colors">Visualizar</button>
                                 </div>
-
-                                <div class="space-y-3">
-                                <div class="relative flex items-center">
-                                    <span class="material-symbols-outlined absolute left-4 text-slate-400">link</span>
-                                    <input class="w-full h-[56px] pl-12 pr-4 rounded-xl border-[2px] border-black font-body-md focus:ring-0 focus:border-primary-container transition-colors placeholder:text-slate-400"
-                                    placeholder="Cole um link (Google Drive, GitHub, Figma...)" type="url" />
+                                <!-- File Row 3 -->
+                                <div class="flex items-center justify-between p-3 bg-[#f8f9fa] rounded-lg border border-outline-variant/20">
+                                    <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 flex items-center justify-center bg-white border border-outline-variant/20 rounded">
+                                        <span class="material-symbols-outlined text-black">description</span>
+                                    </div>
+                                    <div>
+                                        <p class="font-label-md text-label-md text-black font-bold">Manual_do_Cliente.pdf</p>
+                                        <p class="font-label-sm text-label-sm text-black">512 KB</p>
+                                    </div>
+                                    </div>
+                                    <button class="px-3 py-1.5 border border-outline-variant/40 rounded-md font-label-sm text-label-sm text-secondary bg-surface-container-high transition-colors">Visualizar</button>
                                 </div>
-                                <p class="font-body-md text-slate-500 text-[13px]">Certifique-se de que o link está acessível ao cliente.</p>
                                 </div>
                             </div>
+                            <!-- Evaluation Section -->
+                            <div class="pt-2">
+                                <div class="flex flex-col gap-1 mb-4">
+                                <h3 class="font-headline-md text-[18px] text-black">Avalie o Freelancer</h3>
+                                <p class="font-label-sm text-label-sm text-black">A aprovação irá liberar o valor retido ao Freelancer.</p>
+                                </div>
+                                <!-- Star Rating -->
+                                <div class="space-y-4">
+                                <div class="flex items-center gap-1" id="star-rating-container">
+                                    <button class="star-btn material-symbols-outlined text-[32px] text-black hover:scale-110 transition-transform cursor-pointer" data-value="1" style="font-variation-settings: 'FILL' 0;">star</button>
+                                    <button class="star-btn material-symbols-outlined text-[32px] text-black hover:scale-110 transition-transform cursor-pointer" data-value="2" style="font-variation-settings: 'FILL' 0;">star</button>
+                                    <button class="star-btn material-symbols-outlined text-[32px] text-black hover:scale-110 transition-transform cursor-pointer" data-value="3" style="font-variation-settings: 'FILL' 0;">star</button>
+                                    <button class="star-btn material-symbols-outlined text-[32px] text-black hover:scale-110 transition-transform cursor-pointer" data-value="4" style="font-variation-settings: 'FILL' 0;">star</button>
+                                    <button class="star-btn material-symbols-outlined text-[32px] text-black hover:scale-110 transition-transform cursor-pointer" data-value="5" style="font-variation-settings: 'FILL' 0;">star</button>
+                                </div>
+                                <textarea id="reviewComment" class="w-full bg-[#CCFF00] border-outline-variant/30 rounded-xl p-3 text-black-pure font-body-md focus:border-primary-fixed focus:ring-1 focus:ring-primary-fixed transition-all" placeholder="Escreva um comentário opcional..." rows="3"></textarea>
+                                </div>
                             </div>
-
-                            <div class="px-8 py-6 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50/50">
-                            <button id="cancelDeliverModalBtn" class="px-6 py-3 rounded-xl border-[2px] border-black bg-white font-headline-md text-sm font-bold hover:bg-slate-50 active:scale-95 transition-all" type="button">
+                            <!-- Action Buttons -->
+                            <div class="space-y-3 pt-4 border-t border-outline-variant/20">
+                                <button id="confirmDeliverBtn" class="w-full h-12 flex items-center justify-center gap-2 bg-[#CCFF00] text-on-primary font-bold rounded-xl glow-hover transition-all active:scale-95 shadow-sm">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                Aprovar trabalho
+                                </button>
+                                <button id="requestRevisionBtn" class="w-full h-12 flex items-center justify-center gap-2 bg-white border border-outline-variant/40 text-black font-semibold rounded-xl hover:bg-surface-container hover:text-white transition-all active:scale-95">
+                                Solicitar revisões
+                                </button>
+                                <button id="openDisputeBtn" class="w-full h-12 flex items-center justify-center gap-2 bg-[#ba1a1a] text-white font-semibold rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-sm">
+                                <span class="material-symbols-outlined">warning</span>
+                                Abrir disputa
+                                </button>
+                            </div>
+                            </div>
+                            <!-- Footer -->
+                            <div class="px-6 py-4 bg-surface-container-low border-t border-outline-variant/10 flex justify-end items-center shrink-0">
+                            <button id="cancelDeliverModalBtn" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" type="button">
                                 Cancelar
-                            </button>
-                            <button class="px-6 py-3 rounded-xl bg-black text-primary-container font-headline-md text-sm font-bold flex items-center gap-2 hover:brightness-125 active:scale-95 transition-all" type="button">
-                                <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">check</span>
-                                Confirmar entrega
                             </button>
                             </div>
                         </div>
@@ -2580,6 +2627,124 @@
             if (route === 'mensagens') {
                 spaView.querySelectorAll('[data-open-chat]').forEach(card => {
                     card.addEventListener('click', () => render('mensagens_sala'));
+                });
+            }
+
+            if (route === 'mensagens_sala') {
+                const modal = spaView.querySelector('#deliverModal');
+                const openBtn = spaView.querySelector('#openDeliverModalBtn');
+                const closeBtn = spaView.querySelector('#closeDeliverModalBtn');
+                const cancelBtn = spaView.querySelector('#cancelDeliverModalBtn');
+                const confirmBtn = spaView.querySelector('#confirmDeliverBtn');
+                const requestRevisionBtn = spaView.querySelector('#requestRevisionBtn');
+                const openDisputeBtn = spaView.querySelector('#openDisputeBtn');
+                const starBtns = spaView.querySelectorAll('.star-btn');
+                const reviewComment = spaView.querySelector('#reviewComment');
+
+                // Estado de avaliação
+                let selectedRating = 0;
+
+                // Abrir modal
+                openBtn?.addEventListener('click', () => {
+                    modal?.classList.remove('hidden');
+                    modal?.classList.add('flex');
+                });
+
+                // Fechar modal (helper)
+                const closeModal = () => {
+                    modal?.classList.add('hidden');
+                    modal?.classList.remove('flex');
+                    selectedRating = 0;
+                    updateStars(0);
+                    if (reviewComment) reviewComment.value = '';
+                };
+
+                // Atualizar estrelas visualmente
+                const updateStars = (rating) => {
+                    starBtns.forEach((btn, index) => {
+                        const filled = index < rating;
+                        btn.style.fontVariationSettings = filled ? "'FILL' 1" : "'FILL' 0";
+                        btn.classList.toggle('text-[#D4FF00]', filled);
+                        btn.classList.toggle('text-on-surface-variant', !filled);
+                    });
+                };
+
+                // Interação de estrelas
+                starBtns.forEach((btn) => {
+                    btn.addEventListener('click', () => {
+                        selectedRating = parseInt(btn.dataset.value);
+                        updateStars(selectedRating);
+                    });
+                    btn.addEventListener('mouseenter', () => {
+                        updateStars(parseInt(btn.dataset.value));
+                    });
+                    btn.addEventListener('mouseleave', () => {
+                        updateStars(selectedRating);
+                    });
+                });
+
+                closeBtn?.addEventListener('click', closeModal);
+                cancelBtn?.addEventListener('click', closeModal);
+                modal?.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+
+                // Aprovar trabalho
+                confirmBtn?.addEventListener('click', () => {
+                    const originalHTML = confirmBtn.innerHTML;
+                    confirmBtn.disabled = true;
+                    confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[20px]">sync</span> A processar...';
+
+                    setTimeout(() => {
+                        confirmBtn.disabled = false;
+                        confirmBtn.innerHTML = originalHTML;
+
+                        // Inserir bolha de aprovação na conversa
+                        const messagesContainer = spaView.querySelector('main div.overflow-y-auto');
+                        if (messagesContainer) {
+                            const bubble = document.createElement('div');
+                            bubble.className = 'flex flex-col items-start gap-1 max-w-[85%] md:max-w-[70%] animate-in fade-in slide-in-from-bottom duration-300';
+                            const ratingStars = selectedRating > 0
+                                ? Array.from({length: 5}, (_, i) =>
+                                    `<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: '${i < selectedRating ? 'FILL' : 'FILL'} ${i < selectedRating ? '1' : '0'}'; color: ${i < selectedRating ? '#D4FF00' : '#ccc'};">star</span>`
+                                  ).join('')
+                                : '';
+                            bubble.innerHTML = `
+                                <div class="flex items-end gap-2">
+                                    <div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-gray-200 bg-gray-100">
+                                        <img alt="Cliente" class="w-full h-full object-cover" src="https://ui-avatars.com/api/?name=Cliente&background=random" />
+                                    </div>
+                                    <div class="bg-green-50 text-black border border-green-200 p-4 rounded-2xl rounded-bl-sm shadow-sm">
+                                        <div class="flex items-center gap-2 text-green-700 mb-1">
+                                            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                            <span class="font-label-md text-sm font-bold uppercase tracking-wider">Entrega Aprovada</span>
+                                        </div>
+                                        ${ratingStars ? `<div class="flex gap-0.5 mt-1">${ratingStars}</div>` : ''}
+                                        ${reviewComment && reviewComment.value.trim() ? `<p class="font-body-md text-sm text-gray-600 mt-2 italic">"${reviewComment.value.trim()}"</p>` : ''}
+                                    </div>
+                                </div>
+                                <span class="font-label-sm text-label-sm text-gray-500 ml-10">${new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</span>
+                            `;
+                            const spacer = messagesContainer.querySelector('.h-10.shrink-0');
+                            spacer ? messagesContainer.insertBefore(bubble, spacer) : messagesContainer.appendChild(bubble);
+                            messagesContainer.scrollTo({ top: messagesContainer.scrollHeight, behavior: 'smooth' });
+                        }
+
+                        closeModal();
+                        alert('Trabalho aprovado! O pagamento foi libertado ao freelancer.');
+                    }, 1000);
+                });
+
+                // Solicitar revisões
+                requestRevisionBtn?.addEventListener('click', () => {
+                    closeModal();
+                    alert('Pedido de revisão enviado ao freelancer.');
+                });
+
+                // Abrir disputa
+                openDisputeBtn?.addEventListener('click', () => {
+                    closeModal();
+                    alert('Disputa aberta. A equipa Skilla irá analisar o caso.');
                 });
             }
 
