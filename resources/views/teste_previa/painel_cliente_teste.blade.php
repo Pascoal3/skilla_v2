@@ -390,7 +390,7 @@
     </header>
 
     <!-- Dashboard Content -->
-    <div class="flex-1 p-container-padding-mobile md:p-container-padding-desktop flex flex-col gap-8 pb-20">
+    <div flex-1 px-container-padding-mobile md:px-container-padding-desktop pb-20 flex flex-col gap-8">
 
         <!-- SPA VIEWPORT -->
         <section id="spa-view" class="bg-[#CCFF00] w-full"></section>
@@ -2529,7 +2529,529 @@
             </div>
         `;
 
+App.templates.publicar_trabalho_step_1 = `
+  <div id="view-publicar-trabalho-step-1" style="margin:0; padding:0; min-height:100vh; font-family:'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; color:#000; box-sizing:border-box;">
+    
+    <!-- CSS local do template (escopado pelo id) -->
+        <style>
+        #view-publicar-trabalho-step-1, 
+        #view-publicar-trabalho-step-1 * { box-sizing: border-box; }
+
+        /* Variáveis para facilitar ajuste ao teu layout */
+        #view-publicar-trabalho-step-1{
+            --sidebar-w: 300px;     /* ajusta aqui se a sidebar tiver outra largura */
+            --maxw: 1100px;
+            --pad-x: 40px;
+
+            --lime: #CCFF00;
+            --black: #000000;
+            --white: #ffffff;
+            --muted: rgba(0,0,0,.65);
+        }
+
+        #view-publicar-trabalho-step-1 .content-shell{
+            min-height: 100vh;
+            background: var(--lime);
+            position: relative;
+            padding-bottom: 116px; /* espaço para footer fixo */
+        }
+
+        #view-publicar-trabalho-step-1 .content-header{
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--lime);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+
+        #view-publicar-trabalho-step-1 .content-header__inner{
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 24px var(--pad-x);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+        }
+
+        #view-publicar-trabalho-step-1 .brand{
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        #view-publicar-trabalho-step-1 .link-btn{
+            border:0;
+            background:transparent;
+            color: rgba(0,0,0,.8);
+            font-weight:700;
+            cursor:pointer;
+            font-size:14px;
+            text-transform:uppercase;
+            padding:0;
+        }
+
+        #view-publicar-trabalho-step-1 .content-main{
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 60px var(--pad-x);
+        }
+
+        #view-publicar-trabalho-step-1 .step-grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap:40px;
+            align-items:start;
+        }
+
+        #view-publicar-trabalho-step-1 .step-meta{
+            display:inline-flex;
+            align-items:center;
+            gap:12px;
+            font-weight:700;
+            font-size:14px;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .step-count{
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--black);
+            color: var(--lime);
+        }
+
+        #view-publicar-trabalho-step-1 .step-title{
+            margin: 24px 0 20px;
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+
+        #view-publicar-trabalho-step-1 .step-desc{
+            margin:0;
+            font-size:18px;
+            line-height:1.5;
+            color: var(--muted);
+            max-width: 40ch;
+        }
+
+        #view-publicar-trabalho-step-1 .step-form{
+            display:flex;
+            flex-direction:column;
+            gap:24px;
+        }
+
+        #view-publicar-trabalho-step-1 .field__label{
+            display:block;
+            font-size:15px;
+            font-weight:800;
+            margin-bottom:12px;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .editor{
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        #view-publicar-trabalho-step-1 .editor__editable{
+            min-height: 80px;
+            outline:none;
+            font-size:18px;
+            font-weight:600;
+            line-height:1.4;
+        }
+
+        #view-publicar-trabalho-step-1 .wavy-error{
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #FF3B30;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+        }
+
+        #view-publicar-trabalho-step-1 .hint{
+            display:flex;
+            align-items:flex-start;
+            gap:12px;
+            margin-top:16px;
+            color: var(--black);
+            font-size:14px;
+            font-weight:600;
+        }
+
+        #view-publicar-trabalho-step-1 .hint__icon{
+            width:24px;
+            height:24px;
+            display:grid;
+            place-items:center;
+            border-radius:6px;
+            background: var(--black);
+            color: var(--lime);
+            flex: 0 0 auto;
+        }
+
+        #view-publicar-trabalho-step-1 .examples{
+            margin-top: 8px;
+            background: rgba(255,255,255,.5);
+            border: 2px solid var(--black);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__title{
+            margin:0 0 16px;
+            font-size:14px;
+            font-weight:900;
+            text-transform:uppercase;
+            letter-spacing:.05em;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list{
+            margin:0;
+            padding-left:0;
+            list-style:none;
+            color: var(--black);
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list li{
+            position:relative;
+            padding-left:24px;
+            font-size:15px;
+            font-weight:600;
+            line-height:1.4;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list li span.bullet{
+            position:absolute;
+            left:0;
+            font-weight:900;
+        }
+
+        /* Footer fixo limitado ao content (não invade sidebar) */
+        #view-publicar-trabalho-step-1 .content-footer{
+            position: fixed;
+            bottom: 0;
+            left: var(--sidebar-w);
+            width: calc(100% - var(--sidebar-w));
+            background: var(--lime);
+            border-top: 2px solid var(--black);
+            z-index: 20;
+        }
+
+        #view-publicar-trabalho-step-1 .progress{
+            height: 8px;
+            background: rgba(0,0,0,.1);
+        }
+
+        #view-publicar-trabalho-step-1 .progress__bar{
+            width: 20%;
+            height: 100%;
+            background: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .content-footer__inner{
+            height: 80px;
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 var(--pad-x);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap: 12px;
+        }
+
+        #view-publicar-trabalho-step-1 .btn{
+            height: 48px;
+            padding: 0 32px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            border: 2px solid var(--black);
+            text-transform: uppercase;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            background: transparent;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .btn--primary{
+            background: var(--black);
+            color: var(--lime);
+        }
+
+        /* Responsivo */
+        @media (max-width: 899px) {
+            #view-publicar-trabalho-step-1 .content-shell { margin-left: 0; }
+            #view-publicar-trabalho-step-1 .content-footer { left: 0; width: 100%; }
+            #view-publicar-trabalho-step-1 .content-main { padding: 40px 20px; }
+            #view-publicar-trabalho-step-1{ --pad-x: 20px; }
+        }
+        @media (min-width: 1024px) {
+            #view-publicar-trabalho-step-1 .step-grid{
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            }
+        }
+        </style>
+
+    <div class="content-shell">
+
+      <main class="content-main">
+        <div class="step-grid">
+          <!-- Coluna esquerda -->
+          <section class="step-info">
+            <div class="step-meta">
+              <span class="step-count">1/5</span>
+              <span class="step-label">Publicação de vaga</span>
+            </div>
+
+            <h1 class="step-title">Vamos começar com um título forte.</h1>
+
+            <p class="step-desc">
+              Isso ajuda sua publicação a se destacar para os candidatos certos. É a primeira coisa que eles verão,
+              portanto, seja descritivo o suficiente.
+            </p>
+          </section>
+
+          <!-- Coluna direita -->
+          <section class="step-form">
+            <div class="field">
+              <label class="field__label" for="job-title">
+                Escreva um título para sua publicação de vaga
+              </label>
+
+              <div class="editor" aria-label="Título da vaga">
+                <div class="editor__editable" contenteditable="true" id="job-title" spellcheck="false">
+                  Ex: Designer de UI/UX que conecta pessoas usando sites
+                  <span class="wavy-error">magistrais</span>
+                </div>
+              </div>
+
+              <div class="hint">
+                <span class="hint__icon" aria-hidden="true">✦</span>
+                <span class="hint__text">Vamos combiná-lo com candidatos especializados em Design UX/UI.</span>
+              </div>
+            </div>
+
+            <div class="examples">
+              <h3 class="examples__title">Exemplos de títulos</h3>
+              <ul class="examples__list">
+                <li><span class="bullet">→</span> Desenvolver site WordPress para empresa de contabilidade</li>
+                <li><span class="bullet">→</span> Experiência em Realidade Aumentada necessária para aplicativo iOS</li>
+                <li><span class="bullet">→</span> Desenvolvedor necessário para atualizar a UI do painel SaaS</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer fixo limitado ao content -->
+      <footer class="content-footer">
+        <div class="progress">
+          <div class="progress__bar"></div>
+        </div>
+
+        <div class="content-footer__inner">
+          <button class="btn btn--ghost" type="button">Voltar</button>
+          <button class="btn btn--primary" type="button">Próximo: Habilidades</button>
+        </div>
+      </footer>
+    </div>
+  </div>
+`;
+
+App.templates.publicar_trabalho_step_2 = `
+  <div id="view-publicar-trabalho-step-2" style="font-family:'Space Grotesk', sans-serif; background-color:#111; margin:0; padding:0; min-height:100vh; color:#000000; box-sizing:border-box;">
+    
+    <style>
+      #view-publicar-trabalho-step-2,
+      #view-publicar-trabalho-step-2 * {
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 1024px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-main {
+          grid-template-columns: 1fr !important;
+          gap: 48px !important;
+        }
+      }
+
+      @media (max-width: 899px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-shell {
+          margin-left: 0 !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer {
+          left: 0 !important;
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-header,
+        #view-publicar-trabalho-step-2 .publicar-step-2-main {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-shell {
+          padding-bottom: 150px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer {
+          height: auto !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 12px !important;
+          padding: 16px 20px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner button {
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-recommended {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+        }
+      }
+    </style>
+
+    <div class="publicar-step-2-shell" style="margin-left:300px; min-height:100vh; background-color:#CCFF00; position:relative; padding-bottom:88px; display:flex; flex-direction:column; box-sizing:border-box;">
+      
+      <header class="publicar-step-2-header" style="padding:28px 40px; display:flex; justify-content:space-between; align-items:center; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+        <div style="font-weight:800; font-size:24px; letter-spacing:-0.02em;">SKILLA</div>
+        <button style="background:none; border:none; font-weight:700; font-size:14px; cursor:pointer; text-transform:uppercase; font-family:inherit;">Sair</button>
+      </header>
+
+      <main class="publicar-step-2-main" style="max-width:1200px; width:100%; margin:0 auto; padding:40px; display:grid; grid-template-columns:5fr 7fr; gap:80px; flex:1; box-sizing:border-box;">
         
+        <!-- Coluna Esquerda -->
+        <section style="display:flex; flex-direction:column; gap:24px; box-sizing:border-box;">
+          <div style="display:flex; align-items:center; gap:12px; font-weight:700; font-size:14px;">
+            <span style="background:#000000; color:#CCFF00; padding:6px 12px; border-radius:999px;">2/5</span>
+            <span>Publicação de vaga</span>
+          </div>
+
+          <h1 style="font-size:48px; font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin:0;">
+            Quais são as principais competências necessárias para o seu projeto?
+          </h1>
+
+          <p style="font-size:18px; line-height:1.6; color:rgba(0, 0, 0, 0.65); max-width:400px; margin:0;">
+            Isso ajuda a encontrar os talentos certos. Pode adicionar até 10 competências.
+          </p>
+        </section>
+
+        <!-- Coluna Direita -->
+        <section style="display:flex; flex-direction:column; gap:32px; box-sizing:border-box;">
+          
+          <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+            <label for="competencias-input" style="font-size:14px; font-weight:800; text-transform:uppercase;">
+              Procure ou adicione competências
+            </label>
+
+            <div style="position:relative; box-sizing:border-box;">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px;" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+              </svg>
+              <input id="competencias-input" type="text" placeholder="Ex: Figma, React, Prototipagem" style="width:100%; height:56px; background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:0 48px; font-size:16px; font-family:inherit; outline:none; box-sizing:border-box;" />
+            </div>
+          </div>
+
+          <div class="publicar-step-2-recommended" style="background:rgba(255, 255, 255, 0.5); border:2px solid #000000; border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px; box-sizing:border-box;">
+            <div style="width:48px; height:48px; background:#FFFFFF; border:2px solid #000000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">2/3</div>
+            <p style="flex:1; font-size:14px; font-weight:600; line-height:1.4; margin:0;">
+              2 de 3 competências recomendadas selecionadas
+            </p>
+            <button style="background:transparent; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-weight:800; font-size:12px; text-transform:uppercase; cursor:pointer; font-family:inherit; box-sizing:border-box;">
+              Sugerir com IA
+            </button>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:8px; box-sizing:border-box;">
+            <div style="background:#000000; color:#CCFF00; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+              Design de Interface <span style="cursor:pointer; font-size:18px; line-height:1;">×</span>
+            </div>
+            <div style="background:#000000; color:#CCFF00; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+              UX Design <span style="cursor:pointer; font-size:18px; line-height:1;">×</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:24px; box-sizing:border-box;">
+            
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Design de Interface</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                  Design Mobile
+                  <span style="background:#CCFF00; color:#000000; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid #000000; font-weight:800;">98% match</span>
+                </div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                  Web Design
+                  <span style="background:#CCFF00; color:#000000; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid #000000; font-weight:800;">98% match</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Design de Experiência</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Arquitetura de Informação</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Testes de Usabilidade</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">User Research</div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Ferramentas</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Figma</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Adobe XD</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Sketch</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+      <footer class="publicar-step-2-footer" style="position:fixed; bottom:0; left:300px; width:calc(100% - 300px); height:88px; background-color:#CCFF00; border-top:2px solid #000000; display:flex; flex-direction:column; z-index:100; box-sizing:border-box;">
+        <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
+          <div style="height:8px; background:#000000; width:40%;"></div>
+        </div>
+
+        <div class="publicar-step-2-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+          <button style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
+            Voltar
+          </button>
+
+          <button style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
+            Próximo: Escopo
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+`;
         
 
         // Funções de Apoio SPA
