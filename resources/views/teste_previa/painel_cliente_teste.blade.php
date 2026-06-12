@@ -1292,7 +1292,7 @@
 
         App.templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20 w-full">
-                <main class="p-8 pl-0 lg:p-12 lg:pl-0">
+                <main class="w-full mx-auto px-margin-mobile md:px-gutter pt-8 pb-20">
                     <!-- Header Section -->
                     <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-[50px]">
                     <div>
@@ -2857,15 +2857,20 @@ App.templates.publicar_trabalho_step_1 = `
 
       <!-- Footer fixo limitado ao content -->
       <footer class="content-footer">
-        <div class="progress">
-          <div class="progress__bar"></div>
-        </div>
+  <div class="progress">
+    <div class="progress__bar"></div>
+  </div>
 
-        <div class="content-footer__inner">
-          <button class="btn btn--ghost" type="button">Voltar</button>
-          <button class="btn btn--primary" type="button">Próximo: Habilidades</button>
-        </div>
-      </footer>
+  <div class="content-footer__inner">
+    <button class="btn btn--ghost" type="button" data-route="os_meus_trabalhos">
+      Voltar
+    </button>
+
+    <button class="btn btn--primary" type="button" data-route="publicar_trabalho_step_2">
+      Próximo: Habilidades
+    </button>
+  </div>
+</footer>
     </div>
   </div>
 `;
@@ -2935,12 +2940,9 @@ App.templates.publicar_trabalho_step_2 = `
       }
     </style>
 
-    <div class="publicar-step-2-shell" style="margin-left:300px; min-height:100vh; background-color:#CCFF00; position:relative; padding-bottom:88px; display:flex; flex-direction:column; box-sizing:border-box;">
+    <div class="publicar-step-2-shell" style=" min-height:100vh; background-color:#CCFF00; position:relative; padding-bottom:88px; display:flex; flex-direction:column; box-sizing:border-box;">
       
-      <header class="publicar-step-2-header" style="padding:28px 40px; display:flex; justify-content:space-between; align-items:center; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
-        <div style="font-weight:800; font-size:24px; letter-spacing:-0.02em;">SKILLA</div>
-        <button style="background:none; border:none; font-weight:700; font-size:14px; cursor:pointer; text-transform:uppercase; font-family:inherit;">Sair</button>
-      </header>
+      
 
       <main class="publicar-step-2-main" style="max-width:1200px; width:100%; margin:0 auto; padding:40px; display:grid; grid-template-columns:5fr 7fr; gap:80px; flex:1; box-sizing:border-box;">
         
@@ -3035,20 +3037,26 @@ App.templates.publicar_trabalho_step_2 = `
       </main>
 
       <footer class="publicar-step-2-footer" style="position:fixed; bottom:0; left:300px; width:calc(100% - 300px); height:88px; background-color:#CCFF00; border-top:2px solid #000000; display:flex; flex-direction:column; z-index:100; box-sizing:border-box;">
-        <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
-          <div style="height:8px; background:#000000; width:40%;"></div>
-        </div>
+  <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
+    <div style="height:8px; background:#000000; width:40%;"></div>
+  </div>
 
-        <div class="publicar-step-2-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
-          <button style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
-            Voltar
-          </button>
+  <div class="publicar-step-2-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_1"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
+      Voltar
+    </button>
 
-          <button style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
-            Próximo: Escopo
-          </button>
-        </div>
-      </footer>
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_3"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
+      Próximo: Escopo
+    </button>
+  </div>
+</footer>
     </div>
   </div>
 `;
