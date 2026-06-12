@@ -2529,73 +2529,8 @@
             </div>
         `;
 
-        App.templates.publicar_trabalho_step_1 = `
-             <div id="view-publicar-trabalho-step-1" class="flex-1 w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-gap pb-[120px]">
-                <div class="grid grid-cols-1 md:grid-cols-12 gap-section-gap md:gap-gutter">
-                    <!-- Left Column: Instructions -->
-                    <div class="md:col-span-5 flex flex-col gap-6">
-                    <div class="inline-flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
-                    <span class="text-primary-container">1/5</span>
-                    <span>Publicação de vaga</span>
-                    </div>
-                    <h1 class="font-headline-xl text-headline-xl text-on-background text-balance">
-                                        Vamos começar com um título forte.
-                                    </h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant text-pretty">
-                                        Isso ajuda sua publicação a se destacar para os candidatos certos. É a primeira coisa que eles verão, portanto, seja descritivo o suficiente.
-                                    </p>
-                    </div>
-                    <!-- Right Column: Form -->
-                    <div class="md:col-span-7 flex flex-col gap-8 lg:pl-12">
-                    <!-- Input Group -->
-                    <div class="flex flex-col gap-3">
-                    <label class="font-label-md text-label-md text-on-background" for="job-title">
-                                            Escreva um título para sua publicação de vaga
-                                        </label>
-                    <!-- Rich Text Input Simulation for Spellcheck Underline -->
-                    <div class="w-full border border-outline-variant rounded-lg p-4 bg-surface-container-lowest focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all shadow-sm">
-                    <div class="font-body-md text-body-md text-on-background outline-none min-h-[48px]" contenteditable="true" id="job-title" spellcheck="false">
-                                                Designer de UI/UX que conecta pessoas usando sites <span class="decoration-error decoration-wavy underline decoration-2 underline-offset-4">magistrais</span>
-                    </div>
-                    </div>
-                    <!-- Dynamic Feedback -->
-                    <div class="flex items-start gap-2 mt-1">
-                    <span class="material-symbols-outlined text-primary-container text-[20px] leading-tight">auto_awesome</span>
-                    <span class="font-body-sm text-body-sm text-on-surface-variant">
-                                                Vamos combiná-lo com candidatos especializados em Design UX/UI.
-                                            </span>
-                    </div>
-                    </div>
-                    <!-- Examples Section -->
-                    <div class="flex flex-col gap-4 mt-4 pt-8 border-t border-surface-variant">
-                    <h3 class="font-label-md text-label-md text-on-background">Exemplos de títulos</h3>
-                    <ul class="flex flex-col gap-3 font-body-md text-body-md text-on-surface-variant list-disc pl-5 marker:text-outline-variant">
-                    <li>Desenvolver site WordPress para empresa de contabilidade</li>
-                    <li>Experiência em Realidade Aumentada necessária para aplicativo iOS</li>
-                    <li>Desenvolvedor necessário para atualizar a UI do painel SaaS</li>
-                    </ul>
-                    </div>
-                    </div>
-                </div>
-                <footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant z-50">
-                    <!-- Progress Bar -->
-                    <div class="w-full h-1 bg-surface-variant">
-                    <div class="h-full bg-primary-container w-1/5 transition-all duration-500 ease-out"></div>
-                    </div>
-                    <!-- Actions -->
-                    <div class="w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
-                    <!-- Ghost Button -->
-                    <button class="flex items-center justify-center gap-2 px-6 py-[10px] rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors duration-200">
-                                    Voltar
-                                </button>
-                    <!-- Primary Button -->
-                    <button class="flex items-center justify-center gap-2 px-6 py-[10px] rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md hover:opacity-90 hover:shadow-sm transition-all duration-200">
-                                    Próximo: Habilidades
-                                </button>
-                    </div>
-                </footer>
-             </div>
-        `;
+        
+        
 
         // Funções de Apoio SPA
         function setActiveLink(route) {
