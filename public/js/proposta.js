@@ -8,8 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   function getSpanEstado(card) {
-    // span do estado fica no topo do card, no header flex justify-between
-    return card.querySelector(".flex.justify-between span");
+    // no teu HTML: primeiro .flex.justify-between... contém o span "Pendente"
+    return card.querySelector(".flex.justify-between.items-start span");
   }
 
   function isPendente(card) {
@@ -18,44 +18,34 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function setEstado(card, texto, bgClass) {
-    const spanEstado = getSpanEstado(card);
-    if (!spanEstado) return;
+    const span = getSpanEstado(card);
+    if (!span) return;
 
-    spanEstado.className = "";
-    spanEstado.classList.add(bgClass, ...baseClasses);
-    spanEstado.textContent = texto;
+    span.className = ""; // zera classes antigas
+    span.classList.add(bgClass, ...baseClasses);
+    span.textContent = texto;
   }
 
   view.addEventListener("click", (e) => {
-    // detecta clique em qualquer um dos botões (mesmo clicando no <span> dentro)
+    // garante que pega clique no botão mesmo clicando no <span> do ícone
     const btn = e.target.closest("button");
     if (!btn) return;
 
     const card = btn.closest(".neo-card");
     if (!card) return;
 
-    // garante que é um dos botões de ação (check/cancel)
-    const icon = btn.querySelector(".material-symbols-outlined");
-    const iconName = icon?.textContent?.trim();
+    const aceitar = btn.classList.contains("js-aceitar");
+    const rejeitar = btn.classList.contains("js-rejeitar");
+    if (!aceitar && !rejeitar) return;
 
-    const isAceitar = iconName === "check_circle";
-    const isRejeitar = iconName === "cancel";
-    if (!isAceitar && !isRejeitar) return;
-
-    // só atua se estiver pendente
     if (!isPendente(card)) return;
 
-    // muda estado
-    if (isAceitar) setEstado(card, "Aceito", "bg-[#4CAF50]");
-    if (isRejeitar) setEstado(card, "Rejeitado", "bg-[#FF5252]");
+    if (aceitar) setEstado(card, "Aceito", "bg-[#4CAF50]");
+    if (rejeitar) setEstado(card, "Rejeitado", "bg-[#FF5252]");
 
-    // ESCONDE A DIV DOS BOTÕES: normalmente é o pai direto do botão
-    const divIcones = btn.parentElement; // <div class="flex justify-end gap-4 mt-8">
-    if (divIcones) {
-      divIcones.classList.add("hidden"); // Tailwind
-      // alternativa: divIcones.style.display = "none";
-    } else {
-      console.log("Não achei a div dos ícones para esconder.");
-    }
+    // esconde a div dos ícones (no teu HTML ela tem a classe divDosIcones)
+    const divIcones = card.querySelector(".divDosIcones");
+    if (divIcones) divIcones.classList.add("hidden");
+    // ou: divIcones.style.display = "none";
   });
 });

@@ -2487,6 +2487,64 @@
             </div>
         `;
 
+        App.templates.publicar_trabalho_step_1 = `
+  <main class="flex-1 w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-section-gap pb-[120px]">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-section-gap md:gap-gutter">
+      <div class="md:col-span-5 flex flex-col gap-6">
+        <div class="inline-flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+          <span class="text-primary-container">1/5</span>
+          <span>Publicação de trabalho</span>
+        </div>
+        <h1 class="font-headline-xl text-headline-xl text-on-background text-balance">
+          Vamos começar com um título forte.
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant text-pretty">
+          Escreve um título claro para atrair os candidatos certos.
+        </p>
+      </div>
+
+      <div class="md:col-span-7 flex flex-col gap-8 lg:pl-12">
+        <div class="flex flex-col gap-3">
+          <label class="font-label-md text-label-md text-on-background" for="wiz-title">
+            Escreva um título para sua publicação
+          </label>
+
+          <input
+            id="wiz-title"
+            type="text"
+            class="w-full border border-outline-variant rounded-lg p-4 bg-surface-container-lowest focus:border-primary focus:ring-1 focus:ring-primary transition-all shadow-sm"
+            placeholder="Ex.: Designer UI/UX para website"
+          />
+
+          <div id="wiz-title-error" class="text-error font-body-sm hidden">
+            O título é obrigatório.
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest border-t border-outline-variant z-50">
+    <div class="w-full h-1 bg-surface-variant">
+      <div class="h-full bg-primary-container w-1/5 transition-all duration-500 ease-out"></div>
+    </div>
+
+    <div class="w-full max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4 flex justify-between items-center">
+      <button
+        class="flex items-center justify-center gap-2 px-6 py-[10px] rounded-full border border-primary text-primary font-label-md text-label-md hover:bg-surface-container-low transition-colors duration-200"
+        data-wiz-action="back">
+        Voltar
+      </button>
+
+      <button
+        class="flex items-center justify-center gap-2 px-6 py-[10px] rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md hover:opacity-90 hover:shadow-sm transition-all duration-200"
+        data-wiz-action="next">
+        Próximo
+      </button>
+    </div>
+  </footer>
+`;
+
         // Funções de Apoio SPA
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
@@ -2590,6 +2648,12 @@
                 spaView.querySelectorAll('[data-open-job]').forEach(btn => {
                     btn.addEventListener('click', () => render('trabalho_detalhe'));
                 });
+                spaView.querySelector('#btn-adicionar-trabalhos')
+                ?.addEventListener('click', () => render('publicar_trabalho_step_1'));
+                // mantém o que já tens
+                spaView.querySelectorAll('[data-open-job]').forEach(btn => {
+                    btn.addEventListener('click', () => render('trabalho_detalhe'));
+                });
             }
 
             if (route === 'trabalho_detalhe') {
@@ -2609,6 +2673,10 @@
                     alert('Proposta enviada com sucesso!');
                     render('propostas');
                 });
+            }
+
+            if (route === 'publicar_trabalho_step_1') {
+                WizardPublicarTrabalho.bind(); // ou binds diretos do step 1
             }
 
             // Lógica Mensagens

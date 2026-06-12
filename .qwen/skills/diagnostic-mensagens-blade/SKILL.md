@@ -1,5 +1,5 @@
 ---
-name: diagnostic_mensagens_blade
+name: diagnostic-mensagens-blade
 description: Diagnóstico e solução de problemas com envio de mensagens em diferentes templates Blade em aplicações Laravel/SPA
 source: auto-skill
 extracted_at: '2026-06-09T02:24:54.407Z'
