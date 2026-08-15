@@ -776,7 +776,7 @@
                         <label class="block text-gray-600 mb-4 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor (Kz)</label>
                         <div class="relative">
                         <input class="w-full bg-[#F9FAFB] border-2 border-black/5 rounded-xl p-4 text-[24px] leading-[32px] font-bold text-[#111827] focus:border-[#2F5BFF] focus:ring-0 transition-all outline-none"
-                                placeholder="0 Kz" type="text" value="2.000 Kz">
+                                placeholder="0 Kz" type="text" value="2.000">
                         <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#DC2626] flex items-center gap-1 text-[12px] leading-[16px] font-semibold">
                             <span class="material-symbols-outlined text-sm">error</span>
                             O valor mínimo é 2.000 Kz.
@@ -1859,7 +1859,7 @@
   </button>
 
   <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
-    <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
+    <span class="material-symbols-outlined group-hover:text-black transition-colors" data-url="{{ route('propostas.rejeitar', $proposta->id) }}">cancel</span>
   </button>
 </div>
                 </div>
@@ -1917,7 +1917,7 @@
     <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
   </button>
 
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar" data-url="{{ route('propostas.rejeitar', $proposta->id) }}">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
   </button>
 </div>
