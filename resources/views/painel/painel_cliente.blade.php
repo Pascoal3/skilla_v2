@@ -1854,11 +1854,11 @@
                 </div>
                 </div>
                 <div class="flex justify-end gap-4 mt-8 divDosIcones">
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar" data-url="{{ route('propostas.aceitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
   </button>
 
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar" data-url="{{ route('propostas.rejeitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
   </button>
 </div>
@@ -1913,11 +1913,11 @@
                 </div>
                 </div>
                 <div class="flex justify-end gap-4 mt-8 divDosIcones">
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar" data-url="{{ route('propostas.aceitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
   </button>
 
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar" data-url="{{ route('propostas.rejeitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
   </button>
 </div>
@@ -1947,11 +1947,11 @@
                 </div>
                 </div>
                 <div class="flex justify-end gap-4 mt-8 divDosIcones">
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar" data-url="{{ route('propostas.aceitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-aceitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">check_circle</span>
   </button>
 
-  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar" data-url="{{ route('propostas.rejeitar', $proposta->id) }}">
+  <button class="p-2 neo-border rounded-lg bg-white hover:bg-[#CCFF00] transition-colors group js-rejeitar">
     <span class="material-symbols-outlined group-hover:text-black transition-colors">cancel</span>
   </button>
 </div>

@@ -2,14 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const view = document.getElementById("view-propostas-freela");
   if (!view) return;
 
-  const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
-
   const baseClasses = [
     "text-white", "px-4", "py-1", "rounded-full",
     "font-label-md", "text-label-md", "border", "border-background"
   ];
 
   function getSpanEstado(card) {
+    // no teu HTML: primeiro .flex.justify-between... contém o span "Pendente"
     return card.querySelector(".flex.justify-between.items-start span");
   }
 
@@ -22,17 +21,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const span = getSpanEstado(card);
     if (!span) return;
 
-    span.className = "";
+    span.className = ""; // zera classes antigas
     span.classList.add(bgClass, ...baseClasses);
     span.textContent = texto;
   }
 
-  view.addEventListener("click", async (e) => {
+  view.addEventListener("click", (e) => {
+    // garante que pega clique no botão mesmo clicando no <span> do ícone
     const btn = e.target.closest("button");
     if (!btn) return;
-
-    // Se por acaso estiver dentro de form/link, evita navegação/submit
-    e.preventDefault();
 
     const card = btn.closest(".neo-card");
     if (!card) return;
@@ -43,43 +40,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!isPendente(card)) return;
 
-    const url = btn.dataset.url;
-    if (!url) {
-      console.error("Faltou data-url no botão.");
-      return;
-    }
+    if (aceitar) setEstado(card, "Aceito", "bg-[#4CAF50]");
+    if (rejeitar) setEstado(card, "Rejeitado", "bg-[#FF5252]");
 
-    // trava para não clicar duas vezes
-    btn.disabled = true;
-
-    try {
-      const resp = await fetch(url, {
-        method: "POST",
-        headers: {
-          "X-CSRF-TOKEN": csrf,
-          "Accept": "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({}) // se precisar mandar algo, manda aqui
-      });
-
-      if (!resp.ok) {
-        // Laravel pode retornar 419 (CSRF), 403, 500 etc.
-        const txt = await resp.text();
-        throw new Error(`Erro ${resp.status}: ${txt}`);
-      }
-
-      // Atualiza UI só depois de salvar no backend
-      if (aceitar) setEstado(card, "Aceito", "bg-[#4CAF50]");
-      if (rejeitar) setEstado(card, "Rejeitado", "bg-[#FF5252]");
-
-      const divIcones = card.querySelector(".divDosIcones");
-      if (divIcones) divIcones.classList.add("hidden");
-
-    } catch (err) {
-      console.error(err);
-      btn.disabled = false; // libera de novo se falhou
-      alert("Não foi possível atualizar a proposta. Tente novamente.");
-    }
+    // esconde a div dos ícones (no teu HTML ela tem a classe divDosIcones)
+    const divIcones = card.querySelector(".divDosIcones");
+    if (divIcones) divIcones.classList.add("hidden");
+    // ou: divIcones.style.display = "none";
   });
 });
