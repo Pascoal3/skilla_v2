@@ -390,7 +390,7 @@
     </header>
 
     <!-- Dashboard Content -->
-    <div class="flex-1 p-container-padding-mobile md:p-container-padding-desktop flex flex-col gap-8 pb-20">
+    <div flex-1 px-container-padding-mobile md:px-container-padding-desktop pb-20 flex flex-col gap-8">
 
         <!-- SPA VIEWPORT -->
         <section id="spa-view" class="bg-[#CCFF00] w-full"></section>
@@ -427,6 +427,48 @@
             render: render
         };
 
+        window.jobPostingData = window.jobPostingData || {
+            step: 1,
+            title: ""
+        };
+        const WizardPublicarTrabalho = {
+        open() {
+            jobPostingData.step = 1;
+            render('publicar_trabalho_step_1');
+        },
+
+        bind() {
+            const titleEl = spaView.querySelector('#wiz-title');
+            const errEl = spaView.querySelector('#wiz-title-error');
+
+            // hidratar se já tiver valor
+            if (titleEl) titleEl.value = jobPostingData.title || '';
+
+            titleEl?.addEventListener('input', () => {
+            jobPostingData.title = titleEl.value;
+            if (errEl) errEl.classList.add('hidden');
+            });
+
+            spaView.querySelectorAll('[data-wiz-action="back"]').forEach(btn => {
+            btn.addEventListener('click', () => render('trabalhos'));
+            });
+
+            spaView.querySelectorAll('[data-wiz-action="next"]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const value = (titleEl?.value || '').trim();
+                if (!value) {
+                if (errEl) errEl.classList.remove('hidden');
+                titleEl?.focus();
+                return;
+                }
+                jobPostingData.title = value;
+
+                alert('Step 1 OK. Próximo passo ainda não implementado.');
+            });
+            });
+        }
+        };
+
         // Templates (Conteúdo Integral Restaurado)
         App.templates.inicio = `
             <div id="view-inicio" class="p-6 md:p-8 space-y-6 max-w-container-max mx-auto w-full pb-20">
@@ -436,6 +478,9 @@
                     <!-- ------------------------------------ -->
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-2">
                         <div>
+                        <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">
+                            Bom dia, [Nome] 👋
+                        </h2>
                         <p class="text-body-md font-body-md text-black-pure">
                             Tens <span class="span_numero font-semibold" id="greeting-new-proposals-count">0</span> propostas novas à espera de revisão.
                         </p>
@@ -1247,7 +1292,7 @@
 
         App.templates.trabalhos = `
             <div id="view-trabalhos" class="min-h-screen relative z-10 flex flex-col pb-20 w-full">
-                <main class="p-8 pl-0 lg:p-12 lg:pl-0">
+                <main class="w-full mx-auto px-margin-mobile md:px-gutter pt-8 pb-20">
                     <!-- Header Section -->
                     <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-[50px]">
                     <div>
@@ -2484,6 +2529,1690 @@
             </div>
         `;
 
+App.templates.publicar_trabalho_step_1 = `
+  <div id="view-publicar-trabalho-step-1" style="margin:0; padding:0; min-height:100vh; font-family:'Space Grotesk', ui-sans-serif, system-ui, -apple-system, sans-serif; color:#000; box-sizing:border-box;">
+    
+    <!-- CSS local do template (escopado pelo id) -->
+        <style>
+        #view-publicar-trabalho-step-1, 
+        #view-publicar-trabalho-step-1 * { box-sizing: border-box; }
+
+        /* Variáveis para facilitar ajuste ao teu layout */
+        #view-publicar-trabalho-step-1{
+            --sidebar-w: 300px;     /* ajusta aqui se a sidebar tiver outra largura */
+            --maxw: 1100px;
+            --pad-x: 40px;
+
+            --lime: #CCFF00;
+            --black: #000000;
+            --white: #ffffff;
+            --muted: rgba(0,0,0,.65);
+        }
+
+        #view-publicar-trabalho-step-1 .content-shell{
+            min-height: 100vh;
+            background: var(--lime);
+            position: relative;
+            padding-bottom: 116px; /* espaço para footer fixo */
+        }
+
+        #view-publicar-trabalho-step-1 .content-header{
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--lime);
+            border-bottom: 1px solid rgba(0,0,0,.06);
+        }
+
+        #view-publicar-trabalho-step-1 .content-header__inner{
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 24px var(--pad-x);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:16px;
+        }
+
+        #view-publicar-trabalho-step-1 .brand{
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+
+        #view-publicar-trabalho-step-1 .link-btn{
+            border:0;
+            background:transparent;
+            color: rgba(0,0,0,.8);
+            font-weight:700;
+            cursor:pointer;
+            font-size:14px;
+            text-transform:uppercase;
+            padding:0;
+        }
+
+        #view-publicar-trabalho-step-1 .content-main{
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 60px var(--pad-x);
+        }
+
+        #view-publicar-trabalho-step-1 .step-grid{
+            display:grid;
+            grid-template-columns: 1fr;
+            gap:40px;
+            align-items:start;
+        }
+
+        #view-publicar-trabalho-step-1 .step-meta{
+            display:inline-flex;
+            align-items:center;
+            gap:12px;
+            font-weight:700;
+            font-size:14px;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .step-count{
+            padding: 4px 12px;
+            border-radius: 999px;
+            background: var(--black);
+            color: var(--lime);
+        }
+
+        #view-publicar-trabalho-step-1 .step-title{
+            margin: 24px 0 20px;
+            font-size: clamp(32px, 5vw, 56px);
+            line-height: 1;
+            letter-spacing: -0.05em;
+            font-weight: 900;
+        }
+
+        #view-publicar-trabalho-step-1 .step-desc{
+            margin:0;
+            font-size:18px;
+            line-height:1.5;
+            color: var(--muted);
+            max-width: 40ch;
+        }
+
+        #view-publicar-trabalho-step-1 .step-form{
+            display:flex;
+            flex-direction:column;
+            gap:24px;
+        }
+
+        #view-publicar-trabalho-step-1 .field__label{
+            display:block;
+            font-size:15px;
+            font-weight:800;
+            margin-bottom:12px;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .editor{
+            background: var(--white);
+            border: 2px solid var(--black);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        #view-publicar-trabalho-step-1 .editor__editable{
+            min-height: 80px;
+            outline:none;
+            font-size:18px;
+            font-weight:600;
+            line-height:1.4;
+        }
+
+        #view-publicar-trabalho-step-1 .wavy-error{
+            text-decoration-line: underline;
+            text-decoration-style: wavy;
+            text-decoration-color: #FF3B30;
+            text-underline-offset: 4px;
+            text-decoration-thickness: 2px;
+        }
+
+        #view-publicar-trabalho-step-1 .hint{
+            display:flex;
+            align-items:flex-start;
+            gap:12px;
+            margin-top:16px;
+            color: var(--black);
+            font-size:14px;
+            font-weight:600;
+        }
+
+        #view-publicar-trabalho-step-1 .hint__icon{
+            width:24px;
+            height:24px;
+            display:grid;
+            place-items:center;
+            border-radius:6px;
+            background: var(--black);
+            color: var(--lime);
+            flex: 0 0 auto;
+        }
+
+        #view-publicar-trabalho-step-1 .examples{
+            margin-top: 8px;
+            background: rgba(255,255,255,.5);
+            border: 2px solid var(--black);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__title{
+            margin:0 0 16px;
+            font-size:14px;
+            font-weight:900;
+            text-transform:uppercase;
+            letter-spacing:.05em;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list{
+            margin:0;
+            padding-left:0;
+            list-style:none;
+            color: var(--black);
+            display:flex;
+            flex-direction:column;
+            gap:12px;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list li{
+            position:relative;
+            padding-left:24px;
+            font-size:15px;
+            font-weight:600;
+            line-height:1.4;
+        }
+
+        #view-publicar-trabalho-step-1 .examples__list li span.bullet{
+            position:absolute;
+            left:0;
+            font-weight:900;
+        }
+
+        /* Footer fixo limitado ao content (não invade sidebar) */
+        #view-publicar-trabalho-step-1 .content-footer{
+            position: fixed;
+            bottom: 0;
+            left: var(--sidebar-w);
+            width: calc(100% - var(--sidebar-w));
+            background: var(--lime);
+            border-top: 2px solid var(--black);
+            z-index: 20;
+        }
+
+        #view-publicar-trabalho-step-1 .progress{
+            height: 8px;
+            background: rgba(0,0,0,.1);
+        }
+
+        #view-publicar-trabalho-step-1 .progress__bar{
+            width: 20%;
+            height: 100%;
+            background: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .content-footer__inner{
+            height: 80px;
+            max-width: var(--maxw);
+            margin: 0 auto;
+            padding: 0 var(--pad-x);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap: 12px;
+        }
+
+        #view-publicar-trabalho-step-1 .btn{
+            height: 48px;
+            padding: 0 32px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 15px;
+            cursor: pointer;
+            border: 2px solid var(--black);
+            text-transform: uppercase;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            background: transparent;
+            color: var(--black);
+        }
+
+        #view-publicar-trabalho-step-1 .btn--primary{
+            background: var(--black);
+            color: var(--lime);
+        }
+
+        /* Responsivo */
+        @media (max-width: 899px) {
+            #view-publicar-trabalho-step-1 .content-shell { margin-left: 0; }
+            #view-publicar-trabalho-step-1 .content-footer { left: 0; width: 100%; }
+            #view-publicar-trabalho-step-1 .content-main { padding: 40px 20px; }
+            #view-publicar-trabalho-step-1{ --pad-x: 20px; }
+        }
+        @media (min-width: 1024px) {
+            #view-publicar-trabalho-step-1 .step-grid{
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            }
+        }
+        </style>
+
+    <div class="content-shell">
+
+      <main class="content-main">
+        <div class="step-grid">
+          <!-- Coluna esquerda -->
+          <section class="step-info">
+            <div class="step-meta">
+              <span class="step-count">1/5</span>
+              <span class="step-label">Publicação de vaga</span>
+            </div>
+
+            <h1 class="step-title">Vamos começar com um título forte.</h1>
+
+            <p class="step-desc">
+              Isso ajuda sua publicação a se destacar para os candidatos certos. É a primeira coisa que eles verão,
+              portanto, seja descritivo o suficiente.
+            </p>
+          </section>
+
+          <!-- Coluna direita -->
+          <section class="step-form">
+            <div class="field">
+              <label class="field__label" for="job-title">
+                Escreva um título para sua publicação de vaga
+              </label>
+
+              <div class="editor" aria-label="Título da vaga">
+                <div class="editor__editable" contenteditable="true" id="job-title" spellcheck="false">
+                  Ex: Designer de UI/UX que conecta pessoas usando sites
+                  <span class="wavy-error">magistrais</span>
+                </div>
+              </div>
+
+              <div class="hint">
+                <span class="hint__icon" aria-hidden="true">✦</span>
+                <span class="hint__text">Vamos combiná-lo com candidatos especializados em Design UX/UI.</span>
+              </div>
+            </div>
+
+            <div class="examples">
+              <h3 class="examples__title">Exemplos de títulos</h3>
+              <ul class="examples__list">
+                <li><span class="bullet">→</span> Desenvolver site WordPress para empresa de contabilidade</li>
+                <li><span class="bullet">→</span> Experiência em Realidade Aumentada necessária para aplicativo iOS</li>
+                <li><span class="bullet">→</span> Desenvolvedor necessário para atualizar a UI do painel SaaS</li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <!-- Footer fixo limitado ao content -->
+      <footer class="content-footer">
+  <div class="progress">
+    <div class="progress__bar"></div>
+  </div>
+
+  <div class="content-footer__inner">
+    <button class="btn btn--ghost" type="button" data-route="os_meus_trabalhos">
+      Voltar
+    </button>
+
+    <button class="btn btn--primary" type="button" data-route="publicar_trabalho_step_2">
+      Próximo: Habilidades
+    </button>
+  </div>
+</footer>
+    </div>
+  </div>
+`;
+
+App.templates.publicar_trabalho_step_2 = `
+  <div id="view-publicar-trabalho-step-2" style="font-family:'Space Grotesk', sans-serif; background-color:#111; margin:0; padding:0; min-height:100vh; color:#000000; box-sizing:border-box;">
+    
+    <style>
+      #view-publicar-trabalho-step-2,
+      #view-publicar-trabalho-step-2 * {
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 1024px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-main {
+          grid-template-columns: 1fr !important;
+          gap: 48px !important;
+        }
+      }
+
+      @media (max-width: 899px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-shell {
+          margin-left: 0 !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer {
+          left: 0 !important;
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-header,
+        #view-publicar-trabalho-step-2 .publicar-step-2-main {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #view-publicar-trabalho-step-2 .publicar-step-2-shell {
+          padding-bottom: 150px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer {
+          height: auto !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 12px !important;
+          padding: 16px 20px !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-footer-inner button {
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-2 .publicar-step-2-recommended {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+        }
+      }
+    </style>
+
+    <div class="publicar-step-2-shell" style=" min-height:100vh; background-color:#CCFF00; position:relative; padding-bottom:88px; display:flex; flex-direction:column; box-sizing:border-box;">
+      
+      
+
+      <main class="publicar-step-2-main" style="max-width:1200px; width:100%; margin:0 auto; padding:40px; display:grid; grid-template-columns:5fr 7fr; gap:80px; flex:1; box-sizing:border-box;">
+        
+        <!-- Coluna Esquerda -->
+        <section style="display:flex; flex-direction:column; gap:24px; box-sizing:border-box;">
+          <div style="display:flex; align-items:center; gap:12px; font-weight:700; font-size:14px;">
+            <span style="background:#000000; color:#CCFF00; padding:6px 12px; border-radius:999px;">2/5</span>
+            <span>Publicação de vaga</span>
+          </div>
+
+          <h1 style="font-size:48px; font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin:0;">
+            Quais são as principais competências necessárias para o seu projeto?
+          </h1>
+
+          <p style="font-size:18px; line-height:1.6; color:rgba(0, 0, 0, 0.65); max-width:400px; margin:0;">
+            Isso ajuda a encontrar os talentos certos. Pode adicionar até 10 competências.
+          </p>
+        </section>
+
+        <!-- Coluna Direita -->
+        <section style="display:flex; flex-direction:column; gap:32px; box-sizing:border-box;">
+          
+          <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+            <label for="competencias-input" style="font-size:14px; font-weight:800; text-transform:uppercase;">
+              Procure ou adicione competências
+            </label>
+
+            <div style="position:relative; box-sizing:border-box;">
+              <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" style="position:absolute; left:16px; top:50%; transform:translateY(-50%); width:20px; height:20px;" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" x2="16.65" y1="21" y2="16.65"></line>
+              </svg>
+              <input id="competencias-input" type="text" placeholder="Ex: Figma, React, Prototipagem" style="width:100%; height:56px; background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:0 48px; font-size:16px; font-family:inherit; outline:none; box-sizing:border-box;" />
+            </div>
+          </div>
+
+          <div class="publicar-step-2-recommended" style="background:rgba(255, 255, 255, 0.5); border:2px solid #000000; border-radius:12px; padding:20px; display:flex; align-items:center; gap:16px; box-sizing:border-box;">
+            <div style="width:48px; height:48px; background:#FFFFFF; border:2px solid #000000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;">2/3</div>
+            <p style="flex:1; font-size:14px; font-weight:600; line-height:1.4; margin:0;">
+              2 de 3 competências recomendadas selecionadas
+            </p>
+            <button style="background:transparent; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-weight:800; font-size:12px; text-transform:uppercase; cursor:pointer; font-family:inherit; box-sizing:border-box;">
+              Sugerir com IA
+            </button>
+          </div>
+
+          <div style="display:flex; flex-wrap:wrap; gap:8px; box-sizing:border-box;">
+            <div style="background:#000000; color:#CCFF00; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+              Design de Interface <span style="cursor:pointer; font-size:18px; line-height:1;">×</span>
+            </div>
+            <div style="background:#000000; color:#CCFF00; padding:8px 16px; border-radius:999px; font-size:14px; font-weight:700; display:flex; align-items:center; gap:8px;">
+              UX Design <span style="cursor:pointer; font-size:18px; line-height:1;">×</span>
+            </div>
+          </div>
+
+          <div style="display:flex; flex-direction:column; gap:24px; box-sizing:border-box;">
+            
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Design de Interface</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                  Design Mobile
+                  <span style="background:#CCFF00; color:#000000; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid #000000; font-weight:800;">98% match</span>
+                </div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer; display:flex; align-items:center; gap:8px;">
+                  Web Design
+                  <span style="background:#CCFF00; color:#000000; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid #000000; font-weight:800;">98% match</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Design de Experiência</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Arquitetura de Informação</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Testes de Usabilidade</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">User Research</div>
+              </div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:12px; box-sizing:border-box;">
+              <label style="font-size:14px; font-weight:800; text-transform:uppercase;">Ferramentas</label>
+              <div style="display:flex; flex-wrap:wrap; gap:10px; box-sizing:border-box;">
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Figma</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Adobe XD</div>
+                <div style="background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:8px 16px; font-size:14px; font-weight:700; cursor:pointer;">Sketch</div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </main>
+
+      <footer class="publicar-step-2-footer" style="position:fixed; bottom:0; left:300px; width:calc(100% - 300px); height:88px; background-color:#CCFF00; border-top:2px solid #000000; display:flex; flex-direction:column; z-index:100; box-sizing:border-box;">
+  <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
+    <div style="height:8px; background:#000000; width:40%;"></div>
+  </div>
+
+  <div class="publicar-step-2-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_1"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
+      Voltar
+    </button>
+
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_3"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
+      Próximo: Escopo
+    </button>
+  </div>
+</footer>
+    </div>
+  </div>
+`;
+
+App.templates.publicar_trabalho_step_3 = `
+<div id="view-publicar-trabalho-step-3" style="font-family: 'Space Grotesk', sans-serif; background-color: #111; margin: 0; padding: 0; color: #000000; box-sizing: border-box;">
+  <div style="min-height: 100vh; background-color: #CCFF00; position: relative; padding-bottom: 88px; display: flex; flex-direction: column; box-sizing: border-box;">
+    
+    <main style="max-width: 1200px; width: 100%; margin: 0 auto; padding: 40px; display: grid; grid-template-columns: 5fr 7fr; gap: 80px; flex: 1; box-sizing: border-box;">
+      <!-- Coluna Esquerda -->
+      <section style="display: flex; flex-direction: column; gap: 24px; box-sizing: border-box;">
+        <div style="display: flex; align-items: center; gap: 12px; font-weight: 700; font-size: 14px;">
+          <span style="background: #000000; color: #CCFF00; padding: 6px 12px; border-radius: 999px;">3/5</span>
+          <span>Publicação de vaga</span>
+        </div>
+        <h1 style="font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; margin: 0;">Agora, estime o escopo do seu trabalho.</h1>
+        <p style="font-size: 18px; line-height: 1.6; color: rgba(0, 0, 0, 0.65); max-width: 400px; margin: 0;">Considere o tamanho do seu projeto e o tempo que ele irá levar.</p>
+      </section>
+      <!-- Coluna Direita -->
+      <section style="display: flex; flex-direction: column; gap: 32px; box-sizing: border-box;">
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <label style="font-size: 14px; font-weight: 800; text-transform: uppercase;">Tamanho do projeto</label>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 16px; cursor: pointer;">
+              <div style="font-weight: 800; font-size: 16px; margin-bottom: 4px;">Grande</div>
+              <div style="font-size: 14px; color: rgba(0,0,0,0.6);">Iniciativas complexas e de longo prazo. (Ex: Design e desenvolvimento de um site completo)</div>
+            </div>
+            <div style="background: #000000; color: #CCFF00; border: 2px solid #000000; border-radius: 12px; padding: 16px; cursor: pointer;">
+              <div style="font-weight: 800; font-size: 16px; margin-bottom: 4px;">Médio</div>
+              <div style="font-size: 14px; color: rgba(204,255,0,0.8);">Projetos bem definidos. (Ex: Criação de um logotipo ou design de landing page)</div>
+            </div>
+            <div style="background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 16px; cursor: pointer;">
+              <div style="font-weight: 800; font-size: 16px; margin-bottom: 4px;">Pequeno</div>
+              <div style="font-size: 14px; color: rgba(0,0,0,0.6);">Tarefas rápidas e diretas. (Ex: Edição de uma foto ou revisão de texto)</div>
+            </div>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <label style="font-size: 14px; font-weight: 800; text-transform: uppercase;">Duração</label>
+          <div style="background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 16px; font-weight: 700;">1 a 3 meses</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <label style="font-size: 14px; font-weight: 800; text-transform: uppercase;">Nível de experiência</label>
+          <div style="background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 16px; font-weight: 700;">Intermediário</div>
+          <p style="font-size: 13px; color: rgba(0,0,0,0.6); margin: 0;">Isso não irá restringir as propostas, mas ajuda a combinar a expertise com o seu orçamento.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <label style="font-size: 14px; font-weight: 800; text-transform: uppercase;">Efetivação</label>
+            <a href="#" style="font-size: 12px; font-weight: 700; color: #000; text-decoration: underline;">Saiba mais</a>
+          </div>
+          <p style="font-size: 14px; margin: 0;">Essa vaga é uma oportunidade de efetivação após contrato?</p>
+          <div style="display: flex; gap: 12px;">
+            <div style="flex: 1; background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 12px; text-align: center; font-weight: 700; font-size: 14px; cursor: pointer;">Sim, pode se tornar full time</div>
+            <div style="flex: 1; background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 12px; text-align: center; font-weight: 700; font-size: 14px; cursor: pointer;">Não, por enquanto</div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="publicar-step-3-footer" style="position:fixed; bottom:0; left:300px; width:calc(100% - 300px); height:88px; background-color:#CCFF00; border-top:2px solid #000000; display:flex; flex-direction:column; z-index:100; box-sizing:border-box;">
+  <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
+    <div style="height:8px; background:#000000; width:60%;"></div>
+  </div>
+
+  <div class="publicar-step-3-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_2"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
+      Voltar
+    </button>
+
+    <button
+      type="button"
+      data-route="publicar_trabalho_step_4"
+      style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
+      PRÓXIMO: ORÇAMENTO
+    </button>
+  </div>
+</footer>
+  </div>
+</div>
+`;
+
+
+App.templates.publicar_trabalho_step_4 = `
+  <div id="view-publicar-trabalho-step-4" style="font-family:'Space Grotesk', sans-serif; margin:0; padding:0; min-height:100vh; color:#000000; box-sizing:border-box;">
+    
+    <style>
+      #view-publicar-trabalho-step-4,
+      #view-publicar-trabalho-step-4 * {
+        box-sizing: border-box;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-shell {
+        
+        min-height: 100vh;
+        background-color: #CCFF00;
+        position: relative;
+        padding-bottom: 88px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-header {
+        padding: 28px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-main {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 40px;
+        display: grid;
+        grid-template-columns: 5fr 7fr;
+        gap: 80px;
+        flex: 1;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tabs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab {
+        width: 100%;
+        background: #FFFFFF;
+        color: #000000;
+        border: 2px solid #000000;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        font-family: inherit;
+        text-align: left;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab.is-active {
+        background: #000000;
+        color: #CCFF00;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab__icon svg {
+        width: 24px;
+        height: 24px;
+        display: block;
+        stroke: currentColor;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab__radio {
+        width: 20px;
+        height: 20px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab__radio::after {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab.is-active .budget-tab__radio::after {
+        opacity: 1;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-tab__label {
+        font-weight: 800;
+        font-size: 16px;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-panel {
+        display: none;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-panel.is-active {
+        display: flex;
+      }
+
+      #view-publicar-trabalho-step-4 .muted {
+        font-size: 14px;
+        color: rgba(0,0,0,0.7);
+        margin: 0;
+      }
+
+      #view-publicar-trabalho-step-4 .field-group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      #view-publicar-trabalho-step-4 .field-label {
+        font-size: 14px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      #view-publicar-trabalho-step-4 .field-display {
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        font-weight: 800;
+        font-size: 24px;
+      }
+
+      #view-publicar-trabalho-step-4 .field-note {
+        font-size: 12px;
+        color: rgba(0,0,0,0.5);
+        margin: 0;
+      }
+
+      #view-publicar-trabalho-step-4 .two-cols {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      #view-publicar-trabalho-step-4 .small-field {
+        background: #FFFFFF;
+        border: 2px solid #000000;
+        border-radius: 12px;
+        padding: 16px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: baseline;
+      }
+
+      #view-publicar-trabalho-step-4 .small-field strong {
+        font-size: 20px;
+      }
+
+      #view-publicar-trabalho-step-4 .small-field span {
+        font-size: 14px;
+        color: rgba(0,0,0,0.5);
+        margin-left: 4px;
+      }
+
+      #view-publicar-trabalho-step-4 .insight-box {
+        background: rgba(0,0,0,0.05);
+        border-radius: 12px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      #view-publicar-trabalho-step-4 .insight-box p {
+        margin: 0;
+      }
+
+      #view-publicar-trabalho-step-4 .chart-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      #view-publicar-trabalho-step-4 .chart-bars-fixed {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 60px;
+        justify-content: center;
+      }
+
+      #view-publicar-trabalho-step-4 .chart-bars-fixed .bar-light {
+        width: 24px;
+        background: #FFF;
+        border: 1px solid #000;
+      }
+
+      #view-publicar-trabalho-step-4 .chart-bars-fixed .bar-dark {
+        width: 24px;
+        background: #000;
+      }
+
+      #view-publicar-trabalho-step-4 .chart-axis-fixed {
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        font-weight: 700;
+        color: rgba(0,0,0,0.6);
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-wrap {
+        display: flex;
+        gap: 20px;
+        align-items: flex-end;
+        padding-top: 10px;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-y {
+        writing-mode: vertical-rl;
+        transform: rotate(180deg);
+        font-size: 11px;
+        color: rgba(0,0,0,0.5);
+        font-weight: 600;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-main {
+        flex-grow: 1;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 4px;
+        height: 80px;
+        border-bottom: 2px solid #000;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-bars .bar {
+        flex: 1;
+        border: 1px solid #000;
+        border-bottom: none;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-bars .bar-dark {
+        background: #000;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-bars .bar-light {
+        background: #FFF;
+      }
+
+      #view-publicar-trabalho-step-4 .hourly-chart-x {
+        text-align: center;
+        margin-top: 8px;
+        font-size: 11px;
+        color: rgba(0,0,0,0.5);
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      #view-publicar-trabalho-step-4 .budget-link {
+        font-size: 14px;
+        font-weight: 700;
+        color: #000;
+        text-decoration: underline;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-footer {
+        position: fixed;
+        bottom: 0;
+        left: 300px;
+        width: calc(100% - 300px);
+        height: 88px;
+        background-color: #CCFF00;
+        border-top: 2px solid #000000;
+        display: flex;
+        flex-direction: column;
+        z-index: 100;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-footer-progress {
+        height: 8px;
+        width: 100%;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-footer-progress-bar {
+        height: 8px;
+        background: #000000;
+        width: 80%;
+      }
+
+      #view-publicar-trabalho-step-4 .step-4-footer-inner {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 40px;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #view-publicar-trabalho-step-4 .footer-btn {
+        height: 48px;
+        padding: 0 32px;
+        border-radius: 12px;
+        border: 2px solid #000000;
+        font-weight: 800;
+        font-size: 14px;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: inherit;
+      }
+
+      #view-publicar-trabalho-step-4 .footer-btn--ghost {
+        background: transparent;
+        color: #000000;
+      }
+
+      #view-publicar-trabalho-step-4 .footer-btn--primary {
+        background: #000000;
+        color: #CCFF00;
+      }
+
+      @media (max-width: 1024px) {
+        #view-publicar-trabalho-step-4 .step-4-main {
+          grid-template-columns: 1fr !important;
+          gap: 48px !important;
+        }
+      }
+
+      @media (max-width: 899px) {
+        #view-publicar-trabalho-step-4 .step-4-shell {
+          margin-left: 0 !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-footer {
+          left: 0 !important;
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-header,
+        #view-publicar-trabalho-step-4 .step-4-main {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-footer-inner {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #view-publicar-trabalho-step-4 .step-4-shell {
+          padding-bottom: 150px !important;
+        }
+
+        #view-publicar-trabalho-step-4 .budget-tabs,
+        #view-publicar-trabalho-step-4 .two-cols {
+          grid-template-columns: 1fr !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-footer {
+          height: auto !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-footer-inner {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 12px !important;
+          padding: 16px 20px !important;
+        }
+
+        #view-publicar-trabalho-step-4 .step-4-footer-inner button {
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-4 .hourly-chart-wrap {
+          gap: 12px !important;
+        }
+      }
+    </style>
+
+    <div class="step-4-shell">
+      
+
+      <main class="step-4-main">
+        <!-- Coluna Esquerda -->
+        <section style="display:flex; flex-direction:column; gap:24px;">
+          <div style="display:flex; align-items:center; gap:12px; font-weight:700; font-size:14px;">
+            <span style="background:#000000; color:#CCFF00; padding:6px 12px; border-radius:999px;">4/5</span>
+            <span>Publicação de vaga</span>
+          </div>
+
+          <h1 style="font-size:48px; font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin:0;">
+            Fale-nos sobre o orçamento do seu projecto.
+          </h1>
+
+          <p style="font-size:18px; line-height:1.6; color:rgba(0, 0, 0, 0.65); max-width:400px; margin:0;">
+            Esta informação ajuda-nos a encontrar os melhores talentos para o seu orçamento e garante que recebe propostas realistas.
+          </p>
+        </section>
+
+        <!-- Coluna Direita -->
+        <section style="display: flex; flex-direction: column; gap: 32px; box-sizing: border-box;">
+  
+  <!-- Tabs -->
+  <div style="display: flex; gap: 16px;">
+    
+    <button
+  id="budget-panel-hourly"
+  type="button"
+  onclick="App.setBudgetMode('hourly')"
+  style="flex: 1; background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 12px; font-family: inherit; color: #000000;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <span class="material-symbols-outlined" style="font-size: 24px;">schedule</span>
+    <div id="budget-radio-hourly" style="width: 20px; height: 20px; border: 2px solid #000; border-radius: 50%;"></div>
+  </div>
+  <div style="font-weight: 800; font-size: 16px; text-align: left;">Taxa por hora</div>
+</button>
+
+    <button
+  id="budget-panel-fixed"
+  type="button"
+  onclick="App.setBudgetMode('fixed')"
+  style="flex: 1; background: #000000; color: #CCFF00; border: 2px solid #000000; border-radius: 12px; padding: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 12px; font-family: inherit;">
+  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+    <span class="material-symbols-outlined" style="font-size: 24px;">sell</span>
+    <div id="budget-radio-fixed" style="width: 20px; height: 20px; border: 2px solid #CCFF00; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+      <div style="width: 10px; height: 10px; background: #CCFF00; border-radius: 50%;"></div>
+    </div>
+  </div>
+  <div style="font-weight: 800; font-size: 16px; text-align: left;">Preço Fixo</div>
+</button>
+  </div>
+
+  <!-- Painel Preço Fixo -->
+  <div id="budget-panel-fixed" style="display: flex; flex-direction: column; gap: 32px;">
+    <p style="font-size: 14px; color: rgba(0,0,0,0.7); margin: 0;">
+      Defina um valor total para o projeto e pague ao final ou por marcos de entrega.
+    </p>
+
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <label style="font-size: 14px; font-weight: 800; text-transform: uppercase;">
+        Qual é a melhor estimativa de custo para o seu projeto?
+      </label>
+      <div style="background: #FFFFFF; border: 2px solid #000000; border-radius: 12px; padding: 16px; display: flex; justify-content: flex-end; align-items: center; font-weight: 800; font-size: 24px;">
+        Kz 95.000,00
+      </div>
+      <p style="font-size: 12px; color: rgba(0,0,0,0.5); margin: 0;">
+        Pode negociar este valor com o talento antes de iniciar o trabalho.
+      </p>
+    </div>
+
+    <div style="background: rgba(0,0,0,0.05); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+      <p style="font-size: 14px; margin: 0; font-weight: 500;">
+        Esta é a faixa média para projetos similares. Clientes costumam pagar entre
+        <span style="font-weight: 800;">Kz 70.000,00</span> e
+        <span style="font-weight: 800;">Kz 120.000,00</span>.
+      </p>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: flex; align-items: flex-end; gap: 4px; height: 60px; justify-content: center;">
+          <div style="width: 24px; height: 20%; background: #FFF; border: 1px solid #000;"></div>
+          <div style="width: 24px; height: 40%; background: #FFF; border: 1px solid #000;"></div>
+          <div style="width: 24px; height: 70%; background: #000;"></div>
+          <div style="width: 24px; height: 100%; background: #000;"></div>
+          <div style="width: 24px; height: 85%; background: #000;"></div>
+          <div style="width: 24px; height: 60%; background: #000;"></div>
+          <div style="width: 24px; height: 30%; background: #FFF; border: 1px solid #000;"></div>
+          <div style="width: 24px; height: 15%; background: #FFF; border: 1px solid #000;"></div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; color: rgba(0,0,0,0.6);">
+          <span>Kz 20k</span>
+          <span>Kz 70k</span>
+          <span>Kz 120k</span>
+          <span>Kz 200k+</span>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" style="font-size: 14px; font-weight: 700; color: #000; text-decoration: underline;">
+      Não está pronto para definir um orçamento?
+    </a>
+  </div>
+
+  <!-- Painel Taxa por Hora -->
+  <div id="budget-panel-hourly" style="display: none; flex-direction: column; gap: 32px;">
+    
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <label style="font-weight: 800; font-size: 14px; text-transform: uppercase;">De</label>
+        <div style="background-color: #FFF; border: 2px solid #000; border-radius: 12px; padding: 16px; display: flex; justify-content: flex-end; align-items: baseline;">
+          <span style="font-weight: 800; font-size: 20px; color: #000;">Kz 15.000,00</span>
+          <span style="font-size: 14px; color: rgba(0,0,0,0.4); margin-left: 4px;">/hr</span>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px;">
+        <label style="font-weight: 800; font-size: 14px; text-transform: uppercase;">Até</label>
+        <div style="background-color: #FFF; border: 2px solid #000; border-radius: 12px; padding: 16px; display: flex; justify-content: flex-end; align-items: baseline;">
+          <span style="font-weight: 800; font-size: 20px; color: #000;">Kz 35.000,00</span>
+          <span style="font-size: 14px; color: rgba(0,0,0,0.4); margin-left: 4px;">/hr</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: rgba(0,0,0,0.05); border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 20px;">
+      <div>
+        <p style="margin: 0; font-weight: 800; font-size: 16px;">Taxas médias:</p>
+        <p style="margin: 4px 0 0 0; font-size: 14px; color: #000; line-height: 1.4;">
+          As taxas para este tipo de projeto costumam variar entre
+          <b>Kz 20.000,00</b> e <b>Kz 45.000,00</b> por hora no mercado Angolano.
+        </p>
+      </div>
+
+      <div style="display: flex; gap: 20px; align-items: flex-end; padding-top: 10px;">
+        <div style="writing-mode: vertical-rl; transform: rotate(180deg); font-size: 11px; color: rgba(0,0,0,0.5); font-weight: 600; text-transform: uppercase; white-space: nowrap;">
+          Nº de vagas similares
+        </div>
+
+        <div style="flex-grow: 1;">
+          <div style="display: flex; align-items: flex-end; gap: 4px; height: 80px; border-bottom: 2px solid #000;">
+            <div style="flex: 1; height: 20%; background-color: #FFF; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 35%; background-color: #FFF; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 60%; background-color: #000; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 90%; background-color: #000; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 75%; background-color: #000; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 50%; background-color: #000; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 25%; background-color: #FFF; border: 1px solid #000; border-bottom: none;"></div>
+            <div style="flex: 1; height: 15%; background-color: #FFF; border: 1px solid #000; border-bottom: none;"></div>
+          </div>
+
+          <div style="text-align: center; margin-top: 8px; font-size: 11px; color: rgba(0,0,0,0.5); font-weight: 600; text-transform: uppercase;">
+            taxa por hora (Kz)
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#" style="font-size: 14px; font-weight: 700; color: #000; text-decoration: underline;">
+      Não está pronto para definir uma taxa por hora?
+    </a>
+  </div>
+</section>
+      </main>
+
+      <footer class="step-4-footer">
+        <div class="step-4-footer-progress">
+          <div class="step-4-footer-progress-bar"></div>
+        </div>
+
+        <div class="step-4-footer-inner">
+          <button class="footer-btn footer-btn--ghost" type="button" data-route="publicar_trabalho_step_3">
+            Voltar
+          </button>
+
+          <button class="footer-btn footer-btn--primary" type="button" data-route="publicar_trabalho_step_5">
+            PRÓXIMO: DESCRIÇÃO
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+`;
+
+App.templates.publicar_trabalho_step_5 = `
+  <div id="view-publicar-trabalho-step-5" style="font-family:'Space Grotesk', sans-serif; background-color:#111; margin:0; padding:0; min-height:100vh; color:#000000; box-sizing:border-box;">
+    
+    <style>
+      #view-publicar-trabalho-step-5,
+      #view-publicar-trabalho-step-5 * {
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 1024px) {
+        #view-publicar-trabalho-step-5 .publicar-step-5-main {
+          grid-template-columns: 1fr !important;
+          gap: 48px !important;
+        }
+      }
+
+      @media (max-width: 899px) {
+        #view-publicar-trabalho-step-5 .publicar-step-5-shell {
+          margin-left: 0 !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-footer {
+          left: 0 !important;
+          width: 100% !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-header,
+        #view-publicar-trabalho-step-5 .publicar-step-5-main {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-footer-inner {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #view-publicar-trabalho-step-5 .publicar-step-5-shell {
+          padding-bottom: 150px !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-meta {
+          flex-direction: column !important;
+          align-items: flex-start !important;
+          gap: 8px !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-footer {
+          height: auto !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-footer-inner {
+          flex-direction: column !important;
+          align-items: stretch !important;
+          gap: 12px !important;
+          padding: 16px 20px !important;
+        }
+
+        #view-publicar-trabalho-step-5 .publicar-step-5-footer-inner button {
+          width: 100% !important;
+        }
+      }
+    </style>
+
+    <div class="publicar-step-5-shell" style="min-height:100vh; background-color:#CCFF00; position:relative; padding-bottom:88px; display:flex; flex-direction:column; box-sizing:border-box;">
+      
+      <header class="publicar-step-5-header" style="padding:28px 40px; display:flex; justify-content:space-between; align-items:center; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+        <div style="font-weight:800; font-size:24px; letter-spacing:-0.02em;">SKILLA</div>
+        <button style="background:none; border:none; font-weight:700; font-size:14px; cursor:pointer; text-transform:uppercase; font-family:inherit;">Sair</button>
+      </header>
+
+      <main class="publicar-step-5-main" style="max-width:1200px; width:100%; margin:0 auto; padding:40px; display:grid; grid-template-columns:5fr 7fr; gap:80px; flex:1; box-sizing:border-box;">
+        
+        <!-- Coluna Esquerda -->
+        <section style="display:flex; flex-direction:column; gap:24px; box-sizing:border-box;">
+          <div style="display:flex; align-items:center; gap:12px; font-weight:700; font-size:14px;">
+            <span style="background:#000000; color:#CCFF00; padding:6px 12px; border-radius:999px;">5/5</span>
+            <span>Publicação de vaga</span>
+          </div>
+
+          <h1 style="font-size:48px; font-weight:800; line-height:1.1; letter-spacing:-0.03em; margin:0;">
+            Descreva o trabalho detalhadamente.
+          </h1>
+
+          <p style="font-size:18px; line-height:1.6; color:rgba(0, 0, 0, 0.65); max-width:400px; margin:0;">
+            Isso ajuda os freelancers a entenderem exatamente o que você precisa. Seja claro sobre entregas e prazos.
+          </p>
+        </section>
+
+        <!-- Coluna Direita -->
+        <section style="display:flex; flex-direction:column; gap:32px; box-sizing:border-box;">
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <label for="publicar-trabalho-descricao" style="font-size:14px; font-weight:800; text-transform:uppercase;">
+              Descreva o que você precisa
+            </label>
+
+            <textarea
+              id="publicar-trabalho-descricao"
+              placeholder="Já tem uma descrição? Cole-a aqui!"
+              style="width:100%; height:300px; background:#FFFFFF; border:2px solid #000000; border-radius:12px; padding:16px; font-family:inherit; font-size:16px; box-sizing:border-box; resize:none;"
+            ></textarea>
+
+            <div class="publicar-step-5-meta" style="display:flex; justify-content:space-between; font-size:12px; color:rgba(0,0,0,0.6); font-weight:500; gap:12px;">
+              <span>50.000 caracteres restantes</span>
+              <a href="#" style="color:#000; text-decoration:underline;">Veja exemplos de descrições eficazes</a>
+            </div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.5); border:2px solid #000000; border-radius:12px; padding:24px; display:flex; flex-direction:column; gap:12px;">
+            <div style="font-weight:800; font-size:16px;">Dicas para uma boa descrição:</div>
+
+            <ul style="margin:0; padding-left:20px; display:flex; flex-direction:column; gap:8px; font-size:14px; line-height:1.4;">
+              <li>Detalhe as habilidades necessárias.</li>
+              <li>Explique o objetivo do projecto.</li>
+              <li>Mencione o prazo de entrega.</li>
+            </ul>
+          </div>
+
+          <button style="width:fit-content; height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; background:transparent; color:#000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; font-family:inherit;">
+            Anexar arquivo
+          </button>
+        </section>
+      </main>
+
+      <footer class="publicar-step-5-footer" style="position:fixed; bottom:0; left:300px; width:calc(100% - 300px); height:88px; background-color:#CCFF00; border-top:2px solid #000000; display:flex; flex-direction:column; z-index:100; box-sizing:border-box;">
+        <div style="height:8px; background:transparent; width:100%; box-sizing:border-box;">
+          <div style="height:8px; background:#000000; width:100%;"></div>
+        </div>
+
+        <div class="publicar-step-5-footer-inner" style="flex:1; display:flex; justify-content:space-between; align-items:center; padding:0 40px; max-width:1200px; width:100%; margin:0 auto; box-sizing:border-box;">
+          <button data-route="publicar_trabalho_step_4" style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:transparent; color:#000000; font-family:inherit;">
+            Voltar
+          </button>
+
+          <button data-route="publicar_trabalho_review" style="height:48px; padding:0 32px; border-radius:12px; border:2px solid #000000; font-weight:800; font-size:14px; text-transform:uppercase; cursor:pointer; display:flex; align-items:center; justify-content:center; background:#000000; color:#CCFF00; font-family:inherit;">
+            PRÓXIMO: REVISAR
+          </button>
+        </div>
+      </footer>
+    </div>
+  </div>
+`;
+
+
+App.templates.publicar_trabalho_review = `
+  <div id="view-publicar-trabalho-review" style="font-family:'Hanken Grotesk', sans-serif; background-color:#CCFF00; margin:0; padding:0; min-height:100vh; color:#101415; box-sizing:border-box;">
+    
+    <style>
+      #view-publicar-trabalho-review,
+      #view-publicar-trabalho-review * {
+        box-sizing: border-box;
+      }
+
+      #view-publicar-trabalho-review .space-font {
+        font-family: 'Space Grotesk', sans-serif;
+      }
+
+      #view-publicar-trabalho-review .review-shell {
+        min-height: 100vh;
+        background-color: #CCFF00;
+        position: relative;
+        padding-bottom: 96px;
+        display: flex;
+        flex-direction: column;
+        margin-left: 0 !important;
+      }
+
+      #view-publicar-trabalho-review .review-header {
+        background: #CCFF00;
+        border-bottom: 1px solid rgba(16,20,21,.12);
+        position: sticky;
+        top: 0;
+        z-index: 30;
+      }
+
+      #view-publicar-trabalho-review .review-header-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        gap: 16px;
+      }
+
+      #view-publicar-trabalho-review .review-main {
+        flex: 1;
+        padding: 32px 40px 128px 40px;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      #view-publicar-trabalho-review .review-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 32px;
+      }
+
+      #view-publicar-trabalho-review .review-card {
+        background-color: #FFFFFF;
+        border: 2px solid #101415;
+        border-radius: 12px;
+        transition: transform .2s ease, box-shadow .2s ease;
+      }
+
+      #view-publicar-trabalho-review .review-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 4px 4px 0px #101415;
+      }
+
+      #view-publicar-trabalho-review .btn-primary-black {
+        background-color: #101415;
+        color: #CCFF00;
+        transition: all .2s ease;
+      }
+
+      #view-publicar-trabalho-review .btn-primary-black:active {
+        transform: scale(.96);
+        opacity: .9;
+      }
+
+      #view-publicar-trabalho-review .btn-ghost {
+        background: transparent;
+        border: 2px solid #101415;
+        color: #101415;
+      }
+
+      #view-publicar-trabalho-review .skill-tag {
+        background: #101415;
+        color: #FFFFFF;
+        padding: 4px 12px;
+        border-radius: 100px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+      }
+
+      #view-publicar-trabalho-review {
+  --sidebar-w: 300px;
+  
+}
+#view-publicar-trabalho-review .review-footer {
+  position: fixed;
+  bottom: 0;
+  
+  width: 82% !important;
+  background: #FFFFFF;
+  border-top: 2px solid #101415;
+  z-index: 50;
+}
+
+      #view-publicar-trabalho-review .review-footer-progress {
+        height: 6px;
+        width: 100%;
+        background: rgba(16,20,21,.10);
+      }
+
+      #view-publicar-trabalho-review .review-footer-progress-bar {
+        height: 100%;
+        width: 100%;
+        background: #101415;
+        box-shadow: 0 0 15px rgba(204,255,0,.5);
+      }
+
+      #view-publicar-trabalho-review .review-footer-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+      }
+
+      @media (max-width: 899px) {
+        #view-publicar-trabalho-review .review-header-inner,
+        #view-publicar-trabalho-review .review-main,
+        #view-publicar-trabalho-review .review-footer-inner {
+          padding-left: 20px !important;
+          padding-right: 20px !important;
+        }
+
+        #view-publicar-trabalho-review .review-topbar {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        #view-publicar-trabalho-review .review-shell {
+          padding-bottom: 150px !important;
+        }
+
+        #view-publicar-trabalho-review .review-footer-inner {
+          flex-direction: column !important;
+          align-items: stretch !important;
+        }
+
+        #view-publicar-trabalho-review .review-footer-actions {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        #view-publicar-trabalho-review .review-footer-actions button,
+        #view-publicar-trabalho-review .review-footer-inner > button,
+        #view-publicar-trabalho-review .review-topbar button {
+          width: 100%;
+          justify-content: center;
+        }
+
+        #view-publicar-trabalho-review .review-card {
+          padding: 18px !important;
+        }
+      }
+    </style>
+
+    <div class="review-shell">
+      
+
+      <main class="review-main">
+        <div class="review-topbar">
+          <h1 class="space-font" style="margin:0; font-size:48px; font-weight:800; line-height:1; letter-spacing:-0.03em;">
+            Detalhes da vaga
+          </h1>
+
+          <button class="btn-primary-black" type="button" style="border:0; padding:14px 28px; border-radius:999px; font-weight:800; font-size:18px; display:inline-flex; align-items:center; gap:10px; cursor:pointer; font-family:inherit;">
+            <span>Publicar esta vaga</span>
+            <span style="font-size:18px; line-height:1;">➜</span>
+          </button>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:16px;">
+          
+          <!-- Card 1 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Título da vaga
+              </span>
+              <h2 class="space-font" style="margin:0; font-size:24px; font-weight:800; line-height:1.2;">
+                UI/UX designer que conecta pessoas usando websites impecáveis
+              </h2>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Descrição
+              </span>
+              <p style="margin:0; font-size:16px; line-height:1.6; color:rgba(16,20,21,.8);">
+                Eu sou muito bom no meu trabalho, quero dizer, conectar pessoas é a minha especialidade. Busco alguém que possa traduzir essa visão em uma experiência digital única.
+              </p>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Categoria
+              </span>
+              <p class="space-font" style="margin:0; font-size:18px; font-weight:800;">
+                UX/UI Design
+              </p>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:8px; width:100%;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Competências
+              </span>
+
+              <div style="display:flex; flex-wrap:wrap; gap:8px;">
+                <span class="skill-tag">CSS</span>
+                <span class="skill-tag">Graphic Design</span>
+                <span class="skill-tag">Mobile App Design</span>
+                <span class="skill-tag">Mockup</span>
+                <span class="skill-tag">UX Research</span>
+                <span class="skill-tag">User Interface Design</span>
+                <span class="skill-tag">Web Design</span>
+              </div>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Âmbito
+              </span>
+              <p class="space-font" style="margin:0; font-size:18px; font-weight:800;">
+                Médio · 1 a 3 meses · Intermediário
+              </p>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="review-card" style="padding:24px; display:flex; justify-content:space-between; align-items:flex-start; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:6px;">
+              <span style="font-size:12px; color:rgba(16,20,21,.5); text-transform:uppercase; letter-spacing:.14em; font-weight:800;">
+                Orçamento
+              </span>
+              <p class="space-font" style="margin:0; font-size:24px; font-weight:800;">
+                Preço fixo · Kz 95.000,00
+              </p>
+            </div>
+
+            <button type="button" style="border:0; background:transparent; cursor:pointer; padding:8px; border-radius:999px; font-size:18px;">
+              ✎
+            </button>
+            
+          </div>
+
+        </div>
+        
+      </main>
+
+      <footer class="review-footer">
+        <div class="review-footer-progress">
+          <div class="review-footer-progress-bar"></div>
+        </div>
+
+        <div class="review-footer-inner">
+          <button
+            class="btn-ghost"
+            type="button"
+            data-route="publicar_trabalho_step_5"
+            style="padding:10px 24px; border-radius:999px; font-weight:800; display:inline-flex; align-items:center; gap:8px; cursor:pointer; font-family:inherit; font-size:14px;">
+            <span>←</span>
+            <span>Voltar</span>
+          </button>
+
+          <div class="review-footer-actions" style="display:flex; align-items:center; gap:24px;">
+            <span style="font-size:12px; font-weight:800; color:rgba(16,20,21,.4); text-transform:uppercase; letter-spacing:.08em;">
+              Pronto para lançar
+            </span>
+
+            <button
+              class="btn-primary-black"
+              type="button"
+              style="border:0; padding:14px 32px; border-radius:999px; font-weight:800; font-size:18px; cursor:pointer; font-family:inherit;">
+              Publicar vaga
+            </button>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+`;
+        
+
         // Funções de Apoio SPA
         function setActiveLink(route) {
             const links = document.querySelectorAll('[data-spa-link]');
@@ -2513,6 +4242,9 @@
             if (push) history.pushState({ route }, '', `#${route}`);
             
             initRouteScripts(route);
+             if (route === 'publicar_trabalho_step_4' && App.initPublicarTrabalhoStep4) {
+                App.initPublicarTrabalhoStep4();
+            }
         }
 
         function initRouteScripts(route) {
@@ -2584,9 +4316,15 @@
 
             // Lógica Trabalhos
             if (route === 'trabalhos') {
-                spaView.querySelectorAll('[data-open-job]').forEach(btn => {
-                    btn.addEventListener('click', () => render('trabalho_detalhe'));
-                });
+
+            // Abrir detalhe do trabalho
+            spaView.querySelectorAll('[data-open-job]').forEach(btn => {
+                btn.addEventListener('click', () => render('trabalho_detalhe'));
+            });
+
+            // Abrir wizard
+            spaView.querySelector('#btn-adicionar-trabalhos')
+                ?.addEventListener('click', () => render('publicar_trabalho_step_1'));
             }
 
             if (route === 'trabalho_detalhe') {
@@ -2605,6 +4343,20 @@
                     e.preventDefault();
                     alert('Proposta enviada com sucesso!');
                     render('propostas');
+                });
+            }
+
+            if (route === 'publicar_trabalho_step_1') {
+                // binds do wizard
+                const titleEl = spaView.querySelector('#wiz-title');
+                const errEl = spaView.querySelector('#wiz-title-error');
+
+                spaView.querySelector('[data-wiz-action="back"]')?.addEventListener('click', () => render('trabalhos'));
+
+                spaView.querySelector('[data-wiz-action="next"]')?.addEventListener('click', () => {
+                    const value = (titleEl?.value || '').trim();
+                    if (!value) { errEl?.classList.remove('hidden'); return; }
+                    // salva no estado e avança...
                 });
             }
 
@@ -2982,6 +4734,164 @@
   const file = e.target.files?.[0];
   if (file) console.log("Selecionado:", file.name, file.size);
 });
+
+document.addEventListener('click', function(e) {
+  const hourlyTab = e.target.closest('#budget-tab-hourly');
+  const fixedTab = e.target.closest('#budget-tab-fixed');
+
+  if (!hourlyTab && !fixedTab) return;
+
+  const tabHourly = document.getElementById('budget-tab-hourly');
+  const tabFixed = document.getElementById('budget-tab-fixed');
+  const panelHourly = document.getElementById('budget-panel-hourly');
+  const panelFixed = document.getElementById('budget-panel-fixed');
+  const radioHourly = document.getElementById('budget-radio-hourly');
+  const radioFixed = document.getElementById('budget-radio-fixed');
+
+  if (hourlyTab) {
+    tabHourly.style.background = '#000000';
+    tabHourly.style.color = '#CCFF00';
+
+    tabFixed.style.background = '#FFFFFF';
+    tabFixed.style.color = '#000000';
+
+    radioHourly.style.border = '2px solid #CCFF00';
+    radioHourly.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+    radioFixed.style.border = '2px solid #000000';
+    radioFixed.innerHTML = '';
+
+    panelHourly.style.display = 'flex';
+    panelFixed.style.display = 'none';
+  }
+
+  if (fixedTab) {
+    tabFixed.style.background = '#000000';
+    tabFixed.style.color = '#CCFF00';
+
+    tabHourly.style.background = '#FFFFFF';
+    tabHourly.style.color = '#000000';
+
+    radioFixed.style.border = '2px solid #CCFF00';
+    radioFixed.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+    radioHourly.style.border = '2px solid #000000';
+    radioHourly.innerHTML = '';
+
+    panelFixed.style.display = 'flex';
+    panelHourly.style.display = 'none';
+  }
+});
+
+App.initPublicarTrabalhoStep4 = function () {
+  const root = document.getElementById('view-publicar-trabalho-step-4');
+  if (!root) return;
+
+  const tabHourly = root.querySelector('#budget-tab-hourly');
+  const tabFixed = root.querySelector('#budget-tab-fixed');
+  const panelHourly = root.querySelector('#budget-panel-hourly');
+  const panelFixed = root.querySelector('#budget-panel-fixed');
+  const radioHourly = root.querySelector('#budget-radio-hourly');
+  const radioFixed = root.querySelector('#budget-radio-fixed');
+
+  if (!tabHourly || !tabFixed || !panelHourly || !panelFixed || !radioHourly || !radioFixed) {
+    return;
+  }
+
+  function setMode(mode) {
+    if (mode === 'hourly') {
+      tabHourly.style.background = '#000000';
+      tabHourly.style.color = '#CCFF00';
+
+      tabFixed.style.background = '#FFFFFF';
+      tabFixed.style.color = '#000000';
+
+      radioHourly.style.border = '2px solid #CCFF00';
+      radioHourly.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+      radioFixed.style.border = '2px solid #000000';
+      radioFixed.innerHTML = '';
+
+      panelHourly.style.display = 'flex';
+      panelFixed.style.display = 'none';
+    } else {
+      tabFixed.style.background = '#000000';
+      tabFixed.style.color = '#CCFF00';
+
+      tabHourly.style.background = '#FFFFFF';
+      tabHourly.style.color = '#000000';
+
+      radioFixed.style.border = '2px solid #CCFF00';
+      radioFixed.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+      radioHourly.style.border = '2px solid #000000';
+      radioHourly.innerHTML = '';
+
+      panelFixed.style.display = 'flex';
+      panelHourly.style.display = 'none';
+    }
+  }
+
+  tabHourly.onclick = function () {
+    setMode('hourly');
+  };
+
+  tabFixed.onclick = function () {
+    setMode('fixed');
+  };
+
+  setMode('fixed'); // estado inicial
+};
+
+App.setBudgetMode = function(mode) {
+  const root = document.getElementById('view-publicar-trabalho-step-4');
+  if (!root) return;
+
+  const tabHourly = root.querySelector('#budget-tab-hourly');
+  const tabFixed = root.querySelector('#budget-tab-fixed');
+
+  const panelHourly = root.querySelector('#budget-panel-hourly');
+  const panelFixed = root.querySelector('#budget-panel-fixed');
+
+  const radioHourly = root.querySelector('#budget-radio-hourly');
+  const radioFixed = root.querySelector('#budget-radio-fixed');
+
+  if (!tabHourly || !tabFixed || !panelHourly || !panelFixed || !radioHourly || !radioFixed) {
+    return;
+  }
+
+  if (mode === 'hourly') {
+    tabHourly.style.background = '#000000';
+    tabHourly.style.color = '#CCFF00';
+
+    tabFixed.style.background = '#FFFFFF';
+    tabFixed.style.color = '#000000';
+
+    radioHourly.style.border = '2px solid #CCFF00';
+    radioHourly.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+    radioFixed.style.border = '2px solid #000000';
+    radioFixed.innerHTML = '';
+
+    panelHourly.style.display = 'flex';
+    panelFixed.style.display = 'none';
+  } else {
+    tabFixed.style.background = '#000000';
+    tabFixed.style.color = '#CCFF00';
+
+    tabHourly.style.background = '#FFFFFF';
+    tabHourly.style.color = '#000000';
+
+    radioFixed.style.border = '2px solid #CCFF00';
+    radioFixed.innerHTML = '<div style="width:10px;height:10px;background:#CCFF00;border-radius:50%;"></div>';
+
+    radioHourly.style.border = '2px solid #000000';
+    radioHourly.innerHTML = '';
+
+    panelFixed.style.display = 'flex';
+    panelHourly.style.display = 'none';
+  }
+};
     
 </script>
 </body>
