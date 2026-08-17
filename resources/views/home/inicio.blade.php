@@ -244,7 +244,7 @@
 <div class="text-4xl mb-6">🎨</div>
 <h3 class="text-2xl font-bold text-white mb-2">Design Gráfico</h3>
 <p class="text-slate-400">Logos, branding e artes para redes sociais.</p>
-<div class="mt-6 font-bold text-secondary-fixed">142 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">142 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
 
 
@@ -254,7 +254,7 @@
 <div class="text-4xl mb-6">💻</div>
 <h3 class="text-2xl font-bold text-white mb-2">Web Dev</h3>
 <p class="text-slate-400">Landing pages, e-commerce e sites corporativos.</p>
-<div class="mt-6 font-bold text-secondary-fixed">89 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">89 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 3 -->
@@ -262,7 +262,7 @@
 <div class="text-4xl mb-6">📱</div>
 <h3 class="text-2xl font-bold text-white mb-2">Mobile Apps</h3>
 <p class="text-slate-400">Apps nativos para iOS e Android em Luanda.</p>
-<div class="mt-6 font-bold text-secondary-fixed">34 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">34 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 4 -->
@@ -270,7 +270,7 @@
 <div class="text-4xl mb-6">📈</div>
 <h3 class="text-2xl font-bold text-white mb-2">MKT Digital</h3>
 <p class="text-slate-400">Gestão de tráfego pago e estratégia de vendas.</p>
-<div class="mt-6 font-bold text-secondary-fixed">212 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">212 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 5 -->
@@ -278,7 +278,7 @@
 <div class="text-4xl mb-6">✍️</div>
 <h3 class="text-2xl font-bold text-white mb-2">Copywriting</h3>
 <p class="text-slate-400">Textos persuasivos que vendem em Kwanza.</p>
-<div class="mt-6 font-bold text-secondary-fixed">56 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">56 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 6 -->
@@ -286,7 +286,7 @@
 <div class="text-4xl mb-6">🎥</div>
 <h3 class="text-2xl font-bold text-white mb-2">Edição Vídeo</h3>
 <p class="text-slate-400">Reels, YouTube e vídeos institucionais.</p>
-<div class="mt-6 font-bold text-secondary-fixed">77 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">77 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 7 -->
@@ -294,7 +294,7 @@
 <div class="text-4xl mb-6">🎧</div>
 <h3 class="text-2xl font-bold text-white mb-2">Áudio & Música</h3>
 <p class="text-slate-400">Produção de jingles e spots publicitários.</p>
-<div class="mt-6 font-bold text-secondary-fixed">28 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">28 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 <!-- Bento Card 8 -->
@@ -302,7 +302,7 @@
 <div class="text-4xl mb-6"><i class="fa-solid fa-screwdriver-wrench"></i></div>
 <h3 class="text-2xl font-bold text-white mb-2">Suporte Técnico</h3>
 <p class="text-slate-400">Análise de dados e automação de processos.</p>
-<div class="mt-6 font-bold text-secondary-fixed">15 Jobs Ativos</div>
+<div class="mt-6 font-bold text-secondary-fixed">15 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
 </div>
@@ -541,8 +541,10 @@
 <li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> 4 Candidaturas</li>
 <li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Chat Básico</li>
 <li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Perfil Padrão</li>
+<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Não precisa cartão de crédito</li>
+
 </ul>
-<button class="w-full py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-slate-950 transition-all">Começar</button>
+<a href="{{ route('registar.freela') }}"><button class="w-full py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-slate-950 transition-all">Registar grátis</button></a>
 </div>
 <!-- Plan 2 -->
 <div class="bg-slate-950 p-8 rounded-3xl border-2 border-slate-900 flex flex-col h-full group hover:border-primary-container transition-all">

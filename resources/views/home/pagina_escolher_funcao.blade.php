@@ -147,7 +147,7 @@
 <button class="group relative flex items-center justify-between p-10 bg-white border-2 border-transparent rounded-2xl premium-shadow premium-shadow-hover transition-all duration-500 text-left hover:border-brand-royal" data-role="client" id="btn-card1">
 <div id="card1" class="flex flex-col gap-3 pr-4">
 <span class="font-h3 text-2xl text-brand-navy group-hover:text-brand-royal transition-colors" data-title>Publicar vagas e contratar</span>
-<p class="font-body-md text-brand-navy/60 leading-relaxed">Procure talentos globais e gerencie seus projetos com facilidade.</p>
+<p class="font-body-md text-brand-navy/60 leading-relaxed">Procure talentos angolanos e gerencie seus projetos com facilidade.</p>
 </div>
 <div id="div_icone1" class="flex-shrink-0 w-20 h-20 bg-neon-yellow rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
 <span class="material-symbols-outlined text-brand-navy text-4xl" style="font-variation-settings: 'FILL' 1;"><i class="bi bi-briefcase-fill"></i></span>
