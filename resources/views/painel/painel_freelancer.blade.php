@@ -800,7 +800,7 @@
                         <label class="block text-gray-600 mb-4 uppercase tracking-widest text-xs font-bold" style="font-family: JetBrains Mono, ui-monospace, SFMono-Regular;">Valor (Kz)</label>
                         <div class="relative">
                         <input class="w-full bg-[#F9FAFB] border-2 border-black/5 rounded-xl p-4 text-[24px] leading-[32px] font-bold text-[#111827] focus:border-[#2F5BFF] focus:ring-0 transition-all outline-none"
-                                placeholder="0 Kz" id="topup-amount" type="text" value="2.000">
+                                placeholder="0 Kz" id="topup-amount" type="text" value="2000">
                         <span class="absolute right-4 top-1/2 -translate-y-1/2 text-[#DC2626] flex items-center gap-1 text-[12px] leading-[16px] font-semibold">
                             <span class="material-symbols-outlined text-sm">error</span>
                             O valor mínimo é 2.000 Kz.
@@ -1263,10 +1263,7 @@
                         <span>Extrato</span>
                         </div>
 
-                        <button data-wallet-back class="flex items-center gap-2 px-4 py-2 border-2 border-black text-black rounded-xl font-bold hover:bg-black hover:text-[#D4FF00] transition-all active:scale-95 w-fit" type="button">
-                        <span class="material-symbols-outlined text-[20px]">arrow_back</span>
-                        Voltar
-                        </button>
+                        
                     </div>
 
                     <!-- Header Section -->
