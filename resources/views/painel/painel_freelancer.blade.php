@@ -1124,9 +1124,7 @@
 
                     <!-- Top mini header com voltar -->
                     <div class="flex items-center gap-3">
-                    <button data-wallet-back class="p-2 bg-white/70 hover:bg-white rounded-full transition-colors border border-black/10" type="button">
-                        <span class="material-symbols-outlined text-black">arrow_back</span>
-                    </button>
+                    
                     <h2 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Pedir saque</h2>
                     </div>
 
