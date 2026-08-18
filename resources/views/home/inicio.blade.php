@@ -16,6 +16,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <style>
+    .sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+}
     .text-balance {
       text-wrap: balance;
     }
@@ -854,6 +859,136 @@
         </div>
     </div>
 </footer>
+
+<!-- BEGIN: Footer -->
+<footer class="bg-surface-container-lowest text-on-surface font-body-md antialiased">
+  <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-10">
+
+    <!-- Grid principal -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-gutter">
+
+      <!-- Marca -->
+      <div class="lg:col-span-4">
+        <a href="/" class="inline-flex items-baseline font-display-lg text-3xl tracking-tight text-on-surface">
+          SKILLA<span class="text-secondary-container">.</span>
+        </a>
+
+        <p class="mt-6 font-body-md text-body-md text-on-surface-variant max-w-sm text-pretty">
+          Elevando o padrão do freelancing digital em Angola. Conectamos os melhores talentos às empresas mais inovadoras.
+        </p>
+
+        <!-- Redes sociais -->
+        <div class="mt-8 flex items-center gap-3">
+          <a href="#" aria-label="LinkedIn"
+             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.02h4.56V24H.22V8.02zM8.34 8.02h4.37v2.18h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-7.28c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V24H8.34V8.02z"/>
+            </svg>
+          </a>
+
+          <a href="#" aria-label="Instagram"
+             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm7.85-10.4a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
+            </svg>
+          </a>
+
+          <a href="#" aria-label="X"
+             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3L17.61 20.65z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Plataforma -->
+      <nav class="lg:col-span-2" aria-labelledby="footer-plataforma">
+        <h3 id="footer-plataforma" class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
+          Plataforma
+        </h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Como funciona</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Freelancers</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Categorias</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Preços</a></li>
+        </ul>
+      </nav>
+
+      <!-- Recursos -->
+      <nav class="lg:col-span-2" aria-labelledby="footer-recursos">
+        <h3 id="footer-recursos" class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
+          Recursos
+        </h3>
+        <ul class="space-y-3">
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Blog</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Suporte</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">FAQ</a></li>
+          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Comunidade</a></li>
+        </ul>
+      </nav>
+
+      <!-- Newsletter -->
+      <div class="lg:col-span-4">
+        <h3 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
+          Fique por dentro
+        </h3>
+        <p class="font-body-md text-body-md text-on-surface-variant mb-5 text-pretty">
+          Receba as melhores oportunidades de trabalho e dicas de carreira.
+        </p>
+
+        <form class="flex flex-col sm:flex-row gap-3" novalidate>
+          <label for="footer-email" class="sr-only">Seu melhor e-mail</label>
+          <input
+            id="footer-email"
+            name="email"
+            type="email"
+            required
+            placeholder="Seu melhor e-mail"
+            class="flex-1 min-w-0 bg-surface-container border border-outline-variant rounded-full px-5 py-3 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 transition-colors focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container">
+          <button
+            type="submit"
+            class="shrink-0 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps uppercase tracking-wider rounded-full px-7 py-3 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
+            Inscrever
+          </button>
+        </form>
+
+        <p class="mt-3 font-body-md text-xs text-on-surface-variant/70">
+          Sem spam. Cancele quando quiser.
+        </p>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <hr class="my-12 border-0 h-px bg-outline-variant/40">
+
+    <!-- Barra inferior -->
+    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+      <p class="font-body-md text-sm text-on-surface-variant order-3 md:order-1">
+        © <span id="footer-year">2026</span> <span class="text-on-surface font-medium">Skilla</span>. Todos os direitos reservados.
+      </p>
+
+      <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 order-1 md:order-2">
+        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Termos de uso</a>
+        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Privacidade</a>
+        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Segurança</a>
+      </nav>
+
+      <p class="flex items-center gap-1.5 font-body-md text-sm text-on-surface-variant order-2 md:order-3">
+        Feito com
+        <svg class="w-4 h-4 text-secondary-container" fill="currentColor" viewBox="0 0 24 24" aria-label="amor" role="img">
+          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.7.003-.3.001a.752.752 0 01-.704 0l-.003-.001z"/>
+        </svg>
+        em Angola
+      </p>
+    </div>
+  </div>
+</footer>
+<!-- END: Footer -->
+
+<script>
+  document.getElementById('footer-year').textContent = new Date().getFullYear();
+</script>
 <!-- Cookie Consent -->
 <!-- 
 <div class="fixed bottom-0 left-0 w-full bg-slate-950 border-t-2 border-primary-container p-4 md:p-6 z-[100] flex flex-col md:flex-row justify-between items-center gap-4">
