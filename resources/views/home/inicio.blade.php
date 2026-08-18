@@ -90,6 +90,7 @@
                     "error": "#ffb4ab",
                     "on-tertiary-fixed-variant": "#474646"
             },
+            
             "borderRadius": {
                     "DEFAULT": "1rem",
                     "lg": "2rem",
@@ -533,6 +534,76 @@
 </section>
 <!-- Fim do section sistema escrow -->
 
+<!-- BEGIN: How It Works Section -->
+<section class="bg-secondary-container text-on-secondary-fixed font-body-md antialiased min-h-screen py-section-gap px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center">
+
+  <!-- Section Header -->
+  <div class="mb-20 text-center">
+    <div class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-1 rounded-full font-label-caps text-label-caps uppercase tracking-normal mb-6">
+      <span class="material-symbols-outlined text-base">shield</span>
+      ESCROW • PAGAMENTO 100% PROTEGIDO
+    </div>
+
+    <h2 class="font-display-lg text-4xl md:text-headline-md lg:text-display-lg uppercase text-balance flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-6">
+      TRABALHE SEM MEDO DE
+      <span class="bg-primary-container text-on-primary-container font-body-md font-medium tracking-normal px-4 py-1 inline-block">
+        BURLA
+      </span>
+    </h2>
+
+    <p class="font-body-lg text-body-lg max-w-3xl mx-auto text-balance">
+      Nosso sistema de Escrow garante que seu dinheiro esteja seguro até ao final do projeto.
+    </p>
+  </div>
+
+  <!-- Cards Container -->
+  <div class="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-gutter lg:gap-12">
+
+    <!-- Card 01 -->
+    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
+      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">1</div>
+      <div class="mb-6 text-secondary-container">
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"/>
+  </svg>
+      </div>
+      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">DEPÓSITO</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">Você faz o pagamento inicial.</p>
+    </article>
+
+    <!-- Card 02 -->
+    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
+      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">2</div>
+      <div class="mb-6 text-secondary-container">
+        <span class="material-symbols-outlined text-5xl">lock</span>
+      </div>
+      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">RETIDO</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">O valor fica guardado na Skilla.</p>
+    </article>
+
+    <!-- Card 03 -->
+    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
+      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">3</div>
+      <div class="mb-6 text-secondary-container">
+        <span class="material-symbols-outlined text-5xl">verified</span>
+      </div>
+      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">APROVADO</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">Você recebe e aprova o trabalho.</p>
+    </article>
+
+    <!-- Card 04 -->
+    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
+      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">4</div>
+      <div class="mb-6 text-secondary-container">
+        <span class="material-symbols-outlined text-5xl">payments</span>
+      </div>
+      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">LIBERADO</h3>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">O freelancer recebe o valor.</p>
+    </article>
+
+  </div>
+</section>
+<!-- END: How It Works Section -->
 
 <!-- Preços Section -->
 <section class="py-section-gap bg-secondary-container px-6 md:px-margin-desktop" id="precos">
