@@ -599,7 +599,9 @@
     <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
       <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">4</div>
       <div class="mb-6 text-secondary-container">
-        <span class="material-symbols-outlined text-5xl">payments</span>
+        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/>
+  </svg>
       </div>
       <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">LIBERADO</h3>
       <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">O freelancer recebe o valor.</p>
