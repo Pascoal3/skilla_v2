@@ -16,6 +16,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <style>
+    .text-balance {
+      text-wrap: balance;
+    }
         .marquee {
             overflow: hidden;
             display: flex;
@@ -493,7 +496,8 @@
 </div>
 </div>
 </section>
-<!-- Segurança Section -->
+
+<!-- Sistema escrow Section -->
 <section class="py-section-gap bg-slate-950 px-6 md:px-margin-desktop relative overflow-hidden">
 <div class="max-w-4xl mx-auto text-center relative z-10">
 <div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 px-4 py-2 rounded-full font-bold uppercase text-xs mb-8">
@@ -527,6 +531,9 @@
 <!-- Background Decor -->
 <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 blur-[120px] rounded-full -z-0"></div>
 </section>
+<!-- Fim do section sistema escrow -->
+
+
 <!-- Preços Section -->
 <section class="py-section-gap bg-secondary-container px-6 md:px-margin-desktop" id="precos">
 <div class="max-w-7xl mx-auto">
