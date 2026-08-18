@@ -540,8 +540,10 @@
   <!-- Section Header -->
   <div class="mb-20 text-center">
     <div class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-1 rounded-full font-label-caps text-label-caps uppercase tracking-normal mb-6">
-      <span class="material-symbols-outlined text-base">shield</span>
-      ESCROW • PAGAMENTO 100% PROTEGIDO
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+</svg>
+      ESCROW  •  PAGAMENTO 100% PROTEGIDO
     </div>
 
     <h2 class="font-display-lg text-4xl md:text-headline-md lg:text-display-lg uppercase text-balance flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-6">
