@@ -498,51 +498,16 @@
 </div>
 </section>
 
-<!-- Sistema escrow Section -->
-<section class="py-section-gap bg-slate-950 px-6 md:px-margin-desktop relative overflow-hidden">
-<div class="max-w-4xl mx-auto text-center relative z-10">
-<div class="inline-flex items-center gap-2 bg-emerald-500/10 text-emerald-500 px-4 py-2 rounded-full font-bold uppercase text-xs mb-8">
-<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">shield</span> Pagamento 100% Protegido
-            </div>
-<h2 class="font-display-lg text-display-lg uppercase text-white mb-8">Trabalhe Sem Medo de <span class="text-emerald-500">Burla</span></h2>
-<p class="text-slate-400 text-body-lg mb-16">Nosso sistema de Escrow garante que seu dinheiro esteja seguro até ao final do projeto.</p>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-<div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-<div class="text-emerald-500 font-black text-xl mb-2">01</div>
-<div class="text-white font-bold uppercase text-sm">Depósito</div>
-<p class="text-xs text-slate-500 mt-2">Você faz o pagamento inicial.</p>
-</div>
-<div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-<div class="text-emerald-500 font-black text-xl mb-2">02</div>
-<div class="text-white font-bold uppercase text-sm">Retido</div>
-<p class="text-xs text-slate-500 mt-2">O valor fica guardado na Skilla.</p>
-</div>
-<div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-<div class="text-emerald-500 font-black text-xl mb-2">03</div>
-<div class="text-white font-bold uppercase text-sm">Aprovado</div>
-<p class="text-xs text-slate-500 mt-2">Você recebe e aprova o trabalho.</p>
-</div>
-<div class="p-6 bg-slate-900 rounded-xl border border-slate-800">
-<div class="text-emerald-500 font-black text-xl mb-2">04</div>
-<div class="text-white font-bold uppercase text-sm">Liberado</div>
-<p class="text-xs text-slate-500 mt-2">O freelancer recebe o valor.</p>
-</div>
-</div>
-</div>
-<!-- Background Decor -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/5 blur-[120px] rounded-full -z-0"></div>
-</section>
-<!-- Fim do section sistema escrow -->
 
-<!-- BEGIN: How It Works Section -->
+<!-- Começo: Escrow Section -->
 <section class="bg-secondary-container text-on-secondary-fixed font-body-md antialiased min-h-screen py-section-gap px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center">
 
   <!-- Section Header -->
   <div class="mb-20 text-center">
     <div class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-1 rounded-full font-label-caps text-label-caps uppercase tracking-normal mb-6">
       <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
-</svg>
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
+        </svg>
       ESCROW  •  PAGAMENTO 100% PROTEGIDO
     </div>
 
@@ -613,7 +578,11 @@
 
   </div>
 </section>
-<!-- END: How It Works Section -->
+
+<div class="bg-secondary-container">
+  <hr class="border-0 h-px bg-on-secondary-fixed/15">
+</div>
+<!-- Final: Escrow Section -->
 
 <!-- Preços Section -->
 <section class="py-section-gap bg-secondary-container px-6 md:px-margin-desktop" id="precos">
