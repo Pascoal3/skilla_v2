@@ -539,156 +539,11 @@
 
 
 <!-- Começo: Escrow Section -->
-<section class="bg-secondary-container text-on-secondary-fixed font-body-md antialiased min-h-screen py-section-gap px-margin-mobile md:px-margin-desktop flex flex-col items-center justify-center">
 
-  <!-- Section Header -->
-  <div class="mb-20 text-center">
-    <div class="inline-flex items-center gap-2 bg-primary-container text-on-primary-container px-4 py-1 rounded-full font-label-caps text-label-caps uppercase tracking-normal mb-6">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z"/>
-        </svg>
-      ESCROW  •  PAGAMENTO 100% PROTEGIDO
-    </div>
 
-    <h2 class="font-display-lg text-4xl md:text-headline-md lg:text-display-lg uppercase text-balance flex flex-wrap items-center justify-center gap-x-4 gap-y-2 mb-6">
-      TRABALHE SEM MEDO DE
-      <span class="bg-primary-container text-on-primary-container font-body-md font-medium tracking-normal px-4 py-1 inline-block">
-        BURLA
-      </span>
-    </h2>
+<section id="pricing" class="w-full max-w-7xl mx-auto px-gutter py-16 md:py-24 bg-secondary-container">
 
-    <p class="font-body-lg text-body-lg max-w-3xl mx-auto text-balance">
-      Nosso sistema de Escrow garante que seu dinheiro esteja seguro até ao final do projeto.
-    </p>
-  </div>
-
-  <!-- Cards Container -->
-  <div class="w-full max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-gutter lg:gap-12">
-
-    <!-- Card 01 -->
-    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
-      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">1</div>
-      <div class="mb-6 text-secondary-container">
-        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a2.25 2.25 0 0 0-2.25-2.25H15a3 3 0 1 1-6 0H5.25A2.25 2.25 0 0 0 3 12m18 0v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6m18 0V9M3 12V9m18 0a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 9m18 0V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v3"/>
-  </svg>
-      </div>
-      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">DEPÓSITO</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">Você faz o pagamento inicial.</p>
-    </article>
-
-    <!-- Card 02 -->
-    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
-      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">2</div>
-      <div class="mb-6 text-secondary-container">
-        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z"/>
-  </svg>
-      </div>
-      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">RETIDO</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">O valor fica guardado na Skilla.</p>
-    </article>
-
-    <!-- Card 03 -->
-    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
-      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">3</div>
-      <div class="mb-6 text-secondary-container">
-       <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/>
-  </svg>
-    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"/>
-  </svg>
-      </div>
-      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">APROVADO</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">Você recebe e aprova o trabalho.</p>
-    </article>
-
-    <!-- Card 04 -->
-    <article class="relative bg-surface-container-lowest text-on-surface rounded-lg p-8 md:p-10 pt-14 shadow-xl">
-      <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-on-primary-container rounded-full border-[6px] border-secondary-container flex items-center justify-center text-xl font-medium">4</div>
-      <div class="mb-6 text-secondary-container">
-        <svg class="w-12 h-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z"/>
-  </svg>
-      </div>
-      <h3 class="font-headline-md text-xl md:text-2xl font-bold uppercase mb-4">LIBERADO</h3>
-      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed text-pretty">O freelancer recebe o valor.</p>
-    </article>
-
-  </div>
-</section>
-
-<div class="bg-secondary-container">
-  <hr class="border-0 h-px bg-on-secondary-fixed/15">
-</div>
-<!-- Final: Escrow Section -->
-
-<!-- Preços Section -->
-<section class="py-section-gap bg-secondary-container px-6 md:px-margin-desktop" id="precos">
-<div class="max-w-7xl mx-auto">
-<h2 class="font-display-lg text-display-lg uppercase text-on-secondary text-center mb-20">Escolha o seu <span class="bg-primary-container text-white px-4 italic">Plano</span></h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Plan 1 -->
-<div class="bg-slate-950 p-8 rounded-3xl border-2 border-slate-900 flex flex-col h-full group hover:border-primary-container transition-all">
-<div class="text-secondary-fixed font-black text-sm uppercase mb-4">Iniciante</div>
-<div class="text-4xl font-black text-white mb-6">Grátis</div>
-<div class="text-secondary-fixed text-xs mb-6">20 Créditos dados ao criar conta</div>
-<ul class="space-y-4 mb-10 flex-grow">
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> 4 Candidaturas</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Chat Básico</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Perfil Padrão</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Não precisa cartão de crédito</li>
-
-</ul>
-<a href="{{ route('registar.freela') }}"><button class="w-full py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-slate-950 transition-all">Registar grátis</button></a>
-</div>
-<!-- Plan 2 -->
-<div class="bg-slate-950 p-8 rounded-3xl border-2 border-slate-900 flex flex-col h-full group hover:border-primary-container transition-all">
-<div class="text-secondary-fixed font-black text-sm uppercase mb-4">Pro</div>
-<div class="text-4xl font-black text-white mb-1">15.000 <span class="text-lg opacity-40">Kz/mês</span></div>
-<div class="text-secondary-fixed text-xs mb-6">50 Créditos Incluídos</div>
-<ul class="space-y-4 mb-10 flex-grow">
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Candidaturas Ilimitadas</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Selo de Verificado</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-circle-check material-symbols-outlined text-primary-container text-lg"></i> Suporte Prioritário</li>
-</ul>
-<button class="w-full py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-slate-950 transition-all">Assinar Agora</button>
-</div>
-<!-- Plan 3 (Featured) -->
-<div class="bg-slate-950 p-8 rounded-3xl border-2 border-primary-container flex flex-col h-full relative scale-105 shadow-2xl z-10">
-<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-container text-white px-4 py-1 rounded-full text-xs font-black uppercase">Mais Popular</div>
-<div class="text-secondary-fixed font-black text-sm uppercase mb-4">Elite</div>
-<div class="text-4xl font-black text-white mb-1">35.000 <span class="text-lg opacity-40">Kz/mês</span></div>
-<div class="text-secondary-fixed text-xs mb-6">150 Créditos Incluídos</div>
-<ul class="space-y-4 mb-10 flex-grow">
-<li class="flex items-center gap-3 text-white text-sm"><i class="fa-solid fa-star material-symbols-outlined text-secondary-fixed text-lg"></i> Destaque nos Resultados</li>
-<li class="flex items-center gap-3 text-white text-sm"><i class="fa-solid fa-star material-symbols-outlined text-secondary-fixed text-lg"></i> Taxa de Saque 0%</li>
-<li class="flex items-center gap-3 text-white text-sm"><i class="fa-solid fa-star material-symbols-outlined text-secondary-fixed text-lg"></i> Portfólio Premium</li>
-<li class="flex items-center gap-3 text-white text-sm"><i class="fa-solid fa-star material-symbols-outlined text-secondary-fixed text-lg"></i> Manager de Conta</li>
-</ul>
-<button class="w-full py-4 bg-primary-container text-white rounded-full font-bold hover:bg-blue-700 transition-all shadow-lg shadow-blue-500/20">Assinar Elite</button>
-</div>
-<!-- Plan 4 -->
-<div class="bg-slate-950 p-8 rounded-3xl border-2 border-slate-900 flex flex-col h-full group hover:border-primary-container transition-all">
-<div class="text-secondary-fixed font-black text-sm uppercase mb-4">Business</div>
-<div class="text-4xl font-black text-white mb-6">Sob Consulta</div>
-<ul class="space-y-4 mb-10 flex-grow">
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-star material-symbols-outlined text-primary-container text-lg"></i> Multi-contas Equipa</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-star material-symbols-outlined text-primary-container text-lg"></i> Faturação em Lote</li>
-<li class="flex items-center gap-3 text-slate-400 text-sm"><i class="fa-solid fa-star material-symbols-outlined text-primary-container text-lg"></i> API de Integração</li>
-</ul>
-<button class="w-full py-3 border-2 border-white text-white rounded-full font-bold hover:bg-white hover:text-slate-950 transition-all">Falar com Consultor</button>
-</div>
-</div>
-</div>
-
-<section id="pricing" class="w-full max-w-7xl mx-auto px-gutter py-16 md:py-24">
-
-    <!-- Header -->
-    <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h1 class="text-headline-xl font-headline-xl text-on-background mb-6">Simple, transparent pricing</h1>
-        <p class="text-body-lg font-body-lg text-on-surface-variant">Choose the plan that fits your freelance journey. No hidden fees, cancel anytime.</p>
-    </div>
+    
 
     <!-- Pricing Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start relative">
@@ -870,7 +725,6 @@
         </div>
 
     </div>
-</section>
 </section>
 
 
