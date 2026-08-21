@@ -17,10 +17,10 @@
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <style>
     .sr-only {
-  position: absolute; width: 1px; height: 1px;
-  padding: 0; margin: -1px; overflow: hidden;
-  clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
-}
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border-width: 0;
+    }
     .text-balance {
       text-wrap: balance;
     }
@@ -35,6 +35,9 @@
             will-change: transform;
             animation: marquee 20s linear infinite;
         }
+        .texto_black {
+            color: #121414;
+        }
         @keyframes marquee {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -43,7 +46,7 @@
 
 <script id="tailwind-config">
       tailwind.config = {
-        darkMode: "class",
+        
         theme: {
           extend: {
             "colors": {
@@ -483,8 +486,8 @@
 <div class="flex items-center gap-4">
 <img class="img_testemunho" src="{{ asset('img/foto_perfil_exemplar.png') }}" alt="">
 <div>
-<div class="font-bold">Ricardo Antunes</div>
-<div class="text-sm opacity-60">Diretor, CrioLuanda</div>
+<div class="texto_black font-bold text-dark">Ricardo Antunes</div>
+<div class="texto_black text-sm opacity-60">Diretor, CrioLuanda</div>
 </div>
 </div>
 </div>
@@ -493,9 +496,8 @@
 <div class="flex items-center gap-4">
 <img class="img_testemunho" src="{{ asset('img/foto_perfil_exemplar.png') }}" alt="">
 <div>
-<div class="font-bold">Sara Gomes</div>
-<div class="text-sm opacity-60">Redatora Freelancer</div>
-</div>
+<div class="texto_black font-bold text-dark">Sara Gomes</div>
+<div class="texto_black text-sm opacity-60">Redatora Freelancer</div>
 </div>
 </div>
 </div>
@@ -747,7 +749,7 @@
 </div>
 </section>
 <!-- Final CTA -->
-<section class="py-24 px-6 md:px-margin-desktop">
+<section class="bg-secondary-container py-24 px-6 md:px-margin-desktop">
 <div class="max-w-7xl mx-auto rounded-[3rem] bg-gradient-to-br from-primary-container to-blue-800 p-12 md:p-20 text-white relative overflow-hidden">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
 <div class="border-b lg:border-b-0 lg:border-r border-white/20 pb-12 lg:pb-0 lg:pr-12">
@@ -774,217 +776,18 @@
 <div class="absolute top-0 left-0 w-40 h-40 bg-secondary-fixed/20 rounded-full blur-3xl"></div>
 </div>
 </section>
-<!-- Footer -->
-<footer class="bg-slate-950 pt-20 pb-10 border-t-2 border-slate-800 text-slate-400">
-    <div class="max-w-7xl mx-auto px-6 md:px-12">
-        
-        <!-- Top Section: Grid de Conteúdo e Newsletter -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
-            
-            <!-- Coluna da Marca -->
-            <div class="lg:col-span-4">
-                <div class="text-3xl font-black text-white mb-6 font-h1 uppercase tracking-tighter">
-                    SKILLA<span class="text-[#D6FF2A]">.</span>
-                </div>
-                <p class="text-slate-500 mb-8 max-w-xs leading-relaxed">
-                    Elevando o padrão do freelancing digital em Angola. Conectamos os melhores talentos às empresas mais inovadoras.
-                </p>
-            </div>
 
-            <!-- Colunas de Links -->
-            <div class="lg:col-span-4 grid grid-cols-2 gap-8">
-                <div>
-                    <h4 class="font-label-caps uppercase text-white mb-6 tracking-widest text-xs font-bold">Plataforma</h4>
-                    <ul class="space-y-4">
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Como Funciona
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Freelancers
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Categorias
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Preços
-                        </a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-label-caps uppercase text-white mb-6 tracking-widest text-xs font-bold">Recursos</h4>
-                    <ul class="space-y-4">
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Blog
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Suporte
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> FAQ
-                        </a></li>
-                        <li><a class="hover:text-[#D6FF2A] transition-all text-sm uppercase tracking-wide block group flex items-center gap-2" href="#">
-                            <span class="w-0 group-hover:w-2 h-px bg-[#D6FF2A] transition-all"></span> Comunidade
-                        </a></li>
-                    </ul>
-                </div>
-            </div>
+<!-- Transição (horizonte) entre a secção lime e o footer escuro -->
+<div class="bg-secondary-container">
+  <svg
+    class="w-full h-[120px] md:h-[160px] text-surface-container-lowest block"
+    viewBox="0 0 1440 220"
+    preserveAspectRatio="none"
+    aria-hidden="true">
+    <!-- Cole aqui o conteúdo do footer-horizon.svg (apenas os <path> / <g>) -->
+  </svg>
+</div>
 
-            <!-- Newsletter Section -->
-            <div class="lg:col-span-4">
-                <h4 class="font-label-caps uppercase text-white mb-6 tracking-widest text-xs font-bold">Fique por dentro</h4>
-                <p class="text-sm text-slate-500 mb-4">Receba as melhores oportunidades de trabalho e dicas de carreira.</p>
-                <form class="flex gap-2">
-                    <input type="email" placeholder="Seu melhor e-mail" 
-                           class="bg-slate-900 border border-slate-800 text-white text-sm rounded-lg px-4 py-3 w-full focus:outline-none focus:border-[#D6FF2A] transition-all">
-                    <button class="bg-[#D6FF2A] text-slate-950 px-4 py-3 rounded-lg font-bold text-xs uppercase hover:brightness-110 transition-all">
-                        OK
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Bottom Bar: Copyright e Legal -->
-        <div class="pt-10 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="text-xs text-slate-600">
-                © 2024 <span class="text-slate-400 font-bold">SKILLA</span>. Todos os direitos reservados.
-            </div>
-            <div class="flex gap-8 text-xs uppercase tracking-widest">
-                <a href="#" class="hover:text-white transition-all">Termos de Uso</a>
-                <a href="#" class="hover:text-white transition-all">Privacidade</a>
-                <a href="#" class="hover:text-white transition-all">Segurança</a>
-            </div>
-            <div class="text-xs text-slate-600 italic">
-                Feito com em Angola
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- BEGIN: Footer -->
-<footer class="bg-surface-container-lowest text-on-surface font-body-md antialiased">
-  <div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop pt-24 pb-10">
-
-    <!-- Grid principal -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-gutter">
-
-      <!-- Marca -->
-      <div class="lg:col-span-4">
-        <a href="/" class="inline-flex items-baseline font-display-lg text-3xl tracking-tight text-on-surface">
-          SKILLA<span class="text-secondary-container">.</span>
-        </a>
-
-        <p class="mt-6 font-body-md text-body-md text-on-surface-variant max-w-sm text-pretty">
-          Elevando o padrão do freelancing digital em Angola. Conectamos os melhores talentos às empresas mais inovadoras.
-        </p>
-
-        <!-- Redes sociais -->
-        <div class="mt-8 flex items-center gap-3">
-          <a href="#" aria-label="LinkedIn"
-             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8.02h4.56V24H.22V8.02zM8.34 8.02h4.37v2.18h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V24h-4.56v-7.28c0-1.74-.03-3.98-2.43-3.98-2.43 0-2.8 1.9-2.8 3.86V24H8.34V8.02z"/>
-            </svg>
-          </a>
-
-          <a href="#" aria-label="Instagram"
-             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.3-1.46.72-2.13 1.38C1.35 2.68.93 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.3.79.72 1.46 1.38 2.13.67.66 1.34 1.08 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.3 1.46-.72 2.13-1.38.66-.67 1.08-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.3-.79-.72-1.46-1.38-2.13C21.32 1.35 20.65.93 19.86.63c-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm7.85-10.4a1.44 1.44 0 11-2.88 0 1.44 1.44 0 012.88 0z"/>
-            </svg>
-          </a>
-
-          <a href="#" aria-label="X"
-             class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant transition-colors hover:bg-secondary-container hover:text-on-secondary-container focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M18.9 1.15h3.68l-8.04 9.19L24 22.85h-7.41l-5.8-7.58-6.64 7.58H.46l8.6-9.83L0 1.15h7.59l5.24 6.93 6.07-6.93zm-1.29 19.5h2.04L6.49 3.24H4.3L17.61 20.65z"/>
-            </svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Plataforma -->
-      <nav class="lg:col-span-2" aria-labelledby="footer-plataforma">
-        <h3 id="footer-plataforma" class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
-          Plataforma
-        </h3>
-        <ul class="space-y-3">
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Como funciona</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Freelancers</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Categorias</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Preços</a></li>
-        </ul>
-      </nav>
-
-      <!-- Recursos -->
-      <nav class="lg:col-span-2" aria-labelledby="footer-recursos">
-        <h3 id="footer-recursos" class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
-          Recursos
-        </h3>
-        <ul class="space-y-3">
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Blog</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Suporte</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">FAQ</a></li>
-          <li><a href="#" class="font-body-md text-body-md text-on-surface-variant transition-colors hover:text-secondary-container">Comunidade</a></li>
-        </ul>
-      </nav>
-
-      <!-- Newsletter -->
-      <div class="lg:col-span-4">
-        <h3 class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface mb-5">
-          Fique por dentro
-        </h3>
-        <p class="font-body-md text-body-md text-on-surface-variant mb-5 text-pretty">
-          Receba as melhores oportunidades de trabalho e dicas de carreira.
-        </p>
-
-        <form class="flex flex-col sm:flex-row gap-3" novalidate>
-          <label for="footer-email" class="sr-only">Seu melhor e-mail</label>
-          <input
-            id="footer-email"
-            name="email"
-            type="email"
-            required
-            placeholder="Seu melhor e-mail"
-            class="flex-1 min-w-0 bg-surface-container border border-outline-variant rounded-full px-5 py-3 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/60 transition-colors focus:outline-none focus:border-secondary-container focus:ring-1 focus:ring-secondary-container">
-          <button
-            type="submit"
-            class="shrink-0 bg-secondary-container text-on-secondary-container font-label-caps text-label-caps uppercase tracking-wider rounded-full px-7 py-3 transition-opacity hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-container focus-visible:ring-offset-2 focus-visible:ring-offset-surface-container-lowest">
-            Inscrever
-          </button>
-        </form>
-
-        <p class="mt-3 font-body-md text-xs text-on-surface-variant/70">
-          Sem spam. Cancele quando quiser.
-        </p>
-      </div>
-    </div>
-
-    <!-- Divisor -->
-    <hr class="my-12 border-0 h-px bg-outline-variant/40">
-
-    <!-- Barra inferior -->
-    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-      <p class="font-body-md text-sm text-on-surface-variant order-3 md:order-1">
-        © <span id="footer-year">2026</span> <span class="text-on-surface font-medium">Skilla</span>. Todos os direitos reservados.
-      </p>
-
-      <nav class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 order-1 md:order-2">
-        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Termos de uso</a>
-        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Privacidade</a>
-        <a href="#" class="font-body-md text-sm text-on-surface-variant transition-colors hover:text-secondary-container">Segurança</a>
-      </nav>
-
-      <p class="flex items-center gap-1.5 font-body-md text-sm text-on-surface-variant order-2 md:order-3">
-        Feito com
-        <svg class="w-4 h-4 text-secondary-container" fill="currentColor" viewBox="0 0 24 24" aria-label="amor" role="img">
-          <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.7.003-.3.001a.752.752 0 01-.704 0l-.003-.001z"/>
-        </svg>
-        em Angola
-      </p>
-    </div>
-  </div>
-</footer>
-<!-- END: Footer -->
 
 <script>
   document.getElementById('footer-year').textContent = new Date().getFullYear();
