@@ -217,3 +217,5 @@ Route::prefix('contratos/{contrato}/escrow')->group(function () {
     Route::post('/reembolsar', [EscrowController::class, 'reembolsarTotal'])
         ->name('escrow.reembolsar');
 });
+
+Route::get('/footer', fn () => view('elementos.footer'))->name('footer');
