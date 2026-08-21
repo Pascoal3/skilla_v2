@@ -16,10 +16,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <style>
+    #card_redondo_footer{
+      border-top: solid #002a78 7px;
+    }
     /* Seus estilos originais */
     #div_footer {
             font-family: 'Inter', sans-serif;
-            background-color: #EDE8DC;
+            background-color: #002a78;
         }
         .topo-pattern {
             background-image: url("data:image/svg+xml,%3Csvg width='1000' height='1000' viewBox='0 0 1000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1.5'%3E%3Cpath d='M0 200 C 150 150 350 250 500 200 S 850 150 1000 200'/%3E%3Cpath d='M0 400 C 200 350 400 450 600 400 S 800 350 1000 400'/%3E%3Cpath d='M0 600 C 100 580 300 650 500 600 S 900 550 1000 600'/%3E%3Cpath d='M0 800 C 250 750 450 850 750 800 S 1000 750 1000 800'/%3E%3Cpath d='M200 0 C 150 150 250 350 200 500 S 150 850 200 1000'/%3E%3Cpath d='M400 0 C 350 200 450 400 400 600 S 350 800 400 1000'/%3E%3Cpath d='M600 0 C 580 100 650 300 600 500 S 550 900 600 1000'/%3E%3C/g%3E%3C/svg%3E");
@@ -885,10 +888,10 @@
 
     <!-- Footer Card -->
     <footer class="px-4 md:px-24 pb-12">
-        <div class="max-w-7xl mx-auto bg-[#12200F] rounded-[20px] relative topo-pattern pt-16 px-12 pb-8 overflow-visible">
+        <div id="card_redondo_footer" class="max-w-7xl mx-auto bg-[#12200F] rounded-[20px] relative topo-pattern pt-16 px-12 pb-8 overflow-visible">
             
             <!-- Logo Badge -->
-            <div class="absolute -top-[40px] left-1/2 -translate-x-1/2 w-[80px] h-[80px] bg-[#D4F03D] rounded-full flex items-center justify-center border-[6px] border-[#EDE8DC] z-10 shadow-lg">
+            <div class="absolute -top-[40px] left-1/2 -translate-x-1/2 w-[80px] h-[80px] bg-[#D4F03D] rounded-full flex items-center justify-center border-[6px] border-[#002a78] z-10 shadow-lg">
                 <span class="text-[36px] font-black text-black"><img src="/img/logo_skilla7-removebg-preview.png" alt=""></span>
             </div>
 
@@ -934,25 +937,25 @@
                 <!-- Col 3: Branding -->
                 <div class="md:col-span-4 flex flex-col items-center md:items-start text-center md:text-left">
                     <div>
-  <p class="text-white font-semibold mb-3">Baixe o app</p>
-  <p class="text-gray-400 text-sm mb-4">Leve a Skilla no seu bolso.</p>
-  <div class="flex flex-col gap-2">
-    <a href="#" class="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-4 py-2 hover:bg-white/20 transition">
-      <i class="fa-brands fa-apple text-xl"></i>
-      <div class="text-left">
-        <p class="text-[10px] text-gray-400 leading-none">Baixar na</p>
-        <p class="text-sm font-semibold text-white leading-tight">App Store</p>
-      </div>
-    </a>
-    <a href="#" class="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-4 py-2 hover:bg-white/20 transition">
-      <i class="fa-brands fa-google-play text-xl"></i>
-      <div class="text-left">
-        <p class="text-[10px] text-gray-400 leading-none">Disponível no</p>
-        <p class="text-sm font-semibold text-white leading-tight">Google Play</p>
-      </div>
-    </a>
-  </div>
-</div>
+                    <p class="text-white font-semibold mb-3">Baixe o app</p>
+                    <p class="text-gray-400 text-sm mb-4">Leve a Skilla no seu bolso.</p>
+                    <div class="flex flex-col gap-2">
+                      <a href="#" class="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-4 py-2 hover:bg-white/20 transition">
+                        <i class="fa-brands fa-apple text-xl"></i>
+                        <div class="text-left">
+                          <p class="text-[10px] text-gray-400 leading-none">Baixar na</p>
+                          <p class="text-sm font-semibold text-white leading-tight">App Store</p>
+                        </div>
+                      </a>
+                      <a href="#" class="flex items-center gap-2 bg-white/10 border border-white/20 rounded-lg px-4 py-2 hover:bg-white/20 transition">
+                        <i class="fa-brands fa-google-play text-xl"></i>
+                        <div class="text-left">
+                          <p class="text-[10px] text-gray-400 leading-none">Disponível no</p>
+                          <p class="text-sm font-semibold text-white leading-tight">Google Play</p>
+                        </div>
+                      </a>
+                    </div>
+                  </div>
                 </div>
 
                 <!-- Col 4: Links -->
