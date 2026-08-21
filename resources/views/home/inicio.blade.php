@@ -540,10 +540,7 @@
 
 <!-- Começo: Escrow Section -->
 
-
-<section id="pricing" class="w-full max-w-7xl mx-auto px-gutter py-16 md:py-24 bg-secondary-container">
-
-    
+<section id="pricing" class="w-full max-w-7xl mx-auto px-gutter py-16 md:py-24 ">
 
     <!-- Pricing Cards Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start relative">
