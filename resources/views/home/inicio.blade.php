@@ -16,6 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1;display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 <style>
+    /* Seus estilos originais */
     .sr-only {
       position: absolute; width: 1px; height: 1px;
       padding: 0; margin: -1px; overflow: hidden;
@@ -24,113 +25,144 @@
     .text-balance {
       text-wrap: balance;
     }
-        .marquee {
-            overflow: hidden;
-            display: flex;
-        }
-        .marquee-content {
-            display: flex;
-            width: max-content;
-            gap: 3rem;
-            will-change: transform;
-            animation: marquee 20s linear infinite;
-        }
-        .texto_black {
-            color: #121414;
-        }
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
-        }
+    .marquee {
+        overflow: hidden;
+        display: flex;
+    }
+    .marquee-content {
+        display: flex;
+        width: max-content;
+        gap: 3rem;
+        will-change: transform;
+        animation: marquee 20s linear infinite;
+    }
+    .texto_black {
+        color: #121414;
+    }
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
+
+    /* Novos estilos do Stitch (Material Symbols) */
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
 </style>
 
+<!-- 2. SCRIPT TAILWIND UNIFICADO -->
 <script id="tailwind-config">
-      tailwind.config = {
-        
+    tailwind.config = {
+        darkMode: "class", // Mantido para compatibilidade
         theme: {
           extend: {
+            /* --- CORES ORIGINAIS DO SITE (Mantidas) --- */
             "colors": {
-                    "tertiary-fixed-dim": "#c9c6c5",
-                    "tertiary": "#c9c6c5",
-                    "surface-dim": "#121414",
-                    "on-primary-fixed": "#00174b",
-                    "surface-container": "#1e2020",
-                    "on-surface-variant": "#c3c6d7",
-                    "surface": "#121414",
-                    "secondary-container": "#c7f000",
-                    "primary-container": "#2563eb",
-                    "on-secondary": "#2a3400",
-                    "on-tertiary": "#313030",
-                    "on-error": "#690005",
-                    "secondary": "#fbffe0",
-                    "on-primary-fixed-variant": "#003ea8",
-                    "secondary-fixed-dim": "#b0d500",
-                    "primary-fixed": "#dbe1ff",
-                    "error-container": "#93000a",
-                    "on-primary-container": "#eeefff",
-                    "on-background": "#e2e2e2",
-                    "primary-fixed-dim": "#b4c5ff",
-                    "tertiary-fixed": "#e5e2e1",
-                    "secondary-fixed": "#c9f308",
-                    "surface-container-low": "#1a1c1c",
-                    "on-secondary-container": "#576a00",
-                    "on-secondary-fixed-variant": "#3e4c00",
-                    "on-surface": "#e2e2e2",
-                    "primary": "#b4c5ff",
-                    "surface-container-highest": "#333535",
-                    "outline-variant": "#434655",
-                    "tertiary-container": "#6e6d6d",
-                    "on-tertiary-fixed": "#1c1b1b",
-                    "surface-tint": "#b4c5ff",
-                    "background": "#121414",
-                    "surface-container-lowest": "#0c0f0f",
-                    "inverse-surface": "#e2e2e2",
-                    "on-secondary-fixed": "#171e00",
-                    "surface-variant": "#333535",
-                    "inverse-primary": "#0053db",
-                    "on-primary": "#002a78",
-                    "outline": "#8d90a0",
-                    "on-error-container": "#ffdad6",
-                    "inverse-on-surface": "#2f3131",
-                    "on-tertiary-container": "#f3f0ef",
-                    "surface-container-high": "#282a2b",
-                    "surface-bright": "#38393a",
-                    "error": "#ffb4ab",
-                    "on-tertiary-fixed-variant": "#474646"
+                "tertiary-fixed-dim": "#c9c6c5",
+                "tertiary": "#c9c6c5",
+                "surface-dim": "#121414",
+                "on-primary-fixed": "#00174b",
+                "surface-container": "#1e2020",
+                "on-surface-variant": "#c3c6d7",
+                "surface": "#121414",
+                "secondary-container": "#c7f000",
+                "primary-container": "#2563eb",
+                "on-secondary": "#2a3400",
+                "on-tertiary": "#313030",
+                "on-error": "#690005",
+                "secondary": "#fbffe0",
+                "on-primary-fixed-variant": "#003ea8",
+                "secondary-fixed-dim": "#b0d500",
+                "primary-fixed": "#dbe1ff",
+                "error-container": "#93000a",
+                "on-primary-container": "#eeefff",
+                "on-background": "#e2e2e2",
+                "primary-fixed-dim": "#b4c5ff",
+                "tertiary-fixed": "#e5e2e1",
+                "secondary-fixed": "#c9f308",
+                "surface-container-low": "#1a1c1c",
+                "on-secondary-container": "#576a00",
+                "on-secondary-fixed-variant": "#3e4c00",
+                "on-surface": "#e2e2e2",
+                "primary": "#b4c5ff",
+                "surface-container-highest": "#333535",
+                "outline-variant": "#434655",
+                "tertiary-container": "#6e6d6d",
+                "on-tertiary-fixed": "#1c1b1b",
+                "surface-tint": "#b4c5ff",
+                "background": "#121414",
+                "surface-container-lowest": "#0c0f0f",
+                "inverse-surface": "#e2e2e2",
+                "on-secondary-fixed": "#171e00",
+                "surface-variant": "#333535",
+                "inverse-primary": "#0053db",
+                "on-primary": "#002a78",
+                "outline": "#8d90a0",
+                "on-error-container": "#ffdad6",
+                "inverse-on-surface": "#2f3131",
+                "on-tertiary-container": "#f3f0ef",
+                "surface-container-high": "#282a2b",
+                "surface-bright": "#38393a",
+                "error": "#ffb4ab",
+                "on-tertiary-fixed-variant": "#474646",
+                
+                /* --- NOVAS CORES PARA PRICING (Estilo Stitch/Clean) --- */
+                /* Estas cores criam o tema claro apenas para esta seção */
+                "pricing-bg": "#f9f9ff",          /* Fundo geral da seção (opcional, se quiser destacar) */
+                "pricing-card": "#ffffff",        /* Fundo branco dos cards */
+                "pricing-text-main": "#151c27",   /* Texto escuro principal */
+                "pricing-text-muted": "#4c4546",  /* Texto secundário */
+                "pricing-btn": "#000000",         /* Botão preto (estilo Stitch) */
+                "pricing-btn-text": "#ffffff",    /* Texto do botão */
+                "pricing-accent": "#4F46E5",      /* Cor de destaque (Badge Popular) */
+                "pricing-border": "#e2e8f8",      /* Bordas suaves */
             },
             
             "borderRadius": {
-                    "DEFAULT": "1rem",
-                    "lg": "2rem",
-                    "xl": "3rem",
-                    "full": "9999px"
+                "DEFAULT": "1rem",
+                "lg": "2rem",
+                "xl": "3rem",
+                "2xl": "1.5rem", /* Adicionado do Stitch */
+                "full": "9999px"
             },
             "spacing": {
-                    "section-gap": "120px",
-                    "margin-desktop": "64px",
-                    "unit": "8px",
-                    "margin-mobile": "20px",
-                    "gutter": "24px"
+                "section-gap": "120px",
+                "margin-desktop": "64px",
+                "unit": "8px",
+                "margin-mobile": "20px",
+                "gutter": "24px"
             },
             "fontFamily": {
-                    "headline-md": ["Space Grotesk"],
-                    "display-lg": ["Space Grotesk"],
-                    "display-xl": ["Space Grotesk"],
-                    "body-md": ["Inter"],
-                    "label-caps": ["Space Grotesk"],
-                    "body-lg": ["Inter"]
+                "headline-md": ["Space Grotesk"],
+                "display-lg": ["Space Grotesk"],
+                "display-xl": ["Space Grotesk"],
+                "body-md": ["Inter"],
+                "label-caps": ["Space Grotesk"],
+                "body-lg": ["Inter"],
+                "sans": ["Inter", "sans-serif"] /* Adicionado para garantir Inter nos cards */
             },
             "fontSize": {
-                    "headline-md": ["48px", {"lineHeight": "120%", "fontWeight": "600"}],
-                    "display-lg": ["64px", {"lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "700"}],
-                    "display-xl": ["96px", {"lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "700"}],
-                    "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
-                    "label-caps": ["14px", {"lineHeight": "100%", "fontWeight": "700"}],
-                    "body-lg": ["20px", {"lineHeight": "160%", "fontWeight": "400"}]
+                "headline-md": ["48px", {"lineHeight": "120%", "fontWeight": "600"}],
+                "display-lg": ["64px", {"lineHeight": "110%", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "display-xl": ["96px", {"lineHeight": "100%", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "160%", "fontWeight": "400"}],
+                "label-caps": ["14px", {"lineHeight": "100%", "fontWeight": "700"}],
+                "body-lg": ["20px", {"lineHeight": "160%", "fontWeight": "400"}],
+                /* Fontes auxiliares para o Pricing */
+                "pricing-title": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "pricing-price": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+            },
+            /* --- SOMBRAS DO STITCH (Adicionadas) --- */
+            "boxShadow": {
+                'ambient': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
+                'ambient-hover': '0 25px 30px -5px rgba(0, 0, 0, 0.08), 0 15px 15px -5px rgba(0, 0, 0, 0.04)',
+                'ambient-highlight': '0 30px 40px -10px rgba(0, 0, 0, 0.1), 0 20px 20px -10px rgba(0, 0, 0, 0.05)',
+                'btn-ambient': '0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)',
+                'btn-ambient-hover': '0 15px 20px -3px rgba(0, 0, 0, 0.3), 0 8px 10px -2px rgba(0, 0, 0, 0.15)'
             }
           },
         },
-      }
+    }
 </script>
 <script src="{{ asset('js/inicio.js') }}"></script>
 
