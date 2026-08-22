@@ -189,7 +189,7 @@
 </div>
 <div class="font-body-md text-brand-navy/70">
                 Já tem uma conta? 
-                <a class="text-brand-royal font-bold hover:underline underline-offset-4 transition-all" href="#">Entrar</a>
+                <a class="text-brand-royal font-bold hover:underline underline-offset-4 transition-all" href="{{ route('login') }}">Entrar</a>
 </div>
 </div>
 </div>
