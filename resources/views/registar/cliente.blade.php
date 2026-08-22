@@ -133,9 +133,9 @@
     <div class="text-2xl font-black text-slate-950 italic font-h1 tracking-tighter"><img id="logo_plataforma" src="{{ asset('img/logo_skilla8_invertido-removebg-preview.png') }}" alt=""></div>
 </a>
 <div class="hidden md:flex items-center gap-8">
-<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="#">Como funciona</a>
-<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="#">Freelancers</a>
-<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="#">Categorias</a>
+<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="{{ route('inicio') }}#como-funciona">Como funciona</a>
+<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="{{ route('inicio') }}#freelancers">Freelancers</a>
+<a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="{{ route('inicio') }}#areas">Categorias</a>
 </div>
 <div class="flex items-center gap-4">
 <a href="{{ route('registar.freela') }}" class=" font-bold text-sm font-label-caps hover:brightness-90 transition-all" href="#" style="color: black;">Aqui para trabalhar ? Candidatar-se como talento</a>
