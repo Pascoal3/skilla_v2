@@ -254,7 +254,7 @@
 <!-- Footer: Login Link -->
 <div class="text-center pt-4">
 <p class="text-body-md text-slate-500">
-                        Já tem uma conta? <a class="text-[#D6FF2A] font-bold hover:underline ml-1" href="#">Entrar</a>
+                        Já tem uma conta? <a class="text-[#D6FF2A] font-bold hover:underline ml-1" href="{{ route('login') }}">Entrar</a>
 </p>
 </div>
 </form>
