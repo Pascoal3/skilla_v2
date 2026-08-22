@@ -119,11 +119,11 @@
 <body class="bg-background min-h-screen flex flex-col font-body-md text-on-surface antialiased">
 <!-- Navbar -->
 <nav class="flex justify-between items-center w-full px-8 md:px-16 py-5 bg-brand-navy fixed top-0 z-50">
-<img id="logo_plataforma" src="{{asset('img/logo_skilla8-removebg-preview.png')}}" alt="">
+<a href="{{ route('inicio') }}"><img id="logo_plataforma" src="{{asset('img/logo_skilla8-removebg-preview.png')}}" alt=""></a>
 
 <div class="hidden md:flex gap-10 items-center">
-<a class="text-white/90 hover:text-brand-royal transition-colors duration-300 font-semibold" href="#">Trabalhos</a>
-<a class="text-white/90 hover:text-brand-royal transition-colors duration-300 font-semibold" href="#">Talentos</a>
+<a class="text-white/90 hover:text-brand-royal transition-colors duration-300 font-semibold" href="{{ route('inicio') }}#trabalhos">Trabalhos</a>
+<a class="text-white/90 hover:text-brand-royal transition-colors duration-300 font-semibold" href="{{ route('inicio') }}#talentos">Talentos</a>
 <button class="bg-brand-royal text-white px-8 py-2.5 rounded-full font-bold hover:brightness-110 transition-all duration-300">
             Começar
         </button>
