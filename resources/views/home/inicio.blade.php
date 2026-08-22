@@ -973,6 +973,7 @@
                             <li><a href="#" class="text-gray-300 text-[13px] hover:text-white">Central de Suporte</a></li>
                             <li><a href="#" class="text-gray-300 text-[13px] hover:text-white">Comunidade</a></li>
                             <li><a href="#" class="text-gray-300 text-[13px] hover:text-white">Segurança</a></li>
+                            <li><a href="#" class="text-gray-300 text-[13px] hover:text-white">Reportar erro</a></li>
                         </ul>
                     </div>
                 </div>
