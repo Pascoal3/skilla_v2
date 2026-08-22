@@ -129,7 +129,9 @@
 <!-- TopNavBar (Derived from JSON with modification for white background) -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
 <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-<div class="text-2xl font-black text-slate-950 italic font-h1 tracking-tighter"><img id="logo_plataforma" src="{{ asset('img/logo_skilla8_invertido-removebg-preview.png') }}" alt=""></div>
+<a href="{{ route('inicio') }}">
+    <div class="text-2xl font-black text-slate-950 italic font-h1 tracking-tighter"><img id="logo_plataforma" src="{{ asset('img/logo_skilla8_invertido-removebg-preview.png') }}" alt=""></div>
+</a>
 <div class="hidden md:flex items-center gap-8">
 <a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="#">Como funciona</a>
 <a class="text-slate-400 hover:text-slate-950 transition-colors font-label-caps uppercase text-label-caps" href="#">Freelancers</a>
