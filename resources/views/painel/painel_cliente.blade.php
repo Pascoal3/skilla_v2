@@ -135,6 +135,9 @@
             --on-secondary-container: #101010;
             --on-primary-container: #101010;
         }
+        .inset-divider-custom {
+            margin-left: 4.5rem; /* Matches the 72px inset requirement */
+        }
         html, body { background: var(--primary-container); }
         .bg-primary-container{ background: var(--primary-container); }
         .bg-tertiary{ background: var(--tertiary); }
