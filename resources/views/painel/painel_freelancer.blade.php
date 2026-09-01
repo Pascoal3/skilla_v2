@@ -2273,8 +2273,8 @@
                                 <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
                                 <div class="flex items-center gap-2 mt-1">
                                 <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
-                                <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed"></span>
-                                <span class="font-label-sm text-label-sm text-primary-fixed font-bold">Status: Ativo</span>
+                                <span class="w-1.5 h-1.5 bg-[#CCFF00] rounded-full text-verde"></span>
+                                <span class="font-label-sm text-label-sm  font-bold text-verde">Estado: <span id="estado_contrato">Ativo</span></span>
                                 </div>
                             </div>
                             </div>
