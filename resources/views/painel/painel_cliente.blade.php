@@ -2127,17 +2127,14 @@
                         <!-- Main Content Area -->
                         <main class="flex-1 w-full h-full min-h-0 flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden">
 
-                        <!-- Voltar -->
-                        <div class="px-margin-mobile md:px-gutter pt-4">
-                    <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
-                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                        Voltar às mensagens
-                    </button>
-                        </div>
 
                         <!-- Chat Header -->
                         <div class="bg-white border-b border-gray-200 px-margin-mobile md:px-gutter py-4 flex justify-between items-center shrink-0 shadow-sm z-20 rounded-b-xl lg:rounded-none">
                             <div class="flex items-center gap-4">
+                            <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                                
+                                </button>
                             <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed hidden sm:block">
                                 <img
                                 alt="Client Logo"
