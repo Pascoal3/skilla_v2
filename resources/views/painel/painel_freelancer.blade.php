@@ -2251,32 +2251,30 @@
                         <!-- Main Content Area -->
                         <main class="flex-1 w-full min-h-screen flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden">
 
-                        <!-- Voltar -->
-                        <div class="px-margin-mobile md:px-gutter pt-4">
-                    <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
-                        <span class="material-symbols-outlined text-[18px]">arrow_back</span>
-                        Voltar às mensagens
-                    </button>
-                        </div>
+                        
 
                         <!-- Chat Header -->
                         <div class="bg-white border-b border-gray-200 px-margin-mobile md:px-gutter py-4 flex justify-between items-center shrink-0 shadow-sm z-20 rounded-b-xl lg:rounded-none">
                             <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed hidden sm:block">
-                                <img
-                                alt="Client Logo"
-                                class="w-full h-full object-cover"
-                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3mnX26vKnjiE7lkgPOzM_-P8x_gLtdhDtE4diNxIzJIMUPkVYMUyAgSJ1mooqjvIT6Wonn8Z1YXlTB22X4UUTfKQDx-Yqxk35-8dHhsfGvxaC3iZf2ZoFtHEBjqNbxaPZJgyeDCxem8wUV-MckGB6o9g3DD5__hK_SV4OOxMoLzpq8CbymlDAEnj2QrELQFpFRxWdbEYxpZK0h6xVRgY-fijAPbErhvj3gphkeCcZIaaekpXNmpnk46tPZ_GdOpZ8Dbnusgplt0I"
-                                />
-                            </div>
-                            <div>
-                                <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
-                                <div class="flex items-center gap-2 mt-1">
-                                <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
-                                <span class="w-1.5 h-1.5 bg-[#CCFF00] rounded-full text-verde"></span>
-                                <span class="font-label-sm text-label-sm  font-bold text-verde">Estado: <span id="estado_contrato">Ativo</span></span>
+                                <button data-spa-link data-route="mensagens" class="inline-flex items-center gap-2 font-label-md text-label-md text-black font-bold hover:opacity-70">
+                                <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+                                
+                                </button>
+                                <div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-fixed hidden sm:block">
+                                    <img
+                                    alt="Client Logo"
+                                    class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3mnX26vKnjiE7lkgPOzM_-P8x_gLtdhDtE4diNxIzJIMUPkVYMUyAgSJ1mooqjvIT6Wonn8Z1YXlTB22X4UUTfKQDx-Yqxk35-8dHhsfGvxaC3iZf2ZoFtHEBjqNbxaPZJgyeDCxem8wUV-MckGB6o9g3DD5__hK_SV4OOxMoLzpq8CbymlDAEnj2QrELQFpFRxWdbEYxpZK0h6xVRgY-fijAPbErhvj3gphkeCcZIaaekpXNmpnk46tPZ_GdOpZ8Dbnusgplt0I"
+                                    />
                                 </div>
-                            </div>
+                                <div>
+                                    <h1 class="font-headline-md text-headline-md text-black">Sala de trabalho — Logo Skilla</h1>
+                                    <div class="flex items-center gap-2 mt-1">
+                                    <span class="font-label-sm text-label-sm text-gray-500 uppercase tracking-wider">Contrato #1024</span>
+                                    <span class="w-1.5 h-1.5 bg-[#CCFF00] rounded-full text-verde"></span>
+                                    <span class="font-label-sm text-label-sm  font-bold text-verde">Estado: <span id="estado_contrato">Ativo</span></span>
+                                    </div>
+                                </div>
                             </div>
 
                             <button class="hidden sm:flex px-4 py-2 bg-gray-50 border border-gray-200 text-black rounded-lg font-label-md text-label-md hover:border-primary-fixed transition-colors items-center gap-2">
