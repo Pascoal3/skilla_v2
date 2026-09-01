@@ -2249,7 +2249,7 @@
                         </header>
 
                         <!-- Main Content Area -->
-                        <main class="flex-1 w-full min-h-screen flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden">
+                        <main class="flex-1 w-full h-full min-h-0 flex flex-col bg-[#D4FF00] relative pt-16 md:pt-0 pb-[72px] lg:pb-0 overflow-hidden">
 
                         
 
