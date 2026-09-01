@@ -1979,142 +1979,230 @@
         `;
 
         App.templates.mensagens = `
-             <div id="view-mensagens" class="flex min-h-screen bg-[#D4FF00]">
-                <style>
-                #view-mensagens{
-                    --primary-container: #D4FF00;
-                    --tertiary: #FFFFFF;
-                    --on-tertiary: #101010;
+  <div id="view-mensagens" class="flex min-h-screen bg-[#D4FF00]">
+    <style>
+      #view-mensagens{
+        --primary-container: #D4FF00;
+        --tertiary: #FFFFFF;
+        --on-tertiary: #101010;
 
-                    --surface-container-lowest: #101010;
-                    --surface-container: rgba(16,16,16,.70);
-                    --surface-variant: rgba(16,16,16,.55);
+        --surface-container-lowest: #101010;
+        --surface-container: rgba(16,16,16,.70);
+        --surface-variant: rgba(16,16,16,.55);
 
-                    --secondary: #E9E9E9;
-                    --secondary-container: #E9E9E9;
-                    --on-secondary-container: #101010;
-                    --on-primary-container: #101010;
-                }
+        --secondary: #E9E9E9;
+        --secondary-container: #E9E9E9;
+        --on-secondary-container: #101010;
+        --on-primary-container: #101010;
 
-                #view-mensagens .bg-tertiary{ background: var(--tertiary) !important; }
-                #view-mensagens .text-on-tertiary{ color: var(--on-tertiary) !important; }
+        /* new "clean list" tokens */
+        --panel-border: rgba(0,0,0,.08);
+        --divider: rgba(16,16,16,.10);
+        --row-hover: rgba(16,16,16,.035);
+        --row-pressed: rgba(16,16,16,.055);
+      }
 
-                #view-mensagens .text-surface-container-lowest{ color: var(--surface-container-lowest) !important; }
-                #view-mensagens .text-surface-container{ color: var(--surface-container) !important; }
-                #view-mensagens .text-surface-variant{ color: var(--surface-variant) !important; }
+      #view-mensagens .bg-tertiary{ background: var(--tertiary) !important; }
+      #view-mensagens .text-on-tertiary{ color: var(--on-tertiary) !important; }
 
-                #view-mensagens .bg-surface-container-lowest{ background: var(--surface-container-lowest) !important; }
-                #view-mensagens .text-primary-container{ color: var(--primary-container) !important; }
+      #view-mensagens .text-surface-container-lowest{ color: var(--surface-container-lowest) !important; }
+      #view-mensagens .text-surface-container{ color: var(--surface-container) !important; }
+      #view-mensagens .text-surface-variant{ color: var(--surface-variant) !important; }
 
-                #view-mensagens .bg-secondary{ background: var(--secondary) !important; }
-                #view-mensagens .bg-secondary-container{ background: var(--secondary-container) !important; }
-                #view-mensagens .text-on-secondary-container{ color: var(--on-secondary-container) !important; }
-                #view-mensagens .text-on-primary-container{ color: var(--on-primary-container) !important; }
+      #view-mensagens .bg-surface-container-lowest{ background: var(--surface-container-lowest) !important; }
+      #view-mensagens .text-primary-container{ color: var(--primary-container) !important; }
 
-                #view-mensagens input.bg-tertiary{
-                    background: var(--tertiary) !important;
-                    color: var(--on-tertiary) !important;
-                }
-                </style>
+      #view-mensagens .bg-secondary{ background: var(--secondary) !important; }
+      #view-mensagens .bg-secondary-container{ background: var(--secondary-container) !important; }
+      #view-mensagens .text-on-secondary-container{ color: var(--on-secondary-container) !important; }
+      #view-mensagens .text-on-primary-container{ color: var(--on-primary-container) !important; }
 
-                <div class="max-w-4xl mx-auto w-full px-margin-mobile md:px-margin-desktop pb-10">
+      #view-mensagens input.bg-tertiary{
+        background: var(--tertiary) !important;
+        color: var(--on-tertiary) !important;
+      }
 
-                <!-- Header Section -->
-                <div class="flex justify-between items-end mb-6">
-                    <div>
-                    <h2 class="text-headline-lg font-headline-lg text-surface-container-lowest tracking-tight mb-1">Mensagens</h2>
-                    <p class="text-body-md font-body-md text-surface-container">Salas de trabalho vinculadas a contratos</p>
-                    </div>
-                    <div class="flex gap-3">
-                    <button class="bg-surface-container-lowest text-primary-container p-2 rounded-lg flex items-center justify-center hover:bg-surface-container transition-colors">
-                        <span class="material-symbols-outlined text-[20px]">more_horiz</span>
-                    </button>
-                    </div>
-                </div>
+      /* Clean panel look */
+      #view-mensagens .inbox-panel{
+        background: var(--tertiary);
+        border: 1px solid var(--panel-border);
+        border-radius: 16px;
+        overflow: hidden;
+      }
 
-            
+      /* Row style: flat list, iOS-like */
+      #view-mensagens .chat-row{
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+        background: var(--tertiary);
+        transition: background-color .18s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+      #view-mensagens .chat-row:hover{ background: var(--row-hover); }
+      #view-mensagens .chat-row:active{ background: var(--row-pressed); }
 
-                <!-- Inbox List -->
-                <div class="flex flex-col gap-2">
+      /* Left active indicator (unread) */
+      #view-mensagens .chat-row.is-unread::before{
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--surface-container-lowest);
+      }
 
-                    <!-- Unread Item 1 -->
-                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
-                    <img class="w-10 h-10 rounded-full object-cover bg-secondary"
-                        alt="Avatar"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8IpAPjEGC61SjgTvvLluR4_zqfrAtVfAG1nLoA4Zfx42cFBApbVfnCNatWg3ZgQ0Jy8EishspWdM6L54qGXtImKfZ4cAZgqNARagAMjsXuDzjs5s0UknIkMd8YEcZitS42-zQT0iImQOmju6A4mMNUhZxtlKyVqIeamyLUd4xbTGqpD0JfTOLgJkG8RytvVO78wDhUJ2DQZRZFdKCi8T25VinDqtC4RvyqDfOm2dKaKtGUraovX8BShqlw66lqyfhBMTq7PA27tw"/>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate">Sala de trabalho — Logo Skilla</h3>
-                        <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Enviei as primeiras opções do logotipo. Pode validar?</p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1 shrink-0">
-                        <span class="text-label-sm font-label-sm text-surface-container-lowest font-bold">12:45</span>
-                        <span class="bg-surface-container-lowest text-primary-container text-label-sm font-label-sm rounded-full px-2 py-0.5 min-w-[22px] text-center">3</span>
-                    </div>
-                    </div>
+      /* Inset divider: starts after avatar + gap */
+      #view-mensagens .inset-divider{
+        height: 1px;
+        background: var(--divider);
+        margin-left: calc(16px + 40px + 16px); /* padding + avatar(40) + gap */
+        width: calc(100% - (16px + 40px + 16px));
+      }
 
-                    <!-- Unread Item 2 -->
-                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group relative overflow-hidden">
-                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-surface-container-lowest"></div>
-                    <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
-                        <span class="material-symbols-outlined text-[20px]">storefront</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate">Website para Restaurante</h3>
-                        <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Os arquivos do Figma foram atualizados com as novas fotos.</p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1 shrink-0">
-                        <span class="text-label-sm font-label-sm text-surface-container-lowest font-bold">09:30</span>
-                        <span class="bg-surface-container-lowest text-primary-container text-label-sm font-label-sm rounded-full px-2 py-0.5 min-w-[22px] text-center">1</span>
-                    </div>
-                    </div>
+      /* Right meta column: timestamp above badge, aligned */
+      #view-mensagens .meta-col{
+        width: 60px;
+        height: 48px;             /* aligns with avatar size below (48) */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        flex-shrink: 0;
+        margin-left: 8px;
+      }
 
-                    <!-- Read Item 1 -->
-                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
-                    <img class="w-10 h-10 rounded-full object-cover bg-secondary"
-                        alt="Avatar"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9p5NtQ7f1wLUB5hoOGxrkk54JWkNOfzMOuEnGvgLaR7mdRj6Gb1K6xhI5rUri7CGqnrkPi8fS2eqGVhRGW5BLPQcBFh7VLnFGgK_w3_I78Tf_Qrk63_0Kz-MQMDu1XDzIUn32k7tsQuVVbKOBj9lDaI0bq3uQnk5MzDQYDFEVAtRCgfiolFx9NZPS7kATHEoODg-qEOBcyRhgX4vjp9VLNnFcSHuZL4cF77YCcaNMW_Bq-QbYaTbaCtUjBhkfpq6qPzAMoRLgo5M"/>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">Identidade Visual Barber Shop</h3>
-                        <p class="text-body-sm font-body-md text-surface-variant truncate">Tudo certo. O pagamento da primeira parcela foi liberado.</p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1 shrink-0">
-                        <span class="text-label-sm font-label-sm text-surface-variant">Ontem</span>
-                    </div>
-                    </div>
+      #view-mensagens .badge-unread{
+        min-width: 20px;
+        height: 20px;
+        padding: 0 6px;
+        border-radius: 999px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 800;
+        line-height: 1;
+        background: var(--surface-container-lowest);
+        color: var(--primary-container);
+      }
 
-                    <!-- Read Item 2 -->
-                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
-                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
-                        <span class="material-symbols-outlined text-[20px]">smartphone</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">Landing Page para App</h3>
-                        <p class="text-body-sm font-body-md text-surface-variant truncate">Perfeito, aguardo os próximos passos.</p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1 shrink-0">
-                        <span class="text-label-sm font-label-sm text-surface-variant">Segunda</span>
-                    </div>
-                    </div>
+      /* Make list feel less "cardy" */
+      #view-mensagens .legacy-card{
+        border: none !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 0 !important;
+        background: transparent !important;
+      }
+      #view-mensagens .legacy-card .absolute{ display:none !important; } /* remove old left bar */
+    </style>
 
-                    <!-- Read Item 3 -->
-                    <div data-open-chat class="bg-tertiary rounded-xl px-3 py-3 flex items-center gap-3 cursor-pointer hover:shadow-md transition-all border border-transparent hover:border-surface-container-lowest group">
-                    <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
-                        <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <h3 class="text-body-md font-body-lg text-on-tertiary truncate">E-commerce Simples</h3>
-                        <p class="text-body-sm font-body-md text-surface-variant truncate">Projeto finalizado e arquivado.</p>
-                    </div>
-                    <div class="flex flex-col items-end gap-1 shrink-0">
-                        <span class="text-label-sm font-label-sm text-surface-variant">12 Mar</span>
-                    </div>
-                    </div>
+    <div class="max-w-4xl mx-auto w-full px-margin-mobile md:px-margin-desktop pb-10">
+      <!-- Header Section (keep content, refine spacing) -->
+      <div class="flex justify-between items-start mb-4">
+        <div>
+          <h2 class="text-headline-lg font-headline-lg text-surface-container-lowest tracking-tight mb-1">Mensagens</h2>
+          <p class="text-body-md font-body-md text-surface-container">Salas de trabalho vinculadas a contratos</p>
+        </div>
+        <div class="flex gap-3">
+          <button class="bg-tertiary text-surface-container-lowest p-2 rounded-full flex items-center justify-center hover:bg-[rgba(16,16,16,.04)] transition-colors border border-[rgba(0,0,0,.08)]">
+            <span class="material-symbols-outlined text-[20px]">more_horiz</span>
+          </button>
+        </div>
+      </div>
 
-                </div>
-                </div>
+      <!-- Inbox List Panel -->
+      <div class="inbox-panel">
+        <div class="flex flex-col w-full">
+
+          <!-- Unread Item 1 -->
+          <div data-open-chat class="chat-row is-unread cursor-pointer">
+            <img class="w-10 h-10 rounded-full object-cover bg-secondary shrink-0"
+              alt="Avatar"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8IpAPjEGC61SjgTvvLluR4_zqfrAtVfAG1nLoA4Zfx42cFBApbVfnCNatWg3ZgQ0Jy8EishspWdM6L54qGXtImKfZ4cAZgqNARagAMjsXuDzjs5s0UknIkMd8YEcZitS42-zQT0iImQOmju6A4mMNUhZxtlKyVqIeamyLUd4xbTGqpD0JfTOLgJkG8RytvVO78wDhUJ2DQZRZFdKCi8T25VinDqtC4RvyqDfOm2dKaKtGUraovX8BShqlw66lqyfhBMTq7PA27tw"/>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate mb-1">Sala de trabalho — Logo Skilla</h3>
+              <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Enviei as primeiras opções do logotipo. Pode validar?</p>
             </div>
-        `;
+            <div class="meta-col">
+              <span class="text-label-sm font-label-sm text-surface-variant font-semibold whitespace-nowrap">12:45</span>
+              <span class="badge-unread">3</span>
+            </div>
+          </div>
+          <div class="inset-divider"></div>
+
+          <!-- Unread Item 2 -->
+          <div data-open-chat class="chat-row is-unread cursor-pointer">
+            <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container shrink-0">
+              <span class="material-symbols-outlined text-[20px]">storefront</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-body-md font-body-lg font-bold text-on-tertiary truncate mb-1">Website para Restaurante</h3>
+              <p class="text-body-sm font-body-md text-surface-variant truncate font-semibold">Os arquivos do Figma foram atualizados com as novas fotos.</p>
+            </div>
+            <div class="meta-col">
+              <span class="text-label-sm font-label-sm text-surface-variant font-semibold whitespace-nowrap">09:30</span>
+              <span class="badge-unread">1</span>
+            </div>
+          </div>
+          <div class="inset-divider"></div>
+
+          <!-- Read Item 1 -->
+          <div data-open-chat class="chat-row cursor-pointer">
+            <img class="w-10 h-10 rounded-full object-cover bg-secondary shrink-0"
+              alt="Avatar"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9p5NtQ7f1wLUB5hoOGxrkk54JWkNOfzMOuEnGvgLaR7mdRj6Gb1K6xhI5rUri7CGqnrkPi8fS2eqGVhRGW5BLPQcBFh7VLnFGgK_w3_I78Tf_Qrk63_0Kz-MQMDu1XDzIUn32k7tsQuVVbKOBj9lDaI0bq3uQnk5MzDQYDFEVAtRCgfiolFx9NZPS7kATHEoODg-qEOBcyRhgX4vjp9VLNnFcSHuZL4cF77YCcaNMW_Bq-QbYaTbaCtUjBhkfpq6qPzAMoRLgo5M"/>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-body-md font-body-lg text-on-tertiary truncate mb-1">Identidade Visual Barber Shop</h3>
+              <p class="text-body-sm font-body-md text-surface-variant truncate">Tudo certo. O pagamento da primeira parcela foi liberado.</p>
+            </div>
+            <div class="meta-col" style="justify-content:flex-start; gap:6px; height:48px;">
+              <span class="text-label-sm font-label-sm text-surface-variant whitespace-nowrap">Ontem</span>
+              <div class="h-[20px]"></div>
+            </div>
+          </div>
+          <div class="inset-divider"></div>
+
+          <!-- Read Item 2 -->
+          <div data-open-chat class="chat-row cursor-pointer">
+            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[20px]">smartphone</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-body-md font-body-lg text-on-tertiary truncate mb-1">Landing Page para App</h3>
+              <p class="text-body-sm font-body-md text-surface-variant truncate">Perfeito, aguardo os próximos passos.</p>
+            </div>
+            <div class="meta-col" style="justify-content:flex-start; gap:6px; height:48px;">
+              <span class="text-label-sm font-label-sm text-surface-variant whitespace-nowrap">Segunda</span>
+              <div class="h-[20px]"></div>
+            </div>
+          </div>
+          <div class="inset-divider"></div>
+
+          <!-- Read Item 3 -->
+          <div data-open-chat class="chat-row cursor-pointer">
+            <div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container shrink-0">
+              <span class="material-symbols-outlined text-[20px]">shopping_cart</span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="text-body-md font-body-lg text-on-tertiary truncate mb-1">E-commerce Simples</h3>
+              <p class="text-body-sm font-body-md text-surface-variant truncate">Projeto finalizado e arquivado.</p>
+            </div>
+            <div class="meta-col" style="justify-content:flex-start; gap:6px; height:48px;">
+              <span class="text-label-sm font-label-sm text-surface-variant whitespace-nowrap">12 Mar</span>
+              <div class="h-[20px]"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+`;
 
         App.templates.mensagens_sala = `
             <div id="view-mensagens-sala" class="flex h-[100dvh] pl-[1%] pr-[1%] w-[100%] bg-[#D4FF00] overflow-hidden">
