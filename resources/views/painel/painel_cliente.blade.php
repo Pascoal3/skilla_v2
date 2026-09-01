@@ -2114,6 +2114,15 @@
           </button>
         </div>
       </div>
+      <!-- Search Input -->
+                <div class="mb-6 relative group">
+                    <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-surface-variant group-focus-within:text-surface-container-lowest transition-colors">search</span>
+                    <input
+                    class="w-full bg-tertiary text-on-tertiary border border-transparent focus:border-surface-container-lowest rounded-xl py-3 pl-12 pr-4 text-body-md font-body-md shadow-sm outline-none transition-all placeholder:text-surface-variant"
+                    placeholder="Pesquisar conversas"
+                    type="text"
+                    />
+                </div>
 
       <!-- Inbox List Panel -->
       <div class="inbox-panel">
