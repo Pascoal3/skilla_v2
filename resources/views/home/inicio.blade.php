@@ -192,7 +192,7 @@
 <a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#como-funciona">Como Funciona</a>
 <a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#freelancers">Freelancers</a>
 <a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#areas">Categorias</a>
-<a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#precos">Preços</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#pricing">Preços</a>
 <a class="text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-300" href="#faq">FAQ</a>
 </div>
 <div class="flex items-center gap-4">
@@ -900,26 +900,10 @@
                 <!-- Col 1: Contato -->
                 <div class="md:col-span-2 flex flex-col">
                     <h4 class="text-white font-semibold text-[13px] mb-4">Contato</h4>
-                    <p class="text-gray-400 text-[13px] mb-2">Rua das Flores, 123 – São Paulo, SP</p>
+                    <p class="text-gray-400 text-[13px] mb-2">Angola, Luanda, Camama, rua 5</p>
                     <a href="mailto:suporte@skilla.com" class="text-[#D4F03D] text-[13px] underline decoration-[#D4F03D]/50 mb-4">suporte@skilla.com</a>
                     
-                    <div class="inline-flex items-center space-x-2 border border-white/20 rounded-full px-3 py-1.5 w-fit mt-3 mb-6 bg-white/5">
-                        <span class="text-white text-[11px] font-bold">4.9</span>
-                        <span class="text-[#D4F03D] text-[10px]">★</span>
-                        <span class="text-white text-[11px]">Trustpilot</span>
-                    </div>
-
-                    <div class="flex items-center space-x-2">
-                        <div class="bg-white/10 px-2 py-1 rounded-md text-white/50 text-[10px] flex items-center">
-                            <i class="fa-brands fa-cc-visa mr-1"></i> VISA
-                        </div>
-                        <div class="bg-white/10 px-2 py-1 rounded-md text-white/50 text-[10px] flex items-center">
-                            <i class="fa-brands fa-cc-mastercard mr-1"></i> MC
-                        </div>
-                        <div class="bg-white/10 px-2 py-1 rounded-md text-white/50 text-[10px] flex items-center">
-                            <i class="fa-brands fa-cc-paypal mr-1"></i> PayPal
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <!-- Col 2: Social -->
