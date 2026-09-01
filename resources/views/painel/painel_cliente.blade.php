@@ -2114,7 +2114,7 @@
         `;
 
         App.templates.mensagens_sala = `
-            <div id="view-mensagens-sala" class="flex min-h-screen bg-[#D4FF00]">
+            <div id="view-mensagens-sala" class="flex h-[100dvh] bg-[#D4FF00] overflow-hidden">
                                 <!-- Mobile TopAppBar (hidden on md) -->
                         <header class="md:hidden fixed top-0 w-full z-50 bg-white border-b border-gray-200 flex justify-between items-center h-16 px-margin-mobile">
                         <div class="font-display-lg text-headline-md font-black text-primary-fixed">Skilla</div>
