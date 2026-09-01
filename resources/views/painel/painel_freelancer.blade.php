@@ -2288,7 +2288,7 @@
                         </div>
 
                         <!-- Chat Messages Area -->
-                        <div class="flex-1 overflow-y-auto p-margin-mobile md:p-gutter flex flex-col gap-6 relative">
+                        <div class="flex-1 min-h-0 overflow-y-auto p-margin-mobile md:p-gutter flex flex-col gap-6 relative custom-scrollbar">
 
                             <div class="flex justify-center my-4">
                             <div class="bg-gray-100 border border-gray-200 px-4 py-2 rounded-full font-label-sm text-label-sm text-gray-600 text-center max-w-md shadow-sm">
