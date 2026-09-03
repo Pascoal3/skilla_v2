@@ -1578,6 +1578,7 @@
                                     <option>Mais recentes</option>
                                     <option>Maior orçamento</option>
                                     <option>Mais propostas</option>
+                                    <option>Menos propostas</option>
                                 </select>
                             </div>
                         </div>
