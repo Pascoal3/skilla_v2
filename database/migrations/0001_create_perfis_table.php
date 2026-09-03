@@ -28,7 +28,7 @@ return new class extends Migration {
             $table->text('bio')->nullable();
             $table->string('telefone')->nullable();
 
-            $table->integer('saldo_creditos')->default(10);
+            $table->integer('saldo_creditos')->default(20);
             $table->boolean('esta_destacado')->default(false);
             $table->timestamp('destaque_expira_em')->nullable();
             $table->float('avaliacao_media')->default(0);

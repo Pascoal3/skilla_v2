@@ -16,13 +16,13 @@ class ProposalService {
         $freelancer = Profile::findOrFail($freelancerId);
 
         // 1. Verificar se tem créditos
-        if ($freelancer->saldo_creditos < 1) {
+        if ($freelancer->saldo_creditos < 5) {
             throw new Exception("Você não possui créditos suficientes para enviar esta proposta.");
         }
 
         // 2. Deduzir crédito e salvar proposta
         return DB::transaction(function () use ($freelancer, $data) {
-            $freelancer->decrement('saldo_creditos', 1);
+            $freelancer->decrement('saldo_creditos', 5);
             
             return Proposal::create([
                 'trabalho_id' => $data['trabalho_id'],
