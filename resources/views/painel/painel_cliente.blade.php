@@ -482,7 +482,7 @@
                     <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-2">
                         <div>
                         <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">
-                            Olá, {{ auth()->user()->name }}!
+                            Olá, 
                         </h2>
                         <p class="text-body-md font-body-md text-black-pure">
                             Tens <span class="span_numero font-semibold" id="greeting-new-proposals-count">0</span> propostas novas à espera de revisão.

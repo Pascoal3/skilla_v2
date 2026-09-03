@@ -171,6 +171,7 @@ if (response.ok) {
 
   localStorage.setItem('skilla_user', JSON.stringify(cachedUser));
   localStorage.setItem('skilla_user_cached_at', String(Date.now()));
+  localStorage.setItem('skilla_user', JSON.stringify(data.user));
 } else {
     showGlobalError(data.message || 'Erro ao iniciar sessão.');
     console.log('STATUS:', response.status);

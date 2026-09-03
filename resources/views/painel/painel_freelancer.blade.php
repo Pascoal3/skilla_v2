@@ -381,14 +381,14 @@
 <script>
     (function () {
         const spaView = document.getElementById('spa-view');
-        if (!spaView) return;
+    if (!spaView) return;
 
-        // --- OBJETO APP (Padrão solicitado) ---
-        window.App = {
-            templates: {},
-            spaView: spaView,
-            render: render
-        };
+    // --- APP (não sobrescrever; apenas extender) ---
+    window.App = window.App || {};
+    App.templates = App.templates || {}; // mantém templates já definidos
+    App.spaView = spaView;
+    App.render = render;
+
 
         // Templates (Conteúdo Integral Restaurado)
         App.templates.inicio = `
@@ -396,7 +396,7 @@
                 <!-- Page Header (Gap/Margem adicionada aqui com mb-10) -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
                     <div>
-                        <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">Olá, {{ auth()->user()->name }}!</h2>
+                        <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">Olá, {{ Auth::user()->primeiro_nome ?? 'Utilizador' }}</h2>
                         <p class="font-body-lg text-body-lg text-black-pure opacity-80">Aqui está o resumo da sua atividade</p>
                     </div>
                     <!-- Botão Explorar Trabalhos com ID para JS SPA -->
