@@ -58,7 +58,7 @@ class AuthController extends Controller
                 ]);
 
                 $perfil->carteira()->create([
-                    'saldo' => 10,
+                    'saldo' => 20,
                 ]);
 
                 return $perfil;

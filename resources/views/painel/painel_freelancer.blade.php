@@ -378,7 +378,9 @@
     }
 </script>
 
+
 <script>
+    
     (function () {
         const spaView = document.getElementById('spa-view');
     if (!spaView) return;
@@ -446,7 +448,7 @@
                         </div>
                         <div class="flex flex-col gap-1">
                             <span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-wider">Créditos</span>
-                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-credits">0</span>
+                            <span class="font-bold text-black-pure leading-none truncate" style="font-size: 24px;" id="metric-credits">{{ Auth::user()->saldo_creditos ?? 0 }}</span>
                         </div>
                     </div>
 
