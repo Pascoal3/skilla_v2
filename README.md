@@ -60,4 +60,3 @@ A Skilla utiliza uma paleta de cores focada em confiança e modernidade:
 
 ---
 Desenvolvido com foco na profissionalização do ecossistema digital angolano.
->>>>>>> 2b3dad190e28f4d55918f93cb121ec543b088e78
