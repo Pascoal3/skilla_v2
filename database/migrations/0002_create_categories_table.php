@@ -12,11 +12,29 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->uuid('id')->primary(); // OBRIGATÓRIO ser uuid e primary
-            $table->string('nome')->unique();
+            $table->uuid('id')->primary();
+
+            // permite subcategorias
+            $table->uuid('parent_id')->nullable();
+
+            $table->string('nome'); // não único
             $table->string('slug')->unique();
+
             $table->text('url_icone')->nullable();
+
+            // opcional mas útil na UI
+            $table->string('descricao')->nullable();
+            $table->unsignedInteger('ordem')->default(0);
+            $table->boolean('ativo')->default(true);
+
             $table->timestamps();
+
+            $table->index('parent_id');
+
+            $table->foreign('parent_id')
+                ->references('id')
+                ->on('categorias')
+                ->nullOnDelete();
         });
     }
 
