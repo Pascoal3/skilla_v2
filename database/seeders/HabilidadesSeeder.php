@@ -5,13 +5,12 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class HabilidadesSeeder extends Seeder
 {
     public function run(): void
     {
-        $now = Carbon::now();
+        $now = now();
 
         $habilidades = [
             ['nome' => 'Figma', 'categoria_slug' => 'logotipos-branding'],
@@ -24,6 +23,8 @@ class HabilidadesSeeder extends Seeder
             ['nome' => 'SEO', 'categoria_slug' => 'seo-conteudo'],
         ];
 
+        $rows = [];
+
         foreach ($habilidades as $hab) {
             $categoriaId = DB::table('categorias')->where('slug', $hab['categoria_slug'])->value('id');
 
@@ -31,15 +32,19 @@ class HabilidadesSeeder extends Seeder
                 throw new \RuntimeException("Categoria não encontrada para slug: {$hab['categoria_slug']}");
             }
 
-            DB::table('habilidades')->updateOrInsert(
-                ['nome' => $hab['nome']],
-                [
-                    'id' => DB::raw("COALESCE(id, '" . (string) Str::uuid() . "')"),
-                    'categoria_id' => $categoriaId,
-                    'created_at' => $now,
-                    'updated_at' => $now,
-                ]
-            );
+            $rows[] = [
+                'id' => (string) Str::uuid(),
+                'nome' => $hab['nome'],
+                'categoria_id' => $categoriaId,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
         }
+
+        DB::table('habilidades')->upsert(
+            $rows,
+            ['nome'],
+            ['categoria_id', 'updated_at']
+        );
     }
 }
