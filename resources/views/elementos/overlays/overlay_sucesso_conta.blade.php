@@ -139,26 +139,9 @@
 <h1 class="font-h1 text-h1 text-primary-fixed mb-6 max-w-3xl leading-tight">
                 Parabéns, sua conta foi criada com sucesso!
             </h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
-                Sua jornada profissional em Angola começa agora. Vamos começar a encontrar os melhores talentos e oportunidades para o seu projeto.
-            </p>
 <!-- Call to Action -->
 </div>
 </main>
-<!-- Footer -->
-<footer class="bg-surface dark:bg-surface border-t border-outline-variant dark:border-outline-variant full-width">
-<div class="flex flex-col md:flex-row justify-between items-center w-full px-container-padding py-card-padding gap-base max-w-7xl mx-auto">
-<span class="font-label-caps text-label-caps text-on-surface">Skilla Angolan Marketplace</span>
-<div class="flex gap-8">
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Privacidade</a>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Termos de Serviço</a>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors" href="#">Ajuda</a>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant opacity-60">
-                © 2024 Skilla. Todos os direitos reservados.
-            </p>
-</div>
-</footer>
 <!-- Geometric Decorative Elements -->
 <div class="fixed top-1/4 -left-12 w-24 h-[1px] bg-primary-fixed opacity-20 rotate-45 pointer-events-none"></div>
 <div class="fixed bottom-1/4 -right-12 w-48 h-[1px] bg-primary-fixed opacity-10 -rotate-12 pointer-events-none"></div>

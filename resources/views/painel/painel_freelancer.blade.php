@@ -396,7 +396,7 @@
                 <!-- Page Header (Gap/Margem adicionada aqui com mb-10) -->
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-10">
                     <div>
-                        <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">Bom dia, [Nome] 👋</h2>
+                        <h2 class="font-headline-md text-headline-md text-black-pure mb-2" id="greeting-user-name">Olá, {{ auth()->user()->name }}!</h2>
                         <p class="font-body-lg text-body-lg text-black-pure opacity-80">Aqui está o resumo da sua atividade</p>
                     </div>
                     <!-- Botão Explorar Trabalhos com ID para JS SPA -->

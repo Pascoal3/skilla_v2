@@ -22,9 +22,6 @@
             <h1 class="font-h1 text-h1 text-primary-fixed mb-6 max-w-3xl leading-tight">
                 Parabéns, sua conta foi criada com sucesso!
             </h1>
-            <p class="font-body-lg text-body-lg text-on-surface-variant mb-12 max-w-2xl mx-auto">
-                Sua jornada profissional em Angola começa agora. Vamos começar a encontrar os melhores talentos e oportunidades para o seu projeto.
-            </p>
         </div>
     </main>
 

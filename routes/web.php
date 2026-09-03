@@ -219,3 +219,6 @@ Route::prefix('contratos/{contrato}/escrow')->group(function () {
 });
 
 Route::get('/footer', fn () => view('elementos.footer'))->name('footer');
+
+Route::get('/overlay-conta-criada', fn () => view('elementos.overlays.overlay_conta_criada'))
+    ->name('overlay.conta.criada');

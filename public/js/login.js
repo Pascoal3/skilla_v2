@@ -159,8 +159,20 @@ if (response.ok) {
     setTimeout(() => {
         window.location.href = data.redirect;
     }, 1200);
+
+    const cachedUser = {
+    id: data.user.id,
+    nome: data.user.nome,                 // nome completo
+    nome_usuario: data.user.nome_usuario,
+    funcao: data.user.funcao,
+    // se no futuro vier primeiro_nome, também guardas
+    primeiro_nome: data.user.primeiro_nome ?? null,
+  };
+
+  localStorage.setItem('skilla_user', JSON.stringify(cachedUser));
+  localStorage.setItem('skilla_user_cached_at', String(Date.now()));
 } else {
-    showGlobalError(data.message || 'Erro ao iniciar sessÃ£o.');
+    showGlobalError(data.message || 'Erro ao iniciar sessão.');
     console.log('STATUS:', response.status);
     console.log('RESPONSE DATA:', data);
 }
