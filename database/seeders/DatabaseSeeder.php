@@ -10,6 +10,8 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             ProvinciaSeeder::class, // ← Sem o "s" (nome correto do seu arquivo)
+            CategoriasSeeder::class,
+            HabilidadesSeeder::class,
         ]);
     }
 }

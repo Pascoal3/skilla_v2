@@ -2,17 +2,15 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class CategoriasSeeder extends Seeder
 {
     public function run(): void
     {
-        $now = Carbon::now();
+        $now = now();
 
         $categorias = [
             [
@@ -109,41 +107,58 @@ class CategoriasSeeder extends Seeder
             ],
         ];
 
+        // 1) UPSERT dos pais (parent_id = null)
+        $paisRows = [];
         foreach ($categorias as $cat) {
-            // upsert categoria principal
-            DB::table('categorias')->updateOrInsert(
-                ['slug' => $cat['slug']],
-                [
-                    'id' => DB::raw("COALESCE(id, '" . (string) Str::uuid() . "')"),
-                    'parent_id' => null,
-                    'nome' => $cat['nome'],
-                    'descricao' => $cat['descricao'] ?? null,
-                    'url_icone' => $cat['url_icone'] ?? null,
-                    'ordem' => $cat['ordem'] ?? 0,
+            $paisRows[] = [
+                'id' => (string) Str::uuid(),
+                'parent_id' => null,
+                'nome' => $cat['nome'],
+                'slug' => $cat['slug'],
+                'url_icone' => $cat['url_icone'] ?? null,
+                'descricao' => $cat['descricao'] ?? null,
+                'ordem' => $cat['ordem'] ?? 0,
+                'ativo' => true,
+                'created_at' => $now,
+                'updated_at' => $now,
+            ];
+        }
+
+        DB::table('categorias')->upsert(
+            $paisRows,
+            ['slug'],
+            ['parent_id', 'nome', 'url_icone', 'descricao', 'ordem', 'ativo', 'updated_at']
+        );
+
+        // 2) UPSERT das filhas (precisa do id do pai)
+        foreach ($categorias as $cat) {
+            $parentId = DB::table('categorias')->where('slug', $cat['slug'])->value('id');
+
+            if (!$parentId) {
+                throw new \RuntimeException("Pai não encontrado para slug: {$cat['slug']}");
+            }
+
+            $filhasRows = [];
+            foreach ($cat['filhas'] as $filha) {
+                $filhasRows[] = [
+                    'id' => (string) Str::uuid(),
+                    'parent_id' => $parentId,
+                    'nome' => $filha['nome'],
+                    'slug' => $filha['slug'],
+                    'url_icone' => $filha['url_icone'] ?? null,
+                    'descricao' => $filha['descricao'] ?? null,
+                    'ordem' => $filha['ordem'] ?? 0,
                     'ativo' => true,
                     'created_at' => $now,
                     'updated_at' => $now,
-                ]
-            );
-
-            $parentId = DB::table('categorias')->where('slug', $cat['slug'])->value('id');
-
-            foreach ($cat['filhas'] as $filha) {
-                DB::table('categorias')->updateOrInsert(
-                    ['slug' => $filha['slug']],
-                    [
-                        'id' => DB::raw("COALESCE(id, '" . (string) Str::uuid() . "')"),
-                        'parent_id' => $parentId,
-                        'nome' => $filha['nome'],
-                        'descricao' => $filha['descricao'] ?? null,
-                        'url_icone' => $filha['url_icone'] ?? null,
-                        'ordem' => $filha['ordem'] ?? 0,
-                        'ativo' => true,
-                        'created_at' => $now,
-                        'updated_at' => $now,
-                    ]
-                );
+                ];
             }
+
+            DB::table('categorias')->upsert(
+                $filhasRows,
+                ['slug'],
+                ['parent_id', 'nome', 'url_icone', 'descricao', 'ordem', 'ativo', 'updated_at']
+            );
         }
     }
 }
