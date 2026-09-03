@@ -197,7 +197,7 @@
 </div>
 <div class="flex items-center gap-4">
 <a href="{{ route('login') }}"
-   class="hidden md:block px-6 py-2 border-2 rounded-full">
+   class="hidden md:block px-6 py-2 border-2w rounded-full">
     Entrar
 </a>
 <a href="{{ route('pagina_escolher_funcao') }}"
