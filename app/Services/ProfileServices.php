@@ -13,7 +13,7 @@ class ProfileService {
             'email' => $data['email'],
             'password_hash' => Hash::make($data['password']),
             'funcao' => $data['role'],
-            'saldo_creditos' => 20,
+            'saldo_creditos' => 10,
         ]);
     }
 
