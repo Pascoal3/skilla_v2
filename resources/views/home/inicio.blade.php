@@ -966,7 +966,7 @@
 
             <!-- Bottom Bar -->
             <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
-                <p class="text-gray-500 text-xs mb-4 md:mb-0">©2025 Skilla. Todos os direitos reservados.</p>
+                <p class="text-gray-500 text-xs mb-4 md:mb-0">Skilla © {{ now()->year }} . Todos os direitos reservados.</p>
                 <div class="flex items-center space-x-4">
                     <a href="#" class="text-gray-500 text-xs hover:text-white transition-colors">Termos de Uso</a>
                     <span class="text-white/10">|</span>
@@ -979,10 +979,6 @@
 
 </div>
 
-
-<script>
-  document.getElementById('footer-year').textContent = new Date().getFullYear();
-</script>
 <!-- Cookie Consent -->
 <!-- 
 <div class="fixed bottom-0 left-0 w-full bg-slate-950 border-t-2 border-primary-container p-4 md:p-6 z-[100] flex flex-col md:flex-row justify-between items-center gap-4">
