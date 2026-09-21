@@ -200,18 +200,6 @@
 </div>
 </div>
 </main>
-<!-- Footer -->
-<footer class="w-full px-8 md:px-16 py-12 flex flex-col md:flex-row justify-between items-center gap-6 bg-[#F8F8F8] border-t border-brand-navy/5">
-<div class="font-h2 text-2xl text-brand-navy font-bold">Skilla</div>
-<div class="flex gap-8">
-<a class="font-body-md text-brand-navy/60 hover:text-brand-navy transition-all duration-300" href="#">Termos</a>
-<a class="font-body-md text-brand-navy/60 hover:text-brand-navy transition-all duration-300" href="#">Privacidade</a>
-<a class="font-body-md text-brand-navy/60 hover:text-brand-navy transition-all duration-300" href="#">Suporte</a>
-</div>
-<div class="font-body-md text-sm text-brand-navy/40">
-        <p class="text-gray-500 text-xs mb-4 md:mb-0">Skilla © {{ now()->year }} . Todos os direitos reservados.</p>
-    </div>
-</footer>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   const cards = document.querySelectorAll('[data-role]');
