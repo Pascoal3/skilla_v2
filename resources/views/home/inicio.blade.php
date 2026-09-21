@@ -287,88 +287,77 @@
 </div>
 </div>
 </div>
-<!-- Categorias Section -->
-<section class="py-section-gap bg-slate-900 px-6 md:px-margin-desktop" id="areas">
+
+
+<!-- Areas Section -->
+<section class="py-section-gap bg-primary-container px-6 md:px-margin-desktop" id="areas">
 <div class="max-w-7xl mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
 <div class="max-w-2xl">
-<h2 class="font-display-lg text-display-lg uppercase text-white leading-none mb-6">Explore por <span class="text-secondary-fixed">Categorias</span></h2>
-<p class="text-slate-400 text-body-lg">Dos projetos mais simples aos mais complexos, temos o especialista certo para si.</p>
+<h2 class="font-display-lg text-display-lg uppercase text-white leading-none mb-6">Explore por <span class="text-secondary-container">Categorias</span></h2>
+<p class="text-slate-400 text-white">Dos projetos mais simples aos mais complexos, temos o especialista certo para si.</p>
 </div>
 <button class="text-white font-bold uppercase tracking-widest flex items-center gap-2 hover:text-secondary-fixed transition-all border-b-2 border-secondary-fixed pb-2">
                     Ver Tudo <i class="fa-solid fa-arrow-right material-symbols-outlined"></i>
 </button>
 </div>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- Bento Card 1 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">1</div>
 <div class="text-4xl mb-6">🎨</div>
 <h3 class="text-2xl font-bold text-white mb-2">Design Gráfico</h3>
 <p class="text-slate-400">Logos, branding e artes para redes sociais.</p>
 <div class="mt-6 font-bold text-secondary-fixed">142 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed group-hover:translate-x-1 group-hover:-translate-y-1 transition-all"></i>
-
-
 </div>
-<!-- Bento Card 2 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">2</div>
 <div class="text-4xl mb-6">💻</div>
 <h3 class="text-2xl font-bold text-white mb-2">Web Dev</h3>
 <p class="text-slate-400">Landing pages, e-commerce e sites corporativos.</p>
 <div class="mt-6 font-bold text-secondary-fixed">89 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
-<!-- Bento Card 3 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">3</div>
 <div class="text-4xl mb-6">📱</div>
 <h3 class="text-2xl font-bold text-white mb-2">Mobile Apps</h3>
 <p class="text-slate-400">Apps nativos para iOS e Android em Luanda.</p>
 <div class="mt-6 font-bold text-secondary-fixed">34 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
-<!-- Bento Card 4 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">4</div>
 <div class="text-4xl mb-6">📈</div>
 <h3 class="text-2xl font-bold text-white mb-2">MKT Digital</h3>
 <p class="text-slate-400">Gestão de tráfego pago e estratégia de vendas.</p>
 <div class="mt-6 font-bold text-secondary-fixed">212 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
-<!-- Bento Card 5 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
+
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">5</div>
+<h3 class="text-2xl font-bold text-white mb-2">Edição Vídeo</h3>
+<p class="text-slate-400">Reels, YouTube e vídeos institucionais.</p>
+<div class="mt-6 font-bold text-secondary-fixed">77 trabalhos ativos</div>
+<i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
+</div>
+
+<div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
+<div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">6</div>
 <div class="text-4xl mb-6">✍️</div>
 <h3 class="text-2xl font-bold text-white mb-2">Copywriting</h3>
 <p class="text-slate-400">Textos persuasivos que vendem em Kwanza.</p>
 <div class="mt-6 font-bold text-secondary-fixed">56 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
 </div>
-<!-- Bento Card 6 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
-<div class="text-4xl mb-6">🎥</div>
-<h3 class="text-2xl font-bold text-white mb-2">Edição Vídeo</h3>
-<p class="text-slate-400">Reels, YouTube e vídeos institucionais.</p>
-<div class="mt-6 font-bold text-secondary-fixed">77 trabalhos ativos</div>
-<i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
-</div>
-<!-- Bento Card 7 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
-<div class="text-4xl mb-6">🎧</div>
-<h3 class="text-2xl font-bold text-white mb-2">Áudio & Música</h3>
-<p class="text-slate-400">Produção de jingles e spots publicitários.</p>
-<div class="mt-6 font-bold text-secondary-fixed">28 trabalhos ativos</div>
-<i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
-</div>
-<!-- Bento Card 8 -->
-<div class="group bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-secondary-fixed transition-all cursor-pointer relative overflow-hidden">
-<div class="text-4xl mb-6"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-<h3 class="text-2xl font-bold text-white mb-2">Suporte Técnico</h3>
-<p class="text-slate-400">Análise de dados e automação de processos.</p>
-<div class="mt-6 font-bold text-secondary-fixed">15 trabalhos ativos</div>
-<i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
-</div>
+
 </div>
 </div>
 </section>
+
+
 <!-- Como Funciona Section -->
 <section class="py-section-gap bg-secondary-container px-6 md:px-margin-desktop" id="como-funciona">
 <div class="max-w-7xl mx-auto">
@@ -395,6 +384,7 @@
 </div>
 </div>
 </section>
+
 
 
 

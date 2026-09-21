@@ -1,0 +1,1107 @@
+<!--
+REFERENCE ANALYSIS / DESIGN DECISIONS
+
+- Layout: horizontal 4-step infographic, centered in a wide container.
+- Header: small uppercase "INFOGRAPHIC" with strong letter spacing, followed by
+  "ELEMENT" in a much smaller, lighter treatment.
+- Cards: approximately 1.05–1.15 aspect ratio, generous horizontal spacing,
+  large rounded corners, thin light-gray border and extremely subtle shadow.
+- Card hierarchy: icon → OPTION XX → short supporting paragraph.
+- Connections: a thin gray horizontal flow line runs behind the cards.
+  Colored rounded segments appear around the lower/upper corners of the cards,
+  visually suggesting one continuous path.
+- Nodes: small circular points sit at connection endpoints.
+- Typography: clean geometric/sans-serif, with uppercase labels and compact body copy.
+- Colors: neutral gray structure + warm red/orange gradient on the left and
+  cool blue/purple gradient toward the right.
+- Proportion: the desktop composition intentionally uses a wide 4-column ratio
+  similar to the reference. At <= 900px it becomes 2×2, and at <= 600px it
+  becomes a single vertical column. On mobile the SVG connection is simplified
+  so the cards remain visually clean and readable.
+
+The SVG is positioned behind the cards, so the connector can cross the visual
+space between cards without interfering with their content.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Infographic Steps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            /* =========================
+               COLORS
+            ========================== */
+            --bg: #ffffff;
+
+            --text: #222222;
+            --muted: #777777;
+            --border: #e6e6e6;
+            --line: #bdbdbd;
+
+            --hot-start: #ff4d4d;
+            --hot-end: #ffb24d;
+
+            --cold-start: #4d7cff;
+            --cold-end: #8a4dff;
+
+            /* =========================
+               SIZING
+            ========================== */
+            --container-width: 1120px;
+
+            --card-width: 215px;
+            --card-height: 175px;
+
+            --card-radius: 28px;
+
+            --column-gap: 48px;
+
+            --icon-size: 18px;
+
+            --transition: 220ms ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+
+            padding: 60px 24px;
+
+            color: var(--text);
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
+
+        /* =========================================
+           MAIN COMPONENT
+        ========================================== */
+
+        .infographic {
+            width: 100%;
+            max-width: var(--container-width);
+
+            text-align: center;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================== */
+
+        .infographic__header {
+            margin-bottom: 45px;
+        }
+
+        .infographic__title {
+            font-size: 17px;
+            line-height: 1;
+
+            font-weight: 800;
+            letter-spacing: 3px;
+
+            color: #333;
+        }
+
+        .infographic__subtitle {
+            margin-top: 7px;
+
+            font-size: 8px;
+            line-height: 1;
+
+            font-weight: 600;
+            letter-spacing: 4px;
+
+            color: #999;
+        }
+
+        /* Small decorative dots beneath the heading */
+
+        .infographic__header::after {
+            content: "";
+
+            display: block;
+
+            width: 46px;
+            height: 3px;
+
+            margin: 9px auto 0;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #d7d7d7 1.2px,
+                    transparent 1.4px
+                );
+
+            background-size: 8px 3px;
+        }
+
+        /* =========================================
+           STEPS AREA
+        ========================================== */
+
+        .steps {
+            position: relative;
+
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+
+            align-items: center;
+
+            gap: var(--column-gap);
+
+            width: 100%;
+        }
+
+        /* =========================================
+           SVG CONNECTOR
+        ========================================== */
+
+        .steps__connector {
+            position: absolute;
+
+            z-index: 0;
+
+            top: 50%;
+            left: 0;
+
+            width: 100%;
+            height: 100px;
+
+            transform: translateY(-50%);
+
+            pointer-events: none;
+
+            overflow: visible;
+        }
+
+        .connector-base {
+            fill: none;
+
+            stroke: var(--line);
+            stroke-width: 1.2;
+
+            opacity: 0.85;
+        }
+
+        .connector-hot {
+            fill: none;
+
+            stroke: url(#hotGradient);
+            stroke-width: 4;
+
+            stroke-linecap: round;
+
+            filter: url(#softGlow);
+        }
+
+        .connector-cold {
+            fill: none;
+
+            stroke: url(#coldGradient);
+            stroke-width: 4;
+
+            stroke-linecap: round;
+
+            filter: url(#softGlow);
+        }
+
+        .connector-node {
+            fill: #ffffff;
+
+            stroke: #a8a8a8;
+
+            stroke-width: 1;
+        }
+        section{
+            margin-top: 20px;
+        }
+        /* =========================================
+           CARD
+        ========================================== */
+
+        .step-card {
+            position: relative;
+
+            z-index: 2;
+
+            width: 100%;
+            height: var(--card-height);
+
+            padding: 37px 27px 24px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.98),
+                    rgba(250, 250, 250, 0.98)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: var(--card-radius);
+
+            box-shadow:
+                0 14px 30px rgba(0, 0, 0, 0.025);
+
+            overflow: visible;
+
+            transition:
+                transform var(--transition),
+                box-shadow var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 18px 38px rgba(0, 0, 0, 0.07);
+        }
+
+        /* =========================================
+           DECORATIVE COLOR PATH AROUND CARDS
+        ========================================== */
+
+        .step-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 56px;
+            height: 56px;
+
+            pointer-events: none;
+        }
+
+        /* First card: red → orange */
+
+        .step-card--01::before {
+            left: -1px;
+            bottom: -1px;
+
+            border-left: 5px solid var(--hot-start);
+            border-bottom: 5px solid var(--hot-start);
+
+            border-bottom-left-radius: 26px;
+
+            filter:
+                drop-shadow(
+                    8px 7px 12px rgba(255, 77, 77, 0.12)
+                );
+        }
+
+        .step-card--02::before {
+            left: -1px;
+            top: -1px;
+
+            border-left: 5px solid var(--hot-end);
+            border-top: 5px solid var(--hot-end);
+
+            border-top-left-radius: 26px;
+
+            filter:
+                drop-shadow(
+                    -2px -2px 12px rgba(255, 178, 77, 0.12)
+                );
+        }
+
+        /* Third card: blue */
+
+        .step-card--03::before {
+            right: -1px;
+            top: -1px;
+
+            border-right: 5px solid var(--cold-start);
+            border-top: 5px solid var(--cold-start);
+
+            border-top-right-radius: 26px;
+
+            filter:
+                drop-shadow(
+                    5px -2px 12px rgba(77, 124, 255, 0.13)
+                );
+        }
+
+        /* Fourth card: blue → purple */
+
+        .step-card--04::before {
+            right: -1px;
+            bottom: -1px;
+
+            border-right: 5px solid var(--cold-end);
+            border-bottom: 5px solid var(--cold-end);
+
+            border-bottom-right-radius: 26px;
+
+            filter:
+                drop-shadow(
+                    7px 7px 13px rgba(138, 77, 255, 0.15)
+                );
+        }
+
+        /* =========================================
+           GRADIENT BORDER OVERLAYS
+        ========================================== */
+
+        .step-card__accent {
+            position: absolute;
+
+            width: 62px;
+            height: 62px;
+
+            pointer-events: none;
+        }
+
+        .step-card__accent--hot {
+            left: -1px;
+            bottom: -1px;
+
+            border-left: 5px solid var(--hot-start);
+            border-bottom: 5px solid var(--hot-end);
+
+            border-bottom-left-radius: 27px;
+        }
+
+        .step-card__accent--orange {
+            left: -1px;
+            top: -1px;
+
+            border-left: 5px solid var(--hot-end);
+            border-top: 5px solid var(--hot-end);
+
+            border-top-left-radius: 27px;
+        }
+
+        .step-card__accent--blue {
+            right: -1px;
+            top: -1px;
+
+            border-right: 5px solid var(--cold-start);
+            border-top: 5px solid var(--cold-start);
+
+            border-top-right-radius: 27px;
+        }
+
+        .step-card__accent--purple {
+            right: -1px;
+            bottom: -1px;
+
+            border-right: 5px solid var(--cold-end);
+            border-bottom: 5px solid var(--cold-end);
+
+            border-bottom-right-radius: 27px;
+        }
+
+        /* =========================================
+           ICON
+        ========================================== */
+
+        .step-card__icon {
+            width: var(--icon-size);
+            height: var(--icon-size);
+
+            margin-bottom: 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #222;
+        }
+
+        .step-card__icon svg {
+            width: 100%;
+            height: 100%;
+
+            stroke: currentColor;
+
+            fill: none;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* =========================================
+           CARD TITLE
+        ========================================== */
+
+        .step-card__title {
+            margin-bottom: 9px;
+
+            font-size: 11px;
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: 0.4px;
+
+            color: var(--text);
+        }
+
+        .step-card--01 .step-card__title {
+            color: #f05b5b;
+        }
+
+        .step-card--02 .step-card__title {
+            color: #ed9950;
+        }
+
+        .step-card--03 .step-card__title {
+            color: #5578e8;
+        }
+
+        .step-card--04 .step-card__title {
+            color: #805ee5;
+        }
+
+        /* =========================================
+           DESCRIPTION
+        ========================================== */
+
+        .step-card__description {
+            max-width: 145px;
+
+            font-size: 7.5px;
+            line-height: 1.65;
+
+            color: var(--muted);
+
+            text-align: center;
+        }
+
+        /* =========================================
+           RESPONSIVE — TABLET / 2 × 2
+        ========================================== */
+
+        @media (max-width: 900px) {
+
+            :root {
+                --card-height: 180px;
+                --column-gap: 35px;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2, 1fr);
+
+                max-width: 650px;
+
+                margin-inline: auto;
+
+                row-gap: 55px;
+            }
+
+            /*
+             * The desktop horizontal connector is hidden because
+             * the cards now occupy two rows.
+             */
+
+            .steps__connector {
+                display: none;
+            }
+
+            /*
+             * Replace it with a simple vertical/horizontal
+             * connection layer.
+             */
+
+            .steps::before {
+                content: "";
+
+                position: absolute;
+
+                z-index: 0;
+
+                top: 50%;
+                left: 25%;
+
+                width: 50%;
+                height: 1px;
+
+                background: #cfcfcf;
+            }
+
+            .steps::after {
+                content: "";
+
+                position: absolute;
+
+                z-index: 0;
+
+                top: 25%;
+                left: 50%;
+
+                width: 1px;
+                height: 50%;
+
+                background:
+                    linear-gradient(
+                        to bottom,
+                        var(--hot-end),
+                        #ccc 45%,
+                        var(--cold-start)
+                    );
+            }
+
+            .step-card {
+                z-index: 2;
+            }
+        }
+
+        /* =========================================
+           RESPONSIVE — MOBILE / 1 COLUMN
+        ========================================== */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 45px 18px;
+            }
+
+            .infographic__header {
+                margin-bottom: 32px;
+            }
+
+            .infographic__title {
+                font-size: 15px;
+            }
+
+            .infographic__subtitle {
+                font-size: 7px;
+            }
+
+            .steps {
+                display: flex;
+
+                flex-direction: column;
+
+                gap: 38px;
+
+                max-width: 330px;
+            }
+
+            .steps::before,
+            .steps::after {
+                display: none;
+            }
+
+            .steps__connector {
+                display: block;
+
+                top: 0;
+                left: 50%;
+
+                width: 70px;
+                height: 100%;
+
+                transform: translateX(-50%);
+            }
+
+            .step-card {
+                width: 100%;
+
+                min-height: 165px;
+            }
+
+            /*
+             * Keep the connector behind the cards but
+             * simplify it into a subtle vertical flow.
+             */
+
+            .steps__connector .desktop-line {
+                display: none;
+            }
+
+            .steps__connector .mobile-line {
+                display: block;
+            }
+        }
+
+        /* =========================================
+           MOBILE SVG HELPERS
+        ========================================== */
+
+        .mobile-line {
+            display: none;
+
+            fill: none;
+
+            stroke: #d0d0d0;
+
+            stroke-width: 1.2;
+        }
+
+        /* =========================================
+           SMALL SCREEN
+        ========================================== */
+
+        @media (max-width: 380px) {
+
+            .step-card {
+                height: 155px;
+
+                padding-inline: 22px;
+            }
+
+            .step-card__description {
+                font-size: 7px;
+            }
+        }
+
+        /* =========================================
+           REDUCED MOTION
+        ========================================== */
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .step-card {
+                transition: none;
+            }
+
+            .step-card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="infographic">
+
+
+
+        <!-- =========================
+             STEPS
+        ========================== -->
+
+        <section class="steps" aria-label="Infographic steps">
+
+            <!-- =========================
+                 SVG CONNECTION SYSTEM
+            ========================== -->
+
+
+
+            <!-- =========================
+                 CARD 01
+            ========================== -->
+
+            <article class="step-card step-card--01">
+
+                <span
+                    class="step-card__accent step-card__accent--hot"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="4"
+                            y="5"
+                            width="16"
+                            height="11"
+                            rx="1"
+                        />
+
+                        <path d="M8 20h8" />
+                        <path d="M12 16v4" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 01
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+
+
+            <!-- =========================
+                 CARD 02
+            ========================== -->
+
+            <article class="step-card step-card--02">
+
+                <span
+                    class="step-card__accent step-card__accent--orange"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M5 15l7-7 7 7" />
+                        <path d="M12 8l2-3 3 1-2 3" />
+                        <path d="M5 15l-1 4 4-1" />
+                        <path d="M8 12l4 4" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 02
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+
+
+            <!-- =========================
+                 CARD 03
+            ========================== -->
+
+            <article class="step-card step-card--03">
+
+                <span
+                    class="step-card__accent step-card__accent--blue"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M5 19V5" />
+                        <path d="M5 19h15" />
+
+                        <rect
+                            x="8"
+                            y="12"
+                            width="2.5"
+                            height="5"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                        <rect
+                            x="12.5"
+                            y="9"
+                            width="2.5"
+                            height="8"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                        <rect
+                            x="17"
+                            y="6"
+                            width="2.5"
+                            height="11"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 03
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+
+
+            <!-- =========================
+                 CARD 04
+            ========================== -->
+
+            <article class="step-card step-card--04">
+
+                <span
+                    class="step-card__accent step-card__accent--purple"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="10.5"
+                            cy="10.5"
+                            r="4.5"
+                        />
+
+                        <path d="M14 14l5 5" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 04
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+
+        </section>
+        <section class="steps" aria-label="Infographic steps">
+
+            <!-- =========================
+                 SVG CONNECTION SYSTEM
+            ========================== -->
+
+
+
+            <!-- =========================
+                 CARD 01
+            ========================== -->
+            <article class="step-card step-card--04">
+
+                <span
+                    class="step-card__accent step-card__accent--purple"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="10.5"
+                            cy="10.5"
+                            r="4.5"
+                        />
+
+                        <path d="M14 14l5 5" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 04
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+            
+
+
+            <!-- =========================
+                 CARD 02
+            ========================== -->
+            <article class="step-card step-card--03">
+
+                <span
+                    class="step-card__accent step-card__accent--blue"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M5 19V5" />
+                        <path d="M5 19h15" />
+
+                        <rect
+                            x="8"
+                            y="12"
+                            width="2.5"
+                            height="5"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                        <rect
+                            x="12.5"
+                            y="9"
+                            width="2.5"
+                            height="8"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                        <rect
+                            x="17"
+                            y="6"
+                            width="2.5"
+                            height="11"
+                            rx=".5"
+                            fill="currentColor"
+                            stroke="none"
+                        />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 03
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+            
+
+
+            <!-- =========================
+                 CARD 03
+            ========================== -->
+
+            
+
+            <article class="step-card step-card--02">
+
+                <span
+                    class="step-card__accent step-card__accent--orange"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path d="M5 15l7-7 7 7" />
+                        <path d="M12 8l2-3 3 1-2 3" />
+                        <path d="M5 15l-1 4 4-1" />
+                        <path d="M8 12l4 4" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 02
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+
+            <!-- =========================
+                 CARD 04
+            ========================== -->
+
+
+            <article class="step-card step-card--01">
+
+                <span
+                    class="step-card__accent step-card__accent--hot"
+                    aria-hidden="true"
+                ></span>
+
+                <div class="step-card__icon">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <rect
+                            x="4"
+                            y="5"
+                            width="16"
+                            height="11"
+                            rx="1"
+                        />
+
+                        <path d="M8 20h8" />
+                        <path d="M12 16v4" />
+
+                    </svg>
+
+                </div>
+
+                <h2 class="step-card__title">
+                    OPTION 01
+                </h2>
+
+                <p class="step-card__description">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit.
+                    Vivamus posuere gravida
+                    orci quis dignissim.
+                </p>
+
+            </article>
+        </section>
+
+    </main>
+
+</body>
+</html>
