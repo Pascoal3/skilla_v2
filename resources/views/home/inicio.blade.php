@@ -330,7 +330,7 @@
 <div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
 <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">4</div>
 <div class="text-4xl mb-6">📈</div>
-<h3 class="text-2xl font-bold text-white mb-2">MKT Digital</h3>
+<h3 class="text-2xl font-bold text-white mb-2">Marketing Digital</h3>
 <p class="text-slate-400">Gestão de tráfego pago e estratégia de vendas.</p>
 <div class="mt-6 font-bold text-secondary-fixed">212 trabalhos ativos</div>
 <i class="fa-solid fa-arrow-up-right-from-square material-symbols-outlined absolute top-6 right-6 text-slate-600 group-hover:text-secondary-fixed transition-all"></i>
@@ -338,6 +338,7 @@
 
 <div class="relative bg-slate-950 p-10 rounded-3xl group hover:-translate-y-2 transition-all">
 <div class="absolute -top-6 -left-6 w-16 h-16 bg-primary-container text-white font-display-lg flex items-center justify-center rounded-full border-4 border-secondary-container">5</div>
+<div class="text-4xl mb-6">🎥</div>
 <h3 class="text-2xl font-bold text-white mb-2">Edição Vídeo</h3>
 <p class="text-slate-400">Reels, YouTube e vídeos institucionais.</p>
 <div class="mt-6 font-bold text-secondary-fixed">77 trabalhos ativos</div>
