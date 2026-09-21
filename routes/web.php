@@ -22,7 +22,7 @@ Route::get('/escolher-funcao', fn () => view('home.pagina_escolher_funcao'))
     ->name('pagina_escolher_funcao');
 
 Route::get('/login', fn () => view('registar.tela_login'))
-    ->middleware('guest')
+    ->middleware(['guest', 'no-cache'])
     ->name('login');
 
 Route::get('/registar/cliente', fn () => view('registar.cliente'))

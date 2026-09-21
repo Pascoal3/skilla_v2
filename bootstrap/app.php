@@ -14,6 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         //
     })
+    ->withMiddleware(function (\Illuminate\Foundation\Configuration\Middleware $middleware) {
+    $middleware->alias([
+        'no-cache' => \App\Http\Middleware\NoCache::class,
+    ]);
+})
     // Laravel 11 - bootstrap/app.php
     ->withMiddleware(function (Middleware $middleware) {
        $middleware->alias([
