@@ -20,6 +20,7 @@ return Application::configure(basePath: dirname(__DIR__))
         'role' => \App\Http\Middleware\RoleMiddleware::class,
         'jwt.cookie' => \App\Http\Middleware\JwtMiddleware::class,
         'jwt.auth' => \App\Http\Middleware\JwtMiddleware::class,
+        'no-cache' => \App\Http\Middleware\NoCache::class,
     ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
