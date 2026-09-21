@@ -101,6 +101,27 @@
             animation: loading-bar 2s ease-in-out infinite;
         }
     </style>
+    <script>
+(function () {
+    // Empurra um estado de "prisão" no histórico
+    history.pushState({ skillaLock: true }, '', location.href);
+
+    window.addEventListener('popstate', function (e) {
+        // Se tentou sair (voltar/avançar), empurra de volta para /login
+        // e impede que o browser recarregue a página anterior
+        if (e.state && e.state.skillaLock) {
+            // Alguém voltou do que tu adicionaste: empurra de novo
+            history.pushState({ skillaLock: true }, '', location.href);
+        } else {
+            // Tentou sair do login: empurra de volta
+            history.pushState({ skillaLock: true }, '', location.href);
+        }
+    });
+
+    // Evita que o browser guarde esta página no bfcache (Back-Forward Cache)
+    window.addEventListener('unload', function() {});
+})();
+</script>
 </head>
 <body class="font-body-md antialiased">
 
@@ -237,6 +258,7 @@
         </div>
     </div>
 </div>
+
 
 <script src="{{ asset('js/login.js') }}"></script>
 

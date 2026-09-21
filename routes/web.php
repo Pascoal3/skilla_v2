@@ -82,7 +82,7 @@ Route::post('/refresh-token', [AuthController::class, 'refresh'])->name('refresh
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['jwt.cookie', 'role:cliente'])->group(function () {
+Route::middleware(['jwt.cookie', 'role:cliente', 'no-cache'])->group(function () {
 
     Route::get('/painel/cliente', [DashboardController::class, 'cliente'])
         ->name('painel.cliente');
@@ -101,7 +101,7 @@ Route::middleware(['jwt.cookie', 'role:cliente'])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['jwt.cookie', 'role:freelancer'])->group(function () {
+Route::middleware(['jwt.cookie', 'role:freelancer', 'no-cache'])->group(function () {
 
     Route::get('/painel/freelancer', [DashboardController::class, 'freelancer'])
         ->name('painel.freelancer');
