@@ -209,7 +209,7 @@
 <a class="font-body-md text-brand-navy/60 hover:text-brand-navy transition-all duration-300" href="#">Suporte</a>
 </div>
 <div class="font-body-md text-sm text-brand-navy/40">
-        © 2026 Skilla. Creative Digital Excellence.
+        <p class="text-gray-500 text-xs mb-4 md:mb-0">Skilla © {{ now()->year }} . Todos os direitos reservados.</p>
     </div>
 </footer>
 <script>
