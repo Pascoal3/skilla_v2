@@ -846,7 +846,7 @@
 
 <!-- Final CTA -->
 <section class="bg-secondary-container pt-24 pb-0 px-6 md:px-margin-desktop">
-<div class="max-w-7xl mx-auto rounded-[3rem] bg-gradient-to-br from-primary-container to-blue-800 p-12 md:p-20 text-white relative overflow-hidden">
+<div class="max-w-7xl mx-auto rounded-[3rem] bg-primary-container from-primary-container to-blue-800 p-12 md:p-20 text-white relative overflow-hidden">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
 <div class="border-b lg:border-b-0 lg:border-r border-white/20 pb-12 lg:pb-0 lg:pr-12">
 <h3 class="font-display-lg text-5xl uppercase mb-6 leading-tight">Precisa de um <span class="italic">Expert?</span></h3>
