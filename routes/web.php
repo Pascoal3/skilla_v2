@@ -9,6 +9,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProposalController;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | PÚBLICAS
@@ -21,6 +22,7 @@ Route::get('/escolher-funcao', fn () => view('home.pagina_escolher_funcao'))
     ->name('pagina_escolher_funcao');
 
 Route::get('/login', fn () => view('registar.tela_login'))
+    ->middleware('guest')
     ->name('login');
 
 Route::get('/registar/cliente', fn () => view('registar.cliente'))
@@ -65,7 +67,8 @@ Route::get('/painel/freelancer/teste2', fn () =>
 */
 
 Route::post('/registar', [AuthController::class, 'registar']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login'])
+    ->middleware(['guest', 'throttle:login']);
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/logout-api', [AuthController::class, 'logoutApi'])->name('logout.api');
