@@ -20,7 +20,7 @@
                         "surface": "#ffffff",
                         "brand-purple": "#8B5CF6",
                         "brand-blue": "#3B82F6",
-                        "error": "#ff4ab",
+                        "error": "#ff4aab",
                         "error-container": "#93000a",
                     },
                     "borderRadius": {
@@ -77,7 +77,12 @@
             border-color: #ff4ab !important;
         }
         .text-error {
-            color: #ff4ab;
+            .border-error { 
+                border-color: #ff4aab !important; 
+            }
+            .text-error { 
+                color: #ff4aab; 
+            }
         }
         
         /* Loading Overlay */

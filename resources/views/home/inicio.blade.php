@@ -511,7 +511,7 @@
 <div class="font-label-caps uppercase text-slate-500 tracking-widest">Satisfação</div>
 </div>
 <div>
-<div class="text-6xl font-black text-primary-container mb-2">2.5k</div>
+<div class="text-6xl font-black text-primary-container mb-2">25k</div>
 <div class="font-label-caps uppercase text-slate-500 tracking-widest">Projetos/Mês</div>
 </div>
 <div>

@@ -196,3 +196,81 @@ console.log('RESPONSE DATA:', data);
     // Validação inicial ao carregar
     updateSubmitButtonState();
 });
+
+let touchedEmail = false;
+let touchedPassword = false;
+
+function isEmailValid() {
+  const value = emailInput.value.trim();
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return !!value && emailPattern.test(value);
+}
+
+function isPasswordValid() {
+  return !!passwordInput.value;
+}
+
+function renderEmailError(forceShow = false) {
+  if (isEmailValid()) return hideError(emailInput, emailError);
+
+  if (forceShow || touchedEmail) {
+    const value = emailInput.value.trim();
+    if (!value) showError(emailInput, emailError, 'Por favor, insira seu e-mail');
+    else showError(emailInput, emailError, 'Por favor, insira um endereço de e-mail válido');
+  }
+}
+
+function renderPasswordError(forceShow = false) {
+  if (isPasswordValid()) return hideError(passwordInput, passwordError);
+
+  if (forceShow || touchedPassword) {
+    showError(passwordInput, passwordError, 'Por favor, insira sua senha');
+  }
+}
+
+function updateSubmitButtonState() {
+  const ok = isEmailValid() && isPasswordValid();
+  submitButton.disabled = !ok;
+}
+
+emailInput.addEventListener('blur', () => {
+  touchedEmail = true;
+  renderEmailError();
+  updateSubmitButtonState();
+});
+
+emailInput.addEventListener('input', () => {
+  hideGlobalError();
+  renderEmailError();     // só mostra se já tocou (touched)
+  updateSubmitButtonState();
+});
+
+passwordInput.addEventListener('blur', () => {
+  touchedPassword = true;
+  renderPasswordError();
+  updateSubmitButtonState();
+});
+
+passwordInput.addEventListener('input', () => {
+  hideGlobalError();
+  renderPasswordError();
+  updateSubmitButtonState();
+});
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  hideGlobalError();
+
+  // força mostrar erros no submit
+  touchedEmail = true;
+  touchedPassword = true;
+  renderEmailError(true);
+  renderPasswordError(true);
+
+  if (!isEmailValid() || !isPasswordValid()) {
+    updateSubmitButtonState();
+    return;
+  }
+
+  // ... segue o teu fetch
+});
