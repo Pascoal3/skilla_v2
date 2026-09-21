@@ -269,7 +269,7 @@
 <!-- Footer Component (Minimalist Variant for Auth) -->
 <footer class="w-full py-12 px-8 border-t border-slate-100 bg-white">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="text-xl font-black text-slate-950 italic font-h1">SKILLA</div>
+<div class="text-xl font-black text-slate-950 italic font-h1"><img id="logo_plataforma" src="{{ asset('img/logo_skilla7-removebg-preview.png') }}" alt=""></div>
 <div class="text-slate-400 font-body-md text-sm">
     <p class="text-gray-500 text-xs mb-4 md:mb-0">Skilla © {{ now()->year }} . Todos os direitos reservados.</p>
 </div>
