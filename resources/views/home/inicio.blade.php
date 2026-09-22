@@ -516,7 +516,7 @@
 </div>
 <div>
 <div class="text-6xl font-black text-primary-container mb-2">24h</div>
-<div class="font-label-caps uppercase text-slate-500 tracking-widest">Média Resposta</div>
+<div class="font-label-caps uppercase text-slate-500 tracking-widest">Média de Resposta</div>
 </div>
 </div>
 </div>
@@ -864,16 +864,6 @@
 </div>
 </section>
 
-<!-- Transição (horizonte) entre a secção lime e o footer escuro -->
-<div class="bg-secondary-container">
-  <svg
-    class="w-full h-[120px] md:h-[160px] text-surface-container-lowest block"
-    viewBox="0 0 1440 220"
-    preserveAspectRatio="none"
-    aria-hidden="true">
-    <!-- Cole aqui o conteúdo do footer-horizon.svg (apenas os <path> / <g>) -->
-  </svg>
-</div>
 
 <div id="div_footer" class="antialiased ">
 
