@@ -864,6 +864,16 @@
 </div>
 </section>
 
+<!-- Transição (horizonte) entre a secção lime e o footer escuro -->
+<div class="bg-secondary-container">
+  <svg
+    class="w-full h-[120px] md:h-[100px] text-surface-container-lowest block"
+    viewBox="0 0 1440 220"
+    preserveAspectRatio="none"
+    aria-hidden="true">
+    <!-- Cole aqui o conteúdo do footer-horizon.svg (apenas os <path> / <g>) -->
+  </svg>
+</div>
 
 <div id="div_footer" class="antialiased ">
 
