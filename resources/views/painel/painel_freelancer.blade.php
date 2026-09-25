@@ -636,7 +636,7 @@
                     <div class="bg-white rounded-2xl p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
                         <div class="flex items-center gap-6">
                         <div class="bg-black text-[#D4FF00] w-16 h-16 rounded-2xl flex items-center justify-center">
-                            <span class="text-[40px] leading-[48px] font-bold" style="font-family: Sora, ui-sans-serif, system-ui;">12</span>
+                            <span class="text-[40px] leading-[48px] font-bold" style="font-family: Sora, ui-sans-serif, system-ui;">10</span>
                         </div>
                         <div>
                             <h4 class="text-[24px] leading-[32px] font-semibold text-black" style="font-family: Sora, ui-sans-serif, system-ui;">Créditos disponíveis</h4>
