@@ -296,7 +296,6 @@
             box-shadow: 2px 2px 0px 0px #101415;
         }
     </style>
-    <script src="{{ asset('js/proposta.js') }}" defer></script>
 </head>
 
 <body class="font-body-md text-body-md text-on-primary-fixed min-h-screen flex overflow-x-hidden">
@@ -4682,6 +4681,53 @@ App.templates.publicar_trabalho_review = `
             if (route === 'inicio') {
                 spaView.querySelector('#btn-explorar-trabalhos')?.addEventListener('click', () => render('trabalhos'));
                 spaView.querySelector('#botaoDirecionarCarregarSaldo')?.addEventListener('click', () => render('carteira_carregar_saldo'));
+            }
+
+            if (route === 'propostas') {
+                const view = spaView.querySelector('#view-propostas-freela');
+                if (!view) return;
+
+                const baseClasses = [
+                    "text-white", "px-4", "py-1", "rounded-full",
+                    "font-label-md", "text-label-md", "border", "border-background"
+                ];
+
+                function getSpanEstado(card) {
+                    return card.querySelector(".flex.justify-between.items-start span");
+                }
+
+                function isPendente(card) {
+                    const span = getSpanEstado(card);
+                    return span && span.textContent.trim().toLowerCase() === "pendente";
+                }
+
+                function setEstado(card, texto, bgClass) {
+                    const span = getSpanEstado(card);
+                    if (!span) return;
+                    span.className = "";
+                    span.classList.add(bgClass, ...baseClasses);
+                    span.textContent = texto;
+                }
+
+                view.addEventListener("click", (e) => {
+                    const btn = e.target.closest("button");
+                    if (!btn) return;
+
+                    const card = btn.closest(".neo-card");
+                    if (!card) return;
+
+                    const aceitar = btn.classList.contains("js-aceitar");
+                    const rejeitar = btn.classList.contains("js-rejeitar");
+                    if (!aceitar && !rejeitar) return;
+
+                    if (!isPendente(card)) return;
+
+                    if (aceitar) setEstado(card, "Aceito", "bg-[#4CAF50]");
+                    if (rejeitar) setEstado(card, "Rejeitado", "bg-[#FF5252]");
+
+                    const divIcones = card.querySelector(".divDosIcones");
+                    if (divIcones) divIcones.classList.add("hidden");
+                });
             }
         }
 
