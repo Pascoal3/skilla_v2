@@ -123,7 +123,7 @@
         }
 </style>
 </head>
-<body class="bg-background min-h-screen flex flex-col font-body-md text-on-surface antialiased">
+<body class="bg-background min-h-screen flex flex-col font-body-md text-on-surface antialiased custom-scrollbar">
 <!-- Navbar -->
 <nav class="flex justify-between items-center w-full px-8 md:px-16 py-5 bg-brand-navy fixed top-0 z-50">
 <a href="{{ route('inicio') }}"><img id="logo_plataforma" src="{{asset('img/logo_skilla8-removebg-preview.png')}}" alt=""></a>
