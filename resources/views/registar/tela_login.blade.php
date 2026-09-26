@@ -100,6 +100,13 @@
         .animate-loading-bar {
             animation: loading-bar 2s ease-in-out infinite;
         }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 10px;
+        }
     </style>
     <script>
 (function () {
@@ -123,7 +130,7 @@
 })();
 </script>
 </head>
-<body class="font-body-md antialiased">
+<body class="font-body-md antialiased custom-scrollbar">
 
 <main class="min-h-screen pt-32 pb-20 flex items-center justify-center px-4">
     
