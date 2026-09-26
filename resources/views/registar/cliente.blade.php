@@ -122,10 +122,17 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(300%); }
         }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #2563eb;
+            border-radius: 10px;
+        }
   </style>
 
 </head>
-<body class="font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container">
+<body class="font-body-md antialiased selection:bg-primary-container selection:text-on-primary-container custom-scrollbar">
 <!-- TopNavBar (Derived from JSON with modification for white background) -->
 <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
 <nav class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
