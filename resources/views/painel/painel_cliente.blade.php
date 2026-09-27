@@ -1797,7 +1797,8 @@
                     <h1 class="text-5xl text-black uppercase italic tracking-tighter border-b-[8px] border-black inline-block">Propostas Recebidas</h1>
                     </header>
                     <nav class="flex flex-wrap gap-3 mb-12">
-                        <button class="px-6 py-2 bg-black text-white neo-border font-bold rounded-full transition-transform active:scale-95">Aceitas</button>
+                        <button class="px-6 py-2 bg-black text-white neo-border font-bold rounded-full transition-transform active:scale-95">Todas</button>
+                        <button class="px-6 py-2 bg-white text-black neo-border font-bold rounded-full hover:bg-gray-100 transition-all">Aceitas</button>
                         <button class="px-6 py-2 bg-white text-black neo-border font-bold rounded-full hover:bg-gray-100 transition-all">Pendente</button>
                         <button class="px-6 py-2 bg-white text-black neo-border font-bold rounded-full hover:bg-gray-100 transition-all">Rejeitadas</button>
                     </nav>

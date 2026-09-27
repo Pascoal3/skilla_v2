@@ -1,0 +1,8 @@
+- [ ] Botão logout - meter a funcionar
+- [ ] Seeder de trabalhos no feed de trabalhos
+- [ ] Colocar no top freelas (página início) usuários já cadastrados
+- [ ] Módulos dos paineis
+- [ ] O nome dos painéis colocar dinâmico.
+- [ ] Completar tarefas do fluxo skilla.
+- [ ] Validação de inputs (Input sanetization e SQL injection prevention)
+- [ ] 

@@ -1,0 +1,249 @@
+{
+  "main": {
+    "id": "0bdf3c5df4170934",
+    "type": "split",
+    "children": [
+      {
+        "id": "4c0a6566e98f239d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d178c4ce6da736ac",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nova aba"
+            }
+          },
+          {
+            "id": "8d5244ed659223a3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/DOCUMENTATION_GUIDE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "DOCUMENTATION_GUIDE"
+            }
+          },
+          {
+            "id": "bec5f32692ce702e",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Visualização de diagrama de grafo"
+            }
+          },
+          {
+            "id": "2f8e4257df3215a8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/raw/01-product/Business-Rules.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Business-Rules"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "96c03e1233984b54",
+    "type": "split",
+    "children": [
+      {
+        "id": "d8fc4f1829d13ad4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "935b609a546b03db",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de ficheiros"
+            }
+          },
+          {
+            "id": "6773a07c5eb1c3f1",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Procurar"
+            }
+          },
+          {
+            "id": "027ce7abe87f830d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "589e8ddd888539af",
+    "type": "split",
+    "children": [
+      {
+        "id": "616b997d09d7c885",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "8d98f1315cc1444e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Links inversos"
+            }
+          },
+          {
+            "id": "7edb673f1d42a336",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Links Externos"
+            }
+          },
+          {
+            "id": "7d98e8cc7e773a8a",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "1ade83ecfc3fb299",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "Todas as propriedades"
+            }
+          },
+          {
+            "id": "e0fc62dd557a8061",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Índice"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir Quick Switcher": false,
+      "graph:Abrir Visualização de diagrama de grafo": false,
+      "canvas:Criar novo Canvas": false,
+      "daily-notes:Abrir nota de hoje": false,
+      "templates:Inserir templates": false,
+      "command-palette:Abrir paleta de comando": false,
+      "bases:Criar nova base": false
+    }
+  },
+  "active": "2f8e4257df3215a8",
+  "lastOpenFiles": [
+    "docs/raw/00-validation/Opportunities.md",
+    "docs/raw/00-validation/Market-Research.md",
+    "docs/raw/00-validation/Benchmark.md",
+    "docs/wiki/01-product/Business-Logic-Security.md",
+    "docs/DOCUMENTATION_GUIDE.md",
+    "docs/README.md",
+    "docs_definitivos/Docs definitivos.md",
+    "docs_definitivos",
+    "docs/raw/01-product/Business-Rules.md",
+    "docs/raw/01-product/Business-Rules.md.tmp.11240.2c6fe8eb4378",
+    "docs/raw/03-data/Database-Schema.md",
+    "docs/raw/03-data/Database-Schema.md.tmp.11240.b49a8eebb656",
+    "docs/raw/03-data",
+    "docs/raw/02-architecture/ADR/0000-template.md",
+    "docs/raw/02-architecture/ADR/0000-template.md.tmp.11240.454b2d1914e6",
+    "docs/raw/02-architecture/ADR",
+    "docs/raw/02-architecture",
+    "docs/raw/01-product/Non-Functional-Requirements.md",
+    "docs/raw/01-product/Non-Functional-Requirements.md.tmp.11240.fc684734441d",
+    "docs/raw/01-product/Functional-Requirements.md",
+    "docs/raw/01-product/Functional-Requirements.md.tmp.11240.4561f0777c7e",
+    "docs/wiki/01-product/Business-Logic-Security.md.tmp.11240.32ddf75e01d9",
+    "docs/raw/01-product/Roadmap.md",
+    "docs/raw/01-product/MVP-Scope.md",
+    "docs/raw/01-product/PRD.md",
+    "docs/wiki/00-validation/Market-Research.md"
+  ]
+}

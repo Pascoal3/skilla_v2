@@ -1,0 +1,3 @@
+- [ ] Meter as perguntas frequentes a funcionarem, adicionar mais perguntas frequentes
+- [ ] Overlay tem de ser camada da página do formulário, quando não validar dados volta ao form
+- [ ] 
