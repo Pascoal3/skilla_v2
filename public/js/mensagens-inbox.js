@@ -237,50 +237,50 @@
       : escapeHtml(c.preview);
 
     return `
-      <div class="msg-row flex flex-col md:flex-row md:items-center md:h-[72px] px-4 py-3.5 md:py-0 gap-2 md:gap-0 bg-white hover:bg-[#FAFAF9] transition-colors cursor-pointer divide-y divide-[#E7E5E4] last:divide-y-0"
+      <div class="msg-row flex flex-col md:flex-row md:items-center md:h-[72px] px-4 py-3.5 md:py-0 gap-2 md:gap-0 bg-white hover:bg-[#FAFAF9] transition-colors cursor-pointer border-0"
            data-conversa-id="${escapeHtml(c.id)}"
            tabindex="0"
            role="button"
            aria-label="${escapeHtml(c.titulo)}">
         <!-- Bloco A: Avatar + Título + Nome·Role (+ Tempo mobile) -->
-        <div class="w-[320px] shrink-0 flex items-center pr-4 min-w-0">
-          <div class="w-10 h-10 rounded-lg bg-[#F0EFED] text-[#44403C] text-[13px] font-semibold flex items-center justify-center shrink-0 mr-3">
+        <div class="w-[320px] shrink-0 flex items-center pr-4 min-w-0 border-0">
+          <div class="w-10 h-10 rounded-lg bg-[#F0EFED] text-[#44403C] text-[13px] font-semibold flex items-center justify-center shrink-0 mr-3 border-0">
             ${escapeHtml(initials)}
           </div>
-          <div class="min-w-0 flex-1">
-            <h2 class="text-[15px] font-semibold text-[#0A0A0A] truncate md:mb-0.5">${escapeHtml(c.titulo)}</h2>
-            <p class="text-[13px] text-[#78716C] truncate mt-0.5 md:mt-0">
-              ${escapeHtml(c.nomeOutraParte)} <span class="text-[#D6D3D1] mx-0.5">•</span> ${escapeHtml(c.role)}
+          <div class="min-w-0 flex-1 border-0">
+            <h2 class="text-[15px] font-semibold text-[#0A0A0A] truncate md:mb-0.5 border-0">${escapeHtml(c.titulo)}</h2>
+            <p class="text-[13px] text-[#78716C] truncate mt-0.5 md:mt-0 border-0">
+              ${escapeHtml(c.nomeOutraParte)} <span class="text-[#D6D3D1] mx-0.5 border-0">•</span> ${escapeHtml(c.role)}
             </p>
-            <span class="md:hidden text-[12px] text-[#A8A29E] tabular-nums font-medium">${escapeHtml(tempo)}</span>
+            <span class="md:hidden text-[12px] text-[#A8A29E] tabular-nums font-medium border-0">${escapeHtml(tempo)}</span>
           </div>
         </div>
 
         <!-- Bloco B: Preview (flex-1) -->
-        <div class="pl-[52px] md:pl-0 md:flex-1 md:pr-6 truncate flex-1 min-w-0">
-          <p class="text-[14px] text-[#44403C] truncate">${previewHtml}</p>
+        <div class="pl-[52px] md:pl-0 md:flex-1 md:pr-6 truncate flex-1 min-w-0 border-0">
+          <p class="text-[14px] text-[#44403C] truncate border-0">${previewHtml}</p>
         </div>
 
         <!-- Bloco C: Meta (Status + Escrow + Tempo desktop + Badge) -->
-        <div class="pl-[52px] md:pl-0 flex items-center justify-between md:justify-start w-full md:w-auto flex-wrap gap-3 md:gap-0">
+        <div class="pl-[52px] md:pl-0 flex items-center justify-between md:justify-start w-full md:w-auto flex-wrap gap-3 md:gap-0 border-0">
           <!-- Status -->
-          <div class="w-[140px] shrink-0 flex items-center gap-2 md:w-[140px]">
-            <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background:${meta.dot}"></span>
-            <span class="text-[13px] font-medium text-[#44403C] ${meta.strong ? 'font-semibold text-[#B42318]' : ''}">
+          <div class="w-[140px] shrink-0 flex items-center gap-2 md:w-[140px] border-0">
+            <span class="w-1.5 h-1.5 rounded-full shrink-0 border-0" style="background:${meta.dot}"></span>
+            <span class="text-[13px] font-medium text-[#44403C] ${meta.strong ? 'font-semibold text-[#B42318]' : ''} border-0">
               ${escapeHtml(meta.label)}
             </span>
           </div>
 
           <!-- Escrow -->
-          <div class="w-[140px] shrink-0 text-right whitespace-nowrap md:w-[140px] flex flex-col items-end md:items-end">
+          <div class="w-[140px] shrink-0 text-right whitespace-nowrap md:w-[140px] flex flex-col items-end md:items-end border-0">
             ${escrowHtml}
           </div>
 
           <!-- Atividade: Tempo desktop + Badge -->
-          <div class="w-[96px] shrink-0 flex items-center justify-end gap-2 hidden md:flex md:w-[96px]">
-            <span class="text-[12px] font-medium text-[#0A0A0A] tabular-nums whitespace-nowrap">${escapeHtml(tempo)}</span>
+          <div class="w-[96px] shrink-0 flex items-center justify-end gap-2 hidden md:flex md:w-[96px] border-0">
+            <span class="text-[12px] font-medium text-[#0A0A0A] tabular-nums whitespace-nowrap border-0">${escapeHtml(tempo)}</span>
             ${isUnread ? `
-              <span class="inline-flex items-center justify-center min-w-[20px] h-[20px] px-1.5 rounded-[6px] bg-[#0A0A0A] text-[#D4FF00] text-[12px] font-semibold leading-none">
+              <span class="inline-flex items-center justify-center min-w-[20px] h-[20px] px-1.5 rounded-[6px] bg-[#0A0A0A] text-[#D4FF00] text-[12px] font-semibold leading-none border-0">
                 ${c.unread}
               </span>
             ` : ''}
@@ -292,17 +292,17 @@
 
   function renderEscrow(valor) {
     if (valor == null || valor === 0) {
-      return `<span class="text-[14px] font-normal text-[#D6D3D1]">—</span>`;
+      return `<span class="text-[14px] font-normal text-[#D6D3D1] border-0">—</span>`;
     }
     return `
-      <div class="inline-flex items-center justify-end gap-1 text-[12px] text-[#A8A29E] w-full">
-        <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <div class="inline-flex items-center justify-end gap-1 text-[12px] text-[#A8A29E] w-full border-0">
+        <svg class="w-3.5 h-3.5 flex-shrink-0 border-0" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
           <rect height="11" rx="2" ry="2" width="18" x="3" y="11"></rect>
           <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
         </svg>
-        <span>Em escrow</span>
+        <span class="border-0">Em escrow</span>
       </div>
-      <div class="text-[14px] font-semibold text-[#0A0A0A] tabular-nums mt-0.5 w-full text-right">
+      <div class="text-[14px] font-semibold text-[#0A0A0A] tabular-nums mt-0.5 w-full text-right border-0">
         ${formatKz(valor)}
       </div>
     `;
