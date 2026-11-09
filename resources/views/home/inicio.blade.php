@@ -254,7 +254,7 @@
 </div>
 <div class="absolute -bottom-6 -left-6 bg-slate-900 text-white p-6 rounded-2xl max-w-[200px] hidden md:block">
 <p class="font-bold text-sm leading-tight italic">"Encontrei o meu designer em 24h. Incrível!"</p>
-<div class="mt-2 text-xs opacity-60">— Ayla Jorge, CEO</div>
+<div class="mt-2 text-xs opacity-60">Ayla Jorge, CEO - InterDesign</div>
 </div>
 </div>
 </div>
